@@ -81,8 +81,11 @@ jobs:
           Write-Host "Publishing Flight Recorder (win-x64)..."
           dotnet publish FlightRecorder.Client/FlightRecorder.Client.csproj -c Release -r win-x64 --self-contained false -o publish
 
-          Write-Host "Installing Inno Setup..."
-          choco install innosetup --no-progress -y
+          $isccPath = "C:\Program Files (x86)\Inno Setup 6\iscc.exe"
+          if (-not (Test-Path $isccPath)) {
+            Write-Host "Installing Inno Setup via Chocolatey..."
+            choco install innosetup --no-progress -y
+          }
 
           Write-Host "Compiling Inno Setup Installer (FlightRecorder-Setup.exe)..."
           $isccPath = "C:\Program Files (x86)\Inno Setup 6\iscc.exe"
