@@ -1,4 +1,4 @@
-﻿namespace FlightRecorder.Client.SimConnectMSFS
+namespace FlightRecorder.Client.SimConnectMSFS
 {
     enum EVENTS
     {
@@ -19,6 +19,7 @@
         AircraftPositionInitial,
         AircraftPosition,
         AircraftPositionSet,
+        CustomAircraftData,
     }
 
     internal enum DATA_REQUESTS
@@ -27,6 +28,7 @@
         AIRCRAFT_POSITION,
         AI_DESPAWN,
         AI_RELEASE,
+        CUSTOM_AIRCRAFT_DATA,
 
         AI_SPAWN = 10000, // 10000 to 19999
     }

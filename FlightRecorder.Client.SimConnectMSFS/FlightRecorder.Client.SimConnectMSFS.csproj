@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -15,9 +15,15 @@
     <ProjectReference Include="..\FlightRecorder.Client.Generators\FlightRecorder.Client.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <MSFS_SDK_DIR Condition="Exists('C:\MSFS 2024 SDK\SimConnect SDK')">C:\MSFS 2024 SDK\SimConnect SDK</MSFS_SDK_DIR>
+    <MSFS_SDK_DIR Condition="'$(MSFS_SDK_DIR)' == '' and Exists('C:\MSFS SDK\SimConnect SDK')">C:\MSFS SDK\SimConnect SDK</MSFS_SDK_DIR>
+    <MSFS_SDK_DIR Condition="'$(MSFS_SDK_DIR)' == ''">$(MSBuildThisFileDirectory)..\lib\SimConnect SDK</MSFS_SDK_DIR>
+  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="Microsoft.FlightSimulator.SimConnect">
-      <HintPath>C:\MSFS SDK\SimConnect SDK\lib\managed\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+      <HintPath>$(MSFS_SDK_DIR)\lib\managed\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
     </Reference>
   </ItemGroup>
 

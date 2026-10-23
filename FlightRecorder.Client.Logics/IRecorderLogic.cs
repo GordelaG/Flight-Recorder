@@ -1,16 +1,19 @@
-﻿using System;
+using FlightRecorder.Client.SimConnectMSFS;
+using System;
 
-namespace FlightRecorder.Client.Logics
+namespace FlightRecorder.Client.Logics;
+
+public interface IRecorderLogic
 {
-    public interface IRecorderLogic
-    {
-        event EventHandler<RecordsUpdatedEventArgs> RecordsUpdated;
+    event EventHandler<RecordsUpdatedEventArgs> RecordsUpdated;
+    event EventHandler<AircraftProfile?>? ProfileChanged;
 
-        void Initialize();
-        void Record();
-        void StopRecording();
-        void NotifyPosition(AircraftPositionStruct? value);
+    AircraftProfile? CurrentProfile { get; }
 
-        SavedData ToData(string clientVersion);
-    }
+    void Initialize();
+    void Record();
+    void StopRecording();
+    void NotifyPosition(AircraftPositionStruct? value);
+
+    SavedData ToData(string clientVersion);
 }

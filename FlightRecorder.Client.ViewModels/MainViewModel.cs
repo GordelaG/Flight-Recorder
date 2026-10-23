@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logics;
+using FlightRecorder.Client.Logics;
 using FlightRecorder.Client.SimConnectMSFS;
 using Microsoft.Extensions.Logging;
 using System;
@@ -71,7 +71,9 @@ namespace FlightRecorder.Client
         private void RegisterEvents()
         {
             recorderLogic.RecordsUpdated += RecordsUpdated;
+            recorderLogic.ProfileChanged += OnProfileChanged;
             replayLogic.RecordsUpdated += RecordsUpdated;
+            replayLogic.ProfileChanged += OnProfileChanged;
             replayLogic.CurrentFrameChanged += CurrentFrameChanged;
             connector.SimStateUpdated += SimStateUpdated;
         }
@@ -79,9 +81,21 @@ namespace FlightRecorder.Client
         private void DeregisterEvents()
         {
             recorderLogic.RecordsUpdated -= RecordsUpdated;
+            recorderLogic.ProfileChanged -= OnProfileChanged;
             replayLogic.RecordsUpdated -= RecordsUpdated;
+            replayLogic.ProfileChanged -= OnProfileChanged;
             replayLogic.CurrentFrameChanged -= CurrentFrameChanged;
             connector.SimStateUpdated -= SimStateUpdated;
+        }
+
+        private void OnProfileChanged(object? sender, AircraftProfile? profile)
+        {
+            threadLogic.RunInUIThread(() =>
+            {
+                ActiveProfileName = profile?.Name;
+                ActiveProfileVendor = profile?.Vendor;
+                ActiveProfileVarCount = profile?.Variables.Count ?? 0;
+            });
         }
 
         private void RecordsUpdated(object? sender, RecordsUpdatedEventArgs e)
@@ -149,5 +163,14 @@ namespace FlightRecorder.Client
 
         private bool showData;
         public bool ShowData { get => showData; set => SetProperty(ref showData, value); }
+
+        private string? activeProfileName;
+        public string? ActiveProfileName { get => activeProfileName; set => SetProperty(ref activeProfileName, value); }
+
+        private string? activeProfileVendor;
+        public string? ActiveProfileVendor { get => activeProfileVendor; set => SetProperty(ref activeProfileVendor, value); }
+
+        private int activeProfileVarCount;
+        public int ActiveProfileVarCount { get => activeProfileVarCount; set => SetProperty(ref activeProfileVarCount, value); }
     }
 }

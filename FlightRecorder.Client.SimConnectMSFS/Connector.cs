@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.FlightSimulator.SimConnect;
 using System;
 
@@ -12,6 +12,7 @@ public partial class Connector : IConnector
 
     public event EventHandler<SimStateUpdatedEventArgs>? SimStateUpdated;
     public event EventHandler<AircraftPositionUpdatedEventArgs>? AircraftPositionUpdated;
+    public event EventHandler<CustomAircraftVariablesUpdatedEventArgs>? CustomAircraftVariablesUpdated;
     public event EventHandler? Initialized;
     public event EventHandler? Frame;
     public event EventHandler? CreatingObjectFailed;
@@ -19,6 +20,7 @@ public partial class Connector : IConnector
     public event EventHandler? Closed;
     public event EventHandler<AircraftIdReceivedEventArgs>? AircraftIdReceived;
 
+    private AircraftProfile? activeProfile = null;
     private readonly ILogger<Connector> logger;
 
     private int requestCount = 0;
@@ -146,6 +148,63 @@ public partial class Connector : IConnector
         }
     }
 
+    public void SetCustomVariables(uint aircraftId, CustomAircraftVariablesStruct variables)
+    {
+        lock (lockObj)
+        {
+            if (activeProfile == null || activeProfile.Variables.Count == 0) return;
+            logger.LogTrace("Set Custom Variables on {id}", aircraftId);
+            simconnect?.SetDataOnSimObject(DEFINITIONS.CustomAircraftData, aircraftId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, variables);
+        }
+    }
+
+    public void SetActiveProfile(AircraftProfile? profile)
+    {
+        lock (lockObj)
+        {
+            if (activeProfile?.Id == profile?.Id) return;
+            activeProfile = profile;
+            RegisterCustomAircraftDataDefinition();
+        }
+    }
+
+    private void RegisterCustomAircraftDataDefinition()
+    {
+        if (simconnect == null) return;
+
+        try
+        {
+            simconnect.ClearDataDefinition(DEFINITIONS.CustomAircraftData);
+        }
+        catch (Exception ex)
+        {
+            logger.LogTrace(ex, "ClearDataDefinition CustomAircraftData");
+        }
+
+        if (activeProfile != null && activeProfile.Variables.Count > 0)
+        {
+            logger.LogInformation("Activating custom aircraft profile {profileName} with {varCount} L-Vars", activeProfile.Name, activeProfile.Variables.Count);
+
+            for (int i = 0; i < activeProfile.Variables.Count && i < CustomAircraftVariablesStruct.MaxVariables; i++)
+            {
+                var v = activeProfile.Variables[i];
+                simconnect.AddToDataDefinition(DEFINITIONS.CustomAircraftData, v.Name, string.IsNullOrEmpty(v.Unit) ? "number" : v.Unit, SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            }
+            // Add padding up to MaxVariables (32) to ensure strict struct alignment
+            for (int i = activeProfile.Variables.Count; i < CustomAircraftVariablesStruct.MaxVariables; i++)
+            {
+                simconnect.AddToDataDefinition(DEFINITIONS.CustomAircraftData, $"L:FR_PAD_{i}", "number", SIMCONNECT_DATATYPE.FLOAT64, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            }
+            simconnect.RegisterDataDefineStruct<CustomAircraftVariablesStruct>(DEFINITIONS.CustomAircraftData);
+
+            simconnect.RequestDataOnSimObject(
+                DATA_REQUESTS.CUSTOM_AIRCRAFT_DATA, DEFINITIONS.CustomAircraftData, 0,
+                SIMCONNECT_PERIOD.SIM_FRAME,
+                SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT,
+                0, 0, 0);
+        }
+    }
+
     private void ProcessSimState(SimStateStruct state)
     {
         logger.LogTrace("Get SimState");
@@ -171,6 +230,11 @@ public partial class Connector : IConnector
             SIMCONNECT_PERIOD.SIM_FRAME,
             SIMCONNECT_DATA_REQUEST_FLAG.DEFAULT,
             0, 0, 0);
+
+        if (activeProfile != null)
+        {
+            RegisterCustomAircraftDataDefinition();
+        }
     }
 
     private void Simconnect_OnRecvAssignedObjectId(SimConnect sender, SIMCONNECT_RECV_ASSIGNED_OBJECT_ID data)
@@ -274,6 +338,15 @@ public partial class Connector : IConnector
                     if (position.HasValue)
                     {
                         ProcessAircraftPosition(position.Value);
+                    }
+                }
+                break;
+            case (uint)DATA_REQUESTS.CUSTOM_AIRCRAFT_DATA:
+                {
+                    var custom = data.dwData[0] as CustomAircraftVariablesStruct?;
+                    if (custom.HasValue)
+                    {
+                        CustomAircraftVariablesUpdated?.Invoke(this, new CustomAircraftVariablesUpdatedEventArgs(custom.Value));
                     }
                 }
                 break;

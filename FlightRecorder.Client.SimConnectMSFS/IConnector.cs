@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace FlightRecorder.Client.SimConnectMSFS;
 
@@ -8,6 +8,7 @@ public interface IConnector
 
     event EventHandler<SimStateUpdatedEventArgs> SimStateUpdated;
     event EventHandler<AircraftPositionUpdatedEventArgs> AircraftPositionUpdated;
+    event EventHandler<CustomAircraftVariablesUpdatedEventArgs>? CustomAircraftVariablesUpdated;
     event EventHandler Closed;
     event EventHandler<AircraftIdReceivedEventArgs> AircraftIdReceived;
     event EventHandler Frame;
@@ -24,4 +25,6 @@ public interface IConnector
     void Despawn(uint aircraftId);
     void Set(uint aircraftId, AircraftPositionSetStruct position);
     void TriggerEvents(AircraftPositionStruct current, AircraftPositionStruct expected);
+    void SetActiveProfile(AircraftProfile? profile);
+    void SetCustomVariables(uint aircraftId, CustomAircraftVariablesStruct variables);
 }

@@ -88,6 +88,7 @@ namespace FlightRecorder.Client.ViewModels.Tests
         public async Task TestMultipleTransitions()
         {
             mockReplayLogic.Setup(logic => logic.Replay()).Returns(true);
+            mockReplayLogic.Setup(logic => logic.IsReplayable).Returns(true);
 
             await stateMachine.TransitAsync(StateMachine.Event.StartUp);
             Assert.AreEqual(StateMachine.State.DisconnectedEmpty, viewModel.State);
