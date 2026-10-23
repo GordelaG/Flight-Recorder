@@ -29,6 +29,7 @@ bld/
 [Ll]ogs/
 publish/
 *.zip
+installer_output/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

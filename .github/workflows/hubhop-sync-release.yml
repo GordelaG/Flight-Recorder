@@ -74,19 +74,31 @@ jobs:
           Write-Host "Executing unit tests suite..."
           dotnet test --configuration Release
 
-      - name: Build Application Bundle
+      - name: Build Application Bundle & Installer
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.git_status.outputs.has_changes == 'true'
         shell: pwsh
         run: |
           Write-Host "Publishing Flight Recorder (win-x64)..."
           dotnet publish FlightRecorder.Client/FlightRecorder.Client.csproj -c Release -r win-x64 --self-contained false -o publish
 
-          # Copy direct executable for instant download
-          Copy-Item -Path "publish/FlightRecorder.Client.exe" -Destination "FlightRecorder.exe" -Force
-          Copy-Item -Path "publish/FlightRecorder.Client.exe" -Destination "publish/FlightRecorder.exe" -Force
+          Write-Host "Installing Inno Setup..."
+          choco install innosetup --no-progress -y
 
-          Write-Host "Creating Release ZIP package..."
-          Compress-Archive -Path publish\* -DestinationPath FlightRecorder-win-x64.zip -Force
+          Write-Host "Compiling Inno Setup Installer (FlightRecorder-Setup.exe)..."
+          $isccPath = "C:\Program Files (x86)\Inno Setup 6\iscc.exe"
+          if (-not (Test-Path $isccPath)) {
+            $isccPath = (Get-Command iscc -ErrorAction SilentlyContinue)?.Source
+          }
+          if (-not $isccPath) {
+            throw "iscc.exe was not found after installing innosetup!"
+          }
+
+          & $isccPath /DMyAppVersion="0.27.${{ github.run_number }}" installer.iss
+
+          if (-not (Test-Path "installer_output/FlightRecorder-Setup.exe")) {
+            throw "FlightRecorder-Setup.exe was not created in installer_output!"
+          }
+          Write-Host "Installer created successfully: installer_output/FlightRecorder-Setup.exe"
 
       - name: Create or Update GitHub Release
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.git_status.outputs.has_changes == 'true'
@@ -96,21 +108,20 @@ jobs:
           name: ${{ startsWith(github.ref, 'refs/tags/v') && format('Flight Recorder {0}', github.ref_name) || (github.event_name == 'schedule' && format('Flight Recorder - Aircraft Profiles Sync ({0})', steps.date.outputs.date) || format('Flight Recorder v0.27.{0}', github.run_number)) }}
           body: |
             ### ✈️ Flight Recorder Release
-            Automated build produced by GitHub Actions.
+            Instalador oficial do Flight Recorder para Windows (64-bit).
             
-            - **Native SimConnect:** 100% native SimConnect integration (Zero WASM in Community)
-            - **Modern Flux UI:** Modern WebView2 interface with native Windows titlebar controls
-            - **Aircraft Profiles:** 137+ MSFS profiles included out-of-the-box (MobiFlight HubHop)
+            - **Instalação Personalizada:** Escolha o diretório de instalação e opção de ícone na Área de Trabalho.
+            - **Atualização Automática:** Atualiza automaticamente ao iniciar se houver novas versões no GitHub.
+            - **SimConnect Nativo:** 100% nativo (zero arquivos WASM na pasta Community).
+            - **Perfis de Aeronaves:** 137+ perfis pré-instalados (MobiFlight HubHop).
             
-            #### 📦 Downloads:
-            - **`FlightRecorder-win-x64.zip`** *(Recommended)*: Complete package including UI, aircraft profiles, and SimConnect SDK runtime. Extract anywhere and launch `FlightRecorder.exe`.
-            - **`FlightRecorder.exe`**: Executable binary.
+            #### 📥 Download Único:
+            - **`FlightRecorder-Setup.exe`**: Baixe e execute o instalador.
           draft: false
           prerelease: false
           make_latest: true
           generate_release_notes: true
           files: |
-            FlightRecorder-win-x64.zip
-            FlightRecorder.exe
+            installer_output/FlightRecorder-Setup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
