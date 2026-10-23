@@ -106,23 +106,44 @@ jobs:
           }
           Write-Host "Installer created successfully: installer_output/FlightRecorder-Setup.exe"
 
+      - name: Generate Release Notes & Changelog
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.git_status.outputs.has_changes == 'true'
+        shell: pwsh
+        run: |
+          $prevTag = git tag --sort=-creatordate | Where-Object { $_ -ne "" } | Select-Object -Skip 1 -First 1
+          if ($prevTag) {
+            Write-Host "Previous tag found: $prevTag"
+            $commits = git log "$prevTag..HEAD" --pretty=format:"- %s (%h)" --no-merges
+          } else {
+            $commits = git log -n 15 --pretty=format:"- %s (%h)" --no-merges
+          }
+
+          $notes = @"
+          ### 🚀 Novidades desta versão:
+          $commits
+
+          ---
+          ### ✈️ Flight Recorder Release
+          Instalador oficial do Flight Recorder para Windows (64-bit).
+          
+          - **Instalação Personalizada:** Escolha o diretório de instalação e opção de ícone na Área de Trabalho.
+          - **Atualização Automática:** Atualiza automaticamente ao iniciar se houver novas versões no GitHub.
+          - **SimConnect Nativo:** 100% nativo (zero arquivos WASM na pasta Community).
+          - **Perfis de Aeronaves:** 137+ perfis pré-instalados (MobiFlight HubHop).
+          
+          #### 📥 Download Único:
+          - **``FlightRecorder-Setup.exe``**: Baixe e execute o instalador.
+          "@
+
+          Set-Content -Path "release_notes.md" -Value $notes -Encoding utf8
+
       - name: Create or Update GitHub Release
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.git_status.outputs.has_changes == 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || (github.event_name == 'schedule' && format('profiles-{0}', steps.date.outputs.date) || format('v0.27.{0}', github.run_number)) }}
           name: ${{ startsWith(github.ref, 'refs/tags/v') && format('Flight Recorder {0}', github.ref_name) || (github.event_name == 'schedule' && format('Flight Recorder - Aircraft Profiles Sync ({0})', steps.date.outputs.date) || format('Flight Recorder v0.27.{0}', github.run_number)) }}
-          body: |
-            ### ✈️ Flight Recorder Release
-            Instalador oficial do Flight Recorder para Windows (64-bit).
-            
-            - **Instalação Personalizada:** Escolha o diretório de instalação e opção de ícone na Área de Trabalho.
-            - **Atualização Automática:** Atualiza automaticamente ao iniciar se houver novas versões no GitHub.
-            - **SimConnect Nativo:** 100% nativo (zero arquivos WASM na pasta Community).
-            - **Perfis de Aeronaves:** 137+ perfis pré-instalados (MobiFlight HubHop).
-            
-            #### 📥 Download Único:
-            - **`FlightRecorder-Setup.exe`**: Baixe e execute o instalador.
+          body_path: release_notes.md
           draft: false
           prerelease: false
           make_latest: true
