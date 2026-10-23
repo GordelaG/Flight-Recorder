@@ -1,5 +1,5 @@
 /**
- * Flight Recorder - Flux UI Application Logic
+ * Flight Recorder - Flux UI & ACARS Application Logic
  * Bridges WebView2 and C# State Machine
  */
 
@@ -8,6 +8,7 @@
 
   // State cache
   const state = {
+    currentTab: 'record',
     machineState: 'Start',
     simConnectState: 'NotConnected',
     currentFrame: 0,
@@ -23,17 +24,37 @@
     telemetryExpanded: false,
     records: [],
     aircraftPosition: {},
-    simState: {}
+    simState: {},
+    savedFlights: [],
+    settings: {
+      shortcutKeysEnabled: false,
+      shortcuts: [],
+      savedFlightsFolder: '',
+      stayOnTop: false
+    },
+    recordingHotkeyIndex: null
   };
 
   // DOM Elements
   const el = {
-    // Status
+    // Navigation
+    navTabRecord: document.getElementById('navTabRecord'),
+    navTabRecords: document.getElementById('navTabRecords'),
+    navTabSettings: document.getElementById('navTabSettings'),
+    savedFlightsCountBadge: document.getElementById('savedFlightsCountBadge'),
+    sidebarConnStatus: document.getElementById('sidebarConnStatus'),
+    sidebarConnText: document.getElementById('sidebarConnText'),
+    btnOpenSavedFolderSidebar: document.getElementById('btnOpenSavedFolderSidebar'),
+
+    // Views
+    viewRecord: document.getElementById('viewRecord'),
+    viewRecords: document.getElementById('viewRecords'),
+    viewSettings: document.getElementById('viewSettings'),
+
+    // View 1: Record & Controls
     statusBanner: document.getElementById('statusBanner'),
     statusDot: document.getElementById('statusDot'),
     statusText: document.getElementById('statusText'),
-
-    // Aircraft Card & Profile
     aircraftTitle: document.getElementById('aircraftTitle'),
     aircraftFile: document.getElementById('aircraftFile'),
     saveBadge: document.getElementById('saveBadge'),
@@ -41,7 +62,6 @@
     profileText: document.getElementById('profileText'),
     valProfileDetail: document.getElementById('valProfileDetail'),
 
-    // Primary Actions
     btnRecord: document.getElementById('btnRecord'),
     btnStopRecord: document.getElementById('btnStopRecord'),
     btnReplay: document.getElementById('btnReplay'),
@@ -50,13 +70,12 @@
     btnStopReplay: document.getElementById('btnStopReplay'),
     btnReplayAI: document.getElementById('btnReplayAI'),
 
-    // Timeline & Scrub
     timelineSlider: document.getElementById('timelineSlider'),
     currentFrameText: document.getElementById('currentFrameText'),
     totalFramesText: document.getElementById('totalFramesText'),
     chartOverlay: document.getElementById('chartOverlay'),
+    flightChartCanvas: document.getElementById('flightChart'),
 
-    // Playback modifiers
     btnRepeat: document.getElementById('btnRepeat'),
     btnSpeed: document.getElementById('btnSpeed'),
     speedLabel: document.getElementById('speedLabel'),
@@ -64,13 +83,9 @@
     btnTrim: document.getElementById('btnTrim'),
     trimMenu: document.getElementById('trimMenu'),
 
-    // Storage & Export
     btnSave: document.getElementById('btnSave'),
     btnLoad: document.getElementById('btnLoad'),
-    btnExport: document.getElementById('btnExport'),
-    exportMenu: document.getElementById('exportMenu'),
 
-    // Telemetry
     telemetryHeader: document.getElementById('telemetryHeader'),
     telemetryBody: document.getElementById('telemetryBody'),
     telemetryChevron: document.getElementById('telemetryChevron'),
@@ -86,414 +101,649 @@
     valThrottle: document.getElementById('valThrottle'),
     valFlaps: document.getElementById('valFlaps'),
 
-    // Utilities
-    btnTopmost: document.getElementById('btnTopmost'),
-    btnShortcuts: document.getElementById('btnShortcuts'),
-    btnMinimize: document.getElementById('btnMinimize'),
-    btnClose: document.getElementById('btnClose'),
+    // View 2: Records List
+    inputSearchRecords: document.getElementById('inputSearchRecords'),
+    statTotalFlights: document.getElementById('statTotalFlights'),
+    statTotalTime: document.getElementById('statTotalTime'),
+    recordsListContainer: document.getElementById('recordsListContainer'),
+    btnRefreshSaved: document.getElementById('btnRefreshSaved'),
+    btnImportFlight: document.getElementById('btnImportFlight'),
+    btnOpenFolderRecords: document.getElementById('btnOpenFolderRecords'),
 
-    // Modals & Toasts
-    shortcutsModal: document.getElementById('shortcutsModal'),
-    btnCloseModal: document.getElementById('btnCloseModal'),
+    // View 3: Settings
+    btnSaveSettings: document.getElementById('btnSaveSettings'),
+    btnRestoreDefaults: document.getElementById('btnRestoreDefaults'),
+    toggleHotkeysEnabled: document.getElementById('toggleHotkeysEnabled'),
+    hotkeysContainer: document.getElementById('hotkeysContainer'),
+    textSavedFolderPath: document.getElementById('textSavedFolderPath'),
+    btnOpenSettingsFolder: document.getElementById('btnOpenSettingsFolder'),
+    toggleStayOnTopSettings: document.getElementById('toggleStayOnTopSettings'),
+
+    // Toasts & Updates
     toast: document.getElementById('toast'),
-    flightChartCanvas: document.getElementById('flightChart')
+    updateBanner: document.getElementById('updateBanner'),
+    updateBannerText: document.getElementById('updateBannerText'),
+    updateProgressFill: document.getElementById('updateProgressFill')
   };
 
-  // Initialize Canvas Chart
-  const chart = new FlightChart(el.flightChartCanvas, (targetFrame) => {
-    seekToFrame(targetFrame);
-  });
+  // Chart instance
+  let chart = null;
+  if (el.flightChartCanvas && typeof FlightChart !== 'undefined') {
+    chart = new FlightChart(el.flightChartCanvas, (frame) => {
+      seekToFrame(frame);
+    });
+  }
 
-  // Post message to C# backend
+  // Communication Helper
   function sendToHost(action, data = {}) {
     if (window.chrome && window.chrome.webview) {
-      window.chrome.webview.postMessage({ action, ...data });
-    } else {
-      console.log('[DEBUG] Mock sendToHost:', action, data);
+      window.chrome.webview.postMessage(JSON.stringify({ action, ...data }));
     }
   }
 
   // Toast Notification
   let toastTimer = null;
-  function showToast(msg) {
+  function showToast(message, duration = 3000) {
     if (!el.toast) return;
-    el.toast.textContent = msg;
+    el.toast.textContent = message;
     el.toast.classList.add('show');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => {
       el.toast.classList.remove('show');
-    }, 2200);
+    }, duration);
   }
 
-  // Handle updates coming from C#
+  // Tab Navigation Switching
+  function switchTab(tabName) {
+    state.currentTab = tabName;
+
+    // Update nav items
+    document.querySelectorAll('.nav-item').forEach((item) => {
+      item.classList.toggle('active', item.dataset.tab === tabName);
+    });
+
+    // Update tab sections
+    if (el.viewRecord) el.viewRecord.classList.toggle('active', tabName === 'record');
+    if (el.viewRecords) el.viewRecords.classList.toggle('active', tabName === 'records');
+    if (el.viewSettings) el.viewSettings.classList.toggle('active', tabName === 'settings');
+
+    if (tabName === 'records') {
+      sendToHost('getSavedFlights');
+    } else if (tabName === 'settings') {
+      sendToHost('getSettings');
+    } else if (tabName === 'record') {
+      if (chart) chart.resize();
+    }
+  }
+
+  // Formatting Helpers
+  function formatDuration(seconds) {
+    if (!seconds || seconds <= 0) return '0s';
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    if (m === 0) return `${s}s`;
+    return `${m}m ${s}s`;
+  }
+
+  function formatBytes(bytes) {
+    if (!bytes || bytes === 0) return '0 KB';
+    const k = 1024;
+    if (bytes < k * k) return `${(bytes / k).toFixed(1)} KB`;
+    return `${(bytes / (k * k)).toFixed(1)} MB`;
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    const hours = String(d.getHours()).padStart(2, '0');
+    const mins = String(d.getMinutes()).padStart(2, '0');
+    return `${day}/${month}/${year} ${hours}:${mins}`;
+  }
+
+  // Render Saved Flights (View 2)
+  function renderSavedFlights() {
+    if (!el.recordsListContainer) return;
+
+    const query = (el.inputSearchRecords?.value || '').trim().toLowerCase();
+    const filtered = state.savedFlights.filter((flight) => {
+      if (!query) return true;
+      const title = (flight.aircraftTitle || '').toLowerCase();
+      const name = (flight.fileName || '').toLowerCase();
+      return title.includes(query) || name.includes(query);
+    });
+
+    // Update stats
+    if (el.statTotalFlights) el.statTotalFlights.textContent = state.savedFlights.length;
+    if (el.savedFlightsCountBadge) el.savedFlightsCountBadge.textContent = state.savedFlights.length;
+
+    const totalSeconds = state.savedFlights.reduce((acc, f) => acc + (f.durationSeconds || 0), 0);
+    const totalMinutes = Math.round(totalSeconds / 60);
+    if (el.statTotalTime) el.statTotalTime.textContent = `${totalMinutes} min`;
+
+    if (filtered.length === 0) {
+      el.recordsListContainer.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">✈️</div>
+          <div class="empty-state-title">Nenhum voo salvo encontrado</div>
+          <div class="empty-state-desc">
+            ${query ? 'Nenhum resultado corresponde à sua pesquisa.' : 'Grave um voo no simulador e clique no botão Save para salvá-lo aqui.'}
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    el.recordsListContainer.innerHTML = '';
+    filtered.forEach((flight) => {
+      const card = document.createElement('div');
+      card.className = 'flight-card';
+
+      const durText = formatDuration(flight.durationSeconds);
+      const sizeText = formatBytes(flight.fileSizeBytes);
+      const dateText = formatDate(flight.createdAt);
+      const frameText = `${(flight.frameCount || 0).toLocaleString()} frames`;
+
+      card.innerHTML = `
+        <div class="flight-card-header">
+          <div class="flight-card-title-group">
+            <span class="flight-card-plane" title="${flight.aircraftTitle || 'Flight'}">${flight.aircraftTitle || 'Flight'}</span>
+            <span class="flight-card-date">${dateText}</span>
+          </div>
+        </div>
+        <div class="flight-badges-row">
+          <span class="flight-badge duration">⏱ ${durText}</span>
+          <span class="flight-badge">🎞 ${frameText}</span>
+          <span class="flight-badge">💾 ${sizeText}</span>
+          ${flight.profileId ? `<span class="flight-badge" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">⚡ ${flight.profileId}</span>` : ''}
+        </div>
+        <div class="flight-card-footer">
+          <span class="flight-filename" title="${flight.fileName}">${flight.fileName}</span>
+          <div class="flight-card-actions">
+            <button class="btn btn-accent btn-sm btn-load-flight" title="Carregar este voo para Replay">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Carregar
+            </button>
+            <button class="btn btn-danger btn-sm btn-delete-flight" title="Excluir gravação">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"/>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Load click
+      card.querySelector('.btn-load-flight').addEventListener('click', () => {
+        sendToHost('loadSavedFlight', { path: flight.filePath });
+      });
+
+      // Delete click
+      card.querySelector('.btn-delete-flight').addEventListener('click', () => {
+        if (confirm(`Deseja realmente excluir o voo "${flight.aircraftTitle || flight.fileName}"?`)) {
+          sendToHost('deleteSavedFlight', { path: flight.filePath });
+        }
+      });
+
+      el.recordsListContainer.appendChild(card);
+    });
+  }
+
+  // Render Hotkeys Settings (View 3)
+  function renderSettings() {
+    if (!el.hotkeysContainer) return;
+
+    if (el.toggleHotkeysEnabled) {
+      el.toggleHotkeysEnabled.checked = state.settings.shortcutKeysEnabled;
+    }
+    if (el.toggleStayOnTopSettings) {
+      el.toggleStayOnTopSettings.checked = state.settings.stayOnTop;
+    }
+    if (el.textSavedFolderPath && state.settings.savedFlightsFolder) {
+      el.textSavedFolderPath.textContent = state.settings.savedFlightsFolder;
+    }
+
+    el.hotkeysContainer.innerHTML = '';
+    (state.settings.shortcuts || []).forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'hotkey-row';
+
+      const isRecording = state.recordingHotkeyIndex === index;
+
+      row.innerHTML = `
+        <span class="hotkey-name">${item.name || item.id}</span>
+        <div class="hotkey-modifiers">
+          <label class="mod-check-label">
+            <input type="checkbox" class="chk-ctrl" ${item.ctrl ? 'checked' : ''}>
+            <span>Ctrl</span>
+          </label>
+          <label class="mod-check-label">
+            <input type="checkbox" class="chk-alt" ${item.alt ? 'checked' : ''}>
+            <span>Alt</span>
+          </label>
+          <label class="mod-check-label">
+            <input type="checkbox" class="chk-shift" ${item.shift ? 'checked' : ''}>
+            <span>Shift</span>
+          </label>
+          <button class="hotkey-key-btn ${isRecording ? 'recording' : ''}" title="Clique para alterar a tecla">
+            ${isRecording ? 'Pressione tecla...' : (item.key || 'Nenhum')}
+          </button>
+          <span class="hotkey-preview-badge">${formatShortcutPreview(item)}</span>
+        </div>
+      `;
+
+      // Checkbox events
+      row.querySelector('.chk-ctrl').addEventListener('change', (e) => {
+        item.ctrl = e.target.checked;
+        row.querySelector('.hotkey-preview-badge').textContent = formatShortcutPreview(item);
+      });
+      row.querySelector('.chk-alt').addEventListener('change', (e) => {
+        item.alt = e.target.checked;
+        row.querySelector('.hotkey-preview-badge').textContent = formatShortcutPreview(item);
+      });
+      row.querySelector('.chk-shift').addEventListener('change', (e) => {
+        item.shift = e.target.checked;
+        row.querySelector('.hotkey-preview-badge').textContent = formatShortcutPreview(item);
+      });
+
+      // Key button capture
+      const keyBtn = row.querySelector('.hotkey-key-btn');
+      keyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (state.recordingHotkeyIndex === index) {
+          state.recordingHotkeyIndex = null;
+        } else {
+          state.recordingHotkeyIndex = index;
+        }
+        renderSettings();
+      });
+
+      el.hotkeysContainer.appendChild(row);
+    });
+  }
+
+  function formatShortcutPreview(item) {
+    const parts = [];
+    if (item.ctrl) parts.push('Ctrl');
+    if (item.alt) parts.push('Alt');
+    if (item.shift) parts.push('Shift');
+    if (item.key) parts.push(item.key);
+    return parts.length > 0 ? parts.join(' + ') : 'Nenhum';
+  }
+
+  // Keydown listener for capturing hotkeys in settings
+  window.addEventListener('keydown', (e) => {
+    if (state.recordingHotkeyIndex === null) return;
+    e.preventDefault();
+    e.stopPropagation();
+
+    const ignoredKeys = ['Control', 'Alt', 'Shift', 'Meta', 'CapsLock', 'Tab'];
+    if (ignoredKeys.includes(e.key)) return;
+
+    const item = state.settings.shortcuts[state.recordingHotkeyIndex];
+    if (item) {
+      let keyName = e.key;
+      if (keyName.length === 1) keyName = keyName.toUpperCase();
+      if (keyName === ' ') keyName = 'Space';
+      if (keyName === 'ArrowUp') keyName = 'Up';
+      if (keyName === 'ArrowDown') keyName = 'Down';
+      if (keyName === 'ArrowLeft') keyName = 'Left';
+      if (keyName === 'ArrowRight') keyName = 'Right';
+
+      item.key = keyName;
+      item.virtualKey = e.keyCode || 0;
+      state.recordingHotkeyIndex = null;
+      renderSettings();
+      showToast(`Tecla definida: ${keyName}`);
+    }
+  });
+
+  // Host Message Dispatcher
   function handleHostMessage(msg) {
-    if (!msg) return;
+    if (!msg || !msg.type) return;
 
-    if (msg.type === 'stateUpdate') {
-      applyStateUpdate(msg.payload);
-    } else if (msg.type === 'telemetryUpdate') {
-      applyTelemetryUpdate(msg.payload);
-    } else if (msg.type === 'recordsUpdate') {
-      state.records = msg.payload || [];
-      chart.setData(state.records);
-      updateChartOverlay();
-    } else if (msg.type === 'toast') {
-      showToast(msg.payload);
-    } else if (msg.type === 'updateStatus') {
-      handleUpdateStatus(msg.payload);
-    } else if (msg.type === 'updateProgress') {
-      handleUpdateProgress(msg.payload);
+    switch (msg.type) {
+      case 'stateUpdate':
+        Object.assign(state, msg.payload);
+        render();
+        break;
+
+      case 'telemetryUpdate':
+        if (msg.payload && msg.payload.position) {
+          updateTelemetry(msg.payload.position);
+        }
+        break;
+
+      case 'recordsUpdate':
+        state.records = msg.payload?.records || [];
+        if (chart) chart.setData(state.records);
+        updateTimelineUI();
+        break;
+
+      case 'savedFlightsList':
+        state.savedFlights = msg.payload || [];
+        renderSavedFlights();
+        break;
+
+      case 'flightLoaded':
+        showToast(`Voo "${msg.payload?.aircraftTitle || msg.payload?.fileName}" carregado com sucesso!`);
+        switchTab('record');
+        break;
+
+      case 'settingsData':
+        if (msg.payload) {
+          state.settings = msg.payload;
+          renderSettings();
+        }
+        break;
+
+      case 'toast':
+        showToast(msg.payload || '');
+        break;
+
+      case 'updateStatus':
+        handleUpdateBanner(msg.payload);
+        break;
+
+      case 'updateProgress':
+        if (el.updateProgressFill && msg.payload?.progress !== undefined) {
+          el.updateProgressFill.style.width = `${msg.payload.progress}%`;
+        }
+        break;
     }
   }
 
-  function handleUpdateStatus(payload) {
-    const banner = document.getElementById('updateBanner');
-    const text = document.getElementById('updateBannerText');
-    const fill = document.getElementById('updateProgressFill');
-    if (!banner || !text) return;
-
+  function handleUpdateBanner(payload) {
+    if (!el.updateBanner) return;
     if (payload.status === 'downloading') {
-      banner.classList.remove('hidden');
-      text.textContent = `Nova versão disponível (${payload.version}). Baixando atualização...`;
-      if (fill) fill.style.width = '10%';
-      showToast(`Atualização ${payload.version} encontrada! Baixando...`);
+      el.updateBanner.classList.remove('hidden');
+      if (el.updateBannerText) {
+        el.updateBannerText.textContent = `Nova versão ${payload.version} encontrada. Baixando instalador...`;
+      }
     } else if (payload.status === 'ready') {
-      banner.classList.remove('hidden');
-      text.textContent = `Atualização ${payload.version} pronta! Reiniciando aplicativo...`;
-      if (fill) fill.style.width = '100%';
-      showToast(`Atualização concluída! Reiniciando...`);
-    }
-  }
-
-  function handleUpdateProgress(payload) {
-    const banner = document.getElementById('updateBanner');
-    const text = document.getElementById('updateBannerText');
-    const fill = document.getElementById('updateProgressFill');
-    if (!banner || !text) return;
-
-    banner.classList.remove('hidden');
-    text.textContent = `Baixando atualização ${payload.version} (${payload.progress}%)...`;
-    if (fill) fill.style.width = `${Math.max(10, payload.progress)}%`;
-  }
-
-  function applyStateUpdate(payload) {
-    if (payload.machineState !== undefined) state.machineState = payload.machineState;
-    if (payload.simConnectState !== undefined) state.simConnectState = payload.simConnectState;
-    if (payload.currentFrame !== undefined) {
-      state.currentFrame = payload.currentFrame;
-      chart.setCurrentFrame(payload.currentFrame);
-    }
-    if (payload.frameCount !== undefined) state.frameCount = payload.frameCount;
-    if (payload.aircraftTitle !== undefined) state.aircraftTitle = payload.aircraftTitle;
-    if (payload.fileName !== undefined) state.fileName = payload.fileName;
-    if (payload.activeProfileName !== undefined) state.activeProfileName = payload.activeProfileName;
-    if (payload.activeProfileVendor !== undefined) state.activeProfileVendor = payload.activeProfileVendor;
-    if (payload.activeProfileVarCount !== undefined) state.activeProfileVarCount = payload.activeProfileVarCount;
-    if (payload.speed !== undefined) state.speed = payload.speed;
-    if (payload.repeat !== undefined) state.repeat = payload.repeat;
-    if (payload.topmost !== undefined) state.topmost = payload.topmost;
-
-    render();
-  }
-
-  function applyTelemetryUpdate(payload) {
-    if (payload.position) {
-      state.aircraftPosition = payload.position;
-      updateTelemetryUI();
-    }
-  }
-
-  // UI Re-render based on State Machine
-  function render() {
-    const s = state.machineState;
-    const isConn = state.simConnectState === 'Connected';
-    const isRecording = s === 'Recording';
-    const isReplaying = s === 'ReplayingSaved' || s === 'ReplayingUnsaved';
-    const isPausing = s === 'PausingSaved' || s === 'PausingUnsaved';
-    const hasData = state.frameCount > 0;
-    const isUnsaved = s.includes('Unsaved');
-
-    // Status Banner
-    if (isRecording) {
-      el.statusBanner.className = 'status-banner recording';
-      el.statusDot.className = 'status-dot pulse';
-      el.statusText.textContent = `Recording flight in progress (${state.frameCount} frames)...`;
-    } else if (isConn) {
-      el.statusBanner.className = 'status-banner connected';
-      el.statusDot.className = 'status-dot';
-      el.statusText.textContent = isReplaying
-        ? `Replaying flight (${state.speed}x speed)`
-        : isPausing
-        ? `Playback paused at frame ${state.currentFrame + 1}`
-        : 'Connected to Microsoft Flight Simulator';
+      el.updateBanner.classList.remove('hidden');
+      if (el.updateBannerText) {
+        el.updateBannerText.textContent = `Atualização ${payload.version} pronta! Reiniciando...`;
+      }
+      if (el.updateProgressFill) {
+        el.updateProgressFill.style.width = '100%';
+      }
     } else {
-      el.statusBanner.className = 'status-banner disconnected';
-      el.statusDot.className = 'status-dot';
-      el.statusText.textContent = 'SimConnect Disconnected — Please start MSFS';
+      el.updateBanner.classList.add('hidden');
+    }
+  }
+
+  // Render View 1 (Record & Control Panel)
+  function render() {
+    // SimConnect Status
+    const isConn = state.simConnectState === 'Connected';
+    if (el.statusBanner) {
+      el.statusBanner.className = `status-banner ${isConn ? 'connected' : 'disconnected'}`;
+    }
+    if (el.statusText) {
+      el.statusText.textContent = isConn
+        ? 'Connected to Microsoft Flight Simulator'
+        : 'SimConnect Disconnected — Please start MSFS';
+    }
+
+    // Sidebar status pill
+    if (el.sidebarConnStatus) {
+      el.sidebarConnStatus.className = `conn-pill ${isConn ? 'connected' : 'disconnected'}`;
+    }
+    if (el.sidebarConnText) {
+      el.sidebarConnText.textContent = isConn ? 'MSFS Connected' : 'MSFS Disconnected';
     }
 
     // Aircraft Card
-    el.aircraftTitle.textContent = state.aircraftTitle || (isConn ? 'Ready to Record' : 'No aircraft detected');
-    el.aircraftFile.textContent = state.fileName ? `File: ${state.fileName}` : hasData ? 'Unsaved session' : 'No active recording';
-
-    if (hasData) {
-      el.saveBadge.style.display = 'inline-flex';
-      if (isUnsaved) {
-        el.saveBadge.className = 'save-badge unsaved';
-        el.saveBadge.innerHTML = '● Unsaved';
-      } else {
-        el.saveBadge.className = 'save-badge saved';
-        el.saveBadge.innerHTML = '✓ Saved';
-      }
-    } else {
-      el.saveBadge.style.display = 'none';
+    if (el.aircraftTitle) {
+      el.aircraftTitle.textContent = state.aircraftTitle || 'No aircraft detected';
+    }
+    if (el.aircraftFile) {
+      el.aircraftFile.textContent = state.fileName ? state.fileName : (state.frameCount > 0 ? `${state.frameCount} frames gravados` : 'No active recording');
     }
 
-    // Profile Badge & Detail
+    // HubHop Profile badge
     if (el.profileBadge && el.profileText) {
       if (state.activeProfileName) {
         el.profileBadge.className = 'profile-badge active';
-        el.profileText.textContent = `${state.activeProfileName} (${state.activeProfileVarCount} L-Vars)`;
-        el.profileBadge.title = `Perfil Ativo: ${state.activeProfileName} (${state.activeProfileVarCount} variáveis mapeadas sem WASM)`;
+        el.profileText.textContent = `Perfil ${state.activeProfileName}`;
         if (el.valProfileDetail) {
-          el.valProfileDetail.textContent = `${state.activeProfileName} (${state.activeProfileVarCount} vars)`;
-          el.valProfileDetail.style.color = '#34d399';
+          el.valProfileDetail.textContent = `${state.activeProfileName} (${state.activeProfileVarCount} L-Vars)`;
         }
       } else {
         el.profileBadge.className = 'profile-badge standard';
         el.profileText.textContent = 'Perfil Standard';
-        el.profileBadge.title = 'Perfil Genérico (SimConnect padrão, sem L-Vars personalizadas)';
         if (el.valProfileDetail) {
           el.valProfileDetail.textContent = 'Standard SimConnect';
-          el.valProfileDetail.style.color = '#38bdf8';
         }
       }
     }
 
-    // Record buttons
-    const canRecord = isConn && ['IdleEmpty', 'IdleSaved', 'IdleUnsaved'].includes(s);
-    el.btnRecord.disabled = !canRecord;
-    el.btnRecord.style.display = isRecording ? 'none' : 'inline-flex';
-
-    el.btnStopRecord.disabled = !isRecording;
-    el.btnStopRecord.style.display = isRecording ? 'inline-flex' : 'none';
-
-    // Replay controls
-    const canReplay = isConn && ['IdleSaved', 'IdleUnsaved'].includes(s);
-    el.btnReplay.disabled = !canReplay;
-
-    el.btnPauseReplay.disabled = !isReplaying;
-    el.btnResumeReplay.disabled = !isPausing;
-    el.btnStopReplay.disabled = !(isReplaying || isPausing);
-
-    // Save & Load
-    const canSave = ['DisconnectedSaved', 'IdleSaved', 'DisconnectedUnsaved', 'IdleUnsaved'].includes(s);
-    el.btnSave.disabled = !canSave;
-    el.btnSave.innerHTML = isUnsaved
-      ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Save*`
-      : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Save`;
-
-    const canLoad = ['DisconnectedEmpty', 'DisconnectedSaved', 'DisconnectedUnsaved', 'IdleEmpty', 'IdleSaved', 'IdleUnsaved'].includes(s);
-    el.btnLoad.disabled = !canLoad;
-    el.btnExport.disabled = !hasData;
-
-    // Timeline Slider
-    const canScrub = ['DisconnectedSaved', 'DisconnectedUnsaved', 'IdleSaved', 'IdleUnsaved', 'PausingSaved', 'PausingUnsaved'].includes(s);
-    el.timelineSlider.disabled = !canScrub;
-    el.timelineSlider.max = Math.max(0, state.frameCount - 1);
-    el.timelineSlider.value = state.currentFrame;
-
-    el.currentFrameText.textContent = hasData ? (state.currentFrame + 1).toLocaleString() : '0';
-    el.totalFramesText.textContent = state.frameCount.toLocaleString();
-
-    // Tools & Toggles
-    el.btnRepeat.classList.toggle('active', state.repeat);
-    el.speedLabel.textContent = `x${state.speed}`;
-    el.btnTopmost.classList.toggle('active', state.topmost);
-
-    const canTrim = ['IdleSaved', 'IdleUnsaved', 'DisconnectedSaved', 'DisconnectedUnsaved', 'PausingSaved', 'PausingUnsaved'].includes(s);
-    el.btnTrim.disabled = !canTrim;
-
-    updateChartOverlay();
+    // State machine button states
+    updateButtonStates();
+    updateTimelineUI();
   }
 
-  function updateChartOverlay() {
+  function updateButtonStates() {
     const s = state.machineState;
-    if (s === 'Recording') {
-      el.chartOverlay.style.display = 'flex';
-      el.chartOverlay.textContent = 'Recording incoming telemetric stream...';
-    } else if (s.includes('Saving')) {
-      el.chartOverlay.style.display = 'flex';
-      el.chartOverlay.textContent = 'Saving flight file to disk...';
-    } else if (s.includes('Loading')) {
-      el.chartOverlay.style.display = 'flex';
-      el.chartOverlay.textContent = 'Loading flight recording...';
-    } else if (state.frameCount === 0) {
-      el.chartOverlay.style.display = 'flex';
-      el.chartOverlay.textContent = 'No flight recorded or loaded';
-    } else {
-      el.chartOverlay.style.display = 'none';
+    const isRecording = s === 'Recording';
+    const isReplaying = s === 'ReplayingSaved' || s === 'ReplayingUnsaved';
+    const isPaused = s === 'PausingSaved' || s === 'PausingUnsaved';
+    const isUnsaved = s.includes('Unsaved');
+    const hasData = state.frameCount > 0;
+
+    // Toggle Record / Stop Recording buttons
+    if (el.btnRecord && el.btnStopRecord) {
+      el.btnRecord.style.display = isRecording ? 'none' : 'inline-flex';
+      el.btnStopRecord.style.display = isRecording ? 'inline-flex' : 'none';
+      el.btnRecord.disabled = !state.simConnectState.includes('Connected') && s !== 'IdleEmpty';
+    }
+
+    // Replay buttons
+    if (el.btnReplay) el.btnReplay.disabled = !hasData || isRecording || isReplaying;
+    if (el.btnReplayAI) el.btnReplayAI.disabled = !hasData || isRecording || isReplaying;
+    if (el.btnPauseReplay) el.btnPauseReplay.disabled = !isReplaying;
+    if (el.btnResumeReplay) el.btnResumeReplay.disabled = !isPaused;
+    if (el.btnStopReplay) el.btnStopReplay.disabled = !isReplaying && !isPaused;
+
+    // Persistence buttons
+    if (el.btnSave) el.btnSave.disabled = !isUnsaved && !hasData;
+    if (el.btnLoad) el.btnLoad.disabled = isRecording;
+
+    // Saved badge
+    if (el.saveBadge) {
+      el.saveBadge.style.display = (s === 'IdleSaved' || s === 'DisconnectedSaved') ? 'inline-flex' : 'none';
     }
   }
 
-  function updateTelemetryUI() {
-    const p = state.aircraftPosition || {};
+  function updateTimelineUI() {
+    if (el.currentFrameText) el.currentFrameText.textContent = state.currentFrame || 0;
+    if (el.totalFramesText) el.totalFramesText.textContent = state.frameCount || 0;
 
-    el.valLat.textContent = p.latitude != null ? p.latitude.toFixed(6) : '--';
-    el.valLon.textContent = p.longitude != null ? p.longitude.toFixed(6) : '--';
-    el.valAlt.textContent = p.altitude != null ? `${Math.round(p.altitude).toLocaleString()} ft` : '--';
-    el.valPitch.textContent = p.pitch != null ? `${p.pitch.toFixed(1)}°` : '--';
-    el.valBank.textContent = p.bank != null ? `${p.bank.toFixed(1)}°` : '--';
-    el.valHeading.textContent = p.trueHeading != null ? `${Math.round(p.trueHeading)}°` : '--';
-    el.valGear.textContent = p.gearHandlePosition != null ? (p.gearHandlePosition > 0.5 ? 'DOWN' : 'UP') : '--';
-    el.valGround.textContent = p.isOnGround ? 'GROUND' : 'AIR';
-    el.valGround.style.color = p.isOnGround ? '#f59e0b' : '#34d399';
-
-    if (p.touchdownNormalVelocity != null && p.touchdownNormalVelocity !== 0) {
-      el.valLandingRate.textContent = `${Math.round(p.touchdownNormalVelocity * 60)} fpm`;
-    } else {
-      el.valLandingRate.textContent = '--';
+    if (el.timelineSlider) {
+      el.timelineSlider.max = Math.max(0, state.frameCount - 1);
+      el.timelineSlider.value = state.currentFrame || 0;
+      el.timelineSlider.disabled = state.frameCount <= 1;
     }
 
-    el.valThrottle.textContent = p.throttleLeverPosition1 != null ? `${Math.round(p.throttleLeverPosition1)}%` : '--';
-    el.valFlaps.textContent = p.flapsHandleIndex != null ? `Pos ${p.flapsHandleIndex}` : '--';
+    if (el.chartOverlay) {
+      el.chartOverlay.style.display = (state.frameCount > 0) ? 'none' : 'flex';
+    }
+
+    if (chart) {
+      chart.setCurrentFrame(state.currentFrame || 0);
+    }
   }
 
   function seekToFrame(frame) {
     state.currentFrame = frame;
-    el.timelineSlider.value = frame;
-    el.currentFrameText.textContent = (frame + 1).toLocaleString();
-    chart.setCurrentFrame(frame);
+    updateTimelineUI();
     sendToHost('seek', { frame });
   }
 
-  // Setup Event Listeners
-  function initListeners() {
-    // Actions
-    el.btnRecord.addEventListener('click', () => sendToHost('record'));
-    el.btnStopRecord.addEventListener('click', () => sendToHost('stop'));
-    el.btnReplay.addEventListener('click', () => sendToHost('replay'));
-    el.btnPauseReplay.addEventListener('click', () => sendToHost('pause'));
-    el.btnResumeReplay.addEventListener('click', () => sendToHost('resume'));
-    el.btnStopReplay.addEventListener('click', () => sendToHost('stopReplay'));
-    el.btnReplayAI.addEventListener('click', () => sendToHost('replayAI'));
+  function updateTelemetry(pos) {
+    if (!pos) return;
+    if (el.valLat) el.valLat.textContent = pos.latitude ? pos.latitude.toFixed(5) : '--';
+    if (el.valLon) el.valLon.textContent = pos.longitude ? pos.longitude.toFixed(5) : '--';
+    if (el.valAlt) el.valAlt.textContent = pos.altitude ? `${Math.round(pos.altitude)} ft` : '--';
+    if (el.valPitch && el.valBank) {
+      el.valPitch.textContent = pos.pitch ? `${pos.pitch.toFixed(1)}°` : '--';
+      el.valBank.textContent = pos.bank ? `${pos.bank.toFixed(1)}°` : '--';
+    }
+    if (el.valHeading) {
+      el.valHeading.textContent = pos.trueHeading ? `${Math.round(pos.trueHeading)}°` : '--';
+    }
+    if (el.valGear) el.valGear.textContent = pos.gearHandlePosition ? 'DOWN' : 'UP';
+    if (el.valGround) {
+      el.valGround.textContent = pos.isOnGround ? 'GND' : 'AIR';
+      el.valGround.style.color = pos.isOnGround ? '#f59e0b' : '#34d399';
+    }
+    if (el.valLandingRate) {
+      if (pos.touchdownNormalVelocity) {
+        const fpm = Math.round(pos.touchdownNormalVelocity * 60);
+        el.valLandingRate.textContent = `${fpm} fpm`;
+      } else {
+        el.valLandingRate.textContent = '--';
+      }
+    }
+    if (el.valThrottle) {
+      el.valThrottle.textContent = (pos.throttleLeverPosition1 !== undefined)
+        ? `${Math.round(pos.throttleLeverPosition1)}%` : '--';
+    }
+    if (el.valFlaps) {
+      el.valFlaps.textContent = (pos.flapsHandleIndex !== undefined)
+        ? `${pos.flapsHandleIndex}` : '--';
+    }
+  }
 
-    // Save & Load
-    el.btnSave.addEventListener('click', () => sendToHost('save'));
-    el.btnLoad.addEventListener('click', () => sendToHost('load'));
+  // Event Listeners Initialization
+  function initListeners() {
+    // Navigation tabs
+    el.navTabRecord?.addEventListener('click', () => switchTab('record'));
+    el.navTabRecords?.addEventListener('click', () => switchTab('records'));
+    el.navTabSettings?.addEventListener('click', () => switchTab('settings'));
+
+    // Primary Actions
+    el.btnRecord?.addEventListener('click', () => sendToHost('record'));
+    el.btnStopRecord?.addEventListener('click', () => sendToHost('stop'));
+    el.btnReplay?.addEventListener('click', () => sendToHost('replay'));
+    el.btnPauseReplay?.addEventListener('click', () => sendToHost('pause'));
+    el.btnResumeReplay?.addEventListener('click', () => sendToHost('resume'));
+    el.btnStopReplay?.addEventListener('click', () => sendToHost('stopReplay'));
+    el.btnReplayAI?.addEventListener('click', () => sendToHost('replayAI'));
+
+    // Persistence: Save directly, Load switches to Records view
+    el.btnSave?.addEventListener('click', () => sendToHost('save'));
+    el.btnLoad?.addEventListener('click', () => switchTab('records'));
 
     // Timeline Slider
-    el.timelineSlider.addEventListener('input', (e) => {
+    el.timelineSlider?.addEventListener('input', (e) => {
       seekToFrame(parseInt(e.target.value, 10));
     });
 
     // Repeat Toggle
-    el.btnRepeat.addEventListener('click', () => {
+    el.btnRepeat?.addEventListener('click', () => {
       state.repeat = !state.repeat;
       el.btnRepeat.classList.toggle('active', state.repeat);
       sendToHost('setRepeat', { repeat: state.repeat });
-      showToast(state.repeat ? 'Repeat enabled' : 'Repeat disabled');
+      showToast(state.repeat ? 'Loop ativado' : 'Loop desativado');
     });
 
-    // Speed Popover
-    el.btnSpeed.addEventListener('click', (e) => {
+    // Speed Menu
+    el.btnSpeed?.addEventListener('click', (e) => {
       e.stopPropagation();
       closeAllMenus();
-      el.speedMenu.classList.toggle('show');
+      el.speedMenu?.classList.toggle('show');
     });
 
     document.querySelectorAll('[data-speed]').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         const val = parseFloat(e.currentTarget.dataset.speed);
         state.speed = val;
-        el.speedLabel.textContent = `x${val}`;
+        if (el.speedLabel) el.speedLabel.textContent = `x${val}`;
         sendToHost('setSpeed', { rate: val });
-        el.speedMenu.classList.remove('show');
-        showToast(`Replay speed: x${val}`);
+        el.speedMenu?.classList.remove('show');
+        showToast(`Velocidade de Replay: x${val}`);
       });
     });
 
-    // Trim Popover
-    el.btnTrim.addEventListener('click', (e) => {
+    // Trim Menu
+    el.btnTrim?.addEventListener('click', (e) => {
       e.stopPropagation();
       closeAllMenus();
-      el.trimMenu.classList.toggle('show');
+      el.trimMenu?.classList.toggle('show');
     });
 
-    document.getElementById('btnTrimStart').addEventListener('click', () => {
+    document.getElementById('btnTrimStart')?.addEventListener('click', () => {
       sendToHost('trimStart');
-      el.trimMenu.classList.remove('show');
-      showToast('Trimmed start of recording');
+      el.trimMenu?.classList.remove('show');
+      showToast('Início do voo cortado até este frame');
     });
 
-    document.getElementById('btnTrimEnd').addEventListener('click', () => {
+    document.getElementById('btnTrimEnd')?.addEventListener('click', () => {
       sendToHost('trimEnd');
-      el.trimMenu.classList.remove('show');
-      showToast('Trimmed end of recording');
-    });
-
-    // Export Popover
-    el.btnExport.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeAllMenus();
-      el.exportMenu.classList.toggle('show');
-    });
-
-    document.getElementById('btnExportCsv').addEventListener('click', () => {
-      sendToHost('export', { format: 'csv' });
-      el.exportMenu.classList.remove('show');
-    });
-
-    document.getElementById('btnExportKml').addEventListener('click', () => {
-      sendToHost('export', { format: 'kml' });
-      el.exportMenu.classList.remove('show');
+      el.trimMenu?.classList.remove('show');
+      showToast('Fim do voo cortado até este frame');
     });
 
     // Telemetry Accordion
-    el.telemetryHeader.addEventListener('click', () => {
+    el.telemetryHeader?.addEventListener('click', () => {
       state.telemetryExpanded = !state.telemetryExpanded;
-      el.telemetryBody.classList.toggle('collapsed', !state.telemetryExpanded);
-      el.telemetryChevron.style.transform = state.telemetryExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
-      sendToHost('telemetryToggle', { expanded: state.telemetryExpanded });
+      el.telemetryBody?.classList.toggle('collapsed', !state.telemetryExpanded);
+      if (el.telemetryChevron) {
+        el.telemetryChevron.style.transform = state.telemetryExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+      }
     });
 
-    // Click to copy coordinates
+    // Copyable metrics
     document.querySelectorAll('.copyable').forEach((cell) => {
       cell.addEventListener('click', () => {
         const val = cell.querySelector('.metric-value')?.textContent;
         if (val && val !== '--') {
           navigator.clipboard.writeText(val);
-          showToast(`Copied: ${val}`);
+          showToast(`Copiado: ${val}`);
         }
       });
     });
 
-    // Utility buttons
-    if (el.btnOpenProfiles) {
-      el.btnOpenProfiles.addEventListener('click', (e) => {
-        e.stopPropagation();
-        sendToHost('openProfilesFolder');
-        showToast('Pasta de perfis aberta no Windows Explorer');
+    // Records Actions
+    el.inputSearchRecords?.addEventListener('input', () => renderSavedFlights());
+    el.btnRefreshSaved?.addEventListener('click', () => {
+      sendToHost('getSavedFlights');
+      showToast('Lista de voos atualizada');
+    });
+    el.btnImportFlight?.addEventListener('click', () => sendToHost('importSavedFlight'));
+    el.btnOpenFolderRecords?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
+    el.btnOpenSavedFolderSidebar?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
+
+    // Settings Actions
+    el.toggleHotkeysEnabled?.addEventListener('change', (e) => {
+      state.settings.shortcutKeysEnabled = e.target.checked;
+    });
+    el.toggleStayOnTopSettings?.addEventListener('change', (e) => {
+      state.settings.stayOnTop = e.target.checked;
+      sendToHost('setTopmost', { topmost: e.target.checked });
+      showToast(e.target.checked ? 'Stay on Top: Ativado' : 'Stay on Top: Desativado');
+    });
+    el.btnOpenSettingsFolder?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
+
+    el.btnSaveSettings?.addEventListener('click', () => {
+      sendToHost('saveShortcutSettings', {
+        enabled: state.settings.shortcutKeysEnabled,
+        shortcuts: state.settings.shortcuts
       });
-    }
-
-    el.btnTopmost.addEventListener('click', () => {
-      state.topmost = !state.topmost;
-      el.btnTopmost.classList.toggle('active', state.topmost);
-      sendToHost('setTopmost', { topmost: state.topmost });
-      showToast(state.topmost ? 'Always on Top: ON' : 'Always on Top: OFF');
     });
 
-    el.btnShortcuts.addEventListener('click', () => {
-      el.shortcutsModal.classList.add('show');
-    });
-
-    el.btnCloseModal.addEventListener('click', () => {
-      el.shortcutsModal.classList.remove('show');
-    });
-
-    el.shortcutsModal.addEventListener('click', (e) => {
-      if (e.target === el.shortcutsModal) el.shortcutsModal.classList.remove('show');
+    el.btnRestoreDefaults?.addEventListener('click', () => {
+      if (confirm('Deseja restaurar os atalhos para a configuração padrão?')) {
+        sendToHost('restoreDefaultShortcuts');
+      }
     });
 
     // Global click closes dropdowns
@@ -502,7 +752,6 @@
     function closeAllMenus() {
       el.speedMenu?.classList.remove('show');
       el.trimMenu?.classList.remove('show');
-      el.exportMenu?.classList.remove('show');
     }
   }
 
@@ -513,10 +762,10 @@
     });
   }
 
-  // Initial setup
+  // Initial startup
   initListeners();
   render();
 
-  // Signal C# that UI is ready to receive state
+  // Signal host that UI is ready
   sendToHost('uiReady');
 })();

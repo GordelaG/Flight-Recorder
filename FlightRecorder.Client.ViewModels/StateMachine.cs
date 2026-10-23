@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logics;
+using FlightRecorder.Client.Logics;
 using FlightRecorder.Client.ViewModels.States;
 using Microsoft.Extensions.Logging;
 using System;
@@ -34,6 +34,7 @@ public class StateMachine : StateMachineCore
         RequestLoading,
         Save,
         Load,
+        LoadDirect,
         LoadAI,
         TrimStart,
         TrimEnd,
@@ -97,6 +98,9 @@ public class StateMachine : StateMachineCore
         Register(Transition.From(State.DisconnectedEmpty).To(State.End).By(Event.Exit)); // NO-OP
         Register(Transition.From(State.DisconnectedEmpty).To(State.DisconnectedEmpty).By(Event.Disconnect)); // NO-OP
         Register(Transition.From(State.DisconnectedEmpty).To(State.DisconnectedSaved).By(Event.LoadAI).ThenUpdate(viewModel)); // AI
+        Register(Transition.From(State.DisconnectedEmpty).To(State.DisconnectedSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
+        Register(Transition.From(State.DisconnectedSaved).To(State.DisconnectedSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
+        Register(Transition.From(State.DisconnectedUnsaved).To(State.DisconnectedSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
 
         Register(Transition.From(State.DisconnectedSaved).To(State.IdleSaved).By(Event.Connect).Then(Connect).ThenUpdate(viewModel));
         Register(Transition.From(State.DisconnectedSaved).To(State.SavingDisconnected).By(Event.RequestSaving).ThenUpdate(viewModel));
@@ -131,6 +135,9 @@ public class StateMachine : StateMachineCore
         Register(Transition.From(State.IdleEmpty).To(State.LoadingIdle).By(Event.RequestLoading).ThenUpdate(viewModel));
         Register(Transition.From(State.IdleEmpty).To(State.End).By(Event.Exit));
         Register(Transition.From(State.IdleEmpty).To(State.IdleSaved).By(Event.LoadAI).ThenUpdate(viewModel)); // AI
+        Register(Transition.From(State.IdleEmpty).To(State.IdleSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
+        Register(Transition.From(State.IdleSaved).To(State.IdleSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
+        Register(Transition.From(State.IdleUnsaved).To(State.IdleSaved).By(Event.LoadDirect).ThenUpdate(viewModel));
         Register(Transition.From(State.IdleEmpty).To(State.IdleEmpty).By(Event.Connect)); // NO-OP
 
         Register(Transition.From(State.IdleSaved).To(State.DisconnectedSaved).By(Event.Disconnect).ThenUpdate(viewModel));
@@ -268,27 +275,23 @@ public class StateMachine : StateMachineCore
     {
         var data = replayLogic.ToData(currentVersion);
 
-        async Task<string?> GetSavePath()
+        async Task<string> GetSavePath()
         {
-            if (actionContext.FromShortcut)
+            var folder = await settingsLogic.GetDefaultSaveFolderAsync();
+            if (string.IsNullOrEmpty(folder) || !Directory.Exists(folder))
             {
-                var folder = await settingsLogic.GetDefaultSaveFolderAsync();
-                if (!string.IsNullOrEmpty(folder) && Directory.Exists(folder))
-                {
-                    return Path.Combine(folder, $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}.fltrec");
-                }
+                folder = SavedFlightsLogic.GetSavedFlightsDirectory();
             }
-            return await dialogLogic.PickSaveFileAsync();
+
+            var aircraft = viewModel.AircraftTitle ?? data.StartState?.AircraftTitle;
+            var cleanAircraft = SavedFlightsLogic.SanitizeFileName(aircraft ?? "Flight");
+            return Path.Combine(folder, $"{cleanAircraft}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.fltrec");
         }
 
         var filePath = await GetSavePath();
 
-        if (string.IsNullOrEmpty(filePath))
-        {
-            return false;
-        }
-
         await storageLogic.SaveAsync(filePath, data);
+        await SavedFlightsLogic.SaveMetadataAsync(filePath, data);
         replayLogic.FromData(Path.GetFileName(filePath), data);
         return true;
     }

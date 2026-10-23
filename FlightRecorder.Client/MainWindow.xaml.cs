@@ -1,3 +1,4 @@
+using FlightRecorder.Client.Logic;
 using FlightRecorder.Client.Logics;
 using FlightRecorder.Client.SimConnectMSFS;
 using Microsoft.Extensions.DependencyInjection;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -34,6 +36,8 @@ public partial class MainWindow : BaseWindow
     private readonly AircraftProfileManager profileManager;
     private readonly HubHopSyncService hubHopSyncService;
     private readonly AutoUpdateService autoUpdateService;
+    private readonly IStorageLogic storageLogic;
+    private readonly ISettingsLogic settingsLogic;
     private readonly string currentVersion;
 
     private IntPtr Handle;
@@ -54,7 +58,9 @@ public partial class MainWindow : BaseWindow
         WindowFactory windowFactory,
         AircraftProfileManager profileManager,
         HubHopSyncService hubHopSyncService,
-        AutoUpdateService autoUpdateService
+        AutoUpdateService autoUpdateService,
+        IStorageLogic storageLogic,
+        ISettingsLogic settingsLogic
     ) : base(orchestrator.ThreadLogic, orchestrator.StateMachine, orchestrator.ViewModel, orchestrator.ReplayLogic)
     {
         InitializeComponent();
@@ -71,6 +77,8 @@ public partial class MainWindow : BaseWindow
         this.profileManager = profileManager;
         this.hubHopSyncService = hubHopSyncService;
         this.autoUpdateService = autoUpdateService;
+        this.storageLogic = storageLogic;
+        this.settingsLogic = settingsLogic;
 
         stateMachine.StateChanged += StateMachine_StateChanged;
         connector.AircraftPositionUpdated += Connector_AircraftPositionUpdated;
@@ -146,6 +154,17 @@ public partial class MainWindow : BaseWindow
                     isWebViewReady = true;
                     SendFullStateToWeb();
                     SendRecordsToWeb();
+                    try
+                    {
+                        var initList = SavedFlightsLogic.GetSavedFlights(storageLogic);
+                        PostWebMessage(new
+                        {
+                            type = "savedFlightsList",
+                            payload = initList
+                        });
+                    }
+                    catch { }
+                    _ = Task.Run(async () => await SendSettingsToWebAsync());
                     _ = Task.Run(async () => await CheckAndApplyUpdateAsync());
                     break;
 
@@ -182,7 +201,24 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "save":
-                    await stateMachine.TransitAsync(StateMachine.Event.Save);
+                    if (await stateMachine.TransitAsync(StateMachine.Event.Save))
+                    {
+                        PostWebMessage(new
+                        {
+                            type = "toast",
+                            payload = "Voo gravado e salvo com sucesso em SavedFlights!"
+                        });
+                        try
+                        {
+                            var updatedList = SavedFlightsLogic.GetSavedFlights(storageLogic);
+                            PostWebMessage(new
+                            {
+                                type = "savedFlightsList",
+                                payload = updatedList
+                            });
+                        }
+                        catch { }
+                    }
                     break;
 
                 case "load":
@@ -246,6 +282,188 @@ public partial class MainWindow : BaseWindow
                         if (!Directory.Exists(profilesDir)) Directory.CreateDirectory(profilesDir);
                         Process.Start(new ProcessStartInfo("explorer.exe", profilesDir) { UseShellExecute = true });
                     }
+                    break;
+
+                case "getSavedFlights":
+                    {
+                        var list = SavedFlightsLogic.GetSavedFlights(storageLogic);
+                        PostWebMessage(new
+                        {
+                            type = "savedFlightsList",
+                            payload = list
+                        });
+                    }
+                    break;
+
+                case "loadSavedFlight":
+                    if (root.TryGetProperty("path", out var loadPathProp))
+                    {
+                        var filePath = loadPathProp.GetString();
+                        if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
+                        {
+                            using var stream = File.OpenRead(filePath);
+                            var data = await storageLogic.LoadAsync(stream);
+                            if (data != null)
+                            {
+                                replayLogic.FromData(Path.GetFileName(filePath), data);
+                                await stateMachine.TransitAsync(StateMachine.Event.LoadDirect);
+                                SendRecordsToWeb();
+                                PostWebMessage(new
+                                {
+                                    type = "flightLoaded",
+                                    payload = new
+                                    {
+                                        fileName = Path.GetFileName(filePath),
+                                        aircraftTitle = data.StartState?.AircraftTitle ?? viewModel.AircraftTitle ?? "Flight",
+                                        frameCount = data.Records.Count
+                                    }
+                                });
+                                PostWebMessage(new
+                                {
+                                    type = "toast",
+                                    payload = $"Voo {data.StartState?.AircraftTitle ?? Path.GetFileName(filePath)} carregado com sucesso!"
+                                });
+                            }
+                            else
+                            {
+                                PostWebMessage(new
+                                {
+                                    type = "toast",
+                                    payload = "Erro ao carregar voo: arquivo inválido."
+                                });
+                            }
+                        }
+                    }
+                    break;
+
+                case "deleteSavedFlight":
+                    if (root.TryGetProperty("path", out var delPathProp))
+                    {
+                        var delPath = delPathProp.GetString();
+                        if (!string.IsNullOrEmpty(delPath))
+                        {
+                            SavedFlightsLogic.DeleteSavedFlight(delPath);
+                            var list = SavedFlightsLogic.GetSavedFlights(storageLogic);
+                            PostWebMessage(new
+                            {
+                                type = "savedFlightsList",
+                                payload = list
+                            });
+                            PostWebMessage(new
+                            {
+                                type = "toast",
+                                payload = "Voo excluído com sucesso."
+                            });
+                        }
+                    }
+                    break;
+
+                case "openSavedFlightsFolder":
+                    {
+                        var dir = SavedFlightsLogic.GetSavedFlightsDirectory();
+                        Process.Start(new ProcessStartInfo("explorer.exe", dir) { UseShellExecute = true });
+                    }
+                    break;
+
+                case "importSavedFlight":
+                    {
+                        var dlg = new Microsoft.Win32.OpenFileDialog
+                        {
+                            Title = "Importar Arquivo de Voo",
+                            Filter = "Flight Recorder Files (*.fltrec;*.flightrecorder)|*.fltrec;*.flightrecorder|All Files (*.*)|*.*"
+                        };
+                        if (dlg.ShowDialog() == true)
+                        {
+                            var destDir = SavedFlightsLogic.GetSavedFlightsDirectory();
+                            var destFile = Path.Combine(destDir, Path.GetFileName(dlg.FileName));
+                            if (!File.Exists(destFile) || dlg.FileName != destFile)
+                            {
+                                File.Copy(dlg.FileName, destFile, true);
+                            }
+                            using var stream = File.OpenRead(destFile);
+                            var data = await storageLogic.LoadAsync(stream);
+                            if (data != null)
+                            {
+                                await SavedFlightsLogic.SaveMetadataAsync(destFile, data);
+                                replayLogic.FromData(Path.GetFileName(destFile), data);
+                                await stateMachine.TransitAsync(StateMachine.Event.LoadDirect);
+                                SendRecordsToWeb();
+                                PostWebMessage(new
+                                {
+                                    type = "flightLoaded",
+                                    payload = new
+                                    {
+                                        fileName = Path.GetFileName(destFile),
+                                        aircraftTitle = data.StartState?.AircraftTitle ?? viewModel.AircraftTitle ?? "Flight",
+                                        frameCount = data.Records.Count
+                                    }
+                                });
+                                var updated = SavedFlightsLogic.GetSavedFlights(storageLogic);
+                                PostWebMessage(new
+                                {
+                                    type = "savedFlightsList",
+                                    payload = updated
+                                });
+                                PostWebMessage(new
+                                {
+                                    type = "toast",
+                                    payload = "Voo importado e carregado com sucesso!"
+                                });
+                            }
+                        }
+                    }
+                    break;
+
+                case "getSettings":
+                    await SendSettingsToWebAsync();
+                    break;
+
+                case "saveShortcutSettings":
+                    if (root.TryGetProperty("enabled", out var enabledProp))
+                    {
+                        await settingsLogic.SetShortcutKeysEnabledAsync(enabledProp.GetBoolean());
+                    }
+
+                    if (root.TryGetProperty("shortcuts", out var shortcutsProp) && shortcutsProp.ValueKind == JsonValueKind.Array)
+                    {
+                        var dict = new Dictionary<Shortcuts, ShortcutKey>();
+                        foreach (var item in shortcutsProp.EnumerateArray())
+                        {
+                            if (item.TryGetProperty("id", out var idProp) && Enum.TryParse<Shortcuts>(idProp.GetString(), out var shortcutEnum))
+                            {
+                                var ctrl = item.TryGetProperty("ctrl", out var c) && c.GetBoolean();
+                                var alt = item.TryGetProperty("alt", out var a) && a.GetBoolean();
+                                var shift = item.TryGetProperty("shift", out var s) && s.GetBoolean();
+                                var key = item.TryGetProperty("key", out var k) ? k.GetString() ?? "" : "";
+                                var vk = item.TryGetProperty("virtualKey", out var v) ? v.GetUInt32() : 0u;
+
+                                dict[shortcutEnum] = new ShortcutKey(ctrl, alt, shift, key, vk);
+                            }
+                        }
+                        await settingsLogic.SetShortcutKeysAsync(dict);
+                    }
+
+                    shortcutKeyLogic.Unregister(Handle);
+                    await shortcutKeyLogic.RegisterAsync(Handle);
+                    await SendSettingsToWebAsync();
+
+                    PostWebMessage(new
+                    {
+                        type = "toast",
+                        payload = "Atalhos atualizados e salvos com sucesso!"
+                    });
+                    break;
+
+                case "restoreDefaultShortcuts":
+                    await settingsLogic.SetShortcutKeysAsync(new Dictionary<Shortcuts, ShortcutKey>());
+                    shortcutKeyLogic.Unregister(Handle);
+                    await shortcutKeyLogic.RegisterAsync(Handle);
+                    await SendSettingsToWebAsync();
+                    PostWebMessage(new
+                    {
+                        type = "toast",
+                        payload = "Atalhos restaurados para o padrão."
+                    });
                     break;
             }
         }
@@ -623,4 +841,52 @@ public partial class MainWindow : BaseWindow
             logger.LogWarning(ex, "Background auto-update routine encountered an error.");
         }
     }
+
+    private async Task SendSettingsToWebAsync()
+    {
+        try
+        {
+            var enabled = await settingsLogic.IsShortcutKeysEnabledAsync();
+            var shortcuts = await shortcutKeyLogic.GetShortcutKeysAsync();
+            var shortcutList = shortcuts.Select(kv => new
+            {
+                id = kv.Key.ToString(),
+                name = GetShortcutDisplayName(kv.Key),
+                ctrl = kv.Value.Ctrl,
+                alt = kv.Value.Alt,
+                shift = kv.Value.Shift,
+                key = kv.Value.Key,
+                virtualKey = kv.Value.VirtualKey
+            }).ToList();
+
+            PostWebMessage(new
+            {
+                type = "settingsData",
+                payload = new
+                {
+                    shortcutKeysEnabled = enabled,
+                    shortcuts = shortcutList,
+                    savedFlightsFolder = SavedFlightsLogic.GetSavedFlightsDirectory(),
+                    stayOnTop = Topmost
+                }
+            });
+        }
+        catch (Exception ex)
+        {
+            logger.LogWarning(ex, "Error sending settings to web.");
+        }
+    }
+
+    private static string GetShortcutDisplayName(Shortcuts shortcut) => shortcut switch
+    {
+        Shortcuts.Record => "Gravar Voo (Record)",
+        Shortcuts.StopRecording => "Parar Gravação (Stop)",
+        Shortcuts.Replay => "Replay do Voo",
+        Shortcuts.Pause => "Pausar Replay",
+        Shortcuts.Resume => "Continuar Replay",
+        Shortcuts.StopReplay => "Parar Replay",
+        Shortcuts.SaveToDisk => "Salvar Voo Rápido",
+        _ => shortcut.ToString()
+    };
 }
+
