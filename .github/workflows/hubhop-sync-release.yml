@@ -78,8 +78,11 @@ jobs:
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || steps.git_status.outputs.has_changes == 'true'
         shell: pwsh
         run: |
-          Write-Host "Publishing Flight Recorder (win-x64)..."
-          dotnet publish FlightRecorder.Client/FlightRecorder.Client.csproj -c Release -r win-x64 --self-contained false -o publish
+          $buildVer = "0.27.${{ github.run_number }}"
+          Write-Host "Publishing Flight Recorder (win-x64) version $buildVer..."
+          dotnet publish FlightRecorder.Client/FlightRecorder.Client.csproj -c Release -r win-x64 --self-contained false -o publish /p:Version="$buildVer" /p:FileVersion="$buildVer.0" /p:AssemblyVersion="$buildVer.0"
+
+          "$buildVer" | Out-File -FilePath "publish/version.txt" -Encoding utf8 -NoNewline
 
           $isccPath = "C:\Program Files (x86)\Inno Setup 6\iscc.exe"
           if (-not (Test-Path $isccPath)) {

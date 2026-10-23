@@ -105,8 +105,16 @@ namespace FlightRecorder.Client.Logics
 
                 if (!string.IsNullOrEmpty(result.DownloadUrl) && IsNewerVersion(currentVersionString, tagName))
                 {
-                    result.IsUpdateAvailable = true;
-                    logger?.LogInformation("New version detected: {Remote} (Current: {Current})", tagName, currentVersionString);
+                    if (HasAlreadyAttemptedVersion(tagName))
+                    {
+                        logger?.LogInformation("Update {Remote} was already installed or attempted previously. Skipping auto-update to prevent loop.", tagName);
+                        result.IsUpdateAvailable = false;
+                    }
+                    else
+                    {
+                        result.IsUpdateAvailable = true;
+                        logger?.LogInformation("New version detected: {Remote} (Current: {Current})", tagName, currentVersionString);
+                    }
                 }
                 else
                 {
@@ -173,6 +181,53 @@ namespace FlightRecorder.Client.Logics
             };
 
             Process.Start(psi);
+        }
+
+        public bool IsDevelopmentEnvironment()
+        {
+            try
+            {
+                if (Debugger.IsAttached) return true;
+
+                var baseDir = AppDomain.CurrentDomain.BaseDirectory.ToLowerInvariant();
+                if (baseDir.Contains(@"\bin\debug") || baseDir.Contains(@"\bin\release") ||
+                    baseDir.Contains(@"/bin/debug") || baseDir.Contains(@"/bin/release"))
+                {
+                    return true;
+                }
+            }
+            catch { }
+            return false;
+        }
+
+        public bool HasAlreadyAttemptedVersion(string versionTag)
+        {
+            try
+            {
+                var stateFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlightRecorder", "last_update_attempt.txt");
+                if (File.Exists(stateFile))
+                {
+                    var recorded = File.ReadAllText(stateFile).Trim();
+                    if (string.Equals(recorded, versionTag, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch { }
+            return false;
+        }
+
+        public void RecordUpdateAttempt(string versionTag)
+        {
+            try
+            {
+                var folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlightRecorder");
+                Directory.CreateDirectory(folder);
+                var stateFile = Path.Combine(folder, "last_update_attempt.txt");
+                File.WriteAllText(stateFile, versionTag);
+            }
+            catch { }
         }
 
         public static bool IsNewerVersion(string currentVersionStr, string remoteTag)

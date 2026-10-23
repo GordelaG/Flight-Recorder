@@ -584,6 +584,19 @@ public partial class MainWindow : BaseWindow
 
                 var installerPath = await autoUpdateService.DownloadInstallerAsync(result.DownloadUrl, progress);
 
+                if (autoUpdateService.IsDevelopmentEnvironment())
+                {
+                    logger.LogInformation("Running in development/source directory. Auto-restart skipped to allow local testing.");
+                    PostWebMessage(new
+                    {
+                        type = "toast",
+                        payload = $"[Modo Dev] Nova versão {result.LatestVersion} baixada. Reinício automático desativado."
+                    });
+                    return;
+                }
+
+                autoUpdateService.RecordUpdateAttempt(result.LatestVersion);
+
                 PostWebMessage(new
                 {
                     type = "updateStatus",

@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace FlightRecorder.Client
 {
@@ -13,6 +13,20 @@ namespace FlightRecorder.Client
 
         public string GetVersion()
         {
+            try
+            {
+                var versionFile = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "version.txt");
+                if (System.IO.File.Exists(versionFile))
+                {
+                    var content = System.IO.File.ReadAllText(versionFile).Trim();
+                    if (!string.IsNullOrEmpty(content))
+                    {
+                        return content;
+                    }
+                }
+            }
+            catch { }
+
             var version = System.Reflection.Assembly.GetEntryAssembly()?.GetName().Version?.ToString();
             if (version == null)
             {
