@@ -33,6 +33,7 @@ public partial class MainWindow : BaseWindow
     private readonly IRecorderLogic recorderLogic;
     private readonly AircraftProfileManager profileManager;
     private readonly HubHopSyncService hubHopSyncService;
+    private readonly AutoUpdateService autoUpdateService;
     private readonly string currentVersion;
 
     private IntPtr Handle;
@@ -52,7 +53,8 @@ public partial class MainWindow : BaseWindow
         Orchestrator orchestrator,
         WindowFactory windowFactory,
         AircraftProfileManager profileManager,
-        HubHopSyncService hubHopSyncService
+        HubHopSyncService hubHopSyncService,
+        AutoUpdateService autoUpdateService
     ) : base(orchestrator.ThreadLogic, orchestrator.StateMachine, orchestrator.ViewModel, orchestrator.ReplayLogic)
     {
         InitializeComponent();
@@ -68,6 +70,7 @@ public partial class MainWindow : BaseWindow
         this.recorderLogic = orchestrator.RecorderLogic;
         this.profileManager = profileManager;
         this.hubHopSyncService = hubHopSyncService;
+        this.autoUpdateService = autoUpdateService;
 
         stateMachine.StateChanged += StateMachine_StateChanged;
         connector.AircraftPositionUpdated += Connector_AircraftPositionUpdated;
@@ -95,6 +98,13 @@ public partial class MainWindow : BaseWindow
 
         InitializeConnector();
         await shortcutKeyLogic.RegisterAsync(Handle);
+
+        // Check for updates in the background on startup
+        _ = Task.Run(async () =>
+        {
+            await Task.Delay(2500);
+            await CheckAndApplyUpdateAsync();
+        });
     }
 
     private async Task InitializeWebViewAsync()
@@ -541,5 +551,68 @@ public partial class MainWindow : BaseWindow
     {
         WindowState = WindowState.Normal;
         Activate();
+    }
+
+    private async Task CheckAndApplyUpdateAsync()
+    {
+        try
+        {
+            logger.LogInformation("Checking for new releases on GitHub...");
+            var result = await autoUpdateService.CheckForUpdatesAsync(currentVersion);
+            if (result.IsUpdateAvailable && !string.IsNullOrWhiteSpace(result.DownloadUrl))
+            {
+                logger.LogInformation("Automatic update detected: {NewVersion} (Current: {CurrentVersion})", result.LatestVersion, currentVersion);
+
+                PostWebMessage(new
+                {
+                    type = "updateStatus",
+                    payload = new
+                    {
+                        status = "downloading",
+                        version = result.LatestVersion,
+                        progress = 0
+                    }
+                });
+
+                var progress = new Progress<int>(pct =>
+                {
+                    PostWebMessage(new
+                    {
+                        type = "updateProgress",
+                        payload = new
+                        {
+                            version = result.LatestVersion,
+                            progress = pct
+                        }
+                    });
+                });
+
+                var installerPath = await autoUpdateService.DownloadInstallerAsync(result.DownloadUrl, progress);
+
+                PostWebMessage(new
+                {
+                    type = "updateStatus",
+                    payload = new
+                    {
+                        status = "ready",
+                        version = result.LatestVersion,
+                        progress = 100
+                    }
+                });
+
+                // Short delay so the user sees the confirmation
+                await Task.Delay(2000);
+
+                await Dispatcher.InvokeAsync(() =>
+                {
+                    autoUpdateService.ApplyUpdateAndRestart(installerPath);
+                    Application.Current.Shutdown();
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogWarning(ex, "Background auto-update routine encountered an error.");
+        }
     }
 }

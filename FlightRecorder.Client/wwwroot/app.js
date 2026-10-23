@@ -139,7 +139,39 @@
       updateChartOverlay();
     } else if (msg.type === 'toast') {
       showToast(msg.payload);
+    } else if (msg.type === 'updateStatus') {
+      handleUpdateStatus(msg.payload);
+    } else if (msg.type === 'updateProgress') {
+      handleUpdateProgress(msg.payload);
     }
+  }
+
+  function handleUpdateStatus(payload) {
+    const banner = document.getElementById('updateBanner');
+    const text = document.getElementById('updateBannerText');
+    const fill = document.getElementById('updateProgressFill');
+    if (!banner || !text) return;
+
+    if (payload.status === 'downloading') {
+      banner.classList.remove('hidden');
+      text.textContent = `Nova versão disponível (${payload.version}). Baixando atualização...`;
+      if (fill) fill.style.width = '10%';
+    } else if (payload.status === 'ready') {
+      banner.classList.remove('hidden');
+      text.textContent = `Atualização ${payload.version} pronta! Reiniciando aplicativo...`;
+      if (fill) fill.style.width = '100%';
+    }
+  }
+
+  function handleUpdateProgress(payload) {
+    const banner = document.getElementById('updateBanner');
+    const text = document.getElementById('updateBannerText');
+    const fill = document.getElementById('updateProgressFill');
+    if (!banner || !text) return;
+
+    banner.classList.remove('hidden');
+    text.textContent = `Baixando atualização ${payload.version} (${payload.progress}%)...`;
+    if (fill) fill.style.width = `${Math.max(10, payload.progress)}%`;
   }
 
   function applyStateUpdate(payload) {

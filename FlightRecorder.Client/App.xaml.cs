@@ -115,6 +115,7 @@ public partial class App : Application
         services.AddSingleton<ISettingsLogic, FileSettingsLogic>();
         services.AddSingleton<AircraftProfileManager>();
         services.AddSingleton<HubHopSyncService>();
+        services.AddSingleton<AutoUpdateService>();
 
         services.AddScoped<Orchestrator>();
         services.AddScoped<IStateMachine, StateMachine>();
