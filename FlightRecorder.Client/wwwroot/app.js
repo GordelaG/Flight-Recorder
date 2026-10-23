@@ -156,10 +156,12 @@
       banner.classList.remove('hidden');
       text.textContent = `Nova versão disponível (${payload.version}). Baixando atualização...`;
       if (fill) fill.style.width = '10%';
+      showToast(`Atualização ${payload.version} encontrada! Baixando...`);
     } else if (payload.status === 'ready') {
       banner.classList.remove('hidden');
       text.textContent = `Atualização ${payload.version} pronta! Reiniciando aplicativo...`;
       if (fill) fill.style.width = '100%';
+      showToast(`Atualização concluída! Reiniciando...`);
     }
   }
 

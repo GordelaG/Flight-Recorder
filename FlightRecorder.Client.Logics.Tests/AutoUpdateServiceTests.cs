@@ -29,5 +29,14 @@ namespace FlightRecorder.Client.Logics.Tests
             Assert.AreEqual("1.0.0", AutoUpdateService.CleanVersionString("1.0.0-rc1"));
             Assert.AreEqual("0.0.0.0", AutoUpdateService.CleanVersionString(""));
         }
+
+        [TestMethod]
+        public async System.Threading.Tasks.Task Test_Live_GitHub_Check()
+        {
+            var service = new AutoUpdateService();
+            var result = await service.CheckForUpdatesAsync("0.27.0.0");
+            Console.WriteLine($"IsUpdateAvailable={result.IsUpdateAvailable}, Latest={result.LatestVersion}, DownloadUrl={result.DownloadUrl}");
+            Assert.IsNotNull(result);
+        }
     }
 }

@@ -90,7 +90,7 @@ public partial class App : Application
             .WriteTo.Debug()
             .WriteTo.Logger(config => config
                 .MinimumLevel.Information()
-                .WriteTo.File("logs/flightrecorder.log", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 3, buffered: true)
+                .WriteTo.File("logs/flightrecorder.log", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 3, buffered: false)
             )
             .WriteTo.Logger(config => config
                 .MinimumLevel.Information()

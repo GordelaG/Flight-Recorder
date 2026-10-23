@@ -98,13 +98,6 @@ public partial class MainWindow : BaseWindow
 
         InitializeConnector();
         await shortcutKeyLogic.RegisterAsync(Handle);
-
-        // Check for updates in the background on startup
-        _ = Task.Run(async () =>
-        {
-            await Task.Delay(2500);
-            await CheckAndApplyUpdateAsync();
-        });
     }
 
     private async Task InitializeWebViewAsync()
@@ -153,6 +146,7 @@ public partial class MainWindow : BaseWindow
                     isWebViewReady = true;
                     SendFullStateToWeb();
                     SendRecordsToWeb();
+                    _ = Task.Run(async () => await CheckAndApplyUpdateAsync());
                     break;
 
                 case "record":
@@ -263,12 +257,13 @@ public partial class MainWindow : BaseWindow
 
     private void PostWebMessage(object data)
     {
-        if (!isWebViewReady || webView?.CoreWebView2 == null) return;
+        if (!isWebViewReady) return;
 
         Dispatcher.Invoke(() =>
         {
             try
             {
+                if (webView?.CoreWebView2 == null) return;
                 var json = JsonSerializer.Serialize(data);
                 webView.CoreWebView2.PostWebMessageAsJson(json);
             }
