@@ -89,9 +89,11 @@ class FlightChart {
 
     ctx.clearRect(0, 0, w, h);
 
+    const isLight = document.documentElement.classList.contains('light');
+
     if (!this.records || this.records.length === 0) {
       // Empty background grid
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+      ctx.strokeStyle = isLight ? 'rgba(0, 0, 0, 0.06)' : 'rgba(255, 255, 255, 0.04)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(0, h / 2);
@@ -121,8 +123,13 @@ class FlightChart {
 
     // Draw background subtle gradient
     const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
-    bgGrad.addColorStop(0, 'rgba(6, 182, 212, 0.12)');
-    bgGrad.addColorStop(1, 'rgba(6, 182, 212, 0.01)');
+    if (isLight) {
+      bgGrad.addColorStop(0, 'rgba(2, 132, 199, 0.16)');
+      bgGrad.addColorStop(1, 'rgba(2, 132, 199, 0.02)');
+    } else {
+      bgGrad.addColorStop(0, 'rgba(6, 182, 212, 0.14)');
+      bgGrad.addColorStop(1, 'rgba(6, 182, 212, 0.01)');
+    }
 
     ctx.beginPath();
     ctx.moveTo(0, h);
@@ -136,7 +143,10 @@ class FlightChart {
     ctx.fillStyle = bgGrad;
     ctx.fill();
 
-    // Draw trajectory lines colored by Ground (Amber) vs Airborne (Cyan)
+    // Draw trajectory lines colored by Ground (Amber) vs Airborne (Cyan / Sky Blue)
+    const groundColor = isLight ? '#d97706' : '#f59e0b';
+    const airColor = isLight ? '#0284c7' : '#06b6d4';
+
     for (let i = 0; i < n - 1; i++) {
       const x1 = (i / (n - 1)) * w;
       const y1 = getY(this.records[i].altitude);
@@ -148,7 +158,7 @@ class FlightChart {
       ctx.beginPath();
       ctx.moveTo(x1, y1);
       ctx.lineTo(x2, y2);
-      ctx.strokeStyle = onGround ? '#f59e0b' : '#06b6d4';
+      ctx.strokeStyle = onGround ? groundColor : airColor;
       ctx.lineWidth = 2;
       ctx.stroke();
     }
@@ -161,7 +171,7 @@ class FlightChart {
       ctx.beginPath();
       ctx.moveTo(cursorX, 0);
       ctx.lineTo(cursorX, h);
-      ctx.strokeStyle = 'rgba(239, 68, 68, 0.85)';
+      ctx.strokeStyle = isLight ? 'rgba(220, 38, 38, 0.85)' : 'rgba(239, 68, 68, 0.85)';
       ctx.lineWidth = 2;
       ctx.shadowColor = '#ef4444';
       ctx.shadowBlur = 8;
@@ -175,9 +185,12 @@ class FlightChart {
         ctx.beginPath();
         ctx.arc(cursorX, cursorY, 4, 0, Math.PI * 2);
         ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#ef4444';
+        ctx.lineWidth = 1.5;
         ctx.shadowColor = '#ef4444';
         ctx.shadowBlur = 6;
         ctx.fill();
+        ctx.stroke();
         ctx.shadowBlur = 0;
       }
     }

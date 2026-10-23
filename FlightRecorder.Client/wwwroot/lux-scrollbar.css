@@ -1,0 +1,216 @@
+/**
+ * LuxUI / Flux UI Scrollbar Library (lux-scrollbar.css)
+ * ----------------------------------------------------
+ * A lightweight, adaptive custom scrollbar library for modern web apps & WebView2.
+ * Seamlessly adapts to Dark Mode and White/Light Mode (system, class, or attribute).
+ *
+ * Features:
+ * - Universal coverage: applies automatically to all scrollable elements (*, html, body)
+ * - Removes ugly legacy OS/Windows arrow buttons (::-webkit-scrollbar-button)
+ * - Capsule/pill rounded thumb design with smooth hover transitions
+ * - Supports modern standard CSS properties (scrollbar-width, scrollbar-color, color-scheme)
+ * - Utility classes for specific sizing (.scrollbar-sm, .scrollbar-none, .scrollbar-gutter)
+ *
+ * Usage in other projects:
+ * 1. Include this file: <link rel="stylesheet" href="lux-scrollbar.css">
+ * 2. Toggle themes by adding class 'dark' or 'light' to <html>, or via data-theme="dark|light"
+ */
+
+/* ==========================================================================
+   1. Theme Tokens (Dark & Light)
+   ========================================================================== */
+
+/* Dark Theme (Default) */
+:root,
+:root.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --scrollbar-size: 6px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.16);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+  --scrollbar-thumb-active: rgba(255, 255, 255, 0.40);
+}
+
+/* Light / White Theme */
+:root.light,
+[data-theme="light"] {
+  color-scheme: light;
+  --scrollbar-size: 6px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.32);
+  --scrollbar-thumb-active: rgba(0, 0, 0, 0.45);
+}
+
+/* System Preference Fallback (if no explicit .dark / .light class is present) */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme="light"]) {
+    color-scheme: dark;
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: rgba(255, 255, 255, 0.16);
+    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+    --scrollbar-thumb-active: rgba(255, 255, 255, 0.40);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark):not([data-theme="dark"]) {
+    color-scheme: light;
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+    --scrollbar-thumb-hover: rgba(0, 0, 0, 0.32);
+    --scrollbar-thumb-active: rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* ==========================================================================
+   2. Standard Cross-Browser Scrollbar Properties (Firefox / Fallback)
+   ========================================================================== */
+html.dark,
+body.dark {
+  color-scheme: dark;
+}
+
+html.light,
+body.light {
+  color-scheme: light;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  html,
+  body,
+  *,
+  *::before,
+  *::after {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+}
+
+/* ==========================================================================
+   3. WebKit / Chromium / Edge WebView2 Scrollbar Customization
+   ========================================================================== */
+
+/* Target all scrollable elements & document root */
+::-webkit-scrollbar,
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: var(--scrollbar-size, 6px);
+  height: var(--scrollbar-size, 6px);
+}
+
+/* Track: transparent with zero background clutter */
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, transparent);
+  border-radius: 9999px;
+}
+
+/* Thumb: minimalist capsule with smooth hover */
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  transition: background-color 0.15s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover,
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:active,
+*::-webkit-scrollbar-thumb:active,
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-active);
+  background-clip: padding-box;
+}
+
+/* Corner */
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner,
+html::-webkit-scrollbar-corner,
+body::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Remove legacy Windows/browser arrow buttons completely */
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+*::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ==========================================================================
+   4. Reusable Utility Classes (for components and custom layouts)
+   ========================================================================== */
+
+/* Explicit custom scrollbar utility */
+.lux-scrollbar,
+.custom-scrollbar {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+.lux-scrollbar::-webkit-scrollbar,
+.custom-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-size, 6px);
+  height: var(--scrollbar-size, 6px);
+}
+
+.lux-scrollbar::-webkit-scrollbar-track,
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, transparent);
+}
+
+.lux-scrollbar::-webkit-scrollbar-thumb,
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+.lux-scrollbar::-webkit-scrollbar-thumb:hover,
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Ultra-thin scrollbar (4px) */
+.scrollbar-sm::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Hidden scrollbar (scrollable without visual bar) */
+.scrollbar-none {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Stable layout gutter to avoid content jump on scroll */
+.scrollbar-gutter {
+  scrollbar-gutter: stable;
+}
