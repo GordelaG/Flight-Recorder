@@ -1,0 +1,97 @@
+name: HubHop Profiles Auto-Sync & Release
+
+on:
+  schedule:
+    # Runs every 5 days at 00:00 UTC
+    - cron: '0 0 */5 * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-and-release:
+    name: Sync HubHop & Build Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Get Current Date
+        id: date
+        shell: bash
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Run HubHop Sync Tool
+        shell: pwsh
+        run: |
+          Write-Host "Running HubHop Profile Synchronization..."
+          dotnet run --project tools/FlightRecorder.ProfileSync/FlightRecorder.ProfileSync.csproj -- --output "FlightRecorder.Client/aircraft_profiles"
+
+      - name: Check for Updated Profiles
+        id: git_status
+        shell: pwsh
+        run: |
+          $changes = git status --porcelain FlightRecorder.Client/aircraft_profiles
+          if ($changes) {
+            Write-Host "Changes detected in aircraft profiles:"
+            Write-Host $changes
+            "has_changes=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          } else {
+            Write-Host "No changes detected. Aircraft profiles are already up-to-date."
+            "has_changes=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          }
+
+      - name: Commit & Push Updated Profiles
+        if: steps.git_status.outputs.has_changes == 'true'
+        shell: pwsh
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add FlightRecorder.Client/aircraft_profiles
+          git commit -m "chore(profiles): auto-sync aircraft profiles from HubHop API [skip ci]"
+          git push
+
+      - name: Build Application Bundle
+        if: steps.git_status.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          Write-Host "Publishing Flight Recorder (win-x64)..."
+          dotnet publish FlightRecorder.Client/FlightRecorder.Client.csproj -c Release -r win-x64 --self-contained false -o publish
+
+          Write-Host "Creating Release ZIP package..."
+          Compress-Archive -Path publish\* -DestinationPath FlightRecorder-win-x64.zip -Force
+
+      - name: Create or Update GitHub Release
+        if: steps.git_status.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ startsWith(github.ref, 'refs/tags/v') && github.ref_name || format('profiles-{0}', steps.date.outputs.date) }}
+          name: ${{ startsWith(github.ref, 'refs/tags/v') && format('Flight Recorder {0}', github.ref_name) || format('Flight Recorder - Aircraft Profiles Sync ({0})', steps.date.outputs.date) }}
+          body: |
+            ### ✈️ Automated Aircraft Profiles & HubHop Sync
+            This release was automatically built by GitHub Actions with the latest aircraft profiles from **MobiFlight HubHop**.
+            
+            - **Total Profiles:** 130+ MSFS aircraft profiles included out of the box
+            - **SimConnect Native:** 100% native SimConnect (Zero WASM in Community)
+            - **Sync Date:** ${{ steps.date.outputs.date }}
+            
+            Download `FlightRecorder-win-x64.zip` below to use the latest version.
+          draft: false
+          prerelease: false
+          files: |
+            FlightRecorder-win-x64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
