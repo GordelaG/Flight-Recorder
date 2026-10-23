@@ -1,0 +1,53 @@
+{
+  "Id": "fsdreamteam_gsx_ground_service_x_pro",
+  "Name": "FSDreamTeam GSX Ground Service X PRO",
+  "Vendor": "FSDreamTeam",
+  "MatchTitles": [
+    "FSDreamTeam GSX Ground Service X PRO",
+    "GSX Ground Service X PRO"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FSDT_GSX_BOARDING_STATE",
+      "Unit": "number",
+      "Description": "GSX Boarding State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_CATERING_STATE",
+      "Unit": "number",
+      "Description": "GSX Catering State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_DEBOARDING_STATE",
+      "Unit": "number",
+      "Description": "GSX Deboarding State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_DEICING_STATE",
+      "Unit": "number",
+      "Description": "GSX Deicing State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_DEPARTURE_STATE",
+      "Unit": "number",
+      "Description": "GSX Departure State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_REFUELING_STATE",
+      "Unit": "number",
+      "Description": "GSX Refueling State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSDT_GSX_SETTINGS_AUTOMODE",
+      "Unit": "String",
+      "Description": "Automode settings",
+      "Interpolate": false
+    }
+  ]
+}

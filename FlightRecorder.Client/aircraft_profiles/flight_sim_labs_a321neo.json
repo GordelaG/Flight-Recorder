@@ -1,0 +1,203 @@
+{
+  "Id": "flight_sim_labs_a321neo",
+  "Name": "Flight Sim Labs A321neo",
+  "Vendor": "Flight Sim Labs",
+  "MatchTitles": [
+    "Flight Sim Labs A321neo",
+    "A321neo"
+  ],
+  "Variables": [
+    {
+      "Name": "L:VC_OVHD_GPWS_LDG_FLAP_3_Button",
+      "Unit": "Number",
+      "Description": "FSLabs Landing Flaps 3 LED Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_BRAKES_AUTOBRK_LO_BUTTON_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs Auto Brake Low LED Light bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_BRAKES_AUTOBRK_MAX_BUTTON_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs Auto Brake Max Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_BRAKES_AUTOBRK_MED_BUTTON_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs Auto Brake Max Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GPU_panel_pwr_not_in_use",
+      "Unit": "Number",
+      "Description": "FSLabs EXT PWR AVAIL light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_BRAKES_FAN_Button_BOT",
+      "Unit": "Number",
+      "Description": "TURN BRAKE FAN LIGHT ON- OUTPUT FOR AGP32",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_CPT_TERR_ON_ND_BUTTON_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs Terrain on ND Captain Button LED Light ON Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_MIP_CPT_TERR_ON_ND_BUTTON_TOP",
+      "Unit": "Number",
+      "Description": "FSLabs Terrain on ND Captain Button LED Light TOP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD__APU_MASTER_Button_TOP",
+      "Unit": "number",
+      "Description": "FSLabs MASTER SW FAULT light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_AC_Eng_APU_Bleed_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs APU BLEED Light Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_AC_Pack_1_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs PACK 1 LED light Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_AC_Pack_1_Button_TOP",
+      "Unit": "Number",
+      "Description": "FSLabs PACK 1 LED light fault Top",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_AC_Pack_2_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs PACK 2 LED light Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_AC_Pack_2_Button_TOP",
+      "Unit": "Number",
+      "Description": "FSLabs PACK 2 LED light fault Top",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_APU_Master_Button",
+      "Unit": "Number",
+      "Description": "FSLabs MASTER SW ON light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_APU_Master_Button_TOP",
+      "Unit": "Number",
+      "Description": "FSLabs MASTER SW FAULT light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_APU_Master_Fault_Lt",
+      "Unit": "Number",
+      "Description": "FSLabs MASTER SW ON light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_APU_START_BUTTON_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs START ON light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_APU_START_BUTTON_TOP",
+      "Unit": "Number",
+      "Description": "FSLabs START AVAIL light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_ELEC_BAT_1_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs BAT 1 LED Light Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_ELEC_BAT_2_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs BAT 2 LED Light Bottom",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_ELEC_EXT_PWR_Button_BOT",
+      "Unit": "Number",
+      "Description": "FSLabs EXT PWR ON light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_CTR_TK_1_VALVE_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP CTR TK L XFR LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_CTR_TK_2_VALVE_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP CTR TK R XFR LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_L_TK_1_PUMP_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP L TK 1 LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_L_TK_2_PUMP_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP L TK 2 LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_R_TK_1_PUMP_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP R TK 1 LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_OVHD_FUEL_R_TK_2_PUMP_Button",
+      "Unit": "number",
+      "Description": "FSLabs FUEL PUMP R TK 2 LED LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_PED_Dimmer",
+      "Unit": "0.01",
+      "Description": "Backlight",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_PED_ECP_APU_Brt_Lt",
+      "Unit": "number",
+      "Description": "APU Light on for ecam button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_PED_ECP_BLEED_Brt_Lt",
+      "Unit": "number",
+      "Description": "Turn Ecam Bleed button light on",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_PED_ECP_CLR_L_Brt_Lt",
+      "Unit": "number",
+      "Description": "ecam CLR CLEAR LEFT LIGHT button",
+      "Interpolate": false
+    }
+  ]
+}

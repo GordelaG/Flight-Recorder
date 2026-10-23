@@ -1,0 +1,35 @@
+{
+  "Id": "skyward_sim_da50rg",
+  "Name": "Skyward Sim DA50RG",
+  "Vendor": "Skyward Sim",
+  "MatchTitles": [
+    "Skyward Sim DA50RG",
+    "DA50RG"
+  ],
+  "Variables": [
+    {
+      "Name": "L:COWL_FLAPS_POSITION",
+      "Unit": "number",
+      "Description": "DA50RG COWL FLAPS POSITION",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:GEAR_STALL_TEST",
+      "Unit": "number",
+      "Description": "DA50RG NOSE GEAR GREEN INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_SWITCH",
+      "Unit": "number",
+      "Description": "DA50RG DEICE ANNUNCIATOR NORM",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_ELT_STATE",
+      "Unit": "number",
+      "Description": "DA50RG ELT Switch ON",
+      "Interpolate": false
+    }
+  ]
+}

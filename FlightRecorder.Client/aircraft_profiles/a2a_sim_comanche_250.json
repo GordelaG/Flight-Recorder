@@ -1,0 +1,203 @@
+{
+  "Id": "a2a_sim_comanche_250",
+  "Name": "A2A SIM Comanche 250",
+  "Vendor": "A2A SIM",
+  "MatchTitles": [
+    "A2A SIM Comanche 250",
+    "Comanche 250"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LandFlapsPos",
+      "Unit": "number",
+      "Description": "PA24 250 Flaps Lever Pos",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:EmergencyGearLever",
+      "Unit": "Number",
+      "Description": "PA24 250 Gear Emergency Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LandingGearLeverPos",
+      "Unit": "enum",
+      "Description": "PA24 250 Landing Gear Lever Pos",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Throttle1Position",
+      "Unit": "number",
+      "Description": "PA24 250 Throttle Position",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:ParkingBrakePosition",
+      "Unit": "bool",
+      "Description": "PA24 250 Parking Brake Position",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RealisticParkingBrake",
+      "Unit": "Number",
+      "Description": "PA24 250 Parking Brake Realistic Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Adf1Needle",
+      "Unit": "keyframe",
+      "Description": "PA24 250 ADF Heading Needle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfFreqInnerKnob",
+      "Unit": "percent",
+      "Description": "PA24 250 ADF Freq Inner Knob",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfFreqOuterKnob",
+      "Unit": "percent",
+      "Description": "PA24 250 ADF Freq Outer Knob",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfFrqButton",
+      "Unit": "number",
+      "Description": "PA24 250 ADF Swap Swich",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfHdgNeedle",
+      "Unit": "degrees",
+      "Description": "PA24 250 ADF Heading Dial",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfModeSelectSwitch",
+      "Unit": "enum",
+      "Description": "PA24 250 ADF Mode Selector",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AdfOnOffKnobVolume",
+      "Unit": "number",
+      "Description": "PA24 250 ADF Volume Knob",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AirspeedNeedle",
+      "Unit": "mph",
+      "Description": "PA24 250 Airspeed Needle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApAltLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot Alt Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApHdLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot Heading Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApRdyLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot Ready Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApStLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot St Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApTrimDnLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot Trim Dn Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApTrimUpLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot Trim Up Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApTrkHiLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot TRK Hi Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ApTrkLoLight",
+      "Unit": "bool",
+      "Description": "PA24 250 Autopilot TRK Lo Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AudioMkrHpSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 Marker DME Button Anim",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AudioMkrMuteSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 Marker Mute Switch",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AudioNav1HpSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 NAV 1 Button Anim",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AudioNav2HpSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 NAV 2 Button Anim",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AudioSensSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 Marker Audio Switch",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AutopilotHeadingBug",
+      "Unit": "number",
+      "Description": "PA24 250 HSI Heading Bug",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AvionicsConfiguration",
+      "Unit": "Number",
+      "Description": "PA24 250 Cb 09 Nav Com 2 In",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BeaconLightSwitch",
+      "Unit": "number",
+      "Description": "PA24 250 Beacon Light Switch",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BreakerLandingGearIndicator",
+      "Unit": "number",
+      "Description": "PA24 250 CB Landing Gear Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BreakerLandingGearMotor",
+      "Unit": "number",
+      "Description": "PA24 250 CB Landing Gear Motor",
+      "Interpolate": false
+    }
+  ]
+}

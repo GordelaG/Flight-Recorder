@@ -1,0 +1,41 @@
+{
+  "Id": "microsoft_sr22t",
+  "Name": "Microsoft SR22T",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft SR22T",
+    "SR22T"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_GLARESHIELD_1",
+      "Unit": "number",
+      "Description": "SR22T_GLARESHIELD_LIGHTS_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "SR22T_AVIONICS_BRIGHTNESS_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_WING_1",
+      "Unit": "0",
+      "Description": "SR22T_ICE_LIGHTS_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_VNav_Path_Mode",
+      "Unit": "Enum",
+      "Description": "VNAV Path Mode",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_VNav_State",
+      "Unit": "Enum",
+      "Description": "VNAV State",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+﻿{
+    "Id":  "HEADWIND_A330_900NEO",
+    "Name":  "Headwind Simulations A330-900neo",
+    "Vendor":  "headwind",
+    "MatchTitles":  [
+                        "headwind",
+                        "330",
+                        "Headwind Simulations A330-900neo"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:A32NX_FCU_APPR_LIGHT_ON",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      }
+                  ]
+}

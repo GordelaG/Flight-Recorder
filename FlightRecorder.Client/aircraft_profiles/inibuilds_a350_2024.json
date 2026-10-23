@@ -1,0 +1,203 @@
+{
+  "Id": "inibuilds_a350_2024",
+  "Name": "IniBuilds A350 (2024)",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A350 (2024)",
+    "A350 (2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_ATHR_LIGHT",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP AT LED",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_ARMED",
+      "Unit": "number",
+      "Description": "A35X PED BRAKE AUTOBRAKE LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOLAND_LIGHT",
+      "Unit": "number",
+      "Description": "A35X MIP WARN AUTOLAND LED 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_ACTIVE_PAGE",
+      "Unit": "number",
+      "Description": "A35X MIP ECAM FCTL LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_CLR_LIGHT",
+      "Unit": "Bool",
+      "Description": "A35X MIP ECAM CLR LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FD_ON",
+      "Unit": "number",
+      "Description": "FCU FD Button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_LEVEL_OFF_LIGHT",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP EXPED LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_MCU_LAND_LIGHT",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP APPR LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_MCU_LOC_LIGHT",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP LOC LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ap1_on",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP L AP1 LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ap2_on",
+      "Unit": "Bool",
+      "Description": "A35X FCU AP R AP2 LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_METRIC_STATE",
+      "Unit": "number",
+      "Description": "FCU METER Button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_NORTH_REF_STATE",
+      "Unit": "number",
+      "Description": "A35X FCU FCU TRUE MAG TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_APU",
+      "Unit": "number",
+      "Description": "A35X OVHD COND APU BLEED ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_APU_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD COND APU BLEED FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_ENG1",
+      "Unit": "number",
+      "Description": "A35X OVHD COND BLEED 1 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_ENG1_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD COND BLEED 1 FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_ENG2",
+      "Unit": "number",
+      "Description": "A35X OVHD COND BLEED 2 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_BLEED_ENG2_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD COND BLEED 2 FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_PACK1_BUTTON",
+      "Unit": "number",
+      "Description": "A35X OVHD COND PACK 1 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_PACK1_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD COND PACK 1 FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_PACK2_BUTTON",
+      "Unit": "number",
+      "Description": "A35X OVHD COND PACK 2 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AIR_PACK2_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD COND PACK 2 FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_AVAILABLE",
+      "Unit": "number",
+      "Description": "A35X OVHD APU START ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_MASTER_FAULT",
+      "Unit": "number",
+      "Description": "A35X OVHD APU MASTER FAULT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_MASTER_SWITCH",
+      "Unit": "number",
+      "Description": "A35X OVHD APU MASTER ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_START_BUTTON",
+      "Unit": "number",
+      "Description": "A35X OVHD APU START AVAIL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_BATTERY_1_SWITCH",
+      "Unit": "number",
+      "Description": "A35X OVHD ELEC BAT 1 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_BATTERY_2_SWITCH",
+      "Unit": "number",
+      "Description": "A35X OVHD ELEC BAT 2 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_BATTERY_EMER1_SWITCH",
+      "Unit": "number",
+      "Description": "A35X OVHD ELEC BAT EMER1 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_BATTERY_EMER2_SWITCH",
+      "Unit": "number",
+      "Description": "A35X OVHD ELEC BAT EMER2 OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CENTER_TANK_LEFT",
+      "Unit": "number",
+      "Description": "A35X OVHD FUEL PUMP C L OFF",
+      "Interpolate": false
+    }
+  ]
+}

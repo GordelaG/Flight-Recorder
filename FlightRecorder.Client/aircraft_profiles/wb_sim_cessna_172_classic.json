@@ -1,0 +1,17 @@
+{
+  "Id": "wb_sim_cessna_172_classic",
+  "Name": "WB Sim Cessna 172 Classic",
+  "Vendor": "WB Sim",
+  "MatchTitles": [
+    "WB Sim Cessna 172 Classic",
+    "Cessna 172 Classic"
+  ],
+  "Variables": [
+    {
+      "Name": "L:172X_XPNDR_KNOB",
+      "Unit": "Number",
+      "Description": "C172-analog-transponder-inc",
+      "Interpolate": false
+    }
+  ]
+}

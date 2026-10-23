@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_pc_12_ngx_2024",
+  "Name": "Microsoft PC-12 NGX 2024",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft PC-12 NGX 2024",
+    "PC-12 NGX 2024"
+  ],
+  "Variables": [
+    {
+      "Name": "L:WT_Epic2_Autothrottle_Status",
+      "Unit": "number",
+      "Description": "Auto Throttle Status",
+      "Interpolate": true
+    }
+  ]
+}

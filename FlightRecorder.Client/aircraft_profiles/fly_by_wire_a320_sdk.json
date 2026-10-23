@@ -1,0 +1,204 @@
+{
+  "Id": "fly_by_wire_a320_sdk",
+  "Name": "Fly By Wire A320-SDK",
+  "Vendor": "Fly By Wire",
+  "MatchTitles": [
+    "Fly By Wire A320-SDK",
+    "A320-SDK",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A32NX_APU_FLAP_FULLY_OPEN",
+      "Unit": "number",
+      "Description": "A32NX_APU_FLAP_FULLY_OPEN",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_APU_FLAP_OPEN_PERCENTAGE",
+      "Unit": "number",
+      "Description": "A32NX_APU_FLAP_OPEN_PERCENTAGE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_FLAPS_CONF_INDEX",
+      "Unit": "number",
+      "Description": "A32NX_FLAPS_CONF_INDEX",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FLAPS_HANDLE_INDEX",
+      "Unit": "number",
+      "Description": "A32NX_FLAPS_HANDLE_INDEX",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_FLAPS_HANDLE_PERCENT",
+      "Unit": "number",
+      "Description": "A32NX_FLAPS_HANDLE_PERCENT",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_FLAPS_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_FLAPS_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_FLAPS_POSITION_PERCENT",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_FLAPS_POSITION_PERCENT",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_FLAPS_TARGET_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_FLAPS_TARGET_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_SLATS_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_SLATS_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_SLATS_POSITION_PERCENT",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_SLATS_POSITION_PERCENT",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_LEFT_SLATS_TARGET_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_LEFT_SLATS_TARGET_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_FLAPS_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_FLAPS_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_FLAPS_POSITION_PERCENT",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_FLAPS_POSITION_PERCENT",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_FLAPS_TARGET_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_FLAPS_TARGET_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_SLATS_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_SLATS_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_SLATS_POSITION_PERCENT",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_SLATS_POSITION_PERCENT",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_RIGHT_SLATS_TARGET_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX_RIGHT_SLATS_TARGET_ANGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_TO_CONFIG_FLAPS",
+      "Unit": "number",
+      "Description": "A32NX_TO_CONFIG_FLAPS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_TO_CONFIG_FLAPS_ENTERED",
+      "Unit": "number",
+      "Description": "A32NX_TO_CONFIG_FLAPS_ENTERED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_VSPEEDS_LANDING_CONF3",
+      "Unit": "number",
+      "Description": "A32NX_VSPEEDS_LANDING_CONF3",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_VSPEEDS_TO_CONF",
+      "Unit": "number",
+      "Description": "A32NX_VSPEEDS_TO_CONF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_SPOILERS_ARMED",
+      "Unit": "number",
+      "Description": "A32NX_SPOILERS_ARMED",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_SPOILERS_GROUND_SPOILERS_ACTIVE",
+      "Unit": "number",
+      "Description": "A32NX_SPOILERS_GROUND_SPOILERS_ACTIVE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_SPOILERS_HANDLE_POSITION",
+      "Unit": "number",
+      "Description": "A32NX_SPOILERS_HANDLE_POSITION",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_3D_THROTTLE_LEVER_POSITION_1",
+      "Unit": "number",
+      "Description": "A32NX_3D_THROTTLE_LEVER_POSITION_1",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_3D_THROTTLE_LEVER_POSITION_2",
+      "Unit": "number",
+      "Description": "A32NX_3D_THROTTLE_LEVER_POSITION_2",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_REVERSE:1",
+      "Unit": "number",
+      "Description": "A32NX_AUTOTHRUST_REVERSE:1",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_REVERSE:2",
+      "Unit": "number",
+      "Description": "A32NX_AUTOTHRUST_REVERSE:2",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_THRUST_LIMIT_TYPE",
+      "Unit": "number",
+      "Description": "A32NX_AUTOTHRUST_THRUST_LIMIT_TYPE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_TLA:1",
+      "Unit": "number",
+      "Description": "A32NX_AUTOTHRUST_TLA:1",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_TLA:2",
+      "Unit": "number",
+      "Description": "A32NX_AUTOTHRUST_TLA:2",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_THROTTLE_MAPPING_USE_REVERSE_ON_AXIS:1",
+      "Unit": "number",
+      "Description": "A32NX_THROTTLE_MAPPING_USE_REVERSE_ON_AXIS:1",
+      "Interpolate": true
+    }
+  ]
+}

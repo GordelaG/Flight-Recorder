@@ -1,0 +1,203 @@
+{
+  "Id": "just_flight_avro_rj",
+  "Name": "Just Flight Avro RJ",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight Avro RJ",
+    "Avro RJ"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MCP_Mode_Thrust_il",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT THRUST INDICATOR",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:JF_RJ_EFIS_L_ARPT_light",
+      "Unit": "bool",
+      "Description": "EFIS_ARPT_Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_EFIS_L_DATA_light",
+      "Unit": "bool",
+      "Description": "EFIS_DATA_Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_EFIS_L_GRP_light",
+      "Unit": "bool",
+      "Description": "EFIS_GRP_Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_EFIS_L_NAID_light",
+      "Unit": "bool",
+      "Description": "EFIS_NAID_Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_LNAV_iL",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT LNAV INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_NAV1_il1",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT AP1 INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VNAV_i",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT VNAV INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_FWD_L_NAV_Format",
+      "Unit": "number",
+      "Description": "L_ND_NAV_FORMAT_dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_FWD_L_NAV_Range",
+      "Unit": "number",
+      "Description": "L_ND_Range_inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_AP_Alt",
+      "Unit": "number",
+      "Description": "AP ALT Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_AP_HDG",
+      "Unit": "number",
+      "Description": "AP HDG Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_AP_IAS",
+      "Unit": "number",
+      "Description": "AP IAS Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_AP_MACH",
+      "Unit": "number",
+      "Description": "AP Mach Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_AP_VS",
+      "Unit": "number",
+      "Description": "AP V/S Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Alt_sel_knob",
+      "Unit": "number",
+      "Description": "Autopilot Altitude Sel Increment",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_CRS1_sel",
+      "Unit": "number",
+      "Description": "Left Course Sel Increment",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_CRS2_sel",
+      "Unit": "number",
+      "Description": "Right Course Increment",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_HDG_sel",
+      "Unit": "number",
+      "Description": "Autopilot HDG Increment",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_ALT_iL",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT ALT HOLD INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_APP_il",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT APP INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_AT_il1",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT A/T LED INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_HDG_iL",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT HDG INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_LvlChg_il",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT LVL CHG INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_MA_left_il1",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT FD1 MA INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_MA_right_il1",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT FD2 MA INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VL_il",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT VOR LOC INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VS_iL",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT VS INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Spd_sel_knob",
+      "Unit": "number",
+      "Description": "Speed Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Speed_sel_dec",
+      "Unit": "number",
+      "Description": "Speed Selector Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Speed_sel_inc",
+      "Unit": "number",
+      "Description": "IAS/MACH SELECTOR - INCREASE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_FMS_L_power",
+      "Unit": "bool",
+      "Description": "JF RJ LEFT FMS EXEC ANNOUNCIATOR",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "Id": "salty_747_8i",
+  "Name": "Salty 747-8i",
+  "Vendor": "Salty",
+  "MatchTitles": [
+    "Salty 747-8i",
+    "747-8i"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AP_ALT_HOLD_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot Alt Hold Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_APP_ARMED",
+      "Unit": "number",
+      "Description": "Autopilot APP Armed",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_FLCH_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot FLCH Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_HEADING_HOLD_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot Heading Hold Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_LNAV_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot LNAV Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_LNAV_ARMED",
+      "Unit": "number",
+      "Description": "Autopilot LNAV Armed",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_SPD_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot SPD Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_SPEED_INTERVENTION_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot SPD INTV Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VNAV_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot VNAV Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VNAV_ARMED",
+      "Unit": "number",
+      "Description": "Autopilot VNAV Armed",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VS_ACTIVE",
+      "Unit": "number",
+      "Description": "Autopilot VS Active",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_LOC_ARMED",
+      "Unit": "number",
+      "Description": "Autopilot LOC Armed",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "Autopilot Speed Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_1_Status",
+      "Unit": "number",
+      "Description": "Autopilot Engage L ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_2_Status",
+      "Unit": "number",
+      "Description": "Autopilot Engage C",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_3_Status",
+      "Unit": "number",
+      "Description": "Autopilot Engage R",
+      "Interpolate": false
+    }
+  ]
+}

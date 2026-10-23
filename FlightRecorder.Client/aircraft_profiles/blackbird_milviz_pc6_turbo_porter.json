@@ -1,0 +1,17 @@
+{
+  "Id": "blackbird_milviz_pc6_turbo_porter",
+  "Name": "Blackbird/Milviz PC6 Turbo Porter",
+  "Vendor": "Blackbird/Milviz",
+  "MatchTitles": [
+    "Blackbird/Milviz PC6 Turbo Porter",
+    "PC6 Turbo Porter"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LandingLight_Position",
+      "Unit": "number",
+      "Description": "Landing Light Position UP",
+      "Interpolate": false
+    }
+  ]
+}

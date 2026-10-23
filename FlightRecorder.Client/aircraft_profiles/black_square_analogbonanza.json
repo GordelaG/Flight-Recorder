@@ -1,0 +1,95 @@
+{
+  "Id": "black_square_analogbonanza",
+  "Name": "Black Square AnalogBonanza",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square AnalogBonanza",
+    "AnalogBonanza"
+  ],
+  "Variables": [
+    {
+      "Name": "L:BKSQ_BONANZA_CDI_1_TO_FLAG",
+      "Unit": "bool",
+      "Description": "HSI CDI TO FLAG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_GLIDE_2",
+      "Unit": "number",
+      "Description": "LOCALIZER 2 GLIDE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_HSI_GLIDE",
+      "Unit": "number",
+      "Description": "HSI GLIDE NEEDLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_HSI_LOC",
+      "Unit": "number",
+      "Description": "HSI CDI Needle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_HSI_LOC_FLAG",
+      "Unit": "bool",
+      "Description": "HSI CDI VALID FLAG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_LOC_2",
+      "Unit": "number",
+      "Description": "LOCALIZER 2 CDI",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AutopilotTest",
+      "Unit": "bool",
+      "Description": "Alt/VS Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_VsAdjustMode",
+      "Unit": "bool",
+      "Description": "Altitude Selector Mode",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_BONANZA_FuelFlow_1",
+      "Unit": "GALLONS PER HOUR",
+      "Description": "Fuel Flow GPH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TipTankTransferSwitch_L",
+      "Unit": "bool",
+      "Description": "Analog Bonanza Toggle Both Tip Tanks Transfer",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_cabinTemperature",
+      "Unit": "number",
+      "Description": "CABIN TEMPERATURE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_FUEL_Switch_Pump_1",
+      "Unit": "Number",
+      "Description": "Analog Bonanza Electric Fuel Pump Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_oxygenOn",
+      "Unit": "bool",
+      "Description": "Analog Bonanza Oxygen Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_oxygenPressure",
+      "Unit": "number",
+      "Description": "Oxygen Pressure PSI",
+      "Interpolate": false
+    }
+  ]
+}

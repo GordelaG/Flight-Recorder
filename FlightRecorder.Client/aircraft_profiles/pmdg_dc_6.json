@@ -1,0 +1,155 @@
+{
+  "Id": "pmdg_dc_6",
+  "Name": "PMDG DC-6",
+  "Vendor": "PMDG",
+  "MatchTitles": [
+    "PMDG DC-6",
+    "DC-6"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AfeAfterLanding",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_AFTER_LANDING",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeBeforeLanding",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_BEFORE_LANDING",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_036_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Entrance_Lights",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_037_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Main J.box Flood light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_038_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Emer LTS No smoking",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_040_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Position Lights_Steady",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_041_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Beacon",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_445_obj",
+      "Unit": "enum",
+      "Description": "PMDGDC6_AP_NAV_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_445_dir",
+      "Unit": "number",
+      "Description": "PMDGDC6_AP_MODE_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeAfterStart",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_AFTER_START",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeBeforeStart",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_BEFORE_START",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeBeforeTakeoff",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_BEFORE_TAKEOFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeCruise",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_CRUISE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeDescent",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_DESCENT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeInRange",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_IN_RANGE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeParking",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_PARKING",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeTakeoffDry",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_TAKEOFF_DRY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AfeTakeoffWet",
+      "Unit": "bool",
+      "Description": "PMDGDC6_TABLET_TAKEOFF_WET",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_039_obj",
+      "Unit": "number",
+      "Description": "PMDGDC6_Seat Belt",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_069",
+      "Unit": "number",
+      "Description": "PMDGDC-_Main_Fuel_Boost#1 ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_073_dir",
+      "Unit": "number",
+      "Description": "PMDGDC6_ALT_FUEL_BOOST_1_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_074_dir",
+      "Unit": "number",
+      "Description": "PMDGDC6_ALT_FUEL_BOOST_2_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_075_dir",
+      "Unit": "number",
+      "Description": "PMDGDC6_ALT_FUEL_BOOST_3_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:dc6_076_dir",
+      "Unit": "number",
+      "Description": "PMDGDC6_ALT_FUEL_BOOST_4_TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

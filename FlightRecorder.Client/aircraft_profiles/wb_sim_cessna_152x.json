@@ -1,0 +1,29 @@
+{
+  "Id": "wb_sim_cessna_152x",
+  "Name": "WB Sim Cessna 152X",
+  "Vendor": "WB Sim",
+  "MatchTitles": [
+    "WB Sim Cessna 152X",
+    "Cessna 152X"
+  ],
+  "Variables": [
+    {
+      "Name": "L:C152X_APVIZ",
+      "Unit": "Number",
+      "Description": "C152X-Instruments-AP-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_DOOR_COPILOT",
+      "Unit": "Bool",
+      "Description": "C152X-Door-Copilot-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_DOOR_PILOT",
+      "Unit": "Bool",
+      "Description": "C152X-Door-Pilot-toggle",
+      "Interpolate": false
+    }
+  ]
+}

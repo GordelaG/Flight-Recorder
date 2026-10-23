@@ -1,0 +1,77 @@
+{
+  "Id": "simworks_studios_pc_12",
+  "Name": "SimWorks Studios PC-12",
+  "Vendor": "SimWorks Studios",
+  "MatchTitles": [
+    "SimWorks Studios PC-12",
+    "PC-12"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AILERON_TRIM_PCT",
+      "Unit": "number",
+      "Description": "Aileron Trim Left",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:SAFETY_Push_TestLamp",
+      "Unit": "Bool",
+      "Description": "SWS PC12 Recog Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_ELECTRICAL_EPS_On",
+      "Unit": "bool",
+      "Description": "SWS PC12 EPS On Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_ELECTRICAL_EPS_Test",
+      "Unit": "bool",
+      "Description": "SWS PC12 EPS Batt Test Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUTOPILOT_KAS297B_MODE",
+      "Unit": "Number",
+      "Description": "ALT VS preselect toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_AIRCONDITIONING_PUSH_CABINHEAT",
+      "Unit": "number",
+      "Description": "SWS PC12 Cabin Heating Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_AIRCONDITIONING_PUSH_FANS",
+      "Unit": "number",
+      "Description": "SWS PC12 Cooling Fans Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_AIRCONDITIONING_PUSH_RECIRCCOOL",
+      "Unit": "number",
+      "Description": "SWS PC12 Toggle Recirc/Cool",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_AIRCONDITIONING_PUSH_SYS",
+      "Unit": "number",
+      "Description": "SWS PC12 Cooling Sys Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_AIRCONDITIONING_VENTMODE",
+      "Unit": "number",
+      "Description": "SWS PC12 Cooling Vent Mode Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_PRESSURIZATION_Knob_CabinAlt",
+      "Unit": "Number",
+      "Description": "SWS_PC12_CABIN_ALT_INC",
+      "Interpolate": false
+    }
+  ]
+}

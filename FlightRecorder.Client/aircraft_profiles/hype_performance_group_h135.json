@@ -1,0 +1,203 @@
+{
+  "Id": "hype_performance_group_h135",
+  "Name": "Hype Performance Group H135",
+  "Vendor": "Hype Performance Group",
+  "MatchTitles": [
+    "Hype Performance Group H135",
+    "H135"
+  ],
+  "Variables": [
+    {
+      "Name": "L:SPOTLIGHT_MODE",
+      "Unit": "bool",
+      "Description": "H135_Search_Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WARNIGNS_TEST_ON",
+      "Unit": "number",
+      "Description": "H135 WARNING LIGHTS TEST TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:APCP_AP1",
+      "Unit": "number",
+      "Description": "H135 AP AP1 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:APCP_AP2",
+      "Unit": "number",
+      "Description": "H135 AP AP2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:APCP_ATRIM",
+      "Unit": "number",
+      "Description": "H135 AP A_TRIM TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:APCP_BACKUP",
+      "Unit": "number",
+      "Description": "H135 AP BACKUP TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Bright_Down",
+      "Unit": "bool",
+      "Description": "H135_MFDR_SoftKey_Right_BRT_Down",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Bright_Up",
+      "Unit": "bool",
+      "Description": "H135_MFDR_SoftKey_Right_BRT_Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DISPLAY_CENTER_ON",
+      "Unit": "number",
+      "Description": "H135_DISPLAY_CENTER_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DISPLAY_LEFT_ON",
+      "Unit": "number",
+      "Description": "H135_DISPLAY_LEFT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DISPLAY_RIGHT_ON",
+      "Unit": "number",
+      "Description": "H135_DISPLAY_RIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENG1_FIRE_TEST",
+      "Unit": "number",
+      "Description": "H135 FIRE TEST ENG1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENG2_FIRE_TEST",
+      "Unit": "number",
+      "Description": "H135 FIRE TEST ENG2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Engine1_Down",
+      "Unit": "bool",
+      "Description": "H135_Engine1_Down",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Engine1_Up",
+      "Unit": "bool",
+      "Description": "H135_Engine1_Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Engine2_Down",
+      "Unit": "bool",
+      "Description": "H135_Engine2_Down",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Engine2_Up",
+      "Unit": "bool",
+      "Description": "H135_Engine2_Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GTN_LEFT_ON",
+      "Unit": "number",
+      "Description": "H135_Left_Lower_MFD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GTN_RIGHT_ON",
+      "Unit": "number",
+      "Description": "H135_Right_Lower_MFD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_Knob_Down",
+      "Unit": "bool",
+      "Description": "H135_MFDC_Knob_Down",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_Knob_Up",
+      "Unit": "bool",
+      "Description": "H135_MFDC_Knob_Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_1",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_2",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_3",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_3",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_4",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_4",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_5",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_5",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Bottom_6",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Bottom_6",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Left_1",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Left_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Left_2",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Left_2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Left_3",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Left_3",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Left_4",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Left_4",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MFDC_SoftKey_Left_5",
+      "Unit": "number",
+      "Description": "H135_MFDC_SoftKey_Left_5",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "Id": "leonardo_maddog_md_82",
+  "Name": "Leonardo MadDog MD-82",
+  "Vendor": "Leonardo",
+  "MatchTitles": [
+    "Leonardo MadDog MD-82",
+    "MadDog MD-82"
+  ],
+  "Variables": [
+    {
+      "Name": "L:fgcp_autothrottle_switch1",
+      "Unit": "number",
+      "Description": "Auto throttle Status",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:vc_parking_brake_knob",
+      "Unit": "number",
+      "Description": "MD_82_VC_PARKING_BRAKE_STATE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_nav1_course",
+      "Unit": "number",
+      "Description": "Nav 1 course indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_nav2_course",
+      "Unit": "number",
+      "Description": "Nav 2 course indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ovhd_ckpt_flood_switch1",
+      "Unit": "enum",
+      "Description": "MD82_OVHD_FLOOD_SWITCH_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_asi_needle3",
+      "Unit": "number",
+      "Description": "MD_82_AUTOPILOT_TARGET_AIRSPEED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_fma_adv10",
+      "Unit": "bool",
+      "Description": "MD82_FMA_CM1_FD_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_fma_adv11",
+      "Unit": "bool",
+      "Description": "MD82_FMA_AUTOPILOT_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM2_fma_adv10",
+      "Unit": "bool",
+      "Description": "MD82_FMA_CM2_FD_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_ap_alt",
+      "Unit": "number",
+      "Description": "Autopilot altitude indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_ap_hdg",
+      "Unit": "number",
+      "Description": "Autopilot heading indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_ap_spd",
+      "Unit": "number",
+      "Description": "Autopilot airspeed indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md_ipc_ap_vs",
+      "Unit": "number",
+      "Description": "Autopilot vertical speed indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_FMS_exec_adv1",
+      "Unit": "number",
+      "Description": "LFMS EXEC LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_FMS_fail_adv1",
+      "Unit": "number",
+      "Description": "LFMS FAIL Led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_FMS_msg_adv1",
+      "Unit": "number",
+      "Description": "LFMS MSG Led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CM1_FMS_offst_adv1",
+      "Unit": "number",
+      "Description": "LFMS OFFSET Led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ovhd_apu_bus_adv1",
+      "Unit": "number",
+      "Description": "MD_82_OVHD_APU_POWER_AVAILABLE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ovhd_gnd_ext_avail_adv1",
+      "Unit": "number",
+      "Description": "MD_82_OVHD_EXT_POWER_AVAILABLE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ovhd_start_pump_switch1",
+      "Unit": "number",
+      "Description": "MD82 Ovhd Start Pump On",
+      "Interpolate": false
+    }
+  ]
+}

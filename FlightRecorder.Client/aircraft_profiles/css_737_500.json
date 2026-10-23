@@ -1,0 +1,42 @@
+{
+  "Id": "css_737_500",
+  "Name": "CSS 737-500",
+  "Vendor": "CSS",
+  "MatchTitles": [
+    "CSS 737-500",
+    "737-500",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:led_cdu1_exec",
+      "Unit": "number",
+      "Description": "CSS 737 FMS Left Exec Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:led_cdu1_fail",
+      "Unit": "number",
+      "Description": "CSS 737 FMS Left Fail Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:led_cdu1_msg",
+      "Unit": "number",
+      "Description": "CSS 737 FMS Left Msg Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:led_cdu1_ofst",
+      "Unit": "number",
+      "Description": "CSS 737 FMS Left Ofst Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:pot_cdu1_brt",
+      "Unit": "number",
+      "Description": "CSS 737 FMS Left Brt Inc",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "Id": "black_square_c208_caravan",
+  "Name": "Black Square C208 Caravan",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square C208 Caravan",
+    "C208 Caravan"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_ExternalPowerCover",
+      "Unit": "bool",
+      "Description": "External Power Cover",
+      "Interpolate": false
+    }
+  ]
+}

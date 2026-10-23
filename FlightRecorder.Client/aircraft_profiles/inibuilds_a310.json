@@ -1,0 +1,203 @@
+{
+  "Id": "inibuilds_a310",
+  "Name": "IniBuilds A310",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A310",
+    "A310"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A310_SPEEDBRAKE3_2",
+      "Unit": "number",
+      "Description": "A310 Ovhd Splr/Spd Brk 3 \u0026 2 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE3_2_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Splr/Spd Brk 3 \u0026 2 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE4_1",
+      "Unit": "number",
+      "Description": "A310 Ovhd Splr/Spd Brk 4 \u0026 1 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE4_1_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Splr/Spd Brk 4 \u0026 1 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE5",
+      "Unit": "number",
+      "Description": "A310 Ovhd Splr/Spd Brk 5 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE5_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Splr/Spd Brk 5 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE6",
+      "Unit": "number",
+      "Description": "A310 Ovhd Splr/Spd Brk 6 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE6_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Splr/Spd Brk 6 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE7",
+      "Unit": "number",
+      "Description": "A310 Ovhd Splr/Spd Brk 7 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPEEDBRAKE7_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Splr/Spd Brk 7 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_SPOILERS_ARMED",
+      "Unit": "Bool",
+      "Description": "A310 Ped Spoilers Arm Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:__GUARD_ENG_TRIM_State",
+      "Unit": "number",
+      "Description": "A310 Ovhd Engine Trim Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_at_on",
+      "Unit": "BOOL",
+      "Description": "A310 A/THR Button Light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_ENG_TRIM",
+      "Unit": "number",
+      "Description": "A310 Ovhd Engine Trim Off Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRAVEL1",
+      "Unit": "number",
+      "Description": "A310 Ovhd Rud Travel 1 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRAVEL1_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Rud Travel 1 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRAVEL2",
+      "Unit": "number",
+      "Description": "A310 Ovhd Rud Travel 2 Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRAVEL2_FAULT",
+      "Unit": "Bool",
+      "Description": "A310 Ovhd Rud Travel 2 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRIM_DISPLAY1",
+      "Unit": "number",
+      "Description": "A310 Rudder Trim Display 1",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRIM_DISPLAY2",
+      "Unit": "number",
+      "Description": "A310 Rudder Trim Display 2",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_RUDDER_TRIM_DISPLAY3",
+      "Unit": "number",
+      "Description": "A310 Rudder Trim Display 3",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_STOP_RUDDER_INPUT_TEST_BUTTON",
+      "Unit": "number",
+      "Description": "A310 Stop Rudder Input Test Button",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_TOTAL_RUDDER_TRIM",
+      "Unit": "number",
+      "Description": "A310 Total Rudder Trim",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A310_ACCU_PRESS_BUTTON",
+      "Unit": "number",
+      "Description": "A310 Parking Brake Accu Press Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A310_AUTOBRAKE_HI_DECEL",
+      "Unit": "Bool",
+      "Description": "A310 Autobrake Max Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A310_AUTOBRAKE_LOW_DECEL",
+      "Unit": "Bool",
+      "Description": "A310 Autobrake Low Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A310_AUTOBRAKE_MED_DECEL",
+      "Unit": "Bool",
+      "Description": "A310 Autobrake Med Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A310_PARKING_BRAKE_STATUS",
+      "Unit": "number",
+      "Description": "A310 Parking Brake Status",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_ARPT_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A310 EFIS Cpt ARPT Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_CSTR_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A310 EFIS Cpt CSTR Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_NDB_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A310 EFIS Cpt NDB Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_WPT_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A310 EFIS Cpt WPT Button Light",
+      "Interpolate": false
+    }
+  ]
+}

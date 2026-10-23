@@ -1,0 +1,203 @@
+{
+  "Id": "microsoft_bell_407",
+  "Name": "Microsoft Bell 407",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft Bell 407",
+    "Bell 407"
+  ],
+  "Variables": [
+    {
+      "Name": "L:adfObs",
+      "Unit": "degrees",
+      "Description": "Bell 407 Knob Adf Gauge Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annTrChip",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Tr Chip",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annXmsnChip",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Xmsn Chip",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonXpndrVfr",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Xpndr Vfr",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonXpndrVfrPressed",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Xpndr Vfr Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:compassAdjustValue",
+      "Unit": "degree",
+      "Description": "Bell 407 Compass Needle Ccw",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:kohlsmanKnob",
+      "Unit": "number",
+      "Description": "Bell 407 Knob Altimeter Feet Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:needleHsiMarker",
+      "Unit": "number",
+      "Description": "Bell 407 Knob Hsi Mrk Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:panelLightTilt",
+      "Unit": "number",
+      "Description": "Bell 407 Rotation Panel Light Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switchCautLtsMode",
+      "Unit": "bool",
+      "Description": "Bell 407 Switch Light Caut Mode Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switchLandingLight",
+      "Unit": "enum",
+      "Description": "Bell 407 Switch Light Landing Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switchLtsCabinPass",
+      "Unit": "enum",
+      "Description": "Bell 407 Switch Light Cabin Pass Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switchPrimaryCompassAdjust",
+      "Unit": "enum",
+      "Description": "Bell 407 Switch Primary Compass adjust",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switchPrimaryCompassMode",
+      "Unit": "bool",
+      "Description": "Bell 407 Switch Primary Compass Mode Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annBaggaeDoor",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Baggage Door",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annBatRelay",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Battery Relay",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annBatteryHot",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Battery Hot",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annEngineChip",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Engine Chip",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annFloatArm",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Float Arm",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annFloatTest",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Float Test",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annHeaterOvertemp",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Heater Overtemp",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annLeftFuelFilter",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Fuel Filter",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:annLitterDoor",
+      "Unit": "bool",
+      "Description": "Bell 407 Ann Litter Door",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:audioAud",
+      "Unit": "bool",
+      "Description": "Bell 407 Led Audio Mkr Aud",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:audioMute",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Audio Mute Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:audioTelephoneMode",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Audio Tel Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonAnnTest",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Annunciator Test",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonAudioIcs",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Audio Ics",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonAudioMute",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Audio Mute Lvar",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonAudioTel",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Audio Tel",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonChronoControl",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Chrono Contr",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:buttonChronoMode",
+      "Unit": "bool",
+      "Description": "Bell 407 Button Chrono Mode",
+      "Interpolate": false
+    }
+  ]
+}

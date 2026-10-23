@@ -1,0 +1,35 @@
+{
+  "Id": "working_title_707_320c",
+  "Name": "Working Title 707-320C",
+  "Vendor": "Working Title",
+  "MatchTitles": [
+    "Working Title 707-320C",
+    "707-320C"
+  ],
+  "Variables": [
+    {
+      "Name": "L:1:WT_INS_1_DATA_SELECTOR",
+      "Unit": "number",
+      "Description": "CIVA Data Selector DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:1:WT_INS_1_DIM",
+      "Unit": "number",
+      "Description": "CIVA Dim Knob DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:1:WT_INS_1_THUMBWHEEL",
+      "Unit": "number",
+      "Description": "CIVA Waypoint/DME Selector INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:1:WT_INS_MSU_1_MODE_SELECTOR",
+      "Unit": "number",
+      "Description": "CIVA MSU Mode Selector DEC",
+      "Interpolate": false
+    }
+  ]
+}

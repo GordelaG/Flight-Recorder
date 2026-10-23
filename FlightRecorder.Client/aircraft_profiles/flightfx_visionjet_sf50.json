@@ -1,0 +1,167 @@
+{
+  "Id": "flightfx_visionjet_sf50",
+  "Name": "FlightFX Visionjet SF50",
+  "Vendor": "FlightFX",
+  "MatchTitles": [
+    "FlightFX Visionjet SF50",
+    "Visionjet SF50"
+  ],
+  "Variables": [
+    {
+      "Name": "L:SF50_gear_alternate_ext_handle",
+      "Unit": "Bool",
+      "Description": "SF50 Emergency Gear Handle Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_Autothrottle_Status",
+      "Unit": "number",
+      "Description": "Autothrottle LED",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_1",
+      "Unit": "number",
+      "Description": "SF50 Ovhd Cabin 1 Light Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_2",
+      "Unit": "number",
+      "Description": "SF50 Ovhd Cabin 2 Light Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "SF50 Lights Panel 1 Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "SF50 AP VNAV TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "SF50 AP Speed Ref Wheel Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SpeedIsManuallySet",
+      "Unit": "bool",
+      "Description": "SF50 AT FMS Manual Mode Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_aft",
+      "Unit": "Bool",
+      "Description": "ECS Aft Ctrl button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_air_flow_switch",
+      "Unit": "Bool",
+      "Description": "SF50 Bleed Air Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_cockpit_tv",
+      "Unit": "Bool",
+      "Description": "SF50 Cockpit TV Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_defog",
+      "Unit": "Bool",
+      "Description": "ECS Defog button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_deice_max",
+      "Unit": "Bool",
+      "Description": "SF50 Antiice Windshield Max Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_ecs",
+      "Unit": "Bool",
+      "Description": "SF50 ECS Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_front_door",
+      "Unit": "number",
+      "Description": "SF50 Front Door Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_gear_alternate_ext",
+      "Unit": "Bool",
+      "Description": "SF50 Emergency Gear Door Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_knob_stop_run",
+      "Unit": "Bool",
+      "Description": "SF50 Fuel Pump Knob Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_luggage_door",
+      "Unit": "number",
+      "Description": "SF50 Luggage Door Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_TempBKP",
+      "Unit": "Bool",
+      "Description": "ECS Temp Backup button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_TempControl",
+      "Unit": "number",
+      "Description": "SF50 ECS Temp Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_TempFan",
+      "Unit": "number",
+      "Description": "SF50 AC Fan Control Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_vams_anr",
+      "Unit": "number",
+      "Description": "SF50 VAMS Static Headphones ANR Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:sf50_vams_static_chocks",
+      "Unit": "number",
+      "Description": "SF50 VAMS Static Chocks Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_vams_static_covers",
+      "Unit": "number",
+      "Description": "SF50 VAMS Static Covers Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_vams_static_headphones",
+      "Unit": "number",
+      "Description": "SF50 VAMS Static Headphones Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SF50_vams_static_storage_cover",
+      "Unit": "number",
+      "Description": "SF50 vams static storage cover",
+      "Interpolate": false
+    }
+  ]
+}

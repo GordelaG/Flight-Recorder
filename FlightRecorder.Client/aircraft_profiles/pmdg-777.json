@@ -1,0 +1,50 @@
+﻿{
+    "Id":  "PMDG_777",
+    "Name":  "PMDG 777",
+    "Vendor":  "pmdg",
+    "MatchTitles":  [
+                        "pmdg",
+                        "777",
+                        "B77",
+                        "0-9W",
+                        "PMDG 777"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:ngx_MCP_App",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_2281_a",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_2031_a",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_2291_a",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_2111_a",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ngx_MCP_Loc",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      }
+                  ]
+}

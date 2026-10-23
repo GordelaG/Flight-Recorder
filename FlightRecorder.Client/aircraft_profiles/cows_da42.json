@@ -1,0 +1,71 @@
+{
+  "Id": "cows_da42",
+  "Name": "COWS DA42",
+  "Vendor": "COWS",
+  "MatchTitles": [
+    "COWS DA42",
+    "DA42"
+  ],
+  "Variables": [
+    {
+      "Name": "L:GEAR_EMERGENCY",
+      "Unit": "number",
+      "Description": "EMERGENCY GEAR EXTENSION HANDLE TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INPUT_TRIM_AXIS",
+      "Unit": "number",
+      "Description": "Elevator Trim UP",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CB_ALT:1",
+      "Unit": "number",
+      "Description": "DA42 BREAKER ALT. LH TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_ALT:2",
+      "Unit": "number",
+      "Description": "DA42 BREAKER ALT. RH TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_ECUBAT:1",
+      "Unit": "number",
+      "Description": "DA42 BREAKER LH BATT TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_ECUBAT:2",
+      "Unit": "number",
+      "Description": "DA42 BREAKER RH BATT TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_ECUBUS:1",
+      "Unit": "number",
+      "Description": "DA42 BREAKER LH ECU BUS TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_ECUBUS:2",
+      "Unit": "number",
+      "Description": "DA42 BREAKER RH ECU BUS TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENGINE_ALTERNATE_AIR",
+      "Unit": "number",
+      "Description": "ALTERNATE AIR VALVE TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HEADSET",
+      "Unit": "number",
+      "Description": "HEADSET ON",
+      "Interpolate": false
+    }
+  ]
+}

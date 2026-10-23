@@ -1,0 +1,65 @@
+{
+  "Id": "mgharib_hondajet_ha420",
+  "Name": "MGharib HondaJet HA420",
+  "Vendor": "MGharib",
+  "MatchTitles": [
+    "MGharib HondaJet HA420",
+    "HondaJet HA420"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "HA420 AP VNV Button Push",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FLC_Pushed",
+      "Unit": "bool",
+      "Description": "HA420 AP SPEED BUTTON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HJET_AP_ALT_VAR",
+      "Unit": "Number",
+      "Description": "HA420 AP ALT VAR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VS_Pushed",
+      "Unit": "bool",
+      "Description": "HA420 AP VS BUTTON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "bool",
+      "Description": "HA420 AP CO BUTTON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SpeedIsManuallySet",
+      "Unit": "number",
+      "Description": "HA420 AP SPD SEL Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HJET_BusTie",
+      "Unit": "Bool",
+      "Description": "HA420 ELEC Bus Tie Button Open Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HJET_CabinRelay",
+      "Unit": "bool",
+      "Description": "HA420 ELEC Cabin Power Button Off Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:mf_PressTime",
+      "Unit": "number",
+      "Description": "HA420 TSC R Right Inner Knob Release",
+      "Interpolate": false
+    }
+  ]
+}

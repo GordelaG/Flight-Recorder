@@ -1,0 +1,107 @@
+{
+  "Id": "inibuilds_an225",
+  "Name": "IniBuilds AN225",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds AN225",
+    "AN225"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AN225_BATT1_SWITCH",
+      "Unit": "number",
+      "Description": "AN225 ELEC BATTERY 1 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_BATT2_SWITCH",
+      "Unit": "number",
+      "Description": "AN225 ELEC BATTERY 2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_BATT3_SWITCH",
+      "Unit": "number",
+      "Description": "AN225 ELEC BATTERY 3 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_BATT4_SWITCH",
+      "Unit": "number",
+      "Description": "AN225 ELEC BATTERY 4 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_BATT5_SWITCH",
+      "Unit": "number",
+      "Description": "AN225 ELEC BATTERY 5 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG1_GEN_ON",
+      "Unit": "number",
+      "Description": "AN225 ELEC GENERATOR 1 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG2_GEN_BUS_TOGGLE",
+      "Unit": "number",
+      "Description": "AN225 ELEC RECTIFIER 2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG2_GEN_ON",
+      "Unit": "number",
+      "Description": "AN225 ELEC GENERATOR 2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG3_GEN_BUS_TOGGLE",
+      "Unit": "number",
+      "Description": "AN225 ELEC RECTIFIER 3 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG3_GEN_ON",
+      "Unit": "number",
+      "Description": "AN225 ELEC GENERATOR 3 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG4_GEN_BUS_TOGGLE",
+      "Unit": "number",
+      "Description": "AN225 ELEC RECTIFIER 4 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_ENG4_GEN_ON",
+      "Unit": "number",
+      "Description": "AN225 ELEC GENERATOR 4 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_TR1_STATUS",
+      "Unit": "number",
+      "Description": "AN225 ELEC TRANSFORMER 1 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_TR2_STATUS",
+      "Unit": "number",
+      "Description": "AN225 ELEC TRANSFORMER 2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_TR3_STATUS",
+      "Unit": "number",
+      "Description": "AN225 ELEC TRANSFORMER 3 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AN225_TR4_STATUS",
+      "Unit": "number",
+      "Description": "AN225 ELEC TRANSFORMER 4 TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

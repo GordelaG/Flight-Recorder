@@ -1,0 +1,29 @@
+﻿{
+    "Id":  "AEROSOFT_CRJ",
+    "Name":  "Aerosoft CRJ 550/700/900/1000",
+    "Vendor":  "aerosoft",
+    "MatchTitles":  [
+                        "crj",
+                        "Aerosoft CRJ 550/700/900/1000"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:ASCRJ_GEAR_NOSE_POS",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ASCRJ_GEAR_LEFT_POS",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ASCRJ_GEAR_RIGHT_POS",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      }
+                  ]
+}

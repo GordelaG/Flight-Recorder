@@ -1,0 +1,204 @@
+{
+  "Id": "pmdg_b777_300er",
+  "Name": "PMDG B777 300ER",
+  "Vendor": "PMDG",
+  "MatchTitles": [
+    "PMDG B777 300ER",
+    "B777 300ER",
+    "777"
+  ],
+  "Variables": [
+    {
+      "Name": "L:switch_512_a",
+      "Unit": "number",
+      "Description": "PMDG B777 PED ALTN FLAPS KNOB OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_498_a",
+      "Unit": "number",
+      "Description": "PMDG B777 PED Spoiler Lever Position",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:switch_54_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Thrust Asym Comp On",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:myRudderTimer",
+      "Unit": "number",
+      "Description": "PMDG B777 Rudder Trim Timer Output",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:RudderTrimKnob",
+      "Unit": "number",
+      "Description": "PMDG B777 Rudder Trim Nose Left",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:switch_292_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Autobrake RTO",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_515_a",
+      "Unit": "Number",
+      "Description": "PMDG B777 Parking Brake",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT FLOOD Brightness Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_INBD_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT INBD DSPL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_INBD_TERR_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT INBD TERR DSPL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_OUTBD_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT OUTBD DSPL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT PNL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_CB_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 CB Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_DOME_SWITCH",
+      "Unit": "number",
+      "Description": "PMDG B777 Dome Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_GS_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Glareshield Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_GS_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Panel Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_MASTER_BRIGHT_ROTATE",
+      "Unit": "number",
+      "Description": "PMDG B777 Master Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Ovhd Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Aisle Stand Flood Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_LOWER_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Pedestal Lower Display Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_LOWER_TERR_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Pedestal Lower Terr Display Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Aisle Stand Panel Light Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_UPPER_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 Pedestal Upper Display Brightness Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RIGHT_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD RIGHT FLOOD Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RIGHT_INBD_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD RIGHT INBD DSPL Brightness Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RIGHT_INBD_TERR_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD RIGHT INBD TERR DSPL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RIGHT_OUTBD_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD RIGHT OUTBD DSPL Brightness Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:RIGHT_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B777 FWD LEFT PNL Brightness Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_114_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Beacon Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_115_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Nav Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_116_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Logo Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_117_a",
+      "Unit": "number",
+      "Description": "PMDG B777 Wing Light On",
+      "Interpolate": false
+    }
+  ]
+}

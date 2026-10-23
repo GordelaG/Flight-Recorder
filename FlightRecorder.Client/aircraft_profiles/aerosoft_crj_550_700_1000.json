@@ -1,0 +1,204 @@
+{
+  "Id": "aerosoft_crj_550_700_1000",
+  "Name": "Aerosoft CRJ 550-700-1000",
+  "Vendor": "Aerosoft",
+  "MatchTitles": [
+    "Aerosoft CRJ 550-700-1000",
+    "CRJ 550-700-1000",
+    "CRJ"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ASCRJ_FLAPS_SET",
+      "Unit": "number",
+      "Description": "ASCRJ_FLAPS_SET",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:ASCRJ_TQ_REV1_MODE",
+      "Unit": "Bool",
+      "Description": "ASCRJ_REV_1_ARM_SWITCH_TOGGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:ASCRJ_TQ_REV2_MODE",
+      "Unit": "Bool",
+      "Description": "ASCRJ_REV_2_ARM_SWITCH_TOGGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:ASCRJ_GEAR_NOSE_POS",
+      "Unit": "number",
+      "Description": "ASCRJ_GEAR_NOSE_POS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_PARK_BRAKE",
+      "Unit": "number",
+      "Description": "ASCRJ_PARK_BRAKE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_ENG_LAMPTEST",
+      "Unit": "Number",
+      "Description": "ASCRJ_LAMP_TEST_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_EXTL_BEACON",
+      "Unit": "Bool",
+      "Description": "ASCRJ_EXTL_BEACON_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_EXTL_LOGO",
+      "Unit": "Bool",
+      "Description": "ASCRJ_EXTL_LOGO_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_EXTL_NAV",
+      "Unit": "Bool",
+      "Description": "ASCRJ_EXTL_NAV_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_EXTL_STROBE",
+      "Unit": "Bool",
+      "Description": "ASCRJ_EXTL_STROBE_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_EXTL_WING",
+      "Unit": "Bool",
+      "Description": "ASCRJ_EXTL_WING_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_FCP_NAV_LED",
+      "Unit": "number",
+      "Description": "ASCRJ_FCP_LNAV_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_FCP_VNAV_LED",
+      "Unit": "number",
+      "Description": "ASCRJ_FCP_VNAV_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HUD_CLR_LED",
+      "Unit": "Bool",
+      "Description": "ASCRJ_HUD_CLR_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HUD_GS_LED_",
+      "Unit": "Bool",
+      "Description": "ASCRJ_HUD_GS_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HUD_KEY_TEST_LED",
+      "Unit": "Bool",
+      "Description": "ASCRJ_HUD_KEY_TEST_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HUD_RWY_LED",
+      "Unit": "Bool",
+      "Description": "ASCRJ_HUD_RWY_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HYDR_SOV1_CLOSED",
+      "Unit": "number",
+      "Description": "L_HYD_SOV_BUTTON_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_HYDR_SOV2_CLOSED",
+      "Unit": "number",
+      "Description": "R_HYD_SOV_BUTTON_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_INTL_CB_PNL_BRT",
+      "Unit": "Number",
+      "Description": "ASCRJ_INTL_CB_PNL_BRT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_INTL_DSPL_BRT",
+      "Unit": "Number",
+      "Description": "ASCRJ_INTL_DSPL_BRT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_INTL_FLOOD_BRT",
+      "Unit": "Number",
+      "Description": "ASCRJ_INTL_FLOOD_BRT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_INTL_INTEG_BRT",
+      "Unit": "Number",
+      "Description": "ASCRJ_INTL_INTEG_BRT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_INTL_OVHD",
+      "Unit": "Number",
+      "Description": "ASCRJ_INTL_OVHD_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_BARO_CHANGE",
+      "Unit": "2",
+      "Description": "ASCRJ_LSP_BARO_CHANGE_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_DSPL",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_DSPL_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_FLOOD",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_FLOOD_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_FORMAT",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_FORMAT_CHANGE_ENCOD_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_HEIGHT_MODE",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_HEIGHT_MODE_MDA",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_HEIGHT_SEL_CHANGE",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_HEIGHT_SEL_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_INTEG",
+      "Unit": "Number",
+      "Description": "ASCRJ_LSP_INTEG_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASCRJ_LSP_NAV_SOURCE_CHANGE",
+      "Unit": "number",
+      "Description": "ASCRJ_LSP_NAV_SOURCE_CHANGE_INC",
+      "Interpolate": false
+    }
+  ]
+}

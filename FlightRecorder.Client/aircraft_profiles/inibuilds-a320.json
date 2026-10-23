@@ -1,0 +1,32 @@
+﻿{
+    "Id":  "INIBUILDS_A320",
+    "Name":  "IniBuilds A320",
+    "Vendor":  "inibuilds",
+    "MatchTitles":  [
+                        "ini",
+                        "builds",
+                        "inisim",
+                        "320",
+                        "IniBuilds A320"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:INI_APPROACH_BUTTON",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:INI_ap1_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:INI_ap2_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

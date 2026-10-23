@@ -1,0 +1,17 @@
+{
+  "Id": "cowan_simulation_h_125",
+  "Name": "Cowan Simulation H 125",
+  "Vendor": "Cowan Simulation",
+  "MatchTitles": [
+    "Cowan Simulation H 125",
+    "H 125"
+  ],
+  "Variables": [
+    {
+      "Name": "L:DEICE_Pitot_1",
+      "Unit": "bool",
+      "Description": "H125 PITOT Button Press",
+      "Interpolate": false
+    }
+  ]
+}

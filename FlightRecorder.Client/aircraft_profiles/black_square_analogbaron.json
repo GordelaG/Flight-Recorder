@@ -1,0 +1,23 @@
+{
+  "Id": "black_square_analogbaron",
+  "Name": "Black Square AnalogBaron",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square AnalogBaron",
+    "AnalogBaron"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_FuelVentHeatSwitch",
+      "Unit": "bool",
+      "Description": "Fuel Vent",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_StallWarningHeatSwitch",
+      "Unit": "bool",
+      "Description": "Stall Warn Heat ON",
+      "Interpolate": false
+    }
+  ]
+}

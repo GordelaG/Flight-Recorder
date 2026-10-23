@@ -1,0 +1,23 @@
+{
+  "Id": "house_atreides_ornithopter",
+  "Name": "House Atreides Ornithopter",
+  "Vendor": "House Atreides",
+  "MatchTitles": [
+    "House Atreides Ornithopter",
+    "Ornithopter"
+  ],
+  "Variables": [
+    {
+      "Name": "L:Wings_FoldL",
+      "Unit": "Percentage",
+      "Description": "Thopter: Left Wing Status Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Wings_FoldR",
+      "Unit": "percentage",
+      "Description": "Thopter: Right Wing Status Light",
+      "Interpolate": false
+    }
+  ]
+}

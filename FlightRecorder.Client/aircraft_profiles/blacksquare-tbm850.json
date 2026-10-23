@@ -1,0 +1,32 @@
+﻿{
+    "Id":  "BLACKSQUARE_TBM850",
+    "Name":  "Black Square TBM850",
+    "Vendor":  "blacksquare",
+    "MatchTitles":  [
+                        "black",
+                        "square",
+                        "tbm",
+                        "850",
+                        "Black Square TBM850"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:var_GearLight_L_readonly",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:var_GearLight_N_readonly",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:var_GearLight_R_readonly",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      }
+                  ]
+}

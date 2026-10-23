@@ -1,0 +1,41 @@
+{
+  "Id": "carenado_c170b",
+  "Name": "Carenado C170B",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado C170B",
+    "C170B"
+  ],
+  "Variables": [
+    {
+      "Name": "L:GPS_VIS",
+      "Unit": "Bool",
+      "Description": "C170B_GPS_VISIBILITY_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SUNVISOR1",
+      "Unit": "number",
+      "Description": "C170B_SUNVISOR_PILOT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SUNVISOR2",
+      "Unit": "number",
+      "Description": "C170B_SUNVISOR_COPILOT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_DUMMY_AIR_TEMP",
+      "Unit": "Bool",
+      "Description": "C170B_AIR_VENT_COPILOT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_DUMMY_WINDOWS",
+      "Unit": "Bool",
+      "Description": "C170B_AIR_VENT_PILOT_TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

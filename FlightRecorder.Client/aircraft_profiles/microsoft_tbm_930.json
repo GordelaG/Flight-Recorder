@@ -1,0 +1,173 @@
+{
+  "Id": "microsoft_tbm_930",
+  "Name": "Microsoft TBM 930",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft TBM 930",
+    "TBM 930"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ParkingBrake_Position",
+      "Unit": "number",
+      "Description": "TBM930_ParkingBrake_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_1",
+      "Unit": "number",
+      "Description": "TBM930 Landing Lights Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LOGO_1",
+      "Unit": "number",
+      "Description": "TBM930 PULSE LIGHT TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_NAV_1",
+      "Unit": "number",
+      "Description": "TBM930_NAV_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_STROBE_1",
+      "Unit": "number",
+      "Description": "TBM930_STROBE_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_LTS_TEST",
+      "Unit": "Number",
+      "Description": "TBM930_LTS_TEST_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SunVisorX_1",
+      "Unit": "Number",
+      "Description": "TBM930_PILOT_VISOR_LEFT-RIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SunVisorX_2",
+      "Unit": "Number",
+      "Description": "TBM930_COPILOT_VISOR_LEFT-RIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SunVisorY_1",
+      "Unit": "Number",
+      "Description": "TBM930_PILOT_VISOR_UP-DOWN_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SunVisorY_2",
+      "Unit": "Number",
+      "Description": "TBM930_COPILOT_VISOR_UP-DOWN_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_BackDoor_State",
+      "Unit": "number",
+      "Description": "TBM930_BACK_DOOR_LEVER_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_BackDoor_Unlock",
+      "Unit": "number",
+      "Description": "TBM930_BACK_DOOR_LOCK_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_CargoDoor_State",
+      "Unit": "number",
+      "Description": "TBM930_CARGO_DOOR_LEVER_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_FrontDoor_State",
+      "Unit": "number",
+      "Description": "TBM930_FRONT_DOOR_LEVER_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_FrontDoor_Unlock",
+      "Unit": "number",
+      "Description": "TBM930_FRONT_DOOR_LOCK_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_HideCoPilot",
+      "Unit": "number",
+      "Description": "TBM930_SHOW-HIDE_COPILOT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TBM930_HidePilot",
+      "Unit": "number",
+      "Description": "TBM930_SHOW-HIDE_PILOT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "TBM930_AUTOPILOT_VNV_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "TBM930_AUTOPILOT_IAS_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_APTrim",
+      "Unit": "number",
+      "Description": "TBM930_AUTOPILOT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_PushXFR",
+      "Unit": "number",
+      "Description": "=TBM930_Improvements_Mod_AUTOPILOT_XFR_TOGGLE=",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Generic_Master_Caution_Active",
+      "Unit": "number",
+      "Description": "MASTER_CAUTION_YELLOW_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Generic_Master_Warning_Active",
+      "Unit": "number",
+      "Description": "MASTER_WARNING_RED_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_ELT_STATE",
+      "Unit": "number",
+      "Description": "TBM930_ELT_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_IsDeiceAirFrame",
+      "Unit": "Number",
+      "Description": "TBM930_AIRFRAME_DE_ICE_LED_LEFT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_IsDeiceAirFrame2",
+      "Unit": "number",
+      "Description": "TBM930_AIRFRAME_DE_ICE_LED_RIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Pitot_1",
+      "Unit": "number",
+      "Description": "TBM930_Pitot_L_TOG",
+      "Interpolate": false
+    }
+  ]
+}

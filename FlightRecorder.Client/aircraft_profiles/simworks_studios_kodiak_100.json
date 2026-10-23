@@ -1,0 +1,173 @@
+{
+  "Id": "simworks_studios_kodiak_100",
+  "Name": "SimWorks Studios Kodiak 100",
+  "Vendor": "SimWorks Studios",
+  "MatchTitles": [
+    "SimWorks Studios Kodiak 100",
+    "Kodiak 100"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_11",
+      "Unit": "number",
+      "Description": "OVERHEAD_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_LIGHTING_Switch_Light_Cabin_1",
+      "Unit": "Bool",
+      "Description": "READING_LIGHT_PILOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_LIGHTING_Switch_Light_Cabin_2",
+      "Unit": "Bool",
+      "Description": "READING_LIGHT_COPILOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "Bool",
+      "Description": "Kodiak 100 AP VS control DN",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_ACCS_Passenger",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_ACCS_Passenger_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_ACCS_Pilot",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_ACCS_Pilot_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Auto_Passenger",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Fan_Passenger_Auto_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Auto_Pilot",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Fan_Pilot_Auto_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Compressor",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_AC_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Defog",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Defog_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Fanspeed_Passenger",
+      "Unit": "enum",
+      "Description": "Kodiak100_Aircon_Fan_Passenger_dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_Fanspeed_Pilot",
+      "Unit": "enum",
+      "Description": "Kodiak100_Aircon_Fan_Pilot_dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_FloorVentOpen",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Floor_Vent_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterL1",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_L1_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterL2",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_L2_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterL3",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_L3_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterR1",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_R1_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterR2",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_R2_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterR3",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_R3_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterR4",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_R4_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_HeaterR5",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Heater_R5_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_MaxFreshAirAft",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Max_Fresh_Air_Aft_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_MaxFreshAirFwd",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Max_Fresh_Air_Fwd_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_SwitchPage",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Page_toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KodiakAC_TemperatureUnitsSel",
+      "Unit": "Bool",
+      "Description": "Kodiak100_Aircon_Temp_Pilot_inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWS_ENGINE_Switch_Ignition_1",
+      "Unit": "Bool",
+      "Description": "Kodiak 100 Ignition toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AUX_Bus_ON",
+      "Unit": "Bool",
+      "Description": "KODIAK_100_AUX_BUS_TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

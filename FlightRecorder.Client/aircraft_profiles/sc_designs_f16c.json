@@ -1,0 +1,203 @@
+{
+  "Id": "sc_designs_f16c",
+  "Name": "SC Designs F16C",
+  "Vendor": "SC Designs",
+  "MatchTitles": [
+    "SC Designs F16C",
+    "F16C"
+  ],
+  "Variables": [
+    {
+      "Name": "L:HANDLING_ElevatorTrim",
+      "Unit": "number",
+      "Description": "F16C_LEFT_PITCH_TRIM_UP",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A320_Neo_MFD_NAV_MODE",
+      "Unit": "number",
+      "Description": "F16C_MFD_1_UPPER_BUTTON_RIGHT_Down_NavModeInc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_1",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_LIGHT_CABIN_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_1",
+      "Unit": "number",
+      "Description": "F16C_LEFT_LANDING_LIGHTS_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_NAV_1",
+      "Unit": "number",
+      "Description": "F16C_LEFT_EXTLT_NAV_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_LIGHT_PANEL_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PEDESTRAL_1",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_LIGHT_MAIL_FLOOD_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_11",
+      "Unit": "number",
+      "Description": "F16C_MFD_1_CORNER1_Down_BrtInc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_12",
+      "Unit": "number",
+      "Description": "F16C_MFD_2_CORNER1_Down_BrtInc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_13",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_LIGHT_DED_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_2",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_LIGHT_INSTR_FLOOD_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_RECOGNITION_1",
+      "Unit": "number",
+      "Description": "F16C_LEFT_EXTLT_REFUEL_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:NAVGPS",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_GPS_NAV_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GCAS",
+      "Unit": "number",
+      "Description": "F16C_MFD_2_BUTTON_R5_Gcas",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MODE_ALTITUDE",
+      "Unit": "bool",
+      "Description": "F16C_MFD_2_BUTTON_2_ApAltMod",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MODE_SPEED",
+      "Unit": "bool",
+      "Description": "F16C_MFD_2_BUTTON_1_ApSpdMod",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SIMVAR",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_AP_IAS_HOLD_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "F16C_MFD_2_BUTTON_L5_SpdMach",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_TRK_FPA_MODE_ACTIVE",
+      "Unit": "bool",
+      "Description": "F16C_MFD_2_BUTTON_9_ApTrkFpa",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:01_ON",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_CMDS_01_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:02_ON",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_CMDS_02_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:03_ON",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_CMDS_CH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:04_ON",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_CMDS_FL_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A320_Neo_MFD_Range",
+      "Unit": "number",
+      "Description": "F16C_MFD_1_UPPER_BUTTON_LEFT_Down_RangeInc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ABRESET",
+      "Unit": "number",
+      "Description": "F16C_LEFT_AB_RESET_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Air_Source",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_AIR_SOURCE_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AIRCOND",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_AIRCOND_TEMP_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_TRIM",
+      "Unit": "bool",
+      "Description": "F16C_LEFT_AP_TRIM_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ATT_FPM",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_ATT_FPM_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUDIO_IN",
+      "Unit": "number",
+      "Description": "F16C_RIGHT_AUDIO_IN_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BTN_TERRONND_ACTIVE",
+      "Unit": "bool",
+      "Description": "F16C_MFD_1_BUTTON_6_TerronND",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BTN_WX_ACTIVE",
+      "Unit": "bool",
+      "Description": "F16C_MFD_1_BUTTON_7_WX",
+      "Interpolate": false
+    }
+  ]
+}

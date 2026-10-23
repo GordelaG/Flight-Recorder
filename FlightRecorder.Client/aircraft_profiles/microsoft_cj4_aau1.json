@@ -1,0 +1,119 @@
+{
+  "Id": "microsoft_cj4_aau1",
+  "Name": "Microsoft CJ4 AAU1",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft CJ4 AAU1",
+    "CJ4 AAU1"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_CABIN_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_CABIN1_LIGHT_SET",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_2",
+      "Unit": "number",
+      "Description": "WT_CJ4_CABIN2_LIGHT_SET",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_3",
+      "Unit": "number",
+      "Description": "Center ceiling light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_1",
+      "Unit": "number",
+      "Description": "CJ4 LANDING LIGHTS TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "CJ4_LIGHT_PANEL_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_RECOGNITION_1",
+      "Unit": "number",
+      "Description": "CJ4_LIGHTS_PULSE_ON_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_TAXI_1",
+      "Unit": "number",
+      "Description": "CJ4 TAXI LIGHTS TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT21_AOA_PCT",
+      "Unit": "number",
+      "Description": "CJ4 AOA INDICATOR UP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro2_ForcedToSTD",
+      "Unit": "bool",
+      "Description": "CJ4_AS3000_BARO_3_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Exclusive_Light_Last_Changed",
+      "Unit": "number",
+      "Description": "CJ4 LANDING LIGHTS ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "CJ4_AUTOPILOT_VNAV_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_PushXFR",
+      "Unit": "number",
+      "Description": "CJ4_AUTOPILOT_XFR_PRESSED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_Airframe_1",
+      "Unit": "number",
+      "Description": "CJ4_DEICE_WING_ENG_L_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_Airframe_2",
+      "Unit": "number",
+      "Description": "CJ4_DEICE_WING_ENG_R_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_CLIMATE_CONTROL",
+      "Unit": "number",
+      "Description": "Climate Control",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "bool",
+      "Description": "CJ4_AS3000_BARO_1_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Essential_Bus_ON",
+      "Unit": "number",
+      "Description": "CJ4_ELECTRICAL_BATTERY_1_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_YokeHidden1",
+      "Unit": "number",
+      "Description": "Hide Pilot and Co-Pilot Yokes",
+      "Interpolate": false
+    }
+  ]
+}

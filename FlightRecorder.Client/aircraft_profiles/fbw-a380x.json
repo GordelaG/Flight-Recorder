@@ -1,0 +1,32 @@
+﻿{
+    "Id":  "FBW_A380X",
+    "Name":  "Fly By Wire A380X",
+    "Vendor":  "fbw",
+    "MatchTitles":  [
+                        "flybywire",
+                        "fbw",
+                        "a32nx",
+                        "380",
+                        "Fly By Wire A380X"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:A32NX_FCU_APPR_MODE_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:A32NX_AUTOPILOT_1_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:A32NX_AUTOPILOT_2_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

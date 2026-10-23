@@ -1,0 +1,23 @@
+{
+  "Id": "microsoft_da62",
+  "Name": "Microsoft DA62",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft DA62",
+    "DA62"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_GLARESHIELD_1",
+      "Unit": "number",
+      "Description": "DA62_FLOOD_LIGHTS_DIMMER_SET",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "DA62_INSTRUMENT_LIGHTS_DIMMER_SET",
+      "Interpolate": false
+    }
+  ]
+}

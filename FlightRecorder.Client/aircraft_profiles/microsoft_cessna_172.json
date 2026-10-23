@@ -1,0 +1,59 @@
+{
+  "Id": "microsoft_cessna_172",
+  "Name": "Microsoft Cessna 172",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft Cessna 172",
+    "Cessna 172"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "Percent",
+      "Description": "Backlight STBY Ind",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PEDESTRAL_1",
+      "Unit": "number",
+      "Description": "C_172_PEDESTRAL_LIGHT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_3",
+      "Unit": "percent",
+      "Description": "C_172_PANEL_LIGHT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_4",
+      "Unit": "number",
+      "Description": "C_172_AVIONICS_LIGHT_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_5",
+      "Unit": "number",
+      "Description": "AVIONICS BRIGHTNESS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_Pitot_1",
+      "Unit": "number",
+      "Description": "C_172 Pitot Heat Toggle ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_BatterySTBY_SwitchState",
+      "Unit": "number",
+      "Description": "C_172_STBYBATTERY_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_STBYBattery_Test",
+      "Unit": "bool",
+      "Description": "C172 Standby Battery Switch Test ",
+      "Interpolate": false
+    }
+  ]
+}

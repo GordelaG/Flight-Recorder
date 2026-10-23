@@ -1,0 +1,23 @@
+{
+  "Id": "microsoft_cirrus_sf50_vision_jet_msfs2024",
+  "Name": "Microsoft Cirrus SF50 Vision Jet (MSFS2024)",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft Cirrus SF50 Vision Jet (MSFS2024)",
+    "Cirrus SF50 Vision Jet (MSFS2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "Toggle Autopilot VNV Mode on and off",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_TOGA_ACTIVE",
+      "Unit": "number",
+      "Description": "SF50 TOGA annunciator",
+      "Interpolate": false
+    }
+  ]
+}

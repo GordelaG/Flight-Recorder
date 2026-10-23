@@ -1,0 +1,204 @@
+{
+  "Id": "tfdi_md11",
+  "Name": "TFDi MD11",
+  "Vendor": "TFDi",
+  "MatchTitles": [
+    "TFDi MD11",
+    "MD11",
+    "MD-11"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MD11_CTR_SLAT_STOW_LT",
+      "Unit": "bool",
+      "Description": "Slat stow light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:md11_flap_rng",
+      "Unit": "number",
+      "Description": "Set Flaps Up",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MD11_OVHD_FLTCTL_FLAPLIM_LT",
+      "Unit": "bool",
+      "Description": "Flap limit light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_MIP_NOSE_GREEN_LT",
+      "Unit": "bool",
+      "Description": "Nose gear green light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_MIP_NOSE_RED_LT",
+      "Unit": "bool",
+      "Description": "Nose gear red light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_ATS_STATE",
+      "Unit": "number",
+      "Description": "FGS ATS State",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MD11_OVHD_AIL_DEFL_OVRD_LT",
+      "Unit": "bool",
+      "Description": "Aileron deflection override light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MD11_OVHD_FLTCTL_ELEVFEEL_LT",
+      "Unit": "bool",
+      "Description": "Elevator feel light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:md11_ctr_autobrake_sw",
+      "Unit": "number",
+      "Description": "Autobrake Selector T.O.",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_GSL_ABS_DISARM_LT",
+      "Unit": "bool",
+      "Description": "Autobrake disarm light (left)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_GSR_ABS_DISARM_LT",
+      "Unit": "bool",
+      "Description": "Autobrake disarm light (right)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_BLANK_LT",
+      "Unit": "bool",
+      "Description": "APU blank light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_DOOR_LT",
+      "Unit": "bool",
+      "Description": "APU door light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_FAIL_LT",
+      "Unit": "bool",
+      "Description": "APU fail light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_FUEL_LT",
+      "Unit": "bool",
+      "Description": "APU fuel light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_GEN_LT",
+      "Unit": "bool",
+      "Description": "APU generator light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_OFF_LT",
+      "Unit": "bool",
+      "Description": "APU off light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APU_ON_LT",
+      "Unit": "bool",
+      "Description": "APU on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_APUFIRE_LT",
+      "Unit": "bool",
+      "Description": "APU fire light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_AGNT1_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft agent 1 light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_AGNT1LO_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft agent 1 low light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_AGNT2_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft agent 2 light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_AGNT2LO_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft agent 2 low light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_HEAT_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft heat light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_SMOKE_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft smoke light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_VENTDISAG_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft vent disagree light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_AFT_VENTOFF_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke aft vent off light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_FWD_AGNT1_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke forward agent 1 light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_FWD_AGNT1LO_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke forward agent 1 low light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_FWD_AGNT2_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke forward agent 2 light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_FWD_AGNT2LO_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke forward agent 2 low light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MD11_AOVHD_CRGSMK_FWD_HEAT_LT",
+      "Unit": "bool",
+      "Description": "Cargo smoke forward heat light",
+      "Interpolate": false
+    }
+  ]
+}

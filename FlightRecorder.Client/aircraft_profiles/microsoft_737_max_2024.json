@@ -1,0 +1,84 @@
+{
+  "Id": "microsoft_737_max_2024",
+  "Name": "Microsoft 737 Max 2024",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft 737 Max 2024",
+    "737 Max 2024",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AP_LNAV_ARMED",
+      "Unit": "number",
+      "Description": "AP_LNAV_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VNAV_ARMED",
+      "Unit": "number",
+      "Description": "AP_VNAV_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:1:XMLVAR_INDICATOR_INFO_FCC_CMD_1",
+      "Unit": "number",
+      "Description": "CMD A Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:1:XMLVAR_INDICATOR_INFO_FCC_CMD_2",
+      "Unit": "number",
+      "Description": "CMD B Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_ALT_HOLD_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_ALT_HOLD_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_APR_ARMED",
+      "Unit": "number",
+      "Description": "AP_APR_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_FLCH_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_FLCH_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_HEADING_SELECT_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_HEADING_SELECT_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_LOC_ARMED",
+      "Unit": "number",
+      "Description": "AP_LOC_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_SPD_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_SPD_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:N1_ACTIVE",
+      "Unit": "number",
+      "Description": "N1_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VS_ACTIVE",
+      "Unit": "number",
+      "Description": "VS_ACTIVE",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "Id": "inibuilds_a340_300",
+  "Name": "IniBuilds A340-300",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A340-300",
+    "A340-300"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_AUTOBRAKE_HI_DECEL",
+      "Unit": "Bool",
+      "Description": "Autobrake MAX Decel",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_LEVEL",
+      "Unit": "number",
+      "Description": "Autobrake Low ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_LOW_DECEL",
+      "Unit": "Bool",
+      "Description": "Autobrake Low Decel",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_MED_DECEL",
+      "Unit": "Bool",
+      "Description": "Autobrake Med Decel",
+      "Interpolate": false
+    }
+  ]
+}

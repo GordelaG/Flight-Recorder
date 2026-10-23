@@ -1,0 +1,89 @@
+{
+  "Id": "just_flight_f100",
+  "Name": "Just Flight F100",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight F100",
+    "F100"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AFCAS_ALT_KNOB_ROTATE",
+      "Unit": "enum",
+      "Description": "JF F100 AFCAS Altitude Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_ALT_WINDOW_1",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS ALT Window",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_APDisc_Switch",
+      "Unit": "number",
+      "Description": "AP_Disconnect_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_FDFPV_Switch",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS CPT FD Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_FDFPV2_Switch",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS FO FD Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_HDG_KNOB_ROTATE",
+      "Unit": "enum",
+      "Description": "JF F100 AFCAS Heading Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_HDG_WINDOW_1",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS HDG Window",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_SPD_KNOB_ROTATE",
+      "Unit": "enum",
+      "Description": "JF F100 AFCAS Speed Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_SPD_WINDOW_1",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS SPD Window",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_VS_Wheel",
+      "Unit": "enum",
+      "Description": "JF F100 AFCAS VS Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AFCAS_VS_WINDOW_2",
+      "Unit": "number",
+      "Description": "JF F100 AFCAS VS Window",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:EFIS_DH_Inner",
+      "Unit": "enum",
+      "Description": "DA/DH/FPA Inc.",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ILS_KNOB_CRS",
+      "Unit": "enum",
+      "Description": "CRS Inc.",
+      "Interpolate": false
+    }
+  ]
+}

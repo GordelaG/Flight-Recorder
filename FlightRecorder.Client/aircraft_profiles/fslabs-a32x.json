@@ -1,0 +1,23 @@
+﻿{
+    "Id":  "FSLABS_A32X",
+    "Name":  "FSLabs A319/A320/A321",
+    "Vendor":  "fslabs",
+    "MatchTitles":  [
+                        "labs",
+                        "FSLabs A319/A320/A321"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:VC_GSLD_FCU_AP1_Brt_Lt",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:VC_GSLD_FCU_AP2_Brt_Lt",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

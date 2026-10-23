@@ -1,0 +1,29 @@
+{
+  "Id": "black_square_starship",
+  "Name": "Black Square Starship",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Starship",
+    "Starship"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_GearIndicator_N_EM_readonly",
+      "Unit": "number",
+      "Description": "BS Starship Nose Gear Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MasterCaution_EM_L_readonly",
+      "Unit": "number",
+      "Description": "BS Starship Master Caution Light Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MasterWarningButton_L_EM_readonly",
+      "Unit": "number",
+      "Description": "BS Starship Master Warning Light Left",
+      "Interpolate": false
+    }
+  ]
+}

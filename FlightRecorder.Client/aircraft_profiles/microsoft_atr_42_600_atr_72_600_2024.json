@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_atr_42_600_atr_72_600_2024",
+  "Name": "Microsoft ATR 42-600, ATR 72-600 (2024)",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft ATR 42-600, ATR 72-600 (2024)",
+    "ATR 42-600, ATR 72-600 (2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MSATR_ENG_GUSTLOCK",
+      "Unit": "number",
+      "Description": "ATR GUST LOCK indicator",
+      "Interpolate": false
+    }
+  ]
+}

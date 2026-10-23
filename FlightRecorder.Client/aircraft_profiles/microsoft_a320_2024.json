@@ -1,0 +1,24 @@
+{
+  "Id": "microsoft_a320_2024",
+  "Name": "Microsoft A320 (2024)",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft A320 (2024)",
+    "A320 (2024)",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:__FCU_ALT_UNITSIsPressed",
+      "Unit": "number",
+      "Description": "ALT units - 1000",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ALTITUDE_STATE",
+      "Unit": "number",
+      "Description": "ALTINC 1000",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_c208_caravan",
+  "Name": "Microsoft C208 Caravan",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft C208 Caravan",
+    "C208 Caravan"
+  ],
+  "Variables": [
+    {
+      "Name": "L:Condition_Lever_CutOff_1",
+      "Unit": "number",
+      "Description": "C208 Fuel Shutoff Button Pull Off ",
+      "Interpolate": false
+    }
+  ]
+}

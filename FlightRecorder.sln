@@ -22,6 +22,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRecorder.Client.ViewM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRecorder.Client.ViewModels.Tests", "FlightRecorder.Client.ViewModels.Tests\FlightRecorder.Client.ViewModels.Tests.csproj", "{ECCD14B7-BF20-4DE7-83C5-DBD6A86B2826}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2E9F3C80-2AA8-4179-8176-32705563F01F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRecorder.ProfileSync", "tools\FlightRecorder.ProfileSync\FlightRecorder.ProfileSync.csproj", "{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,11 +60,18 @@ Global
 		{ECCD14B7-BF20-4DE7-83C5-DBD6A86B2826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECCD14B7-BF20-4DE7-83C5-DBD6A86B2826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECCD14B7-BF20-4DE7-83C5-DBD6A86B2826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68D58B7C-DD30-4F8F-BBFA-F399DDC6ABCE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A} = {2E9F3C80-2AA8-4179-8176-32705563F01F}
 	EndGlobalSection
 EndGlobal

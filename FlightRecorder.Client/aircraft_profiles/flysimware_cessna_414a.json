@@ -1,0 +1,119 @@
+{
+  "Id": "flysimware_cessna_414a",
+  "Name": "Flysimware Cessna 414A",
+  "Vendor": "Flysimware",
+  "MatchTitles": [
+    "Flysimware Cessna 414A",
+    "Cessna 414A"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FD_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_FD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHT_TAXI",
+      "Unit": "bool",
+      "Description": "C414A_TAXI_LIGHTS_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTimer",
+      "Unit": "number",
+      "Description": "PMS_GTN750U1_Home_Short_Long_Rls",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:NAV_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_NAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALT_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_Alt",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_MODE",
+      "Unit": "Bool",
+      "Description": "Garmin_605_AP_AP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:APR_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_APR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BC_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_BC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HDG_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_HDG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:IAS_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_IAS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VS_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_VS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:YD_MODE",
+      "Unit": "bool",
+      "Description": "Garmin_605_AP_YD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALT_ARM_SWITCH",
+      "Unit": "number",
+      "Description": "Garmin_Alt_Alerter_Altitude_Arm",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_PROP",
+      "Unit": "number",
+      "Description": "CESSNA 414 PROP ANTI-ICE ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GENERIC_ALERTER_HUNDREDTHS",
+      "Unit": "number",
+      "Description": "Garmin_Alt_Alerter_100s_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GENERIC_ALERTER_THOUSANDTHS",
+      "Unit": "number",
+      "Description": "Garmin_Alt_Alerter_1000s_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GENERIC_ELECTRICAL_Switch_Battery_Master_1",
+      "Unit": "Bool",
+      "Description": "C414A Master Battery Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GENERIC_MASTER_BAR_1",
+      "Unit": "Bool",
+      "Description": "C414A Master Electrical Bar Toggle ",
+      "Interpolate": false
+    }
+  ]
+}

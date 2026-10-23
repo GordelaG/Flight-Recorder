@@ -1,0 +1,41 @@
+{
+  "Id": "black_square_commander_114",
+  "Name": "Black Square Commander 114",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Commander 114",
+    "Commander 114"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_PreselectedAltitude_100",
+      "Unit": "number",
+      "Description": "S-TEC ALT 100 Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PreselectedAltitude_1000",
+      "Unit": "number",
+      "Description": "S-TEC ALT 1,000 Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PreselectedAltitude_10000",
+      "Unit": "number",
+      "Description": "S-TEC ALT 10,000 Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PreselectedVerticalSpeed",
+      "Unit": "number",
+      "Description": "S-TEC V/S Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_TabletVisible",
+      "Unit": "Bool",
+      "Description": "Toggle Tablet",
+      "Interpolate": false
+    }
+  ]
+}

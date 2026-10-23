@@ -1,0 +1,41 @@
+{
+  "Id": "carenado_c90gtx",
+  "Name": "Carenado C90GTx",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado C90GTx",
+    "C90GTx"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ASD_RADIO_TUNING_DIM",
+      "Unit": "number",
+      "Description": "RTU BRT [LEFT]",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C90GTX_RTU_KNOB_INNER",
+      "Unit": "number",
+      "Description": "RTU - KNOB INNER [LEFT]",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C90GTX_RTU_KNOB_OUTER",
+      "Unit": "number",
+      "Description": "RTU - KNOB OUTER [LEFT]",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "number",
+      "Description": "PFD DCP (LEFT) BARO [PUSH]",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "VNAV (KEY)",
+      "Interpolate": false
+    }
+  ]
+}

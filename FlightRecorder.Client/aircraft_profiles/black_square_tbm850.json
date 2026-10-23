@@ -1,0 +1,203 @@
+{
+  "Id": "black_square_tbm850",
+  "Name": "Black Square TBM850",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square TBM850",
+    "TBM850"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_850Mode",
+      "Unit": "Number",
+      "Description": "BS TBM850 Flaps Move Backward",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GearLight_L_readonly",
+      "Unit": "bool",
+      "Description": "Gear Down Left Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GearLight_N_readonly",
+      "Unit": "bool",
+      "Description": "Gear Down Nose Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GearLight_R_readonly",
+      "Unit": "bool",
+      "Description": "Gear Down Right Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_trimDisabled",
+      "Unit": "bool",
+      "Description": "BS TBM850 Yoke Btn Rudder Trim Left",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:var_AnnunciatorTest1",
+      "Unit": "bool",
+      "Description": "BS TBM850 Parking Brake Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:EFIS_NavigationSource",
+      "Unit": "Number",
+      "Description": "BS TBM850 Efis Course Ccw",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Landing Left Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_2",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Landing Right Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_NAV_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Nav Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_RECOGNITION_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Pulse Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_STROBE_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Strobe Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_TAXI_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Oh Light Taxi Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_WING_1",
+      "Unit": "Number",
+      "Description": "BS TBM850 Deice Wing Light Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AccessLights_Button",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Access Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AirframeDeiceLight_L_readonly",
+      "Unit": "bool",
+      "Description": "Airframe Deice Light Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AirframeDeiceLight_R_readonly",
+      "Unit": "bool",
+      "Description": "Airframe Deice Light Right",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_Autopilot_FlightDirector_EM_readonly",
+      "Unit": "bool",
+      "Description": "BS TBM850 Kfc325 ANNUNCIATOR Fd",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_Autopilot_NavArm_EM_readonly",
+      "Unit": "bool",
+      "Description": "BS TBM850 Kfc325 ANNUNCIATOR Nav (Arm)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_CabinLights_Aft_L_Button",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Cabin Aft L Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_CabinLights_Aft_R_Button",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Cabin Aft R Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_CabinLights_Middle_L_Button",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Cabin Middle L Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_CabinLights_Middle_R_Button",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Cabin Middle R Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_dmeMode",
+      "Unit": "Number",
+      "Description": "BS TBM850 Kdi572 Dme Mode Turn Ccw",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_EADI_Brightness",
+      "Unit": "Number",
+      "Description": "BS TBM850 Eadi Brightness Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_EmergencyLightsKnob",
+      "Unit": "number",
+      "Description": "BS TBM850 Oh Light Emergency Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GearInTransitLight_readonly",
+      "Unit": "bool",
+      "Description": "Gear In Transit Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GyroSlaveModeSwitch",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Gyro Adjust Ccw",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_InstrumentLightingKnob",
+      "Unit": "number",
+      "Description": "BS TBM850 Light Int Instrument Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PanelLightingKnob",
+      "Unit": "number",
+      "Description": "BS TBM850 Light Int Panel Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PropellerDeiceLight_readonly",
+      "Unit": "bool",
+      "Description": "Prop Deice Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_ReadingLightSwitch_L",
+      "Unit": "Bool",
+      "Description": "BS TBM850 Light Int Reading Left Toggle",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+﻿{
+    "Id":  "INIBUILDS_A330",
+    "Name":  "IniBuilds A330",
+    "Vendor":  "inibuilds",
+    "MatchTitles":  [
+                        "ini",
+                        "builds",
+                        "inisim",
+                        "330",
+                        "IniBuilds A330"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:INI_APU_MASTER_SWITCH",
+                          "Unit":  "number",
+                          "Description":  "apu.switchOn",
+                          "Interpolate":  false
+                      }
+                  ]
+}

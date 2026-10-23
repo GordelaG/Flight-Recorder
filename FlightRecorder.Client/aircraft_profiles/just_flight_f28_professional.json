@@ -1,0 +1,71 @@
+{
+  "Id": "just_flight_f28_professional",
+  "Name": "Just Flight F28 Professional",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight F28 Professional",
+    "F28 Professional"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AP_PRESELECT_3_BUTTON",
+      "Unit": "number",
+      "Description": "Autopilot ALT Button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_PRESELECT_3_BUTTON_il",
+      "Unit": "number",
+      "Description": "Autopilot ALT Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_PRESELECT_4_BUTTON",
+      "Unit": "number",
+      "Description": "Autopilot VS Button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_PRESELECT_4_BUTTON_il",
+      "Unit": "number",
+      "Description": "Autopilot VS Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:F28_MCP_BEAM_BUTTON",
+      "Unit": "number",
+      "Description": "Autopilot BEAM Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:F28_MCP_GLIDE_BUTTON",
+      "Unit": "number",
+      "Description": "Autopilot GLIDE Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:F28_MCP_HEADING_BUTTON",
+      "Unit": "number",
+      "Description": "Autopilot HDG Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:F28_PED_AP_SWITCH",
+      "Unit": "number",
+      "Description": "Autopilot AP Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:F28_PED_TCC_R_Toggle_Switch",
+      "Unit": "Number",
+      "Description": "F28 TTC Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_HSI_Hdg_Knob",
+      "Unit": "enum",
+      "Description": "HDG Knob Decrease",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "Id": "black_square_piston_duke",
+  "Name": "Black Square Piston Duke",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Piston Duke",
+    "Piston Duke"
+  ],
+  "Variables": [
+    {
+      "Name": "L:BKSQ_IgnitionPosition_2",
+      "Unit": "number",
+      "Description": "Right Ignition Switch BOTH",
+      "Interpolate": false
+    }
+  ]
+}

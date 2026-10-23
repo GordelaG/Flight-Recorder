@@ -1,0 +1,26 @@
+﻿{
+    "Id":  "INIBUILDS_A310",
+    "Name":  "iniBuilds A310",
+    "Vendor":  "inibuilds",
+    "MatchTitles":  [
+                        "ini",
+                        "builds",
+                        "inisim",
+                        "310",
+                        "iniBuilds A310"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:A310_ap1_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:A310_ap2_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

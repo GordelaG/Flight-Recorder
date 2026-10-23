@@ -1,0 +1,17 @@
+{
+  "Id": "carenado_pc_12_ngx_2024",
+  "Name": "Carenado PC-12 NGX 2024",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado PC-12 NGX 2024",
+    "PC-12 NGX 2024"
+  ],
+  "Variables": [
+    {
+      "Name": "L:WT_Epic2_Autothrottle_Status",
+      "Unit": "number",
+      "Description": "Autopilot_Autothrottle_Status",
+      "Interpolate": true
+    }
+  ]
+}

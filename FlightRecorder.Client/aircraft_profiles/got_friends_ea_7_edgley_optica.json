@@ -1,0 +1,17 @@
+{
+  "Id": "got_friends_ea_7_edgley_optica",
+  "Name": "Got Friends EA-7 Edgley Optica",
+  "Vendor": "Got Friends",
+  "MatchTitles": [
+    "Got Friends EA-7 Edgley Optica",
+    "EA-7 Edgley Optica"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ELT_ON",
+      "Unit": "number",
+      "Description": "Emergency Locator Transmitter State",
+      "Interpolate": false
+    }
+  ]
+}

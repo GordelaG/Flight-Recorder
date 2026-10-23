@@ -1,0 +1,35 @@
+{
+  "Id": "flysimware_learjet_35",
+  "Name": "Flysimware Learjet 35",
+  "Vendor": "Flysimware",
+  "MatchTitles": [
+    "Flysimware Learjet 35",
+    "Learjet 35"
+  ],
+  "Variables": [
+    {
+      "Name": "L:GENERIC_LEAR_AIRSPEED_KNOB_L",
+      "Unit": "number",
+      "Description": "Pilot Airspeed Bug Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MODE_TST_PITCH",
+      "Unit": "number",
+      "Description": "NAV Light ARM Mode",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALERTER_DIGITAL",
+      "Unit": "Number",
+      "Description": "ALTITUDE VAR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MODE_ALTSEL",
+      "Unit": "bool",
+      "Description": "ALT SEL",
+      "Interpolate": false
+    }
+  ]
+}

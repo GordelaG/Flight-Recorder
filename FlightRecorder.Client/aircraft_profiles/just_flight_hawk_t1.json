@@ -1,0 +1,203 @@
+{
+  "Id": "just_flight_hawk_t1",
+  "Name": "Just Flight Hawk T1",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight Hawk T1",
+    "Hawk T1"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FWD_LEFT_Gear_Down",
+      "Unit": "number",
+      "Description": "HT1_FWD_LEFT_Gear_Down_Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_LEFT_ThrottleRelight_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_LEFT_ThrottleRelight_Release",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:FWD_LEFT_ThrottleTransmit_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_LEFT_ThrottleTransmit_Release",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:FWD_KNEE_RudderLock",
+      "Unit": "bool",
+      "Description": "HT1_FWD_KNEE_RudderLock_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:FWD_ALT_Baro",
+      "Unit": "enum",
+      "Description": "HT1_FWD_ALT_Baro_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_DGI_Knob_Set",
+      "Unit": "enum",
+      "Description": "HT1_FWD_DGI_Knob_Set_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_Gmeter_Push_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_Gmeter_Push_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Brt_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Brt_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Func_1_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Func_1_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Func_2_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Func_2_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Func_3_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Func_3_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Func_4_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Func_4_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Func_5_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Func_5_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_GPS_Power_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_GPS_Power_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_HSI_Crs_Knob",
+      "Unit": "enum",
+      "Description": "HT1_FWD_HSI_Crs_Knob_Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_HSI_Hdg_Knob",
+      "Unit": "enum",
+      "Description": "HT1_FWD_HSI_Hdg_Knob_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_LEFT_Altimeter_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_LEFT_Altimeter_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_MAIN_ILS_Marker_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_MAIN_ILS_Marker_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_MISC_MapLight_Left",
+      "Unit": "bool",
+      "Description": "HT1_FWD_MISC_MapLight_Left_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_MISC_MapLight_Right",
+      "Unit": "bool",
+      "Description": "HT1_FWD_MISC_MapLight_Right_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_RIGHT_Lights_Centre",
+      "Unit": "enum",
+      "Description": "HT1_FWD_RIGHT_Lights_Centre_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_RIGHT_Lights_Port",
+      "Unit": "enum",
+      "Description": "HT1_FWD_RIGHT_Lights_Port_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_RIGHT_Lights_Stbd",
+      "Unit": "enum",
+      "Description": "HT1_FWD_RIGHT_Lights_Stbd_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_RIGHT_VHF_NavSel",
+      "Unit": "number",
+      "Description": "HT1_FWD_RIGHT_VHF_NavSel_Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STBY_ALT_Baro",
+      "Unit": "enum",
+      "Description": "HT1_FWD_STBY_ALT_Baro_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_BombRel_Cover",
+      "Unit": "bool",
+      "Description": "HT1_FWD_STICK_BombRel_Cover_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_BombRel_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_STICK_BombRel_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_Camera_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_STICK_Camera_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_MuteButton_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_STICK_MuteButton_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_Trigger_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_STICK_Trigger_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_STICK_Trim",
+      "Unit": "number",
+      "Description": "HT1_FWD_STICK_Trim_Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FWD_AIM9_AAM_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HT1_FWD_AIM9_AAM_Release",
+      "Interpolate": false
+    }
+  ]
+}

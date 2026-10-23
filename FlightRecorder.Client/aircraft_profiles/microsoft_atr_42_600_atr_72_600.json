@@ -1,0 +1,203 @@
+{
+  "Id": "microsoft_atr_42_600_atr_72_600",
+  "Name": "Microsoft ATR 42-600, ATR 72-600",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft ATR 42-600, ATR 72-600",
+    "ATR 42-600, ATR 72-600"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MSATR_THR_LEVER1_POS",
+      "Unit": "number",
+      "Description": "Revers ENG status",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MSATR_THROTTLE1_REV",
+      "Unit": "number",
+      "Description": "MSATR THRUST REVERSER (One Button)",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MSATR_GEAR_LEFT_DOWN_LT",
+      "Unit": "number",
+      "Description": "MSATR LEFT GEAR DOWN ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_GEAR_NOSE_DOWN_LT",
+      "Unit": "number",
+      "Description": "MSATR NOSE GEAR DOWN ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_GEAR_NOSE_UNLK_LT",
+      "Unit": "number",
+      "Description": "MSATR NOSE GEAR UNLK ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_GEAR_RIGHT_DOWN_LT",
+      "Unit": "number",
+      "Description": "MSATR RIGHT GEAR DOWN ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_AIRC_COMPT_TEMP_KNOB",
+      "Unit": "number",
+      "Description": "MSATR FLT COMPT TEMPERATURE ENCODER DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_AIRC_COMPT_TEMP_MODE",
+      "Unit": "number",
+      "Description": "MSATR FLT COMPT TEMPERATURE AUTO-MAN SEL SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_AIRC_COMPT_TEMP_MODE_MAN_LT",
+      "Unit": "number",
+      "Description": "MSATR FLT COMPT TEMPERATURE MAN SELECTED ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_AIRC_COMPT_TEMP_MODE_OVHT_LT",
+      "Unit": "number",
+      "Description": "MSATR FLT COMPT TEMPERATURE OVHT ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_BARO_1_DELTA",
+      "Unit": "number",
+      "Description": "MSATR BARO 1 KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_BARO_2_DELTA",
+      "Unit": "number",
+      "Description": "MSATR BARO 2 KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_CABS_EMER_EXIT_LTS",
+      "Unit": "Number",
+      "Description": "Toggle Emergency Lights",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_CABS_EMER_EXIT_LTS_DISARM_LT",
+      "Unit": "number",
+      "Description": "MSATR EMER EXIT LT DISARM ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_CLOCK1_STAT_MODE",
+      "Unit": "number",
+      "Description": "MSATR CLOCK1 STAT MODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_CPRS_LDG_ALT",
+      "Unit": "number",
+      "Description": "MSATR CABIN PRESSURE LANDING ELEV MAN SET DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_DH_SET_1_DELTA",
+      "Unit": "number",
+      "Description": "MSATR DH INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ELTS_BEACON",
+      "Unit": "number",
+      "Description": "MSATR LIGHT BEACON TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_FD1",
+      "Unit": "number",
+      "Description": "MSATR FGCP AUTOPILOT FD1 BUTTON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_FD2",
+      "Unit": "number",
+      "Description": "MSATR FGCP AUTOPILOT FD2 BUTTON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_STAT_NAV",
+      "Unit": "bool",
+      "Description": "MSATR FGCP NAV MODE ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_STAT_VNAV",
+      "Unit": "bool",
+      "Description": "MSATR FGCP VNAV ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_STAT_VNAV_ALT",
+      "Unit": "number",
+      "Description": "MSATR Autopilot VNAV ALT Status",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_YD_ON_CPT_LT",
+      "Unit": "number",
+      "Description": "MSATR FGCP YD ON CPT LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_FGCP_YD_ON_FO_LT",
+      "Unit": "number",
+      "Description": "MSATR FGCP YD ON FO LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_IESI_SET_DELTA",
+      "Unit": "number",
+      "Description": "MSATR IESI KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_CONSOLE_CPT",
+      "Unit": "number",
+      "Description": "MSATR ILTS CONSOLE CPT INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_CONSOLE_FO",
+      "Unit": "number",
+      "Description": "MSATR ILTS CONSOLE FO DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_FLOOD_KNOB",
+      "Unit": "enum",
+      "Description": "MSATR LIGHT FLOOD INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_MINCAB",
+      "Unit": "number",
+      "Description": "MSATR MIN CAB LT TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_MIP_PED_KNOB",
+      "Unit": "enum",
+      "Description": "MSATR LIGHT INTEG PED INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MSATR_ILTS_OVHD_KNOB",
+      "Unit": "enum",
+      "Description": "MSATR LIGHT INTEG OVH INC",
+      "Interpolate": false
+    }
+  ]
+}

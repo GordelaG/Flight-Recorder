@@ -1,0 +1,95 @@
+{
+  "Id": "skyward_sim_c680_sovereign_2024",
+  "Name": "Skyward Sim C680 Sovereign\u002B (2024)",
+  "Vendor": "Skyward Sim",
+  "MatchTitles": [
+    "Skyward Sim C680 Sovereign\u002B (2024)",
+    "C680 Sovereign\u002B (2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:Throttle_Visibility",
+      "Unit": "number",
+      "Description": "Throttle Visibility ON/OFF",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_LANDING_1",
+      "Unit": "BOOL",
+      "Description": "Landing Light 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_LANDING_2",
+      "Unit": "BOOL",
+      "Description": "Landing Light 2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_LOGO",
+      "Unit": "BOOL",
+      "Description": "Tail Flood Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_PULSE",
+      "Unit": "BOOL",
+      "Description": "Pulse Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_RECOG",
+      "Unit": "BOOL",
+      "Description": "Recog Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_STROBE",
+      "Unit": "BOOL",
+      "Description": "Anti Coll Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_TAXI",
+      "Unit": "BOOL",
+      "Description": "Taxi Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_LIGHTS_WING",
+      "Unit": "BOOL",
+      "Description": "Wing Insp Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_CONFIG_SOUND_ANC",
+      "Unit": "Bool",
+      "Description": "Headset ON/OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_CONTROL_LOCK",
+      "Unit": "Bool",
+      "Description": "Control Lock ON/OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_PASSENGER_SAFETY_PUSH",
+      "Unit": "BOOL",
+      "Description": "Pax Safety",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_PASSENGER_SEAT_BELT",
+      "Unit": "BOOL",
+      "Description": "Seat Belts",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SW_SOV_Static_Windshield_Cover",
+      "Unit": "number",
+      "Description": "Windshield Cover ON/OFF",
+      "Interpolate": false
+    }
+  ]
+}

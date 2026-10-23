@@ -1,0 +1,53 @@
+{
+  "Id": "flightfx_citation_x",
+  "Name": "FlightFX Citation X",
+  "Vendor": "FlightFX",
+  "MatchTitles": [
+    "FlightFX Citation X",
+    "Citation X"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ATS_IS_ON",
+      "Unit": "number",
+      "Description": "Auto Throttle System ON",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:PARKING_BRAKE_HANDLE",
+      "Unit": "number",
+      "Description": "Parking Brakes Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VTX_VNAV_STATE",
+      "Unit": "number",
+      "Description": "Auto Pilot VNAV Mode Indicator LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:electrical_switch_apu",
+      "Unit": "number",
+      "Description": "APU GENERATOR ON Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:electrical_switch_apu_master",
+      "Unit": "number",
+      "Description": "APU MASTER ON Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:electrical_switch_apu_master_LF",
+      "Unit": "Bool",
+      "Description": "APU MASTER ON Indicator LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_ANTI_SKID",
+      "Unit": "number",
+      "Description": "ANTISKID BRAKES Toggle",
+      "Interpolate": false
+    }
+  ]
+}

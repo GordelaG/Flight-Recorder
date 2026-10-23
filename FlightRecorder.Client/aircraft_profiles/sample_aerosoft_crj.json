@@ -1,0 +1,38 @@
+{
+  "id": "AEROSOFT_CRJ",
+  "name": "Aerosoft CRJ Series",
+  "vendor": "Aerosoft",
+  "matchTitles": [ "CRJ 550", "CRJ 700", "CRJ 900", "CRJ 1000", "Aerosoft CRJ" ],
+  "variables": [
+    {
+      "name": "L:ASCRJ_FLAPS_LEVER",
+      "unit": "number",
+      "description": "Flap Lever",
+      "interpolate": false
+    },
+    {
+      "name": "L:ASCRJ_SPOILER_LEVER",
+      "unit": "number",
+      "description": "Spoiler Lever",
+      "interpolate": true
+    },
+    {
+      "name": "L:ASCRJ_GEAR_LEVER",
+      "unit": "number",
+      "description": "Landing Gear Lever",
+      "interpolate": false
+    },
+    {
+      "name": "L:ASCRJ_THR_REVERSE_1",
+      "unit": "number",
+      "description": "Thrust Reverser 1",
+      "interpolate": true
+    },
+    {
+      "name": "L:ASCRJ_THR_REVERSE_2",
+      "unit": "number",
+      "description": "Thrust Reverser 2",
+      "interpolate": true
+    }
+  ]
+}

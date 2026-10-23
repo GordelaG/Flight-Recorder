@@ -1,0 +1,25 @@
+﻿{
+    "Id":  "SALTY_747",
+    "Name":  "Salty 747-8i",
+    "Vendor":  "salty",
+    "MatchTitles":  [
+                        "747",
+                        "salty",
+                        "747-8",
+                        "Salty 747-8i"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:AP_APP_ARMED",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:AP_LOC_ARMED",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      }
+                  ]
+}

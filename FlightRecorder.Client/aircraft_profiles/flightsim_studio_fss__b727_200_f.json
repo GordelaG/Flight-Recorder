@@ -1,0 +1,35 @@
+{
+  "Id": "flightsim_studio_fss__b727_200_f",
+  "Name": "FlightSim Studio (FSS) B727-200 F",
+  "Vendor": "FlightSim Studio (FSS)",
+  "MatchTitles": [
+    "FlightSim Studio (FSS) B727-200 F",
+    "B727-200 F"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FSS_B727_AP_ALT_SEL_DIGITS",
+      "Unit": "number",
+      "Description": "FSS B727 - AP ALT Selector Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_B727_AP_VS",
+      "Unit": "number",
+      "Description": "FSS B727 - AP VS Knob Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_B727_CP_AIRSPEED_BUG_SET",
+      "Unit": "number",
+      "Description": "FSS B727 - AP Airspeed bug (CP) Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_B727_HSI_HDG_1",
+      "Unit": "number",
+      "Description": "FSS B727 - AP HSI (CP) Heading Value",
+      "Interpolate": false
+    }
+  ]
+}

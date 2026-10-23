@@ -1,0 +1,203 @@
+{
+  "Id": "hype_performance_group_h145",
+  "Name": "Hype Performance Group H145",
+  "Vendor": "Hype Performance Group",
+  "MatchTitles": [
+    "Hype Performance Group H145",
+    "H145"
+  ],
+  "Variables": [
+    {
+      "Name": "L:H145_SDK_EQUIP_SEARCHLIGHT_ON",
+      "Unit": "number",
+      "Description": "H145_SDK_EQUIP_SEARCHLIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_EQUIP_SEARCHLIGHT_X_POS",
+      "Unit": "number",
+      "Description": "H145_SDK_EQUIP_SEARCHLIGHT_X_POS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_EQUIP_SEARCHLIGHT_Y_POS",
+      "Unit": "number",
+      "Description": "H145_SDK_EQUIP_SEARCHLIGHT_Y_POS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_MFD2_NAV_CPL_STATUS",
+      "Unit": "number",
+      "Description": "H145_SDK_MFD2_NAV_CPL_STATUS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_OH_INT_LIGHT_CARGO_PAX",
+      "Unit": "number",
+      "Description": "H145_SDK_OH_INT_LIGHT_CARGO_PAX",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_OH_INT_LIGHT_EMERGENCY_EXITS",
+      "Unit": "number",
+      "Description": "H145_SDK_OH_INT_LIGHT_EMERGENCY_EXITS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_OH_INT_LIGHT_INSTRUMENT_PANEL",
+      "Unit": "number",
+      "Description": "H145_SDK_OH_INT_LIGHT_INSTRUMENT_PANEL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_OH_INT_LIGHT_INSTRUMENT_PANEL_POT",
+      "Unit": "number",
+      "Description": "H145_SDK_OH_INT_LIGHT_INSTRUMENT_PANEL_POT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_OH_LAMP_AND_PREFLIGHT_TEST",
+      "Unit": "number",
+      "Description": "H145_SDK_OH_LAMP_AND_PREFLIGHT_TEST",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_SYSTEM_FLIGHTMODE",
+      "Unit": "number",
+      "Description": "H145_SDK_SYSTEM_FLIGHTMODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_TEST_PREFLIGHT",
+      "Unit": "number",
+      "Description": "H145_SDK_TEST_PREFLIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_CRHT_BUG",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_CRHT_BUG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_GTCH_ALT",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_GTCH_ALT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_GTCH_LAT",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_GTCH_LAT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_GTCH_LON",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_GTCH_LON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_IAS_BUG",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_IAS_BUG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_MASTER",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_MASTER",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_MODE_COLLECTIVE",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_MODE_COLLECTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_MODE_PITCH",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_MODE_PITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_MODE_ROL",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_MODE_ROL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_AFCS_VS_BUG",
+      "Unit": "number",
+      "Description": "H145_SDK_AFCS_VS_BUG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_ALT",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_ALT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_AP1",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_AP1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_AP2",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_AP2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_ATRIM",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_ATRIM",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_BKUP",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_BKUP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_APCP_CRHT",
+      "Unit": "number",
+      "Description": "H145_SDK_APCP_CRHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_WARNINGUNIT_AUTOPILOT",
+      "Unit": "number",
+      "Description": "H145_SDK_WARNINGUNIT_AUTOPILOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_DOOR_CARGO_L",
+      "Unit": "number",
+      "Description": "H145_SDK_DOOR_CARGO_L",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_DOOR_CARGO_R",
+      "Unit": "number",
+      "Description": "H145_SDK_DOOR_CARGO_R",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_DOOR_COCKPIT_L",
+      "Unit": "number",
+      "Description": "H145_SDK_DOOR_COCKPIT_L",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:H145_SDK_DOOR_COCKPIT_R",
+      "Unit": "number",
+      "Description": "H145_SDK_DOOR_COCKPIT_R",
+      "Interpolate": false
+    }
+  ]
+}

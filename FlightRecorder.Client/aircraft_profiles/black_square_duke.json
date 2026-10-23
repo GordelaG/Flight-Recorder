@@ -1,0 +1,203 @@
+{
+  "Id": "black_square_duke",
+  "Name": "Black Square Duke",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Duke",
+    "Duke"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_HANDLING_Light_Flaps_1_Turbine_readonly",
+      "Unit": "number",
+      "Description": "Flaps Indicator Light: Red - Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_HANDLING_Light_Flaps_2_Turbine_readonly",
+      "Unit": "number",
+      "Description": "Flaps Indicator Light: Blue - Approach",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_HANDLING_Light_Flaps_3_Turbine_readonly",
+      "Unit": "number",
+      "Description": "Flaps Indicator Light: Amber - Down",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BKSQ_SUCTION_PRESSURE",
+      "Unit": "inHg",
+      "Description": "Imstrument Air (Suction Gauge)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AltitudeAlertCancel_EM_readonly",
+      "Unit": "number",
+      "Description": "Altitude Alert Cancel Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_APModes_Nav_EM_readonly",
+      "Unit": "bool",
+      "Description": "Autopilot Mode Annunciator: NAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_APPanel_Nav_EM_readonly",
+      "Unit": "bool",
+      "Description": "Autopilot Panel - Button Annunciator: NAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_BeaconRecogLights",
+      "Unit": "bool",
+      "Description": "Toggle beacon light on/off",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_DecisionHeightIndicator_2_readonly",
+      "Unit": "bool",
+      "Description": "Radar Altimeter Decition Hight Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_FuelQuantityWarningLight_L_readonly",
+      "Unit": "number",
+      "Description": "Warning Light - Low Fuel Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_FuelQuantityWarningLight_R_readonly",
+      "Unit": "number",
+      "Description": "Warning Light - Low Fuel Right",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GenOverCurrent_L_EM_readonly",
+      "Unit": "bool",
+      "Description": "Generator Overcurrent Light: Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GenOverCurrent_R_EM_readonly",
+      "Unit": "bool",
+      "Description": "Generator Overcurrent Light: Right",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LANDING_GEAR_Light_Center_readonly",
+      "Unit": "number",
+      "Description": "Landing Gear Center Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LANDING_GEAR_Light_Left_readonly",
+      "Unit": "number",
+      "Description": "Landing Gear Left Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LANDING_GEAR_Light_Right_readonly",
+      "Unit": "number",
+      "Description": "Landing Gear  Right Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LANDING_GEAR_Light_Unsafe_readonly",
+      "Unit": "number",
+      "Description": "Landing Gear Unsafe (Red) Light ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LocalizerGPS_EM_readonly",
+      "Unit": "bool",
+      "Description": "Localizer Annunciator: GPS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_LocalizerVLOC_EM_readonly",
+      "Unit": "bool",
+      "Description": "Localizer Annunciator: VLOC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Active_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: ACTV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Arm_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: ARM",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Gps_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: GPS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Leg_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: LEG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Message_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: MSG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Nav_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: NAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Obs_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: OBS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Rnav_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: RNAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_MD41Waypoint_EM_readonly",
+      "Unit": "bool",
+      "Description": "GPS Annunciator Light: WPT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_NavModeGPS_EM_readonly",
+      "Unit": "number",
+      "Description": "Navigation Annunciator: GPS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_NavModeRNAV_EM_readonly",
+      "Unit": "number",
+      "Description": "Navigation Annunciator: RNAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_NavModeVLOC_EM_readonly",
+      "Unit": "number",
+      "Description": "Navigation Annunciator: VLOC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AltitudeSelectorKnobPushed",
+      "Unit": "bool",
+      "Description": "Toggle alt select 1000/100",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "Id": "just_flight_bae146",
+  "Name": "Just Flight BAE146",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight BAE146",
+    "BAE146"
+  ],
+  "Variables": [
+    {
+      "Name": "L:R_TMS_Pwr_on_il",
+      "Unit": "bool",
+      "Description": "TMS Power On Indication",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:L_ANNUNS_Rnav_green_il",
+      "Unit": "bool",
+      "Description": "Annunciator RNAV Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:L_ASI_Bug_knob",
+      "Unit": "number",
+      "Description": "Left ASI knob bug Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:L_COAMING_MWS_Amber_il",
+      "Unit": "number",
+      "Description": "Master Warning System - Amber Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:L_COAMING_MWS_Red_il",
+      "Unit": "number",
+      "Description": "Master Warning System - Red Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:L_HSI_Hdg_bug",
+      "Unit": "number",
+      "Description": "HSI HDG Bug",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_LNAV_iL",
+      "Unit": "bool",
+      "Description": "Autopilot LNAV Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VNAV_i",
+      "Unit": "bool",
+      "Description": "Autopilot VNAV Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_NAV1_dig1",
+      "Unit": "number",
+      "Description": "NAV1 Course",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_NAV2_dig1",
+      "Unit": "number",
+      "Description": "NAV2 Course",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Alt_arm_iL",
+      "Unit": "bool",
+      "Description": "Autopilot ALT ARM Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Alt_dig1",
+      "Unit": "number",
+      "Description": "Autopilot ALT SEL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Alt_sel_knob",
+      "Unit": "enum",
+      "Description": "Autopilot ALT SEL Encoder",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_ALT_iL",
+      "Unit": "bool",
+      "Description": "Autopilot ALT Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_AP_iL",
+      "Unit": "bool",
+      "Description": "Autopilot ON Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_BLOC_il",
+      "Unit": "bool",
+      "Description": "Autopilot BLOC Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_GSL_il",
+      "Unit": "bool",
+      "Description": "Autopilot GSL Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_HDG_iL",
+      "Unit": "bool",
+      "Description": "Autopilot HDG Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_IAS_iL",
+      "Unit": "bool",
+      "Description": "Autopilot IAS Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_MACH_iL",
+      "Unit": "bool",
+      "Description": "Autopilot MACH Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_TURB_il",
+      "Unit": "bool",
+      "Description": "Autopilot TURB Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VL_il",
+      "Unit": "bool",
+      "Description": "Autopilot VL Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_VS_iL",
+      "Unit": "bool",
+      "Description": "Autopilot VS Indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_AFT_AP_YD1_iL",
+      "Unit": "bool",
+      "Description": "Pedestal Yaw Damper 1 indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_AFT_AP_YD2_iL",
+      "Unit": "bool",
+      "Description": "Pedestal Yaw Damper 2 indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_AvionicsFan_off_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: Avionics Fan Off",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_CAU1_hiTemp_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: CAU 1 Hi Temp",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_CAU2_hiTemp_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: CAU 2 Hi Temp",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_Pack1_hiTemp_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: Pack 1 Hi Temp",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_Pack1_valve_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: Pack 1 Valve",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_Pack2_hiTemp_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: Pack 2 Hi Temp",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OVHD_AIRCOND_Pack2_valve_il",
+      "Unit": "number",
+      "Description": "Air Condition Panel - Annunciator: Pack 2 Valve",
+      "Interpolate": false
+    }
+  ]
+}

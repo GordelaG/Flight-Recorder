@@ -1,0 +1,204 @@
+{
+  "Id": "pmdg_b737_800_2024",
+  "Name": "PMDG B737-800 (2024)",
+  "Vendor": "PMDG",
+  "MatchTitles": [
+    "PMDG B737-800 (2024)",
+    "B737-800 (2024)",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:switch_311_73X",
+      "Unit": "number",
+      "Description": "TRIM air On/Off",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_AFDS_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 AFDS Flood Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_BACKGROUND_BRT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Background Bright Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_INBD_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Inbd Du L Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_INBD_DU_RDR_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Inbd Du RDR L Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_LOWER_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Lower Du Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_MAIN_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Main Panel Bright L Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_NAV1_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT NAV1 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_NAV2_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT NAV2 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_OUTBD_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Outbd Du L Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_UPPER_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Upper Du Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_INBD_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Inbd Du R Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_INBD_DU_RDR_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Inbd Du RDR R Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_MAIN_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Main Panel Bright R Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_NAV1_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 FO NAV1 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_NAV2_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 FO NAV2 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FO_OUTBD_DU_BRIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Outbd Du R Brt Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_CB_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd Circuit Breaker Light Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:OH_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd Panel Light Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_FLOOD_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Pedestal Flood Bright Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PED_PANEL_LIGHT_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 Pedestal Panel Bright Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_ADF1_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT ADF1 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_ADF2_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT ADF2 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_COM1_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT VHF1 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_COM2_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT VHF2 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_COM3_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT VHF3 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_FLT_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT FLT Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_HF1_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT HF1 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_HF2_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT HF2 Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_MKR_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT MKR Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_PA_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT PA Volume Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CA_SPKR_VOL_CONTROL",
+      "Unit": "number",
+      "Description": "PMDG B737 CAPT SPKR Volume Inc",
+      "Interpolate": false
+    }
+  ]
+}

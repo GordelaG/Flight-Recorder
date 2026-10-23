@@ -1,0 +1,204 @@
+{
+  "Id": "pmdg_b737_700",
+  "Name": "PMDG B737-700",
+  "Vendor": "PMDG",
+  "MatchTitles": [
+    "PMDG B737-700",
+    "B737-700",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:switch_2241_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 2 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2242_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 1 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2243_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 4 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2244_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 3 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2245_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 2 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2246_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 1 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2247_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 1 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2248_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 2 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2249_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 3 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2250_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 4 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2251_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 1 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2252_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 2 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2253_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 4 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2254_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 3 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2255_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 2 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2256_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 1 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2257_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 3 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2258_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 4 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2259_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 5 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2260_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 6 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2261_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 7 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2262_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 8 Extended",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2263_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 8 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2264_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 7 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2265_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 6 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2266_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 5 Mid",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2267_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 3 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2268_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Flaps 4 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2269_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 5 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2270_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 6 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2271_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 7 Transit",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:switch_2272_73X",
+      "Unit": "number",
+      "Description": "PMDG B737 Ovhd LE Dev Slats 8 Transit",
+      "Interpolate": false
+    }
+  ]
+}

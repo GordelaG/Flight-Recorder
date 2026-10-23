@@ -1,0 +1,23 @@
+{
+  "Id": "azurpoly_tb30",
+  "Name": "AZURPOLY TB30",
+  "Vendor": "AZURPOLY",
+  "MatchTitles": [
+    "AZURPOLY TB30",
+    "TB30"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AZP_TB30_NAV_SOURCE",
+      "Unit": "Bool",
+      "Description": "NAV Source selector",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AZP_TB30_ATTITUDE_SUPPLY_ON",
+      "Unit": "Bool",
+      "Description": "GYRO Attitude switch",
+      "Interpolate": false
+    }
+  ]
+}

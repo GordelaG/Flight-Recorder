@@ -1,0 +1,203 @@
+{
+  "Id": "fenixsim_a320",
+  "Name": "FenixSim A320",
+  "Vendor": "FenixSim",
+  "MatchTitles": [
+    "FenixSim A320",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A320_FC_L_FLAPS",
+      "Unit": "number",
+      "Description": "FNX320_FC_FLAPS_EFFECTIVE_LEFT_POSITION",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A320_FC_R_FLAPS",
+      "Unit": "number",
+      "Description": "FNX320_FC_FLAPS_EFFECTIVE_RIGHT_POSITION",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CB_B06_SLAT_CTL_MON_SYS_1",
+      "Unit": "number",
+      "Description": "FNX320 Breaker B06 SLAT CTL MON SYS 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_B07_FLAP_CTL_MON_SYS_1",
+      "Unit": "number",
+      "Description": "FNX320 Breaker B07 FLAP CTL MON SYS 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_Q21_FLAP_CTL_MON_SYS_2",
+      "Unit": "number",
+      "Description": "FNX320 Breaker Q21 FLAP CTL MON SYS 2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_R21_SLAT_CTL_MON_SYS_2",
+      "Unit": "number",
+      "Description": "FNX320 Breaker R21 SLAT CTL MON SYS 2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_OH_GPWS_FLAP_MODE_L",
+      "Unit": "number",
+      "Description": "FNX320 GPWS Flap Mode Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_OH_GPWS_LDG_FLAP3_L",
+      "Unit": "number",
+      "Description": "FNX320 GPWS Landing Flap 3 Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:S_FC_FLAPS",
+      "Unit": "number",
+      "Description": "FNX320_FC_FLAPS_LEVER_POSITION_INDEX",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_OH_GPWS_FLAP_MODE",
+      "Unit": "number",
+      "Description": "FNX320 GPWS Flap Mode Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:S_OH_GPWS_LDG_FLAP3",
+      "Unit": "number",
+      "Description": "FNX320 GPWS Landing Flap 3 Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A_FC_SPEEDBRAKE",
+      "Unit": "number",
+      "Description": "FNX320_FC_GND_SPLRS_LEVER_ARM-DISARM_SWITCH",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_HYD_GRAVITY_GEAR_EXTEND_ROTATION",
+      "Unit": "number",
+      "Description": "FNX320 Misc Emergency Gear Lever Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_ENG_FAULT_1",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine Fault 1 Annunciator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:I_ENG_FAULT_2",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine Fault 2 Annunciator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:I_ENG_FIRE_1",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine Fire 1 Annunciator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:I_ENG_FIRE_2",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine Fire 2 Annunciator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_ENG_MASTER_1",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine 1 Master Switch Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_ENG_MASTER_2",
+      "Unit": "number",
+      "Description": "FNX320 Throttle Engine 2 Master Switch Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_FC_THR_INST_DISCONNECT1",
+      "Unit": "number",
+      "Description": "FNX320_AUTOTHROTTLE_LEFT_DISC_PUSH",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:S_FC_THR_INST_DISCONNECT2",
+      "Unit": "number",
+      "Description": "FNX320_AUTOTHROTTLE_RIGHT_DISC_PUSH",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A_FC_ELEVATOR_TRIM",
+      "Unit": "number",
+      "Description": "FNX320 ELEVATOR TRIM WHEEL DEC",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:B_FC_RUDDER_TRIM_DASHED",
+      "Unit": "number",
+      "Description": "FNX320 RUDDER TRIM DASHED",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CB_M20_RUDDER_TRIM_IND",
+      "Unit": "number",
+      "Description": "FNX320 Breaker M20 RUDDER TRIM IND",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CB_R16_RUDDER_FTU",
+      "Unit": "number",
+      "Description": "FNX320 Breaker R16 RUDDER FTU",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:N_FC_RUDDER_TRIM_DECIMAL",
+      "Unit": "Number",
+      "Description": "FNX320 RUDDER TRIM DISPLAY",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CB_N36_PARKING_BRAKE_CTL_NORM",
+      "Unit": "number",
+      "Description": "FNX320 Breaker N36 PARKING BRAKE CTL NORM",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CB_N37_PARKING_BRAKE_CTL_STBY",
+      "Unit": "number",
+      "Description": "FNX320 Breaker N37 PARKING BRAKE CTL STBY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_MIP_AUTOBRAKE_LO_L",
+      "Unit": "number",
+      "Description": "FNX320 MainPanel Autobrake Low Button Annunciator Lower",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_MIP_AUTOBRAKE_LO_U",
+      "Unit": "number",
+      "Description": "FNX320 MainPanel Autobrake Low Button Annunciator Upper",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_MIP_AUTOBRAKE_MAX_L",
+      "Unit": "number",
+      "Description": "FNX320 MainPanel Autobrake Max Button Annunciator Lower",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:I_MIP_AUTOBRAKE_MAX_U",
+      "Unit": "number",
+      "Description": "FNX320 MainPanel Autobrake Max Button Annunciator Upper",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "Id": "blackbird_milviz_cessna_310r",
+  "Name": "Blackbird/Milviz Cessna 310R",
+  "Vendor": "Blackbird/Milviz",
+  "MatchTitles": [
+    "Blackbird/Milviz Cessna 310R",
+    "Cessna 310R"
+  ],
+  "Variables": [
+    {
+      "Name": "L:C310_SW_FLOOD_CENTER",
+      "Unit": "number",
+      "Description": "C310R Front Cabin Light INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_FLOOD_LEFT",
+      "Unit": "number",
+      "Description": "C310R Forward Cabin Light INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_LIGHTS_ENG_INST",
+      "Unit": "number",
+      "Description": "C310R Engine Instrument Lighting INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_LIGHTS_FLT_INST",
+      "Unit": "number",
+      "Description": "C310R Flight Instrument Lighting INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_LIGHTS_RADIO",
+      "Unit": "number",
+      "Description": "C310R Radio Lighting INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_LIGHTS_SIDE",
+      "Unit": "number",
+      "Description": "C310R Left Switch Panel Lighting INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_AVIONICS",
+      "Unit": "number",
+      "Description": "C310R AP ON/OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_CABIN_AIR",
+      "Unit": "number",
+      "Description": "C310R Cabin Air Control INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_DEFROST",
+      "Unit": "number",
+      "Description": "C310R Window Defrost INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_FWD_CABIN_AIR",
+      "Unit": "number",
+      "Description": "C310R Forward Cabin Air Control INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C310_SW_TEMP_CONTROL",
+      "Unit": "number",
+      "Description": "C310R Temperature Control INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WindowShadeLeft",
+      "Unit": "number",
+      "Description": "Pilot Window Shade Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WindowShadeRight",
+      "Unit": "number",
+      "Description": "Copilot Window Shade Up",
+      "Interpolate": false
+    }
+  ]
+}

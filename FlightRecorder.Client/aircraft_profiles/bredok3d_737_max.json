@@ -1,0 +1,18 @@
+{
+  "Id": "bredok3d_737_max",
+  "Name": "Bredok3d 737-MAX",
+  "Vendor": "Bredok3d",
+  "MatchTitles": [
+    "Bredok3d 737-MAX",
+    "737-MAX",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "number",
+      "Description": "KNOB_Baro_1_DEC",
+      "Interpolate": false
+    }
+  ]
+}

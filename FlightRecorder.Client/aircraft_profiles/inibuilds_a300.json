@@ -1,0 +1,203 @@
+{
+  "Id": "inibuilds_a300",
+  "Name": "IniBuilds A300",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A300",
+    "A300"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_SPEEDBRAKE3_2",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Splr_Spd_Brk_3___2_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE3_2_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Splr/Spd Brk 3 \u0026 2 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE4_1",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Splr_Spd_Brk_4___1_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE4_1_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Splr/Spd Brk 4 \u0026 1 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE5",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Splr_Spd_Brk_5_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE5_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Splr/Spd Brk 5 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE6",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Splr_Spd_Brk_6_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE6_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Splr/Spd Brk 6 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE7",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Splr_Spd_Brk_7_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPEEDBRAKE7_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Splr/Spd Brk 7 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_SPOILERS_ARMED",
+      "Unit": "Bool",
+      "Description": "A300_Ped_Spoilers_Arm_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:__GUARD_ENG_TRIM_State",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Eng_Trim_Guard_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_at_on",
+      "Unit": "BOOL",
+      "Description": "A300 A/THR Button Light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_ENG_TRIM",
+      "Unit": "number",
+      "Description": "A300 Ovhd Engine Trim Off Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRAVEL1",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Rud_Travel_1_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRAVEL1_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Rud Travel 1 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRAVEL2",
+      "Unit": "number",
+      "Description": "A300_Ovhd_Rud_Travel_2_Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRAVEL2_FAULT",
+      "Unit": "Bool",
+      "Description": "A300 Ovhd Rud Travel 2 Fault Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRIM_DISPLAY1",
+      "Unit": "number",
+      "Description": "A300 Rudder Trim Display 1",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRIM_DISPLAY2",
+      "Unit": "number",
+      "Description": "A300 Rudder Trim Display 2",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_RUDDER_TRIM_DISPLAY3",
+      "Unit": "number",
+      "Description": "A300 Rudder Trim Display 3",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_STOP_RUDDER_INPUT_TEST_BUTTON",
+      "Unit": "number",
+      "Description": "A300_Stop_Rudder_Input_Test_Button",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_TOTAL_RUDDER_TRIM",
+      "Unit": "number",
+      "Description": "A300 Total Rudder Trim",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_ACCU_PRESS_BUTTON",
+      "Unit": "number",
+      "Description": "A300_Parking_Brake_Accu_Press_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_HI_DECEL",
+      "Unit": "Bool",
+      "Description": "A300 Autobrake Max Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_LOW_DECEL",
+      "Unit": "Bool",
+      "Description": "A300 Autobrake Low Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_MED_DECEL",
+      "Unit": "Bool",
+      "Description": "A300 Autobrake Med Button Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_PARKING_BRAKE_STATUS",
+      "Unit": "number",
+      "Description": "A300 Parking Brake Status",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_ARPT_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A300 EFIS Cpt ARPT Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_CSTR_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A300 EFIS Cpt CSTR Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_NDB_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A300 EFIS Cpt NDB Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:__EFIS_VOR_CPTIsPressed",
+      "Unit": "Bool",
+      "Description": "A300 EFIS Cpt VOR Button Light",
+      "Interpolate": false
+    }
+  ]
+}

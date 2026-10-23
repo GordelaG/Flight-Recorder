@@ -1,0 +1,32 @@
+﻿{
+    "Id":  "INIBUILDS_A300",
+    "Name":  "iniBuilds A300",
+    "Vendor":  "inibuilds",
+    "MatchTitles":  [
+                        "ini",
+                        "builds",
+                        "inisim",
+                        "300",
+                        "iniBuilds A300"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:INI_ap1_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:INI_ap2_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:INI_cmd_light",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

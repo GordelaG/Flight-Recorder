@@ -1,0 +1,23 @@
+{
+  "Id": "microsoft_king_air_350i",
+  "Name": "Microsoft King Air 350i",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft King Air 350i",
+    "King Air 350i"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "KA Autopilot VNAV Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_APTrim",
+      "Unit": "number",
+      "Description": "KA Autopilot AP Button Press",
+      "Interpolate": false
+    }
+  ]
+}

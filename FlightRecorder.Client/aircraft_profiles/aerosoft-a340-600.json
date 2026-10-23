@@ -1,0 +1,18 @@
+﻿{
+    "Id":  "AEROSOFT_A340_600",
+    "Name":  "Aerosoft A340-600",
+    "Vendor":  "aerosoft",
+    "MatchTitles":  [
+                        "aerosoft",
+                        "340",
+                        "Aerosoft A340-600"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:AB_VC_OVH_APU_MASTER_ON",
+                          "Unit":  "number",
+                          "Description":  "apu.switchOn",
+                          "Interpolate":  false
+                      }
+                  ]
+}

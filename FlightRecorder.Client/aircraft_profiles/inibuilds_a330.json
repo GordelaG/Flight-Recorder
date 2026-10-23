@@ -1,0 +1,131 @@
+{
+  "Id": "inibuilds_a330",
+  "Name": "IniBuilds A330",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A330",
+    "A330"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_GPWS_FLAP_STATE",
+      "Unit": "number",
+      "Description": "LDG FLAP 3 LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_POTENTIOMETER_15",
+      "Unit": "number",
+      "Description": "INTEG LT SET (PANEL ROWSFIRE LIGHTS)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_POTENTIOMETER_25",
+      "Unit": "number",
+      "Description": "FLOOD LT MAIN INC (PANEL LIGHTS)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_AVAILABLE",
+      "Unit": "number",
+      "Description": "APU START (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_BLEED_BUTTON",
+      "Unit": "number",
+      "Description": "APU BLEED LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_MASTER_SWITCH",
+      "Unit": "number",
+      "Description": "APU MASTER SW LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_MASTER_SWITCH_FAULT",
+      "Unit": "number",
+      "Description": "APU MASTER SW LED (FAULT)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_START_BUTTON_CMD",
+      "Unit": "number",
+      "Description": "APU START LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ENG1_ANTI_ICE",
+      "Unit": "number",
+      "Description": "ENG 1\u002B2 ANTI ICE LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ENG1_ANTI_ICE_FAULT",
+      "Unit": "number",
+      "Description": "ENG 1\u002B2 ANTI ICE LED (FAULT)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GEN_EXT_A_ONLINE",
+      "Unit": "number",
+      "Description": "EXT POWER A LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GEN_EXT_B_ONLINE",
+      "Unit": "number",
+      "Description": "EXT POWER B LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GPU_AVAIL",
+      "Unit": "number",
+      "Description": "EXT POWER A LED (AVAIL)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_OUTER_TANK_LEFT",
+      "Unit": "number",
+      "Description": "FUEL PUMPS L\u002BR LED (OFF)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_OVHD_ELEC_BAT_1_PB_HAS_FAULT",
+      "Unit": "number",
+      "Description": "BAT POWER 1\u002B2\u002B3 LED (FAULT)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_OVHD_ELEC_BAT_1_PB_IS_AUTO_SWITCH",
+      "Unit": "number",
+      "Description": "BAT POWER 1\u002B2\u002B3 LED (OFF)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_PACK1_BUTTON",
+      "Unit": "number",
+      "Description": "AIR COND PACK 1\u002B2 LED (OFF)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_PACK1_FAULT",
+      "Unit": "number",
+      "Description": "AIR COND PACK 1\u002B2 LED (FAULT)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_WING_ANTI_ICE",
+      "Unit": "number",
+      "Description": "WING ANTI ICE LED (ON)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_WING_ANTI_ICE_FAULT",
+      "Unit": "number",
+      "Description": "WING ANTI ICE LED (FAULT)",
+      "Interpolate": false
+    }
+  ]
+}

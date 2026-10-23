@@ -1,0 +1,203 @@
+{
+  "Id": "inibuilds_a350_2020",
+  "Name": "IniBuilds A350 (2020)",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A350 (2020)",
+    "A350 (2020)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_ACCU_GREEN_PRESSURE_PERCENT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Park Brake Accu Green Pressure",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ACCU_YELLOW_PRESSURE_PERCENT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Park Brake Accu Yellow Pressure",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_ARMED",
+      "Unit": "number",
+      "Description": "A350 AUTOBRAKE ARMED Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_RWY_COND_BRK_ACTION_MODE_SELECTOR",
+      "Unit": "number",
+      "Description": "A350 AUTOBRAKE BRAKE ACTION MODE Selector Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ANNLT_SWITCH",
+      "Unit": "number",
+      "Description": "IniBuilds A350 ECAM SD Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APU_START_BUTTON",
+      "Unit": "number",
+      "Description": "APU Start ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ATC_MSG_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Cpt Glareshield Atc Msg ATC Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ATHR_LIGHT",
+      "Unit": "number",
+      "Description": "FCU ATHR Annu",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOLAND_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Fo Glareshield Auto Land Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CKPT_LT_DOME",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Dome Light Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CKPT_LT_FLOOD",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Flood Light Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CKPT_LT_INTEG",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Integ Light Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CPT_PRIORITY_LOWER_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Cpt Glareshield Sidestick Priority Capt Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CPT_PRIORITY_UPPER_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Cpt Glareshield Sidestick Priority Arrow Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CPT_RADIO_MODE",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Cpt RMP Stby Rad Nav Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CPT_VOR1_ACTIVE",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 Cpt Efis BSK 1 Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_CPT_VOR2_ACTIVE",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 Cpt Efis BSK 5 Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_DC_LIGHTS_FAILURE",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Cpt Efis Map Mode LS Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_ABN_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 ECAM ABN Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_ACTIVE_PAGE",
+      "Unit": "number",
+      "Description": "IniBuilds A350 ECAM STS Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_CLR_LIGHT",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 ECAM Left CLEAR Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_DEFRD_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 ECAM DEFRD Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_DISPCH_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 ECAM DISPCH Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ECAM_MORE_STATUS",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 ECAM MORE Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_EMER_DES_ARMED_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Emer Descent ARM Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_EVAC_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 OVHD EVAC Command Evac Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_DISPLAY_BRT",
+      "Unit": "number",
+      "Description": "FCU Display Brightness",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_INTEG_BRT",
+      "Unit": "number",
+      "Description": "FCU Backlight",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FO_PRIORITY_LOWER_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Fo Glareshield Sidestick Priority Capt Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FO_PRIORITY_UPPER_LIGHT",
+      "Unit": "number",
+      "Description": "IniBuilds A350 Fo Glareshield Sidestick Priority Arrow Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FO_VOR1_ACTIVE",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 Fo Efis BSK 1 Button Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FO_VOR2_ACTIVE",
+      "Unit": "Bool",
+      "Description": "IniBuilds A350 Fo Efis BSK 5 Button Light",
+      "Interpolate": false
+    }
+  ]
+}

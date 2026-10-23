@@ -1,0 +1,203 @@
+{
+  "Id": "inibuilds_a320",
+  "Name": "IniBuilds A320",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds A320",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:INI_SPOILERS_ARMED",
+      "Unit": "number",
+      "Description": "INI320_SPOILERS_ARMED_TOGGLE",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:MySpoilersPos",
+      "Unit": "number",
+      "Description": "INI320 SPEED BRAKE LEVER DOWN",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:INI_ANNLT_SWITCH",
+      "Unit": "number",
+      "Description": "INI320 LDG GEAR NOSE EXTEND ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GEAR1_UNLK_LIGHT",
+      "Unit": "bool",
+      "Description": "INI320 LDG GEAR NOSE UNLK ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AUTOBRAKE_LEVEL",
+      "Unit": "number",
+      "Description": "INI320_BRAKES_AUTOBRAKES_DECREASE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A320_EXPEDITE_LIGHT",
+      "Unit": "number",
+      "Description": "INI320_FCU_EXPED_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ATHR_LIGHT",
+      "Unit": "number",
+      "Description": "INI320_FCU_ATHR_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FPA_DIAL",
+      "Unit": "number",
+      "Description": "INI320_FCU_FPA_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GEAR2_UNLK_LIGHT",
+      "Unit": "bool",
+      "Description": "INI320 LDG GEAR LEFT UNLK ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_GEAR3_UNLK_LIGHT",
+      "Unit": "bool",
+      "Description": "INI320 LDG GEAR RIGHT UNLK ANNUNCIATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_Airspeed_is_mach",
+      "Unit": "number",
+      "Description": "INI320_FCU_SPD_MACH_MODE_SELECT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_Altitude_Dial",
+      "Unit": "number",
+      "Description": "INI320_FCU_ALTITUDE_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ALTITUDE_STATE",
+      "Unit": "number",
+      "Description": "INI320_FCU_ALTITUDE_SCALE_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ap1_on",
+      "Unit": "number",
+      "Description": "INI320_FCU_AP1_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_ap2_on",
+      "Unit": "number",
+      "Description": "INI320_FCU_AP2_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_APPROACH_BUTTON",
+      "Unit": "number",
+      "Description": "INI320_FCU_APPR_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_ALT_DOT",
+      "Unit": "number",
+      "Description": "INI320_FCU_ALT_MANAGED_DOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_HDG_DASHED",
+      "Unit": "number",
+      "Description": "INI320_FCU_HDG_DASHED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_HDG_DOT",
+      "Unit": "number",
+      "Description": "INI320_FCU_HDG_MANAGED_DOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_METRIC_STATE",
+      "Unit": "number",
+      "Description": "INI320_FCU_METRIC_ALT_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_SPD_DASHED",
+      "Unit": "number",
+      "Description": "INI320_FCU_SPEED_DASHED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FCU_VS_DASHED",
+      "Unit": "number",
+      "Description": "INI320_FCU_VS_DASHED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_HEADING_DIAL",
+      "Unit": "number",
+      "Description": "INI320_FCU_HEADING_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_LOCALIZER_BUTTON",
+      "Unit": "number",
+      "Description": "INI320_FCU_LOC_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_managed_speed",
+      "Unit": "number",
+      "Description": "INI320_FCU_SPEED_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_TRACK_FPA_STATE",
+      "Unit": "number",
+      "Description": "INI320_FCU_TRACK_FPA_MODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_TRK_DIAL",
+      "Unit": "number",
+      "Description": "INI320_FCU_TRACK_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_vvi_dial",
+      "Unit": "number",
+      "Description": "INI320_FCU_VS_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FD1_ON",
+      "Unit": "Bool",
+      "Description": "INI320_EFIS_FD1_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_FD2_ON",
+      "Unit": "Bool",
+      "Description": "INI320_EFIS_FD2_FO",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_LS_CAPTAIN",
+      "Unit": "Bool",
+      "Description": "INI320_EFIS_LS_CAPTAIN_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_LS_FO",
+      "Unit": "Bool",
+      "Description": "INI320_EFIS_LS_FO_PUSH",
+      "Interpolate": false
+    }
+  ]
+}

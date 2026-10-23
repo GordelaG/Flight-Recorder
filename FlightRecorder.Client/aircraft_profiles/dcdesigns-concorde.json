@@ -1,0 +1,24 @@
+﻿{
+    "Id":  "DCDESIGNS_CONCORDE",
+    "Name":  "DC Designs Concorde",
+    "Vendor":  "dcdesigns",
+    "MatchTitles":  [
+                        "designs",
+                        "concorde",
+                        "DC Designs Concorde"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:XMLVAR_Autopilot_1_Status",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:XMLVAR_Autopilot_2_Status",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

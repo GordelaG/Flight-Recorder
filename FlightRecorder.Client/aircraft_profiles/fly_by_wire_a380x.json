@@ -1,0 +1,204 @@
+{
+  "Id": "fly_by_wire_a380x",
+  "Name": "Fly By Wire A380X",
+  "Vendor": "Fly By Wire",
+  "MatchTitles": [
+    "Fly By Wire A380X",
+    "A380X",
+    "A380"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A32NX_AUTOTHRUST_STATUS",
+      "Unit": "Enum",
+      "Description": "A380X FCU ATHR Button Indicator",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOBRAKES_SELECTED_MODE",
+      "Unit": "Number",
+      "Description": "A380X AUTOBRAKES SELECTED MODE INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:32NX_FO_SYNC_EFIS_ENABLED",
+      "Unit": "Bool",
+      "Description": "A380X RMP1 NAV SEL Knob ADF 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_NAVAID_1_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS L VOR1 Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_NAVAID_2_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS L VOR2 Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_NAVAID_1_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS R VOR1 Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_NAVAID_2_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS R VOR2 Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_ND_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS R Mode Select NAV",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ELEC_DC_ESS_BUS_IS_POWERED",
+      "Unit": "Bool",
+      "Description": "A380X EFIS L TAXI Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A380X_RMP_1_NAV_VOL",
+      "Unit": "number",
+      "Description": "A380X RMP1 NAV VOL Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A380X_RMP_2_NAV_VOL",
+      "Unit": "number",
+      "Description": "A380X RMP2 NAV VOL Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_1_ACTIVE",
+      "Unit": "Bool",
+      "Description": "A380X FCU AP 1 Active Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_2_ACTIVE",
+      "Unit": "Bool",
+      "Description": "A380X FCU AP 2 Active Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_APPR_MODE_ACTIVE",
+      "Unit": "Bool",
+      "Description": "A380X FCU APPR Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_TRK_FPA_MODE_ACTIVE",
+      "Unit": "Bool",
+      "Description": "A380X FCU VS Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_Altitude_Increment",
+      "Unit": "number",
+      "Description": "A380X FCU Altitude Increment Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_ABNPROC",
+      "Unit": "number",
+      "Description": "A380X ECAM ABN PROC Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_CL",
+      "Unit": "number",
+      "Description": "A380X ECAM CL Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_CLR",
+      "Unit": "number",
+      "Description": "A380X ECAM CLR Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_CLR2",
+      "Unit": "number",
+      "Description": "A380X ECAM CLR2 Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_EMERCANC",
+      "Unit": "number",
+      "Description": "A380X ECAM EMER CANC Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_MORE",
+      "Unit": "number",
+      "Description": "A380X ECAM MORE Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_RCL",
+      "Unit": "number",
+      "Description": "A380X ECAM RCL Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BTN_TOCONFIG",
+      "Unit": "number",
+      "Description": "A380X ECAM TO CONFIG Button Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECAM_SD_CURRENT_PAGE_INDEX",
+      "Unit": "number",
+      "Description": "A380X ECAM ENG Button Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_ND_MODE",
+      "Unit": "number",
+      "Description": "A380X EFIS L Mode Select Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_ND_RANGE",
+      "Unit": "number",
+      "Description": "A380X EFIS L Mode Select LS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_ND_RANGE",
+      "Unit": "number",
+      "Description": "A380X EFIS R Mode Select VOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EXT_PWR_AVAIL:1",
+      "Unit": "Bool",
+      "Description": "A380X OH ELEC EXT 1 Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EXT_PWR_AVAIL:2",
+      "Unit": "Bool",
+      "Description": "A380X OH ELEC EXT 2 Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EXT_PWR_AVAIL:3",
+      "Unit": "Bool",
+      "Description": "A380X OH ELEC EXT 3 Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EXT_PWR_AVAIL:4",
+      "Unit": "Bool",
+      "Description": "A380X OH ELEC EXT 4Toggle",
+      "Interpolate": false
+    }
+  ]
+}

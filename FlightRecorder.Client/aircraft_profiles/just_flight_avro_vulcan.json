@@ -1,0 +1,41 @@
+{
+  "Id": "just_flight_avro_vulcan",
+  "Name": "Just Flight Avro Vulcan",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight Avro Vulcan",
+    "Avro Vulcan"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LEFT_COMPASS_Hdg_index",
+      "Unit": "number",
+      "Description": "VLC_HDG_BUG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_track",
+      "Unit": "number",
+      "Description": "VLC_COMPASS_COURSE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TACAN_Code_Sel_Dig1",
+      "Unit": "enum",
+      "Description": "VLC_TACAN_Left_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TACAN_Code_Sel_Dig2",
+      "Unit": "enum",
+      "Description": "VLC_TACAN_Right_Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TACAN_XY_Switch",
+      "Unit": "number",
+      "Description": "VLC_TACAN_Switch_XY",
+      "Interpolate": false
+    }
+  ]
+}

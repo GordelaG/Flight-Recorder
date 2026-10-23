@@ -1,0 +1,25 @@
+﻿{
+    "Id":  "BLACKSQUARE_DUKE",
+    "Name":  "Black Square Duke",
+    "Vendor":  "blacksquare",
+    "MatchTitles":  [
+                        "black",
+                        "square",
+                        "duke",
+                        "Black Square Duke"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:var_APModes_Approach_EM_readonly",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:var_APPanel_Approach_EM_readonly",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      }
+                  ]
+}

@@ -1,0 +1,29 @@
+﻿{
+    "Id":  "MSFS_ATR72",
+    "Name":  "ATR 42-600 / 72-600",
+    "Vendor":  "msfs",
+    "MatchTitles":  [
+                        "atr",
+                        "ATR 42-600 / 72-600"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:MSATR_GEAR_NOSE_DOWN_LT",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:MSATR_GEAR_LEFT_DOWN_LT",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:MSATR_GEAR_RIGHT_DOWN_LT",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      }
+                  ]
+}

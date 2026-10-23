@@ -1,0 +1,47 @@
+{
+  "Id": "livtoair_cj3",
+  "Name": "LivToAir CJ3\u002B",
+  "Vendor": "LivToAir",
+  "MatchTitles": [
+    "LivToAir CJ3\u002B",
+    "CJ3\u002B"
+  ],
+  "Variables": [
+    {
+      "Name": "L:HANDLING_Yoke_1_Hide",
+      "Unit": "bool",
+      "Description": "Yoke Left Hide",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HANDLING_Yoke_2_Hide",
+      "Unit": "bool",
+      "Description": "Yoke Right Hide",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Pen_Anim",
+      "Unit": "bool",
+      "Description": "Pen Animation",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:STBY_FLY_DISPLAY_Switch",
+      "Unit": "number",
+      "Description": "STBY FLT Display LED Green",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SunBlock_L",
+      "Unit": "bool",
+      "Description": "Sunblock Left_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SunBlock_R",
+      "Unit": "bool",
+      "Description": "Sunblock Right_Toggle",
+      "Interpolate": false
+    }
+  ]
+}

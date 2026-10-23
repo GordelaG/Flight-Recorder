@@ -1,0 +1,47 @@
+{
+  "Id": "fsreborn_sting_s4",
+  "Name": "FSReborn Sting S4",
+  "Vendor": "FSReborn",
+  "MatchTitles": [
+    "FSReborn Sting S4",
+    "Sting S4"
+  ],
+  "Variables": [
+    {
+      "Name": "L:BRS_Chute_Lever_Position",
+      "Unit": "Number",
+      "Description": "Emergency Parachute Pull",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CABIN_Hotair_Lever_Position",
+      "Unit": "Number",
+      "Description": "Heating Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CanopyLeftHandle_Position",
+      "Unit": "Number",
+      "Description": "Canopy Open Close Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_ENGINE_Lever_Choke_Position",
+      "Unit": "Number",
+      "Description": "Choke Toggle Inc Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_S4_FUEL_Switch_Valve_1",
+      "Unit": "Number",
+      "Description": "Fuel Switch",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_S4_PropAutoSwitch",
+      "Unit": "Number",
+      "Description": "Toggle PropAuto Switch",
+      "Interpolate": false
+    }
+  ]
+}

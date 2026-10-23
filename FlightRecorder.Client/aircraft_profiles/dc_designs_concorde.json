@@ -1,0 +1,89 @@
+{
+  "Id": "dc_designs_concorde",
+  "Name": "DC Designs Concorde",
+  "Vendor": "DC Designs",
+  "MatchTitles": [
+    "DC Designs Concorde",
+    "Concorde"
+  ],
+  "Variables": [
+    {
+      "Name": "L:GPS_DRIVES_NAV",
+      "Unit": "Bool",
+      "Description": "CONC_RAD_INS_SW",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALT_ACQ",
+      "Unit": "Bool",
+      "Description": "CONC_BTN_AP_ALT_HOLD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALT_AP_VALUE",
+      "Unit": "feet",
+      "Description": "CONC_AP_ALT_INC 1000",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_PANEL_HEADING_HOLD",
+      "Unit": "Bool",
+      "Description": "CONC_BTN_AP_HDG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUTOLAND",
+      "Unit": "Bool",
+      "Description": "CONC_BTN_AP_LAND",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FD_Selector",
+      "Unit": "Bool",
+      "Description": "CONC_FD_SW_PILOT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HDG_AP_VALUE",
+      "Unit": "Degrees",
+      "Description": "CONC_HDG_BUG_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:IAS_ACQ",
+      "Unit": "Bool",
+      "Description": "IAS ASQ status",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:IAS_AP_VALUE",
+      "Unit": "Knots",
+      "Description": "CONC_AP_SPD_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "Bool",
+      "Description": "CONC_BTN_AP_IAS_ACQ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_1_Status",
+      "Unit": "number",
+      "Description": "CONC_AP_MASTER_TGL_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_2_Status",
+      "Unit": "number",
+      "Description": "CONC_AP_MASTER_TGL_2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENG_CTRL1",
+      "Unit": "Bool",
+      "Description": "REHEAT 1 Afterburner",
+      "Interpolate": false
+    }
+  ]
+}

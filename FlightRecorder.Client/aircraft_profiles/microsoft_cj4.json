@@ -1,0 +1,203 @@
+{
+  "Id": "microsoft_cj4",
+  "Name": "Microsoft CJ4",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft CJ4",
+    "CJ4"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_BEACON_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_BEACON_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_CABIN1_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_2",
+      "Unit": "number",
+      "Description": "WT_CJ4_CABIN2_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_3",
+      "Unit": "number",
+      "Description": "WT_CJ4_FLOOD_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_Knob_Master",
+      "Unit": "number",
+      "Description": "WT_CJ4_PANEL_LIGHTS_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LOGO_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_LOGO_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_NAV_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_NAV_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_15",
+      "Unit": "number",
+      "Description": "WT_CJ4_PFD1_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_16",
+      "Unit": "number",
+      "Description": "WT_CJ4_PFD2_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_17",
+      "Unit": "number",
+      "Description": "WT_CJ4_MFD1_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_18",
+      "Unit": "number",
+      "Description": "WT_CJ4_MFD2_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_STROBE_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_STROBE_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_WING_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_WING_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MF_Master_Caution_Test",
+      "Unit": "number",
+      "Description": "WT_CJ4_MASTER_CAUTION_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MF_Master_Warning_Test",
+      "Unit": "number",
+      "Description": "WT_CJ4_MASTER_WARNING_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SAFETY_LIGHT_ON",
+      "Unit": "number",
+      "Description": "WT_CJ4_SAFETY_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SEATBELT_LIGHT_ON",
+      "Unit": "number",
+      "Description": "WT_CJ4_SEATBELT_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_EMER_LIGHT_ARMED",
+      "Unit": "number",
+      "Description": "WT_CJ4_EMER_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_LNAV_MODE",
+      "Unit": "Number",
+      "Description": "WT_CJ4_AP_CRS1_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_NAV_ON",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_NAV_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_TOD_DISTANCE",
+      "Unit": "number",
+      "Description": "WT_CJ4_TOD_DISTANCE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_TOD_REMAINING",
+      "Unit": "number",
+      "Description": "WT_CJ4_TOD_REMAINING",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_VNAV_ON",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_AP_VNAV_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CJ4_TESTING",
+      "Unit": "number",
+      "Description": "CJ4 TEST OUTPUT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_ALT_HOLD",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_AP_ALT_HOLD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_FLC_ON",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_FLC_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_HDG_ON",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_HDG_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CJ4_VS_ON",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_VS_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVar_AirspeedIsInMach",
+      "Unit": "Bool",
+      "Description": "WT_CJ4_AP_SPEED_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_PushXFR",
+      "Unit": "number",
+      "Description": "WT_CJ4_AP_XFR_PRESSED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_Airframe_1",
+      "Unit": "number",
+      "Description": "WT_CJ4_ANTIICE_WINGENG_LEFT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:DEICE_Airframe_2",
+      "Unit": "number",
+      "Description": "WT_CJ4_ANTIICE_WINGENG_RIGHT_TOG",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+﻿{
+    "Id":  "FBW_A32NX",
+    "Name":  "FlyByWire A32NX",
+    "Vendor":  "fbw",
+    "MatchTitles":  [
+                        "a32nx",
+                        "flybywire",
+                        "fbw",
+                        "FlyByWire A32NX"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:A32NX_AUTOPILOT_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:A32NX_AUTOPILOT_1_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:A32NX_AUTOPILOT_2_ACTIVE",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

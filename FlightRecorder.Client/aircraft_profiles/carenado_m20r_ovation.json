@@ -1,0 +1,59 @@
+{
+  "Id": "carenado_m20r_ovation",
+  "Name": "Carenado M20R OVATION",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado M20R OVATION",
+    "M20R OVATION"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AUTOPILOT_MODE_ARM_ON",
+      "Unit": "number",
+      "Description": "KAS297b_ALT_ARM",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Gauge_TEST_KFC150",
+      "Unit": "number",
+      "Description": "KFC150_GAUGE_TEST",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_GLARESHIELD_1",
+      "Unit": "number",
+      "Description": "LIGHTING_GLARESHIELD_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1",
+      "Unit": "number",
+      "Description": "LIGHT_PANEL_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_5",
+      "Unit": "number",
+      "Description": "LIGHT_CABIN_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:M20R_SWITCH_STANDBY_VACUUM",
+      "Unit": "number",
+      "Description": "Standby Vacuum Pump ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CUSTOM_AP_ALT_VAR_SET_ENGLISH",
+      "Unit": "feet",
+      "Description": "KAS297_ALT_DEC_100",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:GAUGE_ALT_ALERT_MODE",
+      "Unit": "Number",
+      "Description": "KAS297_AP_SELECT_ALT_OR_VS",
+      "Interpolate": false
+    }
+  ]
+}

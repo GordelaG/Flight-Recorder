@@ -1,0 +1,155 @@
+{
+  "Id": "black_square_analog_king_air",
+  "Name": "Black Square Analog King Air",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Analog King Air",
+    "Analog King Air"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_GLARESHIELD_1_power_setting",
+      "Unit": "number",
+      "Description": "BS KA INSTR INDIRECT KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_1_power_setting",
+      "Unit": "number",
+      "Description": "BS KA PILOT FLIGHT INSTR KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_2_power_setting",
+      "Unit": "number",
+      "Description": "BS KA AVIONICS PANEL KNOB INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_3_power_setting",
+      "Unit": "number",
+      "Description": "BS KA OVHD PED \u0026 SUBPANEL KNOB INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_4_power_setting",
+      "Unit": "number",
+      "Description": "BS KA COPILOT FLIGHT INSTR KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_5_power_setting",
+      "Unit": "number",
+      "Description": "BS KA OVHD LIGHT PANEL KNOB INC ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_6_power_setting",
+      "Unit": "number",
+      "Description": "BS KA SIDE PANEL KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_7_power_setting",
+      "Unit": "number",
+      "Description": "BS KA ENGINE INSTR KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_8_power_setting",
+      "Unit": "number",
+      "Description": "BS KA COPILOT OVHD FLOOD KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_PANEL_9_power_setting",
+      "Unit": "number",
+      "Description": "BS KA COPILOT GYRO INSTR KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_masterPanelLights",
+      "Unit": "bool",
+      "Description": "BS KA EMERENCY LIGHTS TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonvalue",
+      "Unit": "number",
+      "Description": "ALT SEL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_autopilotSoftRideMode",
+      "Unit": "bool",
+      "Description": "SR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_iasHoldMode",
+      "Unit": "bool",
+      "Description": "DSC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AftBlowerSwitch",
+      "Unit": "bool",
+      "Description": "BS KA Aft Blower Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_ElectricHeatSwitch",
+      "Unit": "bool",
+      "Description": "BS KA Electrical Heating Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_environmentalMode",
+      "Unit": "number",
+      "Description": "BS KA Cabin Temperature Mode Auto (on)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_fireTestMode",
+      "Unit": "number",
+      "Description": "BS KA Fire Detection Mode Switch Left Fire (on)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_HydraulicTestButton_MinReleaseTime",
+      "Unit": "number",
+      "Description": "HYD FLUID SENSOR TEST (PUSH)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_pressurizationClimbRate",
+      "Unit": "number",
+      "Description": "BS KA Cabin Pressurization Climb Rate Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_PropDeiceSwitch",
+      "Unit": "bool",
+      "Description": "BS KA PROPELLER DEICE TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_radar_Mode",
+      "Unit": "number",
+      "Description": "Bendix RDR1150XL OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_InterSep_L",
+      "Unit": "bool",
+      "Description": "BS KA LEFT ENG ANTI-ICE ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_InterSep_R",
+      "Unit": "bool",
+      "Description": "BS KA RIGHT ENG ANTI-ICE ON",
+      "Interpolate": false
+    }
+  ]
+}

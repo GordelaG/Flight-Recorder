@@ -1,0 +1,203 @@
+{
+  "Id": "aerosoft_a340_600",
+  "Name": "Aerosoft A340-600",
+  "Vendor": "Aerosoft",
+  "MatchTitles": [
+    "Aerosoft A340-600",
+    "A340-600"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AB_MPL_CPT_FD_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis FD Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_CPT_ILS_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis LS Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ECAML_Power",
+      "Unit": "number",
+      "Description": "AS A340 Lower ECAM BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ECAMU_Power",
+      "Unit": "number",
+      "Description": "AS A340 Upper ECAM BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_FO_FD_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis FD Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_FO_ILS_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis LS Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_GS_LIGHT_INTEGRAL_Rot",
+      "Unit": "number",
+      "Description": "AS A340 GS Integ Light BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_ARPT_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis ARPT Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_CSTR_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis CSTR Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_ARPT_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis ARPT Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_CSTR_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis CSTR Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_NDB_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis NDB Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_Power",
+      "Unit": "number",
+      "Description": "AS A340 FO ND BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_VORD_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis VOR.D Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_FO_WPT_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Fo Efis WPT Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_NDB_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis NDB Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_Power",
+      "Unit": "number",
+      "Description": "AS A340 Capt ND BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_VORD_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis VOR.D Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_ND_WPT_LIGHT_ON",
+      "Unit": "number",
+      "Description": "AS A340 Capt Efis WPT Button Annunciator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_NDTERR_Bright",
+      "Unit": "number",
+      "Description": "AS A340 Capt ND Bck BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_NDTERR_FO_Bright",
+      "Unit": "number",
+      "Description": "AS A340 FO ND Bck BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_PFD_FO_Power",
+      "Unit": "number",
+      "Description": "AS A340 FO PFD BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_MPL_PFD_Power",
+      "Unit": "number",
+      "Description": "AS A340 Capt PFD BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_PDS_FLOOD_MAIN_PNL_Rot",
+      "Unit": "number",
+      "Description": "AS A340 Mainpanel Flood BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AB_PDS_IntLight_INTEG_CPT_Rotary",
+      "Unit": "number",
+      "Description": "AS A340 Main Integ Light BRT inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASAB_FCU_ALT_DELTA",
+      "Unit": "number",
+      "Description": "AS A340 Altitude Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASAB_FCU_HDG_DELTA",
+      "Unit": "number",
+      "Description": "AS A340 Heading Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASAB_FCU_SPEED_DELTA",
+      "Unit": "number",
+      "Description": "AS A340 Speed Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ASAB_FCU_VS_DELTA",
+      "Unit": "number",
+      "Description": "AS A340 VS Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TLS_FCU_ALT_WINDOW_VALUE",
+      "Unit": "number",
+      "Description": "AS A340 Altitude Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TLS_FCU_HDG_MANAGED",
+      "Unit": "number",
+      "Description": "AS A340 Heading Dot",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TLS_FCU_HDG_WINDOW_VALUE",
+      "Unit": "number",
+      "Description": "AS A340 Heading Display",
+      "Interpolate": false
+    }
+  ]
+}

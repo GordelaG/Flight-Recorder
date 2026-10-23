@@ -1,0 +1,18 @@
+{
+  "Id": "microsoft_737_max",
+  "Name": "Microsoft 737-MAX",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft 737-MAX",
+    "737-MAX",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FMC_EXEC_ACTIVE",
+      "Unit": "number",
+      "Description": "EXEC LIGHT",
+      "Interpolate": false
+    }
+  ]
+}

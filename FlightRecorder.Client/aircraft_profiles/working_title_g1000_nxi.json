@@ -1,0 +1,77 @@
+{
+  "Id": "working_title_g1000_nxi",
+  "Name": "Working Title G1000 NXi",
+  "Vendor": "Working Title",
+  "MatchTitles": [
+    "Working Title G1000 NXi",
+    "G1000 NXi"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AS1000_PFD_SelectedNavIndex",
+      "Unit": "Number",
+      "Description": "Active PFD NAV index",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myBtnDN",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS DOWN",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myBtnLF",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS LEFT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myBtnRH",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS RIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myBtnUP",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS UP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTshort",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS UP Input OnRelease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTshortDN",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS DOWN Input OnRelease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTshortLF",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS LEFT Input OnRelease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTshortRH",
+      "Unit": "number",
+      "Description": "G1000 MFD PAN JOYSTICK LONG PRESS RIGHT Input OnRelease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AS1000_MID_Display_Backup_Active",
+      "Unit": "number",
+      "Description": "Mid Display Backup Push",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AS1000_PFD_SelectedComIndex",
+      "Unit": "Number",
+      "Description": "Active PFD COM index",
+      "Interpolate": false
+    }
+  ]
+}

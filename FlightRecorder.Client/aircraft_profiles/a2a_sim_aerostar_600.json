@@ -1,0 +1,89 @@
+{
+  "Id": "a2a_sim_aerostar_600",
+  "Name": "A2A SIM Aerostar 600",
+  "Vendor": "A2A SIM",
+  "MatchTitles": [
+    "A2A SIM Aerostar 600",
+    "Aerostar 600"
+  ],
+  "Variables": [
+    {
+      "Name": "L:BeaconLightSwitch",
+      "Unit": "number",
+      "Description": "Beacon Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CabinLightSwitch",
+      "Unit": "number",
+      "Description": "Cabin Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LightLandingLeftSwitch",
+      "Unit": "number",
+      "Description": "Left Landing Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LightLandingRightSwitch",
+      "Unit": "number",
+      "Description": "Right Landing Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:NavLightSwitch",
+      "Unit": "number",
+      "Description": "Nav Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:StrobeLightSwitch",
+      "Unit": "number",
+      "Description": "Strobe Light Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Battery1Switch",
+      "Unit": "number",
+      "Description": "Master Battery Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CabinFanSwitch",
+      "Unit": "number",
+      "Description": "Cabin Fan Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CabinHeatSwitch",
+      "Unit": "number",
+      "Description": "Cabin Heat Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Eng1_GeneratorSwitch",
+      "Unit": "number",
+      "Description": "Left Engine Alt Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Eng2_GeneratorSwitch",
+      "Unit": "number",
+      "Description": "Right Engine Alt Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PitotHeatSwitch",
+      "Unit": "number",
+      "Description": "Pitot Heat Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PropDeiceSwitch",
+      "Unit": "number",
+      "Description": "Prop De-Ice Switch Toggle",
+      "Interpolate": false
+    }
+  ]
+}

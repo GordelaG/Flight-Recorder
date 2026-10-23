@@ -1,0 +1,23 @@
+{
+  "Id": "carenado_cessna_c408",
+  "Name": "Carenado Cessna C408",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado Cessna C408",
+    "Cessna C408"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AM_ANUM_PC12_CAUTION",
+      "Unit": "number",
+      "Description": "Masater Caution Reset LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AM_ANUM_PC12_WARNING",
+      "Unit": "number",
+      "Description": "Masater Warning Reset LED",
+      "Interpolate": false
+    }
+  ]
+}

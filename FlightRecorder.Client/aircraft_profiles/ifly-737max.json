@@ -1,0 +1,35 @@
+﻿{
+    "Id":  "IFLY_737MAX",
+    "Name":  "iFly 737 MAX",
+    "Vendor":  "ifly",
+    "MatchTitles":  [
+                        "ifly",
+                        "iFly 737 MAX"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:VC_CMD_A_SW_LIGHT_VAL",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:VC_CMD_B_SW_LIGHT_VAL",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:VC_LNAV_SW_LIGHT_VAL",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:VC_VOR_LOC_SW_LIGHT_VAL",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      }
+                  ]
+}

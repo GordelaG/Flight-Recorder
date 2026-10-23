@@ -1,0 +1,17 @@
+{
+  "Id": "jplogistics_cessna_152",
+  "Name": "JPLogistics Cessna 152",
+  "Vendor": "JPLogistics",
+  "MatchTitles": [
+    "JPLogistics Cessna 152",
+    "Cessna 152"
+  ],
+  "Variables": [
+    {
+      "Name": "L:C152X_DOOR_PILOT",
+      "Unit": "0",
+      "Description": "Open Pilot Door",
+      "Interpolate": false
+    }
+  ]
+}

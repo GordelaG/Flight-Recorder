@@ -1,0 +1,203 @@
+{
+  "Id": "microsoft_longitude",
+  "Name": "Microsoft Longitude",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft Longitude",
+    "Longitude"
+  ],
+  "Variables": [
+    {
+      "Name": "L:WT_Longitude_Autothrottle_Status",
+      "Unit": "number",
+      "Description": "Longitude AutoThrottle Status",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:WT_LNG_PARKING_BRAKE",
+      "Unit": "number",
+      "Description": "Parking Brake ON indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_1",
+      "Unit": "number",
+      "Description": "LONGITUDE_LANDING_LIGHTS_L_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_2",
+      "Unit": "number",
+      "Description": "LONGITUDE_LANDING_LIGHTS_R_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LANDING_3",
+      "Unit": "number",
+      "Description": "LONGITUDE_PULSE_LIGHTS_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_LOGO_1",
+      "Unit": "number",
+      "Description": "LONGITUDE_TAIL_FLOOD_LIGHTS_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_15",
+      "Unit": "number",
+      "Description": "LONGITUDE_PFD1_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_16",
+      "Unit": "number",
+      "Description": "LONGITUDE_PFD2_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_17",
+      "Unit": "number",
+      "Description": "LONGITUDE_MFD_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_18",
+      "Unit": "number",
+      "Description": "LONGITUDE_PFD1_GTC_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_19",
+      "Unit": "number",
+      "Description": "LONGITUDE_PFD2_GTC_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_POTENTIOMETER_20",
+      "Unit": "number",
+      "Description": "LONGITUDE_MFD_GTC_LIGHT_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_STROBE_1",
+      "Unit": "number",
+      "Description": "LONGITUDE_ANTI_COLL_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_TAXI_1",
+      "Unit": "number",
+      "Description": "LONGITUDE_TAXI_LIGHTS_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_WING_1",
+      "Unit": "number",
+      "Description": "LONGITUDE_WING_INSP_LIGHTS_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_LNav_Is_Tracking",
+      "Unit": "number",
+      "Description": "Longitude AP Lnav Is Tracking",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_LNav_Leg_Distance_Along",
+      "Unit": "number",
+      "Description": "Longitude AP Lnav Leg Distance Along",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_Lnav_Leg_Distance_Remaining",
+      "Unit": "number",
+      "Description": "Longitude AP Leg Distance Remaining",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_Lnav_Tracked_Leg_Index",
+      "Unit": "number",
+      "Description": "Longitude AP Lnav Tracked Leg Index",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTAP_LNav_Vector_Distance_Remaining",
+      "Unit": "number",
+      "Description": "Longitude AP Lnav Vector Distance Remaining",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WTGarmin_Nav_ActiveNavSource:1",
+      "Unit": "number",
+      "Description": "AP_NAV_SRC_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_VNAVButtonValue",
+      "Unit": "number",
+      "Description": "LONGITUDE_AUTOPILOT_VNAV_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Autopilot_Altitude_Increment",
+      "Unit": "number",
+      "Description": "LONGITUDE_AUTOPILOT_ALT_FINE_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "number",
+      "Description": "Longitude AP Baro 1 Force Std Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro2_ForcedToSTD",
+      "Unit": "number",
+      "Description": "Longitude AP Baro 2 Force Std Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SpeedIsManuallySet",
+      "Unit": "number",
+      "Description": "Longitude AP SPD Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:myTimer",
+      "Unit": "number",
+      "Description": "AS3000_TSC_Vertical_2_Right_Inner_Knob_Button_Release",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_LNG_BUS_TIE_CONN",
+      "Unit": "number",
+      "Description": "Bus_Tie Closed Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_LNG_FUEL_PUMP_1_ON",
+      "Unit": "number",
+      "Description": "Longitude Fuel Boost Pump L Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_LNG_FUEL_PUMP_2_ON",
+      "Unit": "number",
+      "Description": "Longitude Fuel Boost Pump R Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_LNG_GRAVITY_XFLOW_OPEN",
+      "Unit": "number",
+      "Description": "Longitude Fuel Gravity XFlow Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_LNG_PITOT_HEAT",
+      "Unit": "number",
+      "Description": "Pitot Heat ON",
+      "Interpolate": false
+    }
+  ]
+}

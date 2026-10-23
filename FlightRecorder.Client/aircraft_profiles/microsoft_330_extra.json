@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_330_extra",
+  "Name": "Microsoft 330 Extra",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft 330 Extra",
+    "330 Extra"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MFD_Main_MapShowCursor",
+      "Unit": "Number",
+      "Description": "AS3X_MFD_Cursor",
+      "Interpolate": false
+    }
+  ]
+}

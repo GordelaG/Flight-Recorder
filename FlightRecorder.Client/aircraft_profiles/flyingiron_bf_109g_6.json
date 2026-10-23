@@ -1,0 +1,29 @@
+{
+  "Id": "flyingiron_bf_109g_6",
+  "Name": "FlyingIron BF 109G-6",
+  "Vendor": "FlyingIron",
+  "MatchTitles": [
+    "FlyingIron BF 109G-6",
+    "BF 109G-6"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ENGINE_PropGovernorSwitch",
+      "Unit": "number",
+      "Description": "PropGovernorSwitch_Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FuelValveSelected",
+      "Unit": "number",
+      "Description": "Fuel valve UP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PrimerPumpsCurrent",
+      "Unit": "number",
+      "Description": "Primer",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "Id": "black_square_bonanza_a36_pro",
+  "Name": "Black Square Bonanza A36 Pro",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Bonanza A36 Pro",
+    "Bonanza A36 Pro"
+  ],
+  "Variables": [
+    {
+      "Name": "L:var_GSA_AftDoor_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Aft Door",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_GearUp_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Gear Up",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_Geavar_GSA_AcDoorExtend_readonly",
+      "Unit": "number",
+      "Description": "Annunciator AC Door",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_GyroWarn_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Gyro Warn",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_LowBusVolts_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Low Volts",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_StandbyAlternator_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Standby Alternator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_StandbyVacuum_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Standby Gyro Pump",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_GSA_Start_readonly",
+      "Unit": "number",
+      "Description": "Annunciator Start",
+      "Interpolate": false
+    }
+  ]
+}

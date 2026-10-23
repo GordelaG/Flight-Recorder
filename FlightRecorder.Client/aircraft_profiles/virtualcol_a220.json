@@ -1,0 +1,17 @@
+{
+  "Id": "virtualcol_a220",
+  "Name": "Virtualcol A220",
+  "Vendor": "Virtualcol",
+  "MatchTitles": [
+    "Virtualcol A220",
+    "A220"
+  ],
+  "Variables": [
+    {
+      "Name": "L:ALTITUDE_X1000_SET",
+      "Unit": "bool",
+      "Description": "ALT incr Knob",
+      "Interpolate": false
+    }
+  ]
+}

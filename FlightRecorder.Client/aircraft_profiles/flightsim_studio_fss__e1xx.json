@@ -1,0 +1,203 @@
+{
+  "Id": "flightsim_studio_fss__e1xx",
+  "Name": "FlightSim Studio (FSS) E1XX",
+  "Vendor": "FlightSim Studio (FSS)",
+  "MatchTitles": [
+    "FlightSim Studio (FSS) E1XX",
+    "E1XX"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FSS_EXX_THROTTLE_BV_TO_MODE",
+      "Unit": "Number",
+      "Description": "TOGA Press",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:FSS_E19X_HGS_PILOT_BRT",
+      "Unit": "Number",
+      "Description": "Cpt HGS BRT Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CCD_LEFT_BV_ROTARY_INNER",
+      "Unit": "number",
+      "Description": "CPT CCD Rotary Inner Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CCD_LEFT_BV_ROTARY_OUTER",
+      "Unit": "number",
+      "Description": "CPT CCD Rotary Outer Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CCD_RIGHT_BV_ROTARY_INNER",
+      "Unit": "number",
+      "Description": "FO CCD Rotary Inner Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CCD_RIGHT_BV_ROTARY_OUTER",
+      "Unit": "number",
+      "Description": "FO CCD Rotary Outer Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CPLT_BV_MAIN_KNOB",
+      "Unit": "number",
+      "Description": "MAIN PNL Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CPLT_BV_OVHD_KNOB",
+      "Unit": "number",
+      "Description": "OVHD PNL Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_CPLT_BV_PDSTL_KNOB",
+      "Unit": "number",
+      "Description": "PEDESTAL Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_EICAS_DECLUTTER_CANCEL",
+      "Unit": "Number",
+      "Description": "EICAS Full Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_CHART_L_BRT_KNOB",
+      "Unit": "number",
+      "Description": "CPT Chart Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_CHART_R_BRT_KNOB",
+      "Unit": "number",
+      "Description": "FO Chart Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_COMP_BRT_KNOB",
+      "Unit": "number",
+      "Description": "FO Comp/Clk Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_EICAS_BRT_KNOB",
+      "Unit": "number",
+      "Description": "CPT EICAS Brightness Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_FLOOD_L_BRT_KNOB",
+      "Unit": "number",
+      "Description": "CPT Flood/Storm Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_FLOOD_R_BRT_KNOB",
+      "Unit": "number",
+      "Description": "FO Flood/Storm Light Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_MFD_L_BRT_KNOB",
+      "Unit": "number",
+      "Description": "CPT MFD Brightness Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_MFD_R_BRT_KNOB",
+      "Unit": "number",
+      "Description": "FO MFD Brightness Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_PFD_L_BRT_KNOB",
+      "Unit": "number",
+      "Description": "CPT PFD Brightness Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_GSHIELD_PFD_R_BRT_KNOB",
+      "Unit": "number",
+      "Description": "FO PFD Brightness Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_BTN_HDG_SYNC",
+      "Unit": "Number",
+      "Description": "Heading Sync Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_BTN_SPD_SRC",
+      "Unit": "number",
+      "Description": "FGC SPEED SOURCE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_LT_AP",
+      "Unit": "number",
+      "Description": "Cpt Yoke AP Disc Button",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_POS_ALT",
+      "Unit": "number",
+      "Description": "FGP ALT Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_POS_FPA",
+      "Unit": "number",
+      "Description": "FGP FPA Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_POS_HDG",
+      "Unit": "number",
+      "Description": "FGP HDG Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_POS_SPD",
+      "Unit": "number",
+      "Description": "FGP SPD Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_POS_VS",
+      "Unit": "number",
+      "Description": "FGP VS Decrease",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_VAL_ALT",
+      "Unit": "number",
+      "Description": "Selected Altitude Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_VAL_FPA",
+      "Unit": "number",
+      "Description": "Selected FPA Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_VAL_HDG",
+      "Unit": "number",
+      "Description": "Selected HDG Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSS_EXX_FGC_ROT_VAL_SPD",
+      "Unit": "number",
+      "Description": "Selected Speed Value",
+      "Interpolate": false
+    }
+  ]
+}

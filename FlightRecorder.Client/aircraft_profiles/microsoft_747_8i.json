@@ -1,0 +1,149 @@
+{
+  "Id": "microsoft_747_8i",
+  "Name": "Microsoft 747-8i",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft 747-8i",
+    "747-8i"
+  ],
+  "Variables": [
+    {
+      "Name": "L:AS01B_AUTO_THROTTLE_ARM_STATE",
+      "Unit": "Bool",
+      "Description": "B747 AP AT Switch Arm",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:AP_LNAV_ARMED",
+      "Unit": "number",
+      "Description": "AP_LNAV_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VNAV_ARMED",
+      "Unit": "number",
+      "Description": "AP_VNAV_ARMED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B747_8_MFD_1_NAV_MODE",
+      "Unit": "number",
+      "Description": "B747 8 MFD 1 NAV MODE DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_EMER_LIGHTS_ARMED",
+      "Unit": "number",
+      "Description": "B747 EMERGENCY LIGHTS AND COVER TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_ALT_HOLD_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_ALT_HOLD_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_APP_ARMED",
+      "Unit": "number",
+      "Description": "APP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_APR_ARMED",
+      "Unit": "number",
+      "Description": "AP_APR (APP) (beta)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_FLCH_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_FLCH_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_SPD_ACTIVE",
+      "Unit": "number",
+      "Description": "SPEED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AP_VS_ACTIVE",
+      "Unit": "number",
+      "Description": "AP_VS_ACTIVE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Generic_Master_Caution_Active",
+      "Unit": "number",
+      "Description": "MASTER CAUTION",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HUD_AP_SELECTED_ALTITUDE",
+      "Unit": "number",
+      "Description": "ALT DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "B747 AP IAS Mach Knob Inc",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B747_8_MFD_1_Range",
+      "Unit": "number",
+      "Description": "B747 8 MFD 1 Range DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B747_8_MFD_2_Range",
+      "Unit": "number",
+      "Description": "B747 EFIS MFD 2 RANGE KNOB DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FMC_EXEC_ACTIVE",
+      "Unit": "number",
+      "Description": "Execute LED ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_748_PACK_ON:1",
+      "Unit": "number",
+      "Description": "B747 PACK  1 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_748_PACK_ON:2",
+      "Unit": "number",
+      "Description": "B747 PACK  2 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_748_PACK_ON:3",
+      "Unit": "number",
+      "Description": "B747 PACK  3 TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_APU_StarterKnob_Pos",
+      "Unit": "number",
+      "Description": "APU START",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "number",
+      "Description": "B747 8 EFIS BARO STD PRESS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_SpeedIsManuallySet",
+      "Unit": "bool",
+      "Description": "B747 SPEED DISPLAY ON/OFF",
+      "Interpolate": false
+    }
+  ]
+}

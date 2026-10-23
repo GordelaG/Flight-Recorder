@@ -1,0 +1,204 @@
+{
+  "Id": "ifly_737_max8",
+  "Name": "iFly 737-Max8",
+  "Vendor": "iFly",
+  "MatchTitles": [
+    "iFly 737-Max8",
+    "737-Max8",
+    "737"
+  ],
+  "Variables": [
+    {
+      "Name": "L:VC_Aft_Electronics_Flood_Light_SW_VAL",
+      "Unit": "number",
+      "Description": "Pedestal Flood Brightness",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_Aft_Electronics_Panel_Light_SW_VAL",
+      "Unit": "number",
+      "Description": "Pedestal Panel Brightness",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ALT_HLD_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ALT HLD PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_AP_1_Indicators_Light_Color_VAL",
+      "Unit": "number",
+      "Description": "737Max8 A/P P/RST Left LED Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_AP_2_Indicators_Light_Color_VAL",
+      "Unit": "number",
+      "Description": "737Max8 A/P P/RST Right LED Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_APP_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "APP PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_AT_1_Indicators_Light_Color_VAL",
+      "Unit": "number",
+      "Description": "737Max8 A/T P/RST Left LED Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_AT_2_Indicators_Light_Color_VAL",
+      "Unit": "number",
+      "Description": "737Max8 A/T P/RST Right LED Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_AT_ARM_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "A/T ARM LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_1_CALL_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 1 CALL Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_1_EXEC_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 1 EXEC Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_1_FAIL_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 1 FAIL Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_1_MSG_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 1 MSG Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_1_OFST_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 1 OFST Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_2_CALL_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 2 CALL Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_2_EXEC_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 2 EXEC Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_2_FAIL_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 2 FAIL Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_2_MSG_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 2 MSG Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CDU_2_OFST_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "737Max8 CDU 2 OFST Light On",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CMD_A_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "CMD A PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CMD_B_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "CMD B PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CWS_A_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "CWS A PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_CWS_B_SW_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "CWS B PUSH BUTTON LIGHT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_APU_GEN_OFF_BUS_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_APU_GEN_OFF_BUS",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_BAT_DISCHARGE_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_BAT_DISCHARGE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_DRIVE_1_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_DRIVE_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_DRIVE_2_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_DRIVE_2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_GEN_OFF_BUS_1_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_GEN_OFF_BUS_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_GEN_OFF_BUS_2_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_GEN_OFF_BUS_2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_GRD_POWER_AVAILAB_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_GRD_POWER_AVAILAB",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_SOURCE_OFF_1_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_SOURCE_OFF_1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:VC_ELECTRICAL_LIGHT_SOURCE_OFF_2_LIGHT_VAL",
+      "Unit": "number",
+      "Description": "ELECTRICAL_LIGHT_SOURCE_OFF_2",
+      "Interpolate": false
+    }
+  ]
+}

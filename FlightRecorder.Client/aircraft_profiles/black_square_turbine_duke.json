@@ -1,0 +1,95 @@
+{
+  "Id": "black_square_turbine_duke",
+  "Name": "Black Square Turbine Duke",
+  "Vendor": "Black Square",
+  "MatchTitles": [
+    "Black Square Turbine Duke",
+    "Turbine Duke"
+  ],
+  "Variables": [
+    {
+      "Name": "L:bksq_throttleLocks",
+      "Unit": "number",
+      "Description": "Throttle Locks Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:var_CoAlertLed_readonly",
+      "Unit": "Bool",
+      "Description": "CO Detector Yellow Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_CoStatusLed_readonly",
+      "Unit": "Bool",
+      "Description": "CO Detector Green Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_FlightDirectorVisible",
+      "Unit": "bool",
+      "Description": "Flight Director Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_AltitudeSelectorKnobPushed",
+      "Unit": "bool",
+      "Description": "Altitude 100/1000ft Increment Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_controlLocks",
+      "Unit": "number",
+      "Description": "Control Locks Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_EngineCovers",
+      "Unit": "number",
+      "Description": "Engine Covers Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_NoseDoor",
+      "Unit": "number",
+      "Description": "Nose Baggage Door Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_PitotCovers",
+      "Unit": "number",
+      "Description": "Pitot Covers Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_PreHeater",
+      "Unit": "number",
+      "Description": "Engine Preheater Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_stormWindow",
+      "Unit": "number",
+      "Description": "Storm Window Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:bksq_WheelChocks",
+      "Unit": "number",
+      "Description": "Chocks Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_batteryTemperature_L",
+      "Unit": "Fahrenheit",
+      "Description": "Battery Temperature Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:var_batteryTemperature_R",
+      "Unit": "Fahrenheit",
+      "Description": "Battery Temperature Right",
+      "Interpolate": false
+    }
+  ]
+}

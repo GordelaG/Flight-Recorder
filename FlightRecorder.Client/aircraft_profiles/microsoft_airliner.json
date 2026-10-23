@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_airliner",
+  "Name": "Microsoft Airliner",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft Airliner",
+    "Airliner"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_FPV_MODE_ACTIVE",
+      "Unit": "Bool",
+      "Description": "EFIS PFD FPV PRESS",
+      "Interpolate": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+﻿{
+    "Id":  "INIBUILDS_A350",
+    "Name":  "iniBuilds A350",
+    "Vendor":  "inibuilds",
+    "MatchTitles":  [
+                        "ini",
+                        "builds",
+                        "inisim",
+                        "350",
+                        "iniBuilds A350"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:INI_ap1_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:INI_ap2_on",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

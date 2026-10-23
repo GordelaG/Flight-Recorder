@@ -1,0 +1,71 @@
+{
+  "Id": "jplogistics_cessna_152x",
+  "Name": "JPLogistics Cessna 152X",
+  "Vendor": "JPLogistics",
+  "MatchTitles": [
+    "JPLogistics Cessna 152X",
+    "Cessna 152X"
+  ],
+  "Variables": [
+    {
+      "Name": "L:C152X_DME_POWER",
+      "Unit": "number",
+      "Description": "C152X DME Power Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_XPNDR_KNOB",
+      "Unit": "Number",
+      "Description": "Old Transponder Power",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_COPILOT_VISOR",
+      "Unit": "Number",
+      "Description": "C152X-visor-copilot-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_COPILOT_WINDOW",
+      "Unit": "Number",
+      "Description": "C152X-Copilot-Window-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_DOOR_COPILOT",
+      "Unit": "Number",
+      "Description": "C152X-Copilot-door-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_DOOR_PILOT",
+      "Unit": "Number",
+      "Description": "C152X-Pilot-Door-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_PILOT_VISOR",
+      "Unit": "Number",
+      "Description": "C152X-visor-pilot-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_PILOT_WINDOW",
+      "Unit": "Number",
+      "Description": "C152X-Pilot-Window-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_WINDOW_HANDLE_Copilot",
+      "Unit": "Number",
+      "Description": "C152X-window-copilot-handle-toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:C152X_WINDOW_HANDLE_Pilot",
+      "Unit": "Number",
+      "Description": "C152X-window-pilot-handle-toggle",
+      "Interpolate": false
+    }
+  ]
+}

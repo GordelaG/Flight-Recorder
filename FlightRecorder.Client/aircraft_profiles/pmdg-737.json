@@ -1,0 +1,80 @@
+﻿{
+    "Id":  "PMDG_737",
+    "Name":  "PMDG 737",
+    "Vendor":  "pmdg",
+    "MatchTitles":  [
+                        "pmdg",
+                        "737",
+                        "B73",
+                        "6-9",
+                        "PMDG 737"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:ngx_MCP_App",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_3931_73X",
+                          "Unit":  "number",
+                          "Description":  "autopilot.approachHold",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ngx_MCP_CMDA",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ngx_MCP_CMDB",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_4021_73X",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_4031_73X",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:ngx_MCP_LNav",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_3971_73X",
+                          "Unit":  "number",
+                          "Description":  "autopilot.navLock",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_450_73X",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_453_73X",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:switch_454_73X",
+                          "Unit":  "number",
+                          "Description":  "controls.gearDown",
+                          "Interpolate":  false
+                      }
+                  ]
+}

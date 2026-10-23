@@ -1,0 +1,71 @@
+{
+  "Id": "flyingiron_p_38l_lightning",
+  "Name": "FlyingIron P-38L Lightning",
+  "Vendor": "FlyingIron",
+  "MatchTitles": [
+    "FlyingIron P-38L Lightning",
+    "P-38L Lightning"
+  ],
+  "Variables": [
+    {
+      "Name": "L:HANDLING_AileronBooster",
+      "Unit": "number",
+      "Description": "Aileron Booster valve OFF",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:ELECTRICAL_CompassPowerSwitch",
+      "Unit": "number",
+      "Description": "compass power on",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENGINE_AirFilter",
+      "Unit": "number",
+      "Description": "Alternate Air / Air Filter ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ENGINE_Magneto_Master",
+      "Unit": "number",
+      "Description": "Master Mag Switch",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FUEL_PumpEmerg_0",
+      "Unit": "number",
+      "Description": "emergency fuel pump left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FUEL_PumpEmerg_1",
+      "Unit": "number",
+      "Description": "Emergency Fuel Pump right",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PermEngAlternator",
+      "Unit": "number",
+      "Description": "left engine generator fail",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WEAPONS_ArmingSwitchLeft",
+      "Unit": "number",
+      "Description": "left drop tank arm switch ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WEAPONS_ArmingSwitchRight",
+      "Unit": "number",
+      "Description": "right drop tank arm switch ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WEAPONS_MasterArm",
+      "Unit": "number",
+      "Description": "master ordnance switch ON",
+      "Interpolate": false
+    }
+  ]
+}

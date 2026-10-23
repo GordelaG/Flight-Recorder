@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_a320",
+  "Name": "Microsoft A320",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft A320",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_A320_WEATHERRADAR_MODE",
+      "Unit": "Number",
+      "Description": "WEATHER MODE TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

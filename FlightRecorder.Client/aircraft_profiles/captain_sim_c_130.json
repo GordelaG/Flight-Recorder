@@ -1,0 +1,17 @@
+{
+  "Id": "captain_sim_c_130",
+  "Name": "Captain Sim C-130",
+  "Vendor": "Captain Sim",
+  "MatchTitles": [
+    "Captain Sim C-130",
+    "C-130"
+  ],
+  "Variables": [
+    {
+      "Name": "L:P17_001_KNB",
+      "Unit": "number",
+      "Description": "Turn Control Knob",
+      "Interpolate": false
+    }
+  ]
+}

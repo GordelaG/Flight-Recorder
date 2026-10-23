@@ -1,0 +1,23 @@
+﻿{
+    "Id":  "FENIX_A32X",
+    "Name":  "Fenix A318/A319/A320/A321",
+    "Vendor":  "fenix",
+    "MatchTitles":  [
+                        "fenix",
+                        "Fenix A318/A319/A320/A321"
+                    ],
+    "Variables":  [
+                      {
+                          "Name":  "L:I_FCU_AP1",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      },
+                      {
+                          "Name":  "L:I_FCU_AP2",
+                          "Unit":  "number",
+                          "Description":  "autopilot.master",
+                          "Interpolate":  false
+                      }
+                  ]
+}

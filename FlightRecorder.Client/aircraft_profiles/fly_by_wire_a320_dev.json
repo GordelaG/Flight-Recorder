@@ -1,0 +1,204 @@
+{
+  "Id": "fly_by_wire_a320_dev",
+  "Name": "Fly By Wire A320-Dev",
+  "Vendor": "Fly By Wire",
+  "MatchTitles": [
+    "Fly By Wire A320-Dev",
+    "A320-Dev",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A32NX_GPWS_FLAP_OFF",
+      "Unit": "bool",
+      "Description": "GPWS Flap Mode Off Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_GPWS_FLAPS3",
+      "Unit": "bool",
+      "Description": "GPWS Ldg Flap3 Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOBRAKES_ARMED_MODE",
+      "Unit": "number",
+      "Description": "AUTOBRAKE LOW HARD-TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_LGCIU_1_LEFT_GEAR_DOWNLOCKED",
+      "Unit": "Bool",
+      "Description": "A32NX Gear Left Downlocked Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_LGCIU_1_NOSE_GEAR_DOWNLOCKED",
+      "Unit": "Bool",
+      "Description": "A32NX Gear Nose Downlocked Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_LGCIU_1_NOSE_GEAR_UNLOCKED",
+      "Unit": "Bool",
+      "Description": "A32NX Gear Nose Unlocked Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_LGCIU_1_RIGHT_GEAR_DOWNLOCKED",
+      "Unit": "Bool",
+      "Description": "A32NX Gear Right Downlocked Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_PARK_BRAKE_LEVER_POS",
+      "Unit": "number",
+      "Description": "A32NX Park Brake LEVER TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_REALISTIC_TILLER_ENABLED",
+      "Unit": "number",
+      "Description": "A32NX REALISTIC TILLER ENABLED ",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_STATUS",
+      "Unit": "enum",
+      "Description": "Auto Thrust Active",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_FCU_ATHR_LIGHT_ON",
+      "Unit": "Bool",
+      "Description": "A32NX_AUTOTHRUST_STATUS",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_HYD_RUDDER_TRIM_FEEDBACK_ANGLE",
+      "Unit": "number",
+      "Description": "A32NX Rudder Trim Angle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOBRAKES_DECEL_LIGHT",
+      "Unit": "Bool",
+      "Description": "Autobrakes Low Decel",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_ALL",
+      "Unit": "number",
+      "Description": "A32NX ECAM ALL Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_APU",
+      "Unit": "number",
+      "Description": "A32NX ECAM APU Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_BLEED",
+      "Unit": "number",
+      "Description": "A32NX ECAM BLEED Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_BRAKES",
+      "Unit": "number",
+      "Description": "A32NX ECAM BRAKES WHEEL Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_CLR_1",
+      "Unit": "number",
+      "Description": "A32NX ECAM CLR Button 1 LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_CLR_2",
+      "Unit": "number",
+      "Description": "A32NX ECAM CLR Button 2 LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_COND",
+      "Unit": "number",
+      "Description": "A32NX ECAM COND Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_DOOR",
+      "Unit": "number",
+      "Description": "A32NX ECAM DOOR Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_ELEC",
+      "Unit": "number",
+      "Description": "A32NX ECAM ELEC Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_ENG",
+      "Unit": "number",
+      "Description": "A32NX ECAM ENG Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_FLT_CTL",
+      "Unit": "number",
+      "Description": "A32NX ECAM FLT CTL Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_FUEL",
+      "Unit": "number",
+      "Description": "A32NX ECAM FUEL Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_HYD",
+      "Unit": "number",
+      "Description": "A32NX ECAM HYD Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_PRESS",
+      "Unit": "number",
+      "Description": "A32NX ECAM PRESS Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_ECP_LIGHT_STS",
+      "Unit": "number",
+      "Description": "A32NX ECAM STS Button LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_TO_WPT_DISTANCE",
+      "Unit": "NM",
+      "Description": "A32NX EFIS R Waypoint Distance",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCDC_1_PRIORITY_LIGHT_CAPT_GREEN_ON",
+      "Unit": "bool",
+      "Description": "A32NX FCDC 1 PRIORITY LIGHT CAPT GREEN ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCDC_1_PRIORITY_LIGHT_CAPT_RED_ON",
+      "Unit": "bool",
+      "Description": "A32NX FCDC 1 PRIORITY LIGHT CAPT RED ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCDC_1_PRIORITY_LIGHT_FO_GREEN_ON",
+      "Unit": "bool",
+      "Description": "A32NX FCDC 1 PRIORITY LIGHT FO GREEN ON",
+      "Interpolate": false
+    }
+  ]
+}

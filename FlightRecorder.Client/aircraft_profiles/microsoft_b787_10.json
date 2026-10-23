@@ -1,0 +1,29 @@
+{
+  "Id": "microsoft_b787_10",
+  "Name": "Microsoft B787-10",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft B787-10",
+    "B787-10"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_APU_StarterKnob_Pos",
+      "Unit": "number",
+      "Description": "APU Indicator",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:WT_CABIN_CHIME_TOGGLE",
+      "Unit": "number",
+      "Description": "Cabin Chime",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Utility_Ife",
+      "Unit": "Bool",
+      "Description": "IFE ON LED",
+      "Interpolate": false
+    }
+  ]
+}

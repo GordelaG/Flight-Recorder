@@ -1,0 +1,53 @@
+{
+  "Id": "just_flight_pa28_warrior_ii",
+  "Name": "Just Flight PA28 Warrior II",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight PA28 Warrior II",
+    "PA28 Warrior II"
+  ],
+  "Variables": [
+    {
+      "Name": "L:KN62_INNER_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KN 62A Inner Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KN62_INNER_KNOB_PUSH",
+      "Unit": "number",
+      "Description": "PA-28-161 KN 62A Inner Knob Press",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KN62_OUTER_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KN 62A Outer Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KR85_LEFT_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KR 85 Left Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KR85_RIGHT_INNER_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KR 85 Right Inner Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KR85_RIGHT_OUTER_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KR 85 Right Outer Knob Dec",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KR85_VOL_KNOB",
+      "Unit": "number",
+      "Description": "PA-28-161 KR 85 Vol Dec",
+      "Interpolate": false
+    }
+  ]
+}

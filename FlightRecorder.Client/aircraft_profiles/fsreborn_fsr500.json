@@ -1,0 +1,41 @@
+{
+  "Id": "fsreborn_fsr500",
+  "Name": "FSReborn FSR500",
+  "Vendor": "FSReborn",
+  "MatchTitles": [
+    "FSReborn FSR500",
+    "FSR500"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FSR_M500_BATTERY_SWITCH_ON",
+      "Unit": "number",
+      "Description": "Battery Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_M500_ClimateControl_CabinTemp",
+      "Unit": "number",
+      "Description": "FSR500 CABINE TEMPERATURE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_M500_GPU_AVAILABLE",
+      "Unit": "number",
+      "Description": "FSR500 GPU UNIT AVAILABLE TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_M500_GPU_CONNECTED",
+      "Unit": "number",
+      "Description": "FSR500 GPU UNIT CONNECTED TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FSR_M500_GPU_DEPLOY",
+      "Unit": "number",
+      "Description": "FSR500 GPU UNIT DEPLOY TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

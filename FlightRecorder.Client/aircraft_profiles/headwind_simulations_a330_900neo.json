@@ -1,0 +1,156 @@
+{
+  "Id": "headwind_simulations_a330_900neo",
+  "Name": "Headwind Simulations A330-900neo",
+  "Vendor": "Headwind Simulations",
+  "MatchTitles": [
+    "Headwind Simulations A330-900neo",
+    "A330-900neo",
+    "A330"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A32NX_FCU_APPR_LIGHT_ON",
+      "Unit": "number",
+      "Description": "A339_FCU_APPR_LIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_LOC_LIGHT_ON",
+      "Unit": "number",
+      "Description": "A339_FCU_LOC_LIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BTN_LS_1_FILTER_ACTIVE",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_L_LS_LIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BTN_LS_2_FILTER_ACTIVE",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_R_LS_LIGHT_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_OPTION",
+      "Unit": "enum",
+      "Description": "A32NX_FCU_EFIS_L_CSTR_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_R_OPTION",
+      "Unit": "enum",
+      "Description": "A32NX_FCU_EFIS_R_CSTR_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_AFS_DISPLAY_MACH_MODE",
+      "Unit": "Bool",
+      "Description": "A32NX_FCU_AFS_DISPLAY_MACH_MODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_EFIS_L_BARO_IS_INHG",
+      "Unit": "number",
+      "Description": "Baro Selector Left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_EFIS_L_DISPLAY_BARO_MODE",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_L_BARO_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_EFIS_R_BARO_IS_INHG",
+      "Unit": "number",
+      "Description": "Baro Selector Right",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_EFIS_R_DISPLAY_BARO_MODE",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_R_BARO_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro1_Mode",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_L_BARO_PULL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Baro2_Mode",
+      "Unit": "number",
+      "Description": "A339_FCU_EFIS_R_BARO_PULL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EXT_PWR_AVAIL:1",
+      "Unit": "Bool",
+      "Description": "EXT PWR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ELEC_BAT_1_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "BAT 1",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ELEC_BAT_2_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "BAT 2",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ELEC_COMMERCIAL_PB_IS_ON",
+      "Unit": "Bool",
+      "Description": "COMMERCIAL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ELEC_GALY_AND_CAB_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "GALY \u0026 CAB",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_FUEL_MODESEL_MANUAL",
+      "Unit": "number",
+      "Description": "MODE SEL",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_HYD_ENG_1_PUMP_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "ENG 1 PUMP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_HYD_ENG_2_PUMP_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "ENG 2 PUMP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_HYD_EPUMPY_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "ELEC PUMP",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_HYD_PTU_PB_IS_AUTO",
+      "Unit": "Bool",
+      "Description": "PTU",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_Momentary_PUSH_OVHD_FUEL_XFEED_Pressed",
+      "Unit": "number",
+      "Description": "X FEED",
+      "Interpolate": false
+    }
+  ]
+}

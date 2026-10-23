@@ -1,0 +1,203 @@
+{
+  "Id": "fly_by_wire_a320",
+  "Name": "Fly By Wire A320",
+  "Vendor": "Fly By Wire",
+  "MatchTitles": [
+    "Fly By Wire A320",
+    "A320"
+  ],
+  "Variables": [
+    {
+      "Name": "L:A32NX_GPWS_FLAP_OFF",
+      "Unit": "number",
+      "Description": "A32NX_GPWS_FLAP_MODE_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_GPWS_FLAPS3",
+      "Unit": "number",
+      "Description": "A32NX_GPWS_LDG_FLAPS_3_MODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOTHRUST_STATUS",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOTHRUST_STATUS)",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:A32NX_AUTOBRAKES_ARMED_MODE",
+      "Unit": "number",
+      "Description": "Autobrake_Level",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A320_Neo_MFD_NAV_MODE_1",
+      "Unit": "number",
+      "Description": "A320_Neo_MFD_NAV_MODE_1_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A320_Neo_MFD_NAV_MODE_2",
+      "Unit": "number",
+      "Description": "A320_Neo_MFD_NAV_MODE_2_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_BRAKE_FAN",
+      "Unit": "Bool",
+      "Description": "A32NX_BRAKE_FAN_ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_DCDU_ATC_MSG_WAITING",
+      "Unit": "bool",
+      "Description": "ATC MSG Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_ND_MODE",
+      "Unit": "number",
+      "Description": "A32NX_EFIS_L_ND_MODE - Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_EFIS_L_ND_RANGE",
+      "Unit": "number",
+      "Description": "A32NX_EFIS_L_ND_RANGE - Increase",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ADIRS_ADR_1_PB_IS_ON",
+      "Unit": "bool",
+      "Description": "A32NX_ADIRS_1_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ADIRS_ADR_2_PB_IS_ON",
+      "Unit": "bool",
+      "Description": "A32NX_ADIRS_2_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_OVHD_ADIRS_ADR_3_PB_IS_ON",
+      "Unit": "bool",
+      "Description": "A32NX_ADIRS_3_PUSH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_STBY_COMPASS_LIGHT_TOGGLE",
+      "Unit": "number",
+      "Description": "STBY_COMPASS_LIGHT_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_NAV_0",
+      "Unit": "number",
+      "Description": "A32NX_NAV_LIGHT_TOG",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_1_ACTIVE",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_1_ACTIVE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_2_ACTIVE",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_2_ACTIVE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_APPR_MODE",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_APPR_MODE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_FPA_SELECTED",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_FPA_SELECTED) 10 * near",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_HEADING_SELECTED",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_HEADING_SELECTED)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_LOC_MODE",
+      "Unit": "number",
+      "Description": "(L:A32NX_AUTOPILOT_LOC_MODE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_SPEED_SELECTED",
+      "Unit": "Number",
+      "Description": "AUTOPILOT SPEED SELECTED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_AUTOPILOT_VS_SELECTED",
+      "Unit": "number",
+      "Description": "A32NX_AUTOPILOT_VS_SELECTED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_APPR_MODE_ACTIVE",
+      "Unit": "number",
+      "Description": "(L:A32NX_FCU_APPR_MODE_ACTIVE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_EFIS_L_DISPLAY_BARO_VALUE",
+      "Unit": "number",
+      "Description": "A32NX_FCU_EFIS_L_DISPLAY_BARO_VALUE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FCU_LOC_MODE_ACTIVE",
+      "Unit": "number",
+      "Description": "(L:A32NX_FCU_LOC_MODE_ACTIVE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_FMA_EXPEDITE_MODE",
+      "Unit": "number",
+      "Description": "(L:A32NX_FMA_EXPEDITE_MODE)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_METRIC_ALT_TOGGLE",
+      "Unit": "bool",
+      "Description": "A320NX FCU METRIC ALT TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:A32NX_TRK_FPA_MODE_ACTIVE",
+      "Unit": "bool",
+      "Description": "A320_Neo_FCU_VS_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PROFILE:A32NX_FCU_EFIS_L_EFIS_RANGE",
+      "Unit": "number",
+      "Description": "A32NX_FCU_EFIS_L_EFIS_RANGE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:PUSH_AUTOPILOT_CHRONO_L",
+      "Unit": "number",
+      "Description": "PUSH_AUTOPILOT_CHRONO_L",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:XMLVAR_AirSpeedIsInMach",
+      "Unit": "number",
+      "Description": "A320_Neo_FCU_SPEED_INC",
+      "Interpolate": false
+    }
+  ]
+}

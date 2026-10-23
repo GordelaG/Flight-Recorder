@@ -1,0 +1,161 @@
+{
+  "Id": "flyinside_bell_47_g",
+  "Name": "FlyInside Bell 47 G",
+  "Vendor": "FlyInside",
+  "MatchTitles": [
+    "FlyInside Bell 47 G",
+    "Bell 47 G"
+  ],
+  "Variables": [
+    {
+      "Name": "L:Aircraft.Lights.Beacon.On",
+      "Unit": "number",
+      "Description": "TAIL_BEACON_LIGHT_LED_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Lights.Landing.On",
+      "Unit": "number",
+      "Description": "LANDING_LIGHT_LED_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Lights.Nav.On",
+      "Unit": "number",
+      "Description": "NAVIGATION_LIGHTS_LED_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Lights.Strobe.On",
+      "Unit": "number",
+      "Description": "STROBE_LIGHT_LED_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Position.Airspeed.Indicated",
+      "Unit": "Mph",
+      "Description": "AIRSPEED_INDICATED_MPH_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Position.Altitude.Indicated",
+      "Unit": "number",
+      "Description": "ALTITUDE_INDICATED_FEET_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Position.Heading.Magnetic.Value",
+      "Unit": "number",
+      "Description": "HEADING_MAGNETIC_DEGREES_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Position.VerticalSpeed.value",
+      "Unit": "Feet/Minute",
+      "Description": "VERTICAL_SPEED_FEET_MINUTE_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Rotor.RPM.Percent",
+      "Unit": "number",
+      "Description": "AIRCRAFT_ROTOR_RPM_PERCENT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Electric.Battery.On",
+      "Unit": "number",
+      "Description": "BATTERY_SWITCH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Engine.1.Alternator.Enabled",
+      "Unit": "number",
+      "Description": "ALTERNATOR_SWITCH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Engine.1.Input.MagnetosPosition",
+      "Unit": "Number",
+      "Description": "IGNITION_KEY_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Engine.1.Turbine.N2",
+      "Unit": "number",
+      "Description": "ENGINE_RPM_PERC_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Fuel.Total.Quantity",
+      "Unit": "number",
+      "Description": "FUEL_TOTAL_QUANTITY_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Gauges.CylTemp",
+      "Unit": "number",
+      "Description": "CYLINDERS_TEMPERATURE_DEGREES_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Gauges.DisplayOilTemp",
+      "Unit": "number",
+      "Description": "OIL_TEMP_TRANS_SWITCH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Instruments.Altimeter.Kohlsman.HG",
+      "Unit": "number",
+      "Description": "LOCAL_AIR_PRESSURE_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Radios.Com.1.On",
+      "Unit": "number",
+      "Description": "COM_RADIO_SWITCH_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Radios.Transpoder.1.Code",
+      "Unit": "number",
+      "Description": "TRANSPONDER_CODE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Radios.Transponder.State",
+      "Unit": "number",
+      "Description": "TRANSPONDER_MODE_DISPLAY",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Systems.Fuel.Primer.Switch",
+      "Unit": "number",
+      "Description": "FUEL_PRIMER_SWITCH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Systems.Instruments.Enabled",
+      "Unit": "number",
+      "Description": "INSTRUMENTS_POWER_SWITCH_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Systems.Starter.Switch",
+      "Unit": "number",
+      "Description": "STARTER_COLLECTIVE_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Aircraft.Transponder.Flash",
+      "Unit": "number",
+      "Description": "TRANSPONDER_IDENT_LED_ON_OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:Doors.Hidden",
+      "Unit": "number",
+      "Description": "CABIN_DOORS_TOGGLE",
+      "Interpolate": false
+    }
+  ]
+}

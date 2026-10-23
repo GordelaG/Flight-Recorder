@@ -1,0 +1,77 @@
+{
+  "Id": "miltech_simulations_mv22b_osprey",
+  "Name": "Miltech Simulations MV22B Osprey",
+  "Vendor": "Miltech Simulations",
+  "MatchTitles": [
+    "Miltech Simulations MV22B Osprey",
+    "MV22B Osprey"
+  ],
+  "Variables": [
+    {
+      "Name": "L:MARYADI0344",
+      "Unit": "number",
+      "Description": "MV22B Toggle Rotor Brake",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0345",
+      "Unit": "number",
+      "Description": "MV22B Left Engine Mode",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0346",
+      "Unit": "number",
+      "Description": "MV22B Right Engine Mode",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0366",
+      "Unit": "number",
+      "Description": "MV22B APU Run LED State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0380",
+      "Unit": "number",
+      "Description": "MV22B Cargo Door Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0381",
+      "Unit": "number",
+      "Description": "MV22B Toggle Door Mode (Manual/Auto)",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MARYADI0382",
+      "Unit": "number",
+      "Description": "MV22B Toggle Side Door Open/Close",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:NacellesRotation",
+      "Unit": "number",
+      "Description": "Nacelle Rotation Angle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:V22_HYDRAULIC1",
+      "Unit": "number",
+      "Description": "MV22B Hydraulics 1 Pressure",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:V22_HYDRAULIC2",
+      "Unit": "number",
+      "Description": "MV22B Hydraulics 2 State",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:V22_HYDRAULIC3",
+      "Unit": "number",
+      "Description": "MV22B Hydraulics 3 State",
+      "Interpolate": false
+    }
+  ]
+}

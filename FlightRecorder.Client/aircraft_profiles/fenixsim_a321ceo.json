@@ -1,0 +1,17 @@
+{
+  "Id": "fenixsim_a321ceo",
+  "Name": "FenixSim A321ceo",
+  "Vendor": "FenixSim",
+  "MatchTitles": [
+    "FenixSim A321ceo",
+    "A321ceo"
+  ],
+  "Variables": [
+    {
+      "Name": "L:E_FCU_ALTITUDE",
+      "Unit": "number",
+      "Description": "FNX321_FCU_ALTITUDE_KNOB_INC",
+      "Interpolate": false
+    }
+  ]
+}

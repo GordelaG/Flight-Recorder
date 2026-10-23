@@ -1,0 +1,35 @@
+{
+  "Id": "propair_flight_shark_600_msfs2024",
+  "Name": "PropAir Flight Shark 600 (MSFS2024)",
+  "Vendor": "PropAir Flight",
+  "MatchTitles": [
+    "PropAir Flight Shark 600 (MSFS2024)",
+    "Shark 600 (MSFS2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FLAP_EM1_COND_1",
+      "Unit": "number",
+      "Description": "Flaps 0 led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FLAP_EM2_COND_1",
+      "Unit": "number",
+      "Description": "Flaps 1 led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FLAP_EM3_COND_1",
+      "Unit": "number",
+      "Description": "Flaps 2 led",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:FLAP_EM4_COND_1",
+      "Unit": "number",
+      "Description": "Flaps 3 led",
+      "Interpolate": false
+    }
+  ]
+}

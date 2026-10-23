@@ -1,0 +1,203 @@
+{
+  "Id": "just_flight_piper_arrow_iii",
+  "Name": "Just Flight Piper Arrow III",
+  "Vendor": "Just Flight",
+  "MatchTitles": [
+    "Just Flight Piper Arrow III",
+    "Piper Arrow III"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LDG_GEAR_left_gear",
+      "Unit": "number",
+      "Description": "LAND_GEAR_LEFT_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LDG_GEAR_lever",
+      "Unit": "number",
+      "Description": "LANDING_GEAR_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LDG_GEAR_nose_gear",
+      "Unit": "number",
+      "Description": "LAND_GEAR_NOSE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LDG_GEAR_right_gear",
+      "Unit": "number",
+      "Description": "LAND_GEAR_RIGHT_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ParkingBrake_Position",
+      "Unit": "number",
+      "Description": "PARKING_BRAKE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUTOPILOT_mode",
+      "Unit": "number",
+      "Description": "AUTOPILOT_NAV_MODE_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CENTRE_LOWER_anticol_light",
+      "Unit": "number",
+      "Description": "ANT_COL_LIGHT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CENTRE_LOWER_bcn_light",
+      "Unit": "number",
+      "Description": "ROT_BCN_LIGHT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CENTRE_LOWER_ldg_light",
+      "Unit": "number",
+      "Description": "LANDING_LIGHT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:EFB_On",
+      "Unit": "bool",
+      "Description": "Electronic Flight Board",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_NAV1_inner_knob",
+      "Unit": "enum",
+      "Description": "KX170_NAV1_inner_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_NAV1_offon",
+      "Unit": "number",
+      "Description": "KX170_NAV1_OFF_ON_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_NAV1_outer_knob",
+      "Unit": "enum",
+      "Description": "KX170_NAV1_outer_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_NAV1_vol_knob",
+      "Unit": "number",
+      "Description": "KX170B_NAV1_RADIO_VOLUME_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX175_NAV2_inner_knob",
+      "Unit": "enum",
+      "Description": "KX175_NAV2_inner_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX175_NAV2_offon",
+      "Unit": "number",
+      "Description": "KX175_NAV2_OFF_ON_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX175_NAV2_outer_knob",
+      "Unit": "enum",
+      "Description": "KX175_NAV2_outer_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX175_NAV2_vol_knob",
+      "Unit": "number",
+      "Description": "KX175B_NAV2_RADIO_VOLUME_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LDG_GEAR_AUTO_EXT",
+      "Unit": "Bool",
+      "Description": "LDG_GEAR_AUTO_EXT / AUTO EXT OFF",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LEFT_MISC_navgps",
+      "Unit": "number",
+      "Description": "NAV_GPS_SELECTOR_SW",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:LIGHTING_CABIN_0",
+      "Unit": "number",
+      "Description": "PA28_LIGHTS_CABIN_INC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUTOPILOT_hdg",
+      "Unit": "number",
+      "Description": "AUTOPILOT_HDG_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:AUTOPILOT_onoff",
+      "Unit": "number",
+      "Description": "AUTOPILOT_ENGAGED_LED",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:HSI_heading_knob",
+      "Unit": "enum",
+      "Description": "AUTOPILOT_HSI_HDG_BUG_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALTIMETER_baro_knob",
+      "Unit": "enum",
+      "Description": "ALT_baro_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CENTRE_LOWER_fuelpump",
+      "Unit": "number",
+      "Description": "FUEL_PUMP_SELECTOR_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CENTRE_LOWER_pitotheat",
+      "Unit": "number",
+      "Description": "PITOT_HEAT_SWITCH",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_Visor_Position_1",
+      "Unit": "number",
+      "Description": "PA28_GLARESHIELD_VISOR_TOGGLE",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KR85_mode_knob",
+      "Unit": "number",
+      "Description": "KR85_ADF_MODE_KNOB_DEC",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KT76_mode_knob",
+      "Unit": "number",
+      "Description": "KT76_XPNDR_MODE_ON-LEFT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_COMM1_inner_knob",
+      "Unit": "enum",
+      "Description": "KX170_COMM1_inner_knob_left",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:KX170_COMM1_offon",
+      "Unit": "number",
+      "Description": "KX170_COM1_OFF_ON_SWITCH",
+      "Interpolate": false
+    }
+  ]
+}

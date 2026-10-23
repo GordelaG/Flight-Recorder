@@ -1,0 +1,17 @@
+{
+  "Id": "microsoft_da40ng",
+  "Name": "Microsoft DA40NG",
+  "Vendor": "Microsoft",
+  "MatchTitles": [
+    "Microsoft DA40NG",
+    "DA40NG"
+  ],
+  "Variables": [
+    {
+      "Name": "L:LIGHTING_GLARESHIELD_1",
+      "Unit": "number",
+      "Description": "DA40NG LIGHT FLOOD KNOB INC",
+      "Interpolate": false
+    }
+  ]
+}
