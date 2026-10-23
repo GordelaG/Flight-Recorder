@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Recorder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+  <!-- Main Application Body -->
+  <main class="app-main">
+
+    <!-- SimConnect & System Status Banner -->
+    <div id="statusBanner" class="status-banner disconnected">
+      <div class="status-indicator">
+        <span id="statusDot" class="status-dot"></span>
+        <span id="statusText">Connecting to Microsoft Flight Simulator...</span>
+      </div>
+    </div>
+
+    <!-- Active Aircraft Summary Card -->
+    <div class="aircraft-card">
+      <div class="aircraft-details">
+        <div class="aircraft-title-row">
+          <span class="aircraft-label">Aircraft</span>
+          <span id="aircraftTitle" class="aircraft-name">Ready</span>
+        </div>
+        <div class="aircraft-subtitle-row">
+          <span id="aircraftFile" class="aircraft-file">No active recording</span>
+          <div class="profile-container">
+            <span id="profileBadge" class="profile-badge standard" title="Sistema de gravação/replay de variáveis personalizadas (SimConnect Nativo - Zero WASM)">
+              <span class="profile-dot"></span>
+              <span id="profileText">Perfil Standard</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <span id="saveBadge" class="save-badge saved" style="display: none;">✓ Saved</span>
+    </div>
+
+    <!-- Primary Control Buttons (Flux UI Group) -->
+    <div class="action-row">
+      <!-- Record button (toggles to Stop Recording) -->
+      <button id="btnRecord" class="btn btn-record">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <circle cx="12" cy="12" r="10"/>
+        </svg>
+        Record Flight
+      </button>
+
+      <button id="btnStopRecord" class="btn btn-secondary" style="display: none;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="4" y="4" width="16" height="16" rx="2"/>
+        </svg>
+        Stop Recording
+      </button>
+
+      <!-- Replay with Split Button for AI Replay -->
+      <div class="btn-group">
+        <button id="btnReplay" class="btn btn-accent">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          Replay
+        </button>
+        <button id="btnReplayAI" class="btn btn-accent" title="Replay options (AI formation plane)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Replay Playback Controls (Pause / Resume / Stop) -->
+    <div class="action-row" style="grid-template-columns: 1fr 1fr 1fr;">
+      <button id="btnPauseReplay" class="btn btn-secondary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="6" y="4" width="4" height="16"/>
+          <rect x="14" y="4" width="4" height="16"/>
+        </svg>
+        Pause
+      </button>
+
+      <button id="btnResumeReplay" class="btn btn-secondary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"/>
+        </svg>
+        Resume
+      </button>
+
+      <button id="btnStopReplay" class="btn btn-secondary">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="4" y="4" width="16" height="16" rx="2"/>
+        </svg>
+        Stop
+      </button>
+    </div>
+
+    <!-- Timeline & Chart Card -->
+    <div class="timeline-card">
+      <div class="timeline-meta">
+        <div class="time-readout">
+          <span>Frame</span>
+          <span id="currentFrameText" class="current-frame">0</span>
+          <span>/</span>
+          <span id="totalFramesText">0</span>
+        </div>
+
+        <!-- Speed & Repeat Tools -->
+        <div class="tool-cluster">
+          <button id="btnRepeat" class="btn btn-secondary btn-sm btn-toggle" title="Loop Replay">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m17 2 4 4-4 4"/>
+              <path d="M3 11v-1a4 4 0 0 1 4-4h14"/>
+              <path d="m7 22-4-4 4-4"/>
+              <path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+            </svg>
+            Loop
+          </button>
+
+          <!-- Speed Dropdown -->
+          <div style="position: relative;">
+            <button id="btnSpeed" class="btn btn-secondary btn-sm">
+              <span id="speedLabel">x1</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div id="speedMenu" class="dropdown-menu">
+              <button class="dropdown-item" data-speed="0.25">x0.25</button>
+              <button class="dropdown-item" data-speed="0.5">x0.5</button>
+              <button class="dropdown-item" data-speed="0.75">x0.75</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item active" data-speed="1">x1.0 (Normal)</button>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item" data-speed="1.5">x1.5</button>
+              <button class="dropdown-item" data-speed="2">x2.0</button>
+              <button class="dropdown-item" data-speed="4">x4.0</button>
+              <button class="dropdown-item" data-speed="8">x8.0</button>
+              <button class="dropdown-item" data-speed="16">x16.0</button>
+            </div>
+          </div>
+
+          <!-- Trim Dropdown -->
+          <div style="position: relative;">
+            <button id="btnTrim" class="btn btn-secondary btn-sm" title="Trim Recording">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="6" cy="6" r="3"/>
+                <circle cx="6" cy="18" r="3"/>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+              </svg>
+              Trim
+            </button>
+            <div id="trimMenu" class="dropdown-menu">
+              <button id="btnTrimStart" class="dropdown-item">
+                <span>Trim Start Here</span>
+              </button>
+              <button id="btnTrimEnd" class="dropdown-item">
+                <span>Trim End Here</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Canvas Chart Container -->
+      <div class="chart-wrapper">
+        <canvas id="flightChart"></canvas>
+        <div id="chartOverlay" class="chart-overlay">No flight recorded or loaded</div>
+      </div>
+
+      <!-- Scrub Track -->
+      <div class="slider-container">
+        <input type="range" id="timelineSlider" class="flux-slider" min="0" max="0" value="0" disabled>
+      </div>
+    </div>
+
+    <!-- Data Persistence & Export Row -->
+    <div class="action-row" style="grid-template-columns: 1fr 1fr 1fr;">
+      <button id="btnSave" class="btn btn-secondary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+          <polyline points="17 21 17 13 7 13 7 21"/>
+          <polyline points="7 3 7 8 15 8"/>
+        </svg>
+        Save
+      </button>
+
+      <button id="btnLoad" class="btn btn-secondary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
+        </svg>
+        Load
+      </button>
+
+      <!-- Export with Popover -->
+      <div style="position: relative;">
+        <button id="btnExport" class="btn btn-secondary" style="width: 100%;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Export
+        </button>
+        <div id="exportMenu" class="dropdown-menu">
+          <button id="btnExportCsv" class="dropdown-item">
+            <span>CSV (Excel Data)</span>
+          </button>
+          <button id="btnExportKml" class="dropdown-item">
+            <span>KML (Google Earth 3D)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Telemetry Dashboard (Collapsible) -->
+    <div class="telemetry-card">
+      <div id="telemetryHeader" class="telemetry-header">
+        <div class="telemetry-header-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+          Live Telemetry & Flight Instruments
+        </div>
+        <svg id="telemetryChevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform 0.2s ease;">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </div>
+
+      <div id="telemetryBody" class="telemetry-body collapsed">
+        <div class="metric-cell copyable" title="Click to copy Latitude">
+          <span class="metric-label">Latitude</span>
+          <span id="valLat" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell copyable" title="Click to copy Longitude">
+          <span class="metric-label">Longitude</span>
+          <span id="valLon" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Altitude</span>
+          <span id="valAlt" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Pitch / Bank</span>
+          <span class="metric-value"><span id="valPitch">--</span> / <span id="valBank">--</span></span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Heading</span>
+          <span id="valHeading" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Landing Rate</span>
+          <span id="valLandingRate" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Contact</span>
+          <span id="valGround" class="metric-value" style="color: #34d399;">AIR</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Gear</span>
+          <span id="valGear" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Throttle</span>
+          <span id="valThrottle" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell">
+          <span class="metric-label">Flaps</span>
+          <span id="valFlaps" class="metric-value">--</span>
+        </div>
+        <div class="metric-cell" style="grid-column: span 2;">
+          <span class="metric-label">Perfil L-Vars</span>
+          <span id="valProfileDetail" class="metric-value" style="font-size: 11px; color: #38bdf8;">Standard SimConnect</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Utility Footer Bar -->
+    <div class="utility-bar">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button id="btnShortcuts" class="btn btn-ghost btn-sm" title="View Global Shortcuts">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"/>
+          </svg>
+          Shortcut keys
+        </button>
+
+        <button id="btnTopmost" class="btn btn-ghost btn-sm btn-toggle" title="Toggle Stay on Top">
+          Stay on top
+        </button>
+      </div>
+
+      <span style="font-size: 11px; color: var(--text-faint);">
+        MSFS SimConnect 64-bit
+      </span>
+    </div>
+
+  </main>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div id="shortcutsModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Global Hotkeys</span>
+        <button id="btnCloseModal" class="btn btn-ghost btn-sm">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="shortcut-row">
+          <span>Start Recording</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + Home</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Stop Recording</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + End</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Replay Flight</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + R</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Pause Replay</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + ,</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Resume Replay</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + .</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Stop Replay</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + S</span>
+        </div>
+        <div class="shortcut-row">
+          <span>Quick Save to Disk</span>
+          <span class="shortcut-keycap">Ctrl + Alt + Shift + C</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Message -->
+  <div id="toast" class="toast">Notification</div>
+
+  <script src="chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

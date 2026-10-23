@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logics;
+using FlightRecorder.Client.Logics;
 using FlightRecorder.Client.SimConnectMSFS;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -113,6 +113,8 @@ public partial class App : Application
         services.AddSingleton<IDialogLogic, DialogLogic>();
         services.AddSingleton<WindowFactory>();
         services.AddSingleton<ISettingsLogic, FileSettingsLogic>();
+        services.AddSingleton<AircraftProfileManager>();
+        services.AddSingleton<HubHopSyncService>();
 
         services.AddScoped<Orchestrator>();
         services.AddScoped<IStateMachine, StateMachine>();
