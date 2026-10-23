@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logic;
+using FlightRecorder.Client.Logic;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -51,6 +51,28 @@ public class FileSettingsLogic : ISettingsLogic
     public Task SetDefaultSaveFolderAsync(string? folderPath)
     {
         return SaveAsync(settings => settings.DefaultSaveFolder = folderPath);
+    }
+
+    public async Task<bool> GetHudAutoHideAsync()
+    {
+        var settings = await LoadAsync();
+        return settings.HudAutoHide;
+    }
+
+    public Task SetHudAutoHideAsync(bool value)
+    {
+        return SaveAsync(settings => settings.HudAutoHide = value);
+    }
+
+    public async Task<bool> GetHudTranslucentAsync()
+    {
+        var settings = await LoadAsync();
+        return settings.HudTranslucent;
+    }
+
+    public Task SetHudTranslucentAsync(bool value)
+    {
+        return SaveAsync(settings => settings.HudTranslucent = value);
     }
 
     private static SemaphoreSlim sm = new SemaphoreSlim(1);
@@ -113,4 +135,6 @@ public class Settings
     public bool ShortcutKeysEnabled { get; set; } = false;
     public Dictionary<Shortcuts, ShortcutKey>? ShortcutKeys { get; set; } = null;
     public string? DefaultSaveFolder { get; set; } = null;
+    public bool HudAutoHide { get; set; } = false;
+    public bool HudTranslucent { get; set; } = false;
 }

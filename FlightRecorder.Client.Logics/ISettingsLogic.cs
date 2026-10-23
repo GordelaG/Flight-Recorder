@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logic;
+using FlightRecorder.Client.Logic;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,4 +12,8 @@ public interface ISettingsLogic
     Task SetShortcutKeysAsync(Dictionary<Shortcuts, ShortcutKey> shortcuts);
     Task<string?> GetDefaultSaveFolderAsync();
     Task SetDefaultSaveFolderAsync(string? folderPath);
+    Task<bool> GetHudAutoHideAsync();
+    Task SetHudAutoHideAsync(bool value);
+    Task<bool> GetHudTranslucentAsync();
+    Task SetHudTranslucentAsync(bool value);
 }

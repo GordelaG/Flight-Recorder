@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Recorder Mini Player</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lux-scrollbar.css">
+  <style>
+    html, body {
+      background: transparent !important;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+      box-sizing: border-box;
+      font-family: var(--font-sans);
+    }
+
+    :root.light, :root.light body {
+      background: transparent !important;
+    }
+
+    /* Container Base - Solid Mode (Dark) */
+    .hud-window-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6px 14px 8px;
+      box-sizing: border-box;
+      background: #121216;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                  background 0.2s ease,
+                  border-color 0.2s ease;
+    }
+
+    /* Translucent / Glass Mode (Dark) */
+    body.translucent .hud-window-container {
+      background: rgba(18, 18, 22, 0.58) !important;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.38);
+    }
+
+    /* Solid Mode (Light) */
+    :root.light .hud-window-container {
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    }
+
+    /* Translucent / Glass Mode (Light) */
+    :root.light body.translucent .hud-window-container {
+      background: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    /* Auto-ocultar: desaparece por completo suavemente */
+    body.hud-hidden .hud-window-container {
+      opacity: 0 !important;
+      transform: translateY(-8px) scale(0.97);
+    }
+
+    .hud-window-bar {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    .hud-window-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: grab;
+    }
+
+    .hud-window-top:active {
+      cursor: grabbing;
+    }
+
+    .hud-window-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hud-w-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      padding: 0;
+    }
+
+    .hud-w-btn:hover {
+      background: var(--bg-element-hover);
+      color: var(--text-heading);
+      border-color: var(--border-color);
+    }
+
+    .hud-w-close:hover {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.15);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .hud-w-drag {
+      cursor: grab;
+    }
+
+    .hud-w-drag:active {
+      cursor: grabbing;
+    }
+
+    .hud-window-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex: 1;
+    }
+
+    .hud-action-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      padding: 4px 7px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .hud-action-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    :root.light .hud-action-btn:hover {
+      background: rgba(0, 0, 0, 0.08);
+      color: #09090b;
+    }
+
+    .hud-play-btn {
+      color: var(--accent-blue);
+      padding: 4px 12px;
+      border-radius: 8px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+    }
+
+    .hud-play-btn:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+      transform: scale(1.12);
+    }
+
+    .hud-window-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 72px;
+    }
+
+    .hud-time-text {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-heading);
+      letter-spacing: 0.3px;
+    }
+
+    .hud-window-bottom {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding-top: 2px;
+    }
+
+    .hud-slider-input {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 5px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.18);
+      outline: none;
+      cursor: pointer;
+      transition: background 0.2s ease, height 0.15s ease;
+    }
+
+    :root.light .hud-slider-input {
+      background: rgba(0, 0, 0, 0.16);
+    }
+
+    .hud-slider-input:hover {
+      height: 7px;
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    :root.light .hud-slider-input:hover {
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .hud-slider-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.4), 0 0 10px rgba(59, 130, 246, 0.5);
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .hud-slider-input::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.85);
+    }
+  </style>
+</head>
+<body>
+  <div class="hud-window-container">
+    <div id="hudBar" class="hud-window-bar">
+      <!-- Top Row -->
+      <div class="hud-window-top">
+        <!-- Left Group: Close & Drag Handle -->
+        <div class="hud-window-left">
+          <button id="btnHudClose" class="hud-w-btn hud-w-close" type="button" title="Fechar Mini Player">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+
+          <div id="btnHudDrag" class="hud-w-btn hud-w-drag" title="Clique e arraste para mover a janela">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="6" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="6" r="1.5" fill="currentColor"/>
+              <circle cx="9" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="12" r="1.5" fill="currentColor"/>
+              <circle cx="9" cy="18" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="18" r="1.5" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Center Group (Playback controls) -->
+        <div class="hud-window-center">
+          <button id="btnFastBack" class="hud-action-btn" type="button" title="Retroceder 5 segundos">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="11 19 2 12 11 5"/>
+              <polyline points="22 19 13 12 22 5"/>
+            </svg>
+          </button>
+
+          <button id="btnStepBack10" class="hud-action-btn" type="button" title="Voltar 10 frames">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="19 20 9 12 19 4 19 20"/>
+              <line x1="6" y1="19" x2="6" y2="5" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+          </button>
+
+          <button id="btnStepBack1" class="hud-action-btn" type="button" title="Voltar 1 frame">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+
+          <!-- Play/Pause Primary -->
+          <button id="btnPlayPause" class="hud-action-btn hud-play-btn" type="button" title="Iniciar / Pausar Replay">
+            <svg id="iconPlay" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="6 4 20 12 6 20 6 4"/>
+            </svg>
+            <svg id="iconPause" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="6" y="4" width="4" height="16" rx="1"/>
+              <rect x="14" y="4" width="4" height="16" rx="1"/>
+            </svg>
+          </button>
+
+          <button id="btnStepFwd1" class="hud-action-btn" type="button" title="Avançar 1 frame">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+
+          <button id="btnStepFwd10" class="hud-action-btn" type="button" title="Avançar 10 frames">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 4 15 12 5 20 5 4"/>
+              <line x1="18" y1="5" x2="18" y2="19" stroke="currentColor" stroke-width="2.5"/>
+            </svg>
+          </button>
+
+          <button id="btnFastFwd" class="hud-action-btn" type="button" title="Avançar 5 segundos">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="13 19 22 12 13 5"/>
+              <polyline points="2 19 11 12 2 5"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Right Group: Time Display -->
+        <div class="hud-window-right">
+          <span id="timeDisplay" class="hud-time-text">00:00.00</span>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Scrub Slider -->
+      <div class="hud-window-bottom">
+        <input type="range" id="sliderScrub" class="hud-slider-input" min="0" max="0" value="0">
+      </div>
+    </div>
+  </div>
+
+  <script src="hud.js"></script>
+</body>
+</html>

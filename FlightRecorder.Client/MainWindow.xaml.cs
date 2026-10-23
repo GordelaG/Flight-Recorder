@@ -44,6 +44,8 @@ public partial class MainWindow : BaseWindow
     private readonly Stopwatch telemetryStopwatch = Stopwatch.StartNew();
     private long lastTelemetrySendTime = 0;
     private bool isWebViewReady = false;
+    private CoreWebView2Environment? webViewEnvironment;
+    private ReplayHudWindow? replayHudWindow;
 
     public MainWindow(
         ILogger<MainWindow> logger,
@@ -116,6 +118,7 @@ public partial class MainWindow : BaseWindow
             Directory.CreateDirectory(userDataFolder);
 
             var env = await CoreWebView2Environment.CreateAsync(null, userDataFolder);
+            webViewEnvironment = env;
             await webView.EnsureCoreWebView2Async(env);
 
             var wwwrootDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot");
@@ -145,8 +148,19 @@ public partial class MainWindow : BaseWindow
             var rawJson = e.WebMessageAsJson;
             using var doc = JsonDocument.Parse(rawJson);
             var root = doc.RootElement;
-            if (!root.TryGetProperty("action", out var actionProp)) return;
-            var action = actionProp.GetString();
+            JsonDocument? innerDoc = null;
+            if (root.ValueKind == JsonValueKind.String)
+            {
+                var innerStr = root.GetString();
+                if (string.IsNullOrWhiteSpace(innerStr)) return;
+                innerDoc = JsonDocument.Parse(innerStr);
+                root = innerDoc.RootElement;
+            }
+
+            try
+            {
+                if (!root.TryGetProperty("action", out var actionProp)) return;
+                var action = actionProp.GetString();
 
             switch (action)
             {
@@ -465,6 +479,73 @@ public partial class MainWindow : BaseWindow
                         payload = "Atalhos restaurados para o padrão."
                     });
                     break;
+
+                case "openReplayHud":
+                    _ = Dispatcher.Invoke(async () =>
+                    {
+                        var autoHide = await settingsLogic.GetHudAutoHideAsync();
+                        var translucent = await settingsLogic.GetHudTranslucentAsync();
+
+                        if (replayHudWindow == null || !replayHudWindow.IsLoaded)
+                        {
+                            replayHudWindow = new ReplayHudWindow(stateMachine, replayLogic, viewModel, webViewEnvironment, this, autoHide, translucent);
+                            replayHudWindow.Closed += (s, args) => replayHudWindow = null;
+                            replayHudWindow.Show();
+                        }
+                        else
+                        {
+                            replayHudWindow.Activate();
+                            replayHudWindow.Topmost = true;
+                            replayHudWindow.SetSettings(autoHide, translucent);
+                            replayHudWindow.RevealNow();
+                        }
+                        replayHudWindow.SendStateUpdate();
+                    });
+                    break;
+
+                case "saveHudSettings":
+                    if (root.TryGetProperty("autoHide", out var hudAutoHideProp))
+                    {
+                        var ah = hudAutoHideProp.GetBoolean();
+                        await settingsLogic.SetHudAutoHideAsync(ah);
+                    }
+                    if (root.TryGetProperty("translucent", out var hudTranslucentProp))
+                    {
+                        var tr = hudTranslucentProp.GetBoolean();
+                        await settingsLogic.SetHudTranslucentAsync(tr);
+                    }
+                    var currentAutoHide = await settingsLogic.GetHudAutoHideAsync();
+                    var currentTranslucent = await settingsLogic.GetHudTranslucentAsync();
+                    replayHudWindow?.SetSettings(currentAutoHide, currentTranslucent);
+                    await SendSettingsToWebAsync();
+                    break;
+
+                case "themeChanged":
+                    if (root.TryGetProperty("effectiveTheme", out var effThemeProp))
+                    {
+                        var eff = effThemeProp.GetString();
+                        var isLight = eff == "light";
+                        Dispatcher.Invoke(() =>
+                        {
+                            var brush = isLight
+                                ? (System.Windows.Media.Brush)new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0xf4, 0xf4, 0xf5))
+                                : (System.Windows.Media.Brush)new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x09, 0x09, 0x0b));
+                            Background = brush;
+                            if (webView != null)
+                            {
+                                webView.DefaultBackgroundColor = isLight
+                                    ? System.Drawing.Color.FromArgb(244, 244, 245)
+                                    : System.Drawing.Color.FromArgb(9, 9, 11);
+                            }
+                            replayHudWindow?.ApplyTheme(isLight);
+                        });
+                    }
+                    break;
+                }
+            }
+            finally
+            {
+                innerDoc?.Dispose();
             }
         }
         catch (Exception ex)
@@ -475,6 +556,15 @@ public partial class MainWindow : BaseWindow
 
     private void PostWebMessage(object data)
     {
+        if (replayHudWindow != null)
+        {
+            try
+            {
+                replayHudWindow.PostWebMessage(data);
+            }
+            catch { }
+        }
+
         if (!isWebViewReady) return;
 
         Dispatcher.Invoke(() =>
@@ -650,6 +740,12 @@ public partial class MainWindow : BaseWindow
 
     private async void Window_Closing(object sender, CancelEventArgs e)
     {
+        try
+        {
+            replayHudWindow?.Close();
+        }
+        catch { }
+
         if (stateMachine.CurrentState != StateMachine.State.End
             && stateMachine.CurrentState != StateMachine.State.Start)
         {
@@ -852,12 +948,17 @@ public partial class MainWindow : BaseWindow
             {
                 id = kv.Key.ToString(),
                 name = GetShortcutDisplayName(kv.Key),
+                desc = GetShortcutDescription(kv.Key),
                 ctrl = kv.Value.Ctrl,
                 alt = kv.Value.Alt,
                 shift = kv.Value.Shift,
                 key = kv.Value.Key,
                 virtualKey = kv.Value.VirtualKey
             }).ToList();
+
+            var stayOnTop = Dispatcher.Invoke(() => Topmost);
+            var hudAutoHide = await settingsLogic.GetHudAutoHideAsync();
+            var hudTranslucent = await settingsLogic.GetHudTranslucentAsync();
 
             PostWebMessage(new
             {
@@ -867,7 +968,9 @@ public partial class MainWindow : BaseWindow
                     shortcutKeysEnabled = enabled,
                     shortcuts = shortcutList,
                     savedFlightsFolder = SavedFlightsLogic.GetSavedFlightsDirectory(),
-                    stayOnTop = Topmost
+                    stayOnTop = stayOnTop,
+                    hudAutoHide = hudAutoHide,
+                    hudTranslucent = hudTranslucent
                 }
             });
         }
@@ -881,12 +984,24 @@ public partial class MainWindow : BaseWindow
     {
         Shortcuts.Record => "Gravar Voo (Record)",
         Shortcuts.StopRecording => "Parar Gravação (Stop)",
-        Shortcuts.Replay => "Replay do Voo",
-        Shortcuts.Pause => "Pausar Replay",
-        Shortcuts.Resume => "Continuar Replay",
-        Shortcuts.StopReplay => "Parar Replay",
-        Shortcuts.SaveToDisk => "Salvar Voo Rápido",
+        Shortcuts.Replay => "Replay do Voo (Play)",
+        Shortcuts.Pause => "Pausar Replay (Pause)",
+        Shortcuts.Resume => "Continuar Replay (Resume)",
+        Shortcuts.StopReplay => "Parar Replay (Stop Replay)",
+        Shortcuts.SaveToDisk => "Salvar Voo Rápido (Quick Save)",
         _ => shortcut.ToString()
+    };
+
+    private static string GetShortcutDescription(Shortcuts shortcut) => shortcut switch
+    {
+        Shortcuts.Record => "Inicia a gravação das posições do voo",
+        Shortcuts.StopRecording => "Interrompe a gravação atual",
+        Shortcuts.Replay => "Inicia a reprodução do voo gravado",
+        Shortcuts.Pause => "Congela a reprodução do voo no simulador",
+        Shortcuts.Resume => "Retoma a reprodução pausada",
+        Shortcuts.StopReplay => "Encerra o replay e devolve os controles do simulador",
+        Shortcuts.SaveToDisk => "Salva o voo gravado diretamente na pasta SavedFlights",
+        _ => ""
     };
 }
 
