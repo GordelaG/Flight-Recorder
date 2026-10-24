@@ -86,6 +86,10 @@ public partial class MainWindow : BaseWindow
         connector.AircraftPositionUpdated += Connector_AircraftPositionUpdated;
         connector.Closed += Connector_Closed;
         viewModel.PropertyChanged += ViewModel_PropertyChanged;
+        shortcutKeyLogic.ToggleReplayHudRequested += (s, e) =>
+        {
+            Dispatcher.Invoke(async () => await ToggleReplayHudAsync());
+        };
 
         DataContext = viewModel;
         currentVersion = versionLogic.GetVersion();
@@ -491,26 +495,7 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "openReplayHud":
-                    _ = Dispatcher.Invoke(async () =>
-                    {
-                        var autoHide = await settingsLogic.GetHudAutoHideAsync();
-                        var translucent = await settingsLogic.GetHudTranslucentAsync();
-
-                        if (replayHudWindow == null || !replayHudWindow.IsLoaded)
-                        {
-                            replayHudWindow = new ReplayHudWindow(stateMachine, replayLogic, viewModel, webViewEnvironment, this, autoHide, translucent);
-                            replayHudWindow.Closed += (s, args) => replayHudWindow = null;
-                            replayHudWindow.Show();
-                        }
-                        else
-                        {
-                            replayHudWindow.Activate();
-                            replayHudWindow.Topmost = true;
-                            replayHudWindow.SetSettings(autoHide, translucent);
-                            replayHudWindow.RevealNow();
-                        }
-                        replayHudWindow.SendStateUpdate();
-                    });
+                    _ = Dispatcher.Invoke(async () => await OpenReplayHudAsync());
                     break;
 
                 case "saveHudSettings":
@@ -990,6 +975,40 @@ public partial class MainWindow : BaseWindow
         }
     }
 
+    private async Task OpenReplayHudAsync()
+    {
+        var autoHide = await settingsLogic.GetHudAutoHideAsync();
+        var translucent = await settingsLogic.GetHudTranslucentAsync();
+
+        if (replayHudWindow == null || !replayHudWindow.IsLoaded)
+        {
+            replayHudWindow = new ReplayHudWindow(stateMachine, replayLogic, viewModel, webViewEnvironment, this, autoHide, translucent);
+            replayHudWindow.Closed += (s, args) => replayHudWindow = null;
+            replayHudWindow.Show();
+        }
+        else
+        {
+            replayHudWindow.Activate();
+            replayHudWindow.Topmost = true;
+            replayHudWindow.SetSettings(autoHide, translucent);
+            replayHudWindow.RevealNow();
+        }
+        replayHudWindow.SendStateUpdate();
+    }
+
+    private async Task ToggleReplayHudAsync()
+    {
+        if (replayHudWindow == null || !replayHudWindow.IsLoaded)
+        {
+            await OpenReplayHudAsync();
+        }
+        else
+        {
+            replayHudWindow.Close();
+            replayHudWindow = null;
+        }
+    }
+
     private static string GetShortcutDisplayName(Shortcuts shortcut) => shortcut switch
     {
         Shortcuts.Record => "Gravar Voo (Record)",
@@ -999,6 +1018,7 @@ public partial class MainWindow : BaseWindow
         Shortcuts.Resume => "Continuar Replay (Resume)",
         Shortcuts.StopReplay => "Parar Replay (Stop Replay)",
         Shortcuts.SaveToDisk => "Salvar Voo Rápido (Quick Save)",
+        Shortcuts.ToggleReplayHud => "Barra de Replay (Mini Player)",
         _ => shortcut.ToString()
     };
 
@@ -1011,6 +1031,7 @@ public partial class MainWindow : BaseWindow
         Shortcuts.Resume => "Retoma a reprodução pausada",
         Shortcuts.StopReplay => "Encerra o replay e devolve os controles do simulador",
         Shortcuts.SaveToDisk => "Salva o voo gravado diretamente na pasta SavedFlights",
+        Shortcuts.ToggleReplayHud => "Abre ou fecha o popup flutuante da barra de controle de replay",
         _ => ""
     };
 }

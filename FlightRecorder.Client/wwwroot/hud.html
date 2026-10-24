@@ -123,6 +123,10 @@
       border-color: var(--border-color);
     }
 
+    .hidden {
+      display: none !important;
+    }
+
     .hud-w-close:hover {
       color: #ef4444;
       background: rgba(239, 68, 68, 0.15);
@@ -135,6 +139,38 @@
 
     .hud-w-drag:active {
       cursor: grabbing;
+    }
+
+    .hud-w-record {
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      background: rgba(239, 68, 68, 0.08);
+    }
+
+    .hud-w-record:hover {
+      background: rgba(239, 68, 68, 0.22);
+      border-color: rgba(239, 68, 68, 0.55);
+      color: #ff5555;
+      transform: scale(1.08);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+    }
+
+    .hud-w-record.is-recording {
+      background: rgba(239, 68, 68, 0.3) !important;
+      border-color: #ef4444 !important;
+      color: #ffffff !important;
+      animation: hud-rec-pulse 1.6s infinite ease-in-out;
+    }
+
+    @keyframes hud-rec-pulse {
+      0%, 100% {
+        box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+        border-color: rgba(239, 68, 68, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 14px rgba(239, 68, 68, 0.95);
+        border-color: #ef4444;
+      }
     }
 
     .hud-window-center {
@@ -274,6 +310,15 @@
               <circle cx="15" cy="18" r="1.5" fill="currentColor"/>
             </svg>
           </div>
+
+          <button id="btnHudRecord" class="hud-w-btn hud-w-record" type="button" title="Gravar Voo (Record)">
+            <svg id="iconRecStart" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="7"/>
+            </svg>
+            <svg id="iconRecStop" class="hidden" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="5" y="5" width="14" height="14" rx="2.5"/>
+            </svg>
+          </button>
         </div>
 
         <!-- Center Group (Playback controls) -->

@@ -77,6 +77,16 @@
       shift: true,
       key: 'C',
       virtualKey: 67
+    },
+    {
+      id: 'ToggleReplayHud',
+      name: 'Barra de Replay (Mini Player)',
+      desc: 'Abre ou fecha o popup flutuante da barra de controle de replay',
+      ctrl: true,
+      alt: true,
+      shift: true,
+      key: 'H',
+      virtualKey: 72
     }
   ];
 

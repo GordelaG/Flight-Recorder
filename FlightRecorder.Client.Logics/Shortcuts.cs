@@ -1,4 +1,4 @@
-﻿namespace FlightRecorder.Client.Logics;
+namespace FlightRecorder.Client.Logics;
 
 public enum Shortcuts
 {
@@ -8,5 +8,6 @@ public enum Shortcuts
     StopReplay,
     Pause,
     Resume,
-    SaveToDisk
+    SaveToDisk,
+    ToggleReplayHud
 }

@@ -313,6 +313,14 @@ public partial class ReplayHudWindow : Window
                     Close();
                     break;
 
+                case "record":
+                    await stateMachine.TransitAsync(StateMachine.Event.Record);
+                    break;
+
+                case "stopRecord":
+                    await stateMachine.TransitAsync(StateMachine.Event.Stop);
+                    break;
+
                 case "play":
                     if (await VpilotService.DisconnectIfConnectedAsync())
                     {

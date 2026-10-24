@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logic;
+using FlightRecorder.Client.Logic;
 using FlightRecorder.Client.Logics;
 using Microsoft.Extensions.Logging;
 using System;
@@ -37,7 +37,10 @@ public class ShortcutKeyLogic(
         [Shortcuts.Resume] = new(true, true, true, ".", 0xBE),
         [Shortcuts.StopReplay] = new(true, true, true, "S", 'S'),
         [Shortcuts.SaveToDisk] = new(true, true, true, "C", 'C'),
+        [Shortcuts.ToggleReplayHud] = new(true, true, true, "H", 'H'),
     };
+
+    public event EventHandler? ToggleReplayHudRequested;
 
     public async Task<bool> RegisterAsync(IntPtr handle)
     {
@@ -90,7 +93,12 @@ public class ShortcutKeyLogic(
     {
         try
         {
-            return UnregisterHotKey(handle, HOTKEY_ID);
+            foreach (Shortcuts shortcut in Enum.GetValues(typeof(Shortcuts)))
+            {
+                UnregisterHotKey(handle, (int)shortcut);
+            }
+            UnregisterHotKey(handle, HOTKEY_ID);
+            return true;
         }
         catch (Exception ex)
         {
@@ -134,6 +142,9 @@ public class ShortcutKeyLogic(
                                 break;
                             case (int)Shortcuts.SaveToDisk:
                                 await stateMachine.TransitFromShortcutAsync(StateMachine.Event.Save);
+                                break;
+                            case (int)Shortcuts.ToggleReplayHud:
+                                ToggleReplayHudRequested?.Invoke(this, EventArgs.Empty);
                                 break;
                         }
                     }

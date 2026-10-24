@@ -13,6 +13,9 @@
     hudBar: document.getElementById('hudBar'),
     btnHudClose: document.getElementById('btnHudClose'),
     btnHudDrag: document.getElementById('btnHudDrag'),
+    btnHudRecord: document.getElementById('btnHudRecord'),
+    iconRecStart: document.getElementById('iconRecStart'),
+    iconRecStop: document.getElementById('iconRecStop'),
 
     btnFastBack: document.getElementById('btnFastBack'),
     btnStepBack10: document.getElementById('btnStepBack10'),
@@ -66,6 +69,26 @@
         el.iconPause.classList.add('hidden');
       }
     }
+
+    const isRecording = state.machineState === 'Recording';
+    if (el.btnHudRecord) {
+      if (isRecording) {
+        el.btnHudRecord.classList.add('is-recording');
+        el.btnHudRecord.title = 'Parar Gravação (Stop)';
+      } else {
+        el.btnHudRecord.classList.remove('is-recording');
+        el.btnHudRecord.title = 'Gravar Voo (Record)';
+      }
+    }
+    if (el.iconRecStart && el.iconRecStop) {
+      if (isRecording) {
+        el.iconRecStart.classList.add('hidden');
+        el.iconRecStop.classList.remove('hidden');
+      } else {
+        el.iconRecStart.classList.remove('hidden');
+        el.iconRecStop.classList.add('hidden');
+      }
+    }
   }
 
   // Theme Sync
@@ -94,6 +117,15 @@
   // Close
   el.btnHudClose?.addEventListener('click', () => {
     sendAction('close');
+  });
+
+  // Record / Stop Record
+  el.btnHudRecord?.addEventListener('click', () => {
+    if (state.machineState === 'Recording') {
+      sendAction('stopRecord');
+    } else {
+      sendAction('record');
+    }
   });
 
   // Play / Pause
