@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{2E9F3C80
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRecorder.ProfileSync", "tools\FlightRecorder.ProfileSync\FlightRecorder.ProfileSync.csproj", "{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightRecorder.VpilotPlugin", "FlightRecorder.VpilotPlugin\FlightRecorder.VpilotPlugin.csproj", "{05110793-64EF-4558-BB44-6CAEBB3C76C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{229DF084-49F9-4F5C-A1F2-6EFA96A4478A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05110793-64EF-4558-BB44-6CAEBB3C76C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05110793-64EF-4558-BB44-6CAEBB3C76C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05110793-64EF-4558-BB44-6CAEBB3C76C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05110793-64EF-4558-BB44-6CAEBB3C76C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

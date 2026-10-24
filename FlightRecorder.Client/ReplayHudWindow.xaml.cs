@@ -314,6 +314,14 @@ public partial class ReplayHudWindow : Window
                     break;
 
                 case "play":
+                    if (await VpilotService.DisconnectIfConnectedAsync())
+                    {
+                        PostWebMessage(new
+                        {
+                            type = "toast",
+                            payload = "vPilot desconectado da rede VATSIM para iniciar o replay."
+                        });
+                    }
                     await stateMachine.TransitAsync(StateMachine.Event.Replay);
                     break;
 

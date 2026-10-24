@@ -108,6 +108,8 @@ public partial class MainWindow : BaseWindow
 
         InitializeConnector();
         await shortcutKeyLogic.RegisterAsync(Handle);
+
+        _ = Task.Run(() => VpilotService.EnsurePluginInstalled(logger));
     }
 
     private async Task InitializeWebViewAsync()
@@ -191,6 +193,14 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "replay":
+                    if (await VpilotService.DisconnectIfConnectedAsync(logger))
+                    {
+                        PostWebMessage(new
+                        {
+                            type = "toast",
+                            payload = "vPilot desconectado da rede VATSIM para iniciar o replay."
+                        });
+                    }
                     await stateMachine.TransitAsync(StateMachine.Event.Replay);
                     break;
 

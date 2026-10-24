@@ -147,6 +147,15 @@ public class ReplayLogic : IReplayLogic, IDisposable
             connector.Init(0, Records.First().position);
         }
 
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await VpilotService.DisconnectIfConnectedAsync(logger);
+            }
+            catch { }
+        });
+
         stopwatch.Restart();
         replayMilliseconds = 0;
         RunReplay();
