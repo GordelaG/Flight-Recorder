@@ -87,7 +87,7 @@
 - **Desconexão Automática Preventiva:** Ao iniciar um Replay ou acionar o Resume, o Flight Recorder comunica-se via Named Pipe diretamente com o plugin integrado do vPilot para desconectar sua aeronave da rede VATSIM de forma limpa e automática, evitando conflitos de física, "teletransportes" ou advertências de controladores de tráfego aéreo.
 - **Notificação no Chat do vPilot:** Exibe uma notificação personalizada no painel *Messages* com a cor oficial do aplicativo (`#EE4203`) e carimbo de data/hora UTC nativo:
   ```
-  [HH:mm:ss] [Flight Recorder] Replay iniciado - Desconectado da rede.
+  [HH:mm:ss] [Flight Recorder] Replay started - Disconnected from network.
   ```
 - **100% Local e Privado:** A notificação é renderizada exclusivamente na janela do seu vPilot local, sem qualquer transmissão de pacotes ou mensagens pela frequência de rádio da rede.
 

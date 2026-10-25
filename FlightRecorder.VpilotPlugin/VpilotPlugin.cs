@@ -260,7 +260,7 @@ namespace FlightRecorder.VpilotPlugin
                                 msgColor = colorType?.GetProperty("OrangeRed", BindingFlags.Public | BindingFlags.Static)?.GetValue(null, null);
                             }
 
-                            const string replacementText = "[Flight Recorder] Replay iniciado - Desconectado da rede.";
+                            const string replacementText = "[Flight Recorder] Replay started - Disconnected from network.";
 
                             foreach (var rtb in rtbList)
                             {
@@ -281,6 +281,11 @@ namespace FlightRecorder.VpilotPlugin
                                 {
                                     idx = text.LastIndexOf("Forcibly disconnected from network.", StringComparison.Ordinal);
                                     targetLen = "Forcibly disconnected from network.".Length;
+                                }
+                                if (idx < 0)
+                                {
+                                    idx = text.LastIndexOf("[Flight Recorder] Replay iniciado - Desconectado da rede.", StringComparison.Ordinal);
+                                    targetLen = "[Flight Recorder] Replay iniciado - Desconectado da rede.".Length;
                                 }
 
                                 if (idx >= 0 && idx >= text.Length - 250)
