@@ -1,32 +1,128 @@
-## Flight Recorder
+# ✈️ Flight Recorder
 
-A simple recorder to record and replay flight in Microsoft Flight Simulator.
+[![Release](https://img.shields.io/github/v/release/GordelaG/Flight-Recorder?color=3b82f6&label=versão&logo=github)](https://github.com/GordelaG/Flight-Recorder/releases)
+[![.NET](https://img.shields.io/badge/.NET-8.0%20WPF%20%7C%20WebView2-512bd4?logo=dotnet)](https://dotnet.microsoft.com/)
+[![MSFS](https://img.shields.io/badge/MSFS-2020%20%2F%202024-0284c7?logo=microsoft)](https://www.flightsimulator.com/)
+[![UI](https://img.shields.io/badge/Design-Flux%20UI%20(Zinc)-18181b?logo=tailwindcss)](https://fluxui.dev)
+[![License](https://img.shields.io/badge/licença-MIT-green)](LICENSE)
 
-![Screenshot](Assets/Screenshot.png)
+**Flight Recorder** é um gravador e reprodutor de voo de alta precisão para o **Microsoft Flight Simulator (MSFS 2020 & 2024)**. Desenvolvido com interface moderna inspirada no **[Flux UI](https://fluxui.dev)**, o aplicativo oferece controle total sobre gravações de voo, barra flutuante (HUD) para usar durante a pilotagem, gravação automática por altitude, telemetria em tempo real e biblioteca de voos salvos.
 
-### Downloads
+---
 
-You can get the tool from our GitHub Releases (https://github.com/nguyenquyhy/Flight-Recorder/releases) or FlightSim.to (https://flightsim.to/file/8163/flight-recorder).
+## 📸 Interface do Aplicativo
 
-### Features
+![Flight Recorder Interface](Assets/Screenshot.png)
 
-- Record and replay in the sim
-- Change replaying speed
-  - NOTE: when speeding up, your computer might not be able to load scenery fast enough and that will negatively affect frame rate.
-- Save recording into a file and load it on another computer
-- Export the recorded data into CSV for further analysis
-- Quickly jump to any place in your recording (you have to Pause Replay first)
+---
 
-Notes: The tool records this list of variables from SimConnect [Structs.cs](FlightRecorder.Client.SimConnectMSFS/Structs.cs) for each sim frame. Some of them are only for analysis and display and don't affect replay.
+## 🌟 Principais Recursos
 
-### Current Limitations and Other Notes
+### 🎨 Interface Moderna Flux UI
+- Design limpo e profissional baseado na paleta Zinc do **Flux UI** (`#09090b`, `#18181b`, `#27272a`).
+- Modos **Escuro (Dark)**, **Claro (Light)** ou sincronizado com as preferências do Windows.
+- Diálogos modais de confirmação 100% customizados (`FluxConfirmDialog`), eliminando completamente as caixas de mensagens legadas do Windows.
+- Barras de rolagem em formato de cápsula com transições suaves (`lux-scrollbar`).
 
-- When starting a replay, your aircraft might be teleported to a far away location which doesn't have loaded terrain. This means the ground can jump up/down really quickly and you might get a crash (not CTD) due to damaged landing gear. Disable crash detection might be a good idea if you frequently replay your flight.
-- I don�t know a reliable way to tell if an engine is running or not, so this tool does not auto-start the engine (because it doesn�t know when). Hence, you should start recording/replaying when engine is already running (or the aircraft will move without a running engine) and stop recording before turning off the engine (not really a problem, but the tool might not shut the engine down for you). Not doing that won't prevent you from replaying or using any features, but replay can look like your aircraft is powered by magic ;).
-- Replay looks weird when turning on the ground. I�m not so sure what is happening there yet.
-- To prevent fighting with MSFS own calculation, the tool sends freeze command when you start replay and unfreeze when you stop replay. 
-This means replaying might conflict with other tools leverating the same freeze feature (e.g. YourControl when you are not in control, other replay tools).
+### 📼 Gravação e Replay de Alta Fidelidade
+- **Captura Completa:** Grava cada quadro de dados via **SimConnect** (posição 3D, latitude, longitude, altitude, pitch, bank, heading, superfícies aerodinâmicas, profundores, ailerons, leme, flaps, spoilers, trem de pouso, reversores, throttles e luzes).
+- **Replay Suave:** Congelamento dinâmico do simulador para evitar conflitos de física e proporcionar uma reprodução idêntica ao voo real.
+- **Velocidade Variável:** Acelere ou reduza a velocidade da reprodução (**0.25x**, **0.5x**, **1x**, **2x**, **4x**, etc.).
+- **Modo Loop:** Repita aproximações e pousos continuamente para treinamento ou gravação de vídeos cinematográficos.
+- **Ferramenta de Corte (Trim):** Corte o início (*Trim Start*) ou o final (*Trim End*) do voo diretamente na linha do tempo para salvar apenas o momento desejado.
 
-### Issues
+### 🎛️ Barra Flutuante de Controle de Replay (HUD Always-On-Top)
+- Mini player transparente e compacto que fica sempre no topo (**Topmost**), flutuando sobre o simulador.
+- Controle direto de **Play/Pause**, **Stop Replay**, **Loop** e **Slider de Linha do Tempo** com contador de tempo decorrido.
+- **Botão de Gravação Rápida no HUD:** Inicie e pare gravações diretamente pela barra sem precisar alternar para a janela principal.
+- Alternância rápida via atalho global do teclado configurável.
 
-Please report any issues or feature request in GitHub Issues https://github.com/nguyenquyhy/Flight-Recorder/issues. 
+### 🛩️ Gravação Automática por Altitude (Auto-Record)
+- Inicia a gravação automaticamente quando a aeronave estiver voando abaixo de uma altitude definida (padrão: **6.000 pés**).
+- Sistema inteligente com **histerese de segurança** para prevenir disparos repetidos ou falsos durante nivelamentos e oscilações.
+- Ativado por padrão para você nunca esquecer de registrar suas decolagens, aproximações e pousos.
+
+### 📁 Gerenciador de Voos Salvos (SavedFlights)
+- Salve gravações diretamente no armazenamento local com um clique no botão **Save to SavedFlights**.
+- Painel **Records** com cards detalhados:
+  - Título e identificador da aeronave.
+  - Data e hora de criação.
+  - Duração total formatada.
+  - Quantidade de frames e tamanho do arquivo.
+  - Perfil de integração ativo.
+- Pesquisa instantânea por nome da aeronave ou arquivo.
+- Estatísticas de gravações: total de voos catalogados e tempo total registrado.
+- Botões para carregar voos diretamente para o Replay, exclusão com modal de confirmação e acesso rápido à pasta do Windows.
+- Importação e exportação de gravações nos formatos `.fltrec` e `.flightrecorder`.
+
+### 📊 Painel de Telemetria e Instrumentos ao Vivo
+- Monitoramento em tempo real dos parâmetros da aeronave conectada via SimConnect:
+  - **Fase de Voo:** Indicadores dinâmicos `GROUND (GND)` ou `AIRBORNE (AIR)`.
+  - **Coordenadas:** Latitude e Longitude com botão de cópia rápida para a área de transferência.
+  - **Atitude:** Pitch, Bank e Proa (True / Magnetic Heading).
+  - **Superfícies e Trem:** Status do trem de pouso (`DOWN` / `UP`) e posição das manetes de potência (Throttle).
+  - **Taxa de Toque (Landing Rate):** Medição precisa da razão de descida no instante exato do toque na pista (em pés por minuto / FPM).
+  - **Gráfico Interativo:** Visualização das curvas de altitude e velocidade ao longo de toda a gravação.
+
+### ⌨️ Atalhos Globais de Teclado (Global Hotkeys)
+- Controle o aplicativo mesmo com o Microsoft Flight Simulator em foco ou em tela cheia.
+- Editor interativo de atalhos com detecção ao vivo dos modificadores (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>).
+- Atalhos padrão de fábrica:
+
+| Ação | Atalho Padrão | Descrição |
+|---|---|---|
+| **Gravar Voo** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>Home</kbd> | Inicia uma nova gravação |
+| **Parar Gravação** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>End</kbd> | Interrompe a gravação em andamento |
+| **Iniciar Replay** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> | Inicia a reprodução do voo gravado |
+| **Pausar / Resumir** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>,</kbd> | Alterna a pausa da reprodução |
+| **Parar Replay** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | Encerra a reprodução e libera a aeronave |
+| **Barra de Replay (HUD)** | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>H</kbd> | Abre / fecha a barra flutuante |
+
+### 🛡️ Proteção Contra Falhas (Auto-Save & Crash Recovery)
+- Mecanismo em segundo plano que salva o progresso contínuo da gravação.
+- Em caso de queda de energia ou fechamento involuntário, o aplicativo identifica os dados na inicialização e oferece restauração com 1 clique.
+
+### 🌐 Integração vPilot / VATSIM
+- Desconexão preventiva ou alerta do vPilot durante a reprodução para evitar conflitos com controladores e usuários na rede VATSIM/IVAO.
+
+### 📈 Exportação Avançada
+- **Exportar para CSV:** Ideal para análise pós-voo em softwares como Excel ou Google Sheets.
+- **Exportar para KML:** Visualize o caminho 3D percorrido pelo avião diretamente no **Google Earth**.
+
+---
+
+## 🚀 Instalação e Requisitos
+
+### Requisitos Mínimos
+- **Sistema Operacional:** Windows 10 ou Windows 11 (64 bits).
+- **Simulador:** Microsoft Flight Simulator 2020 ou Microsoft Flight Simulator 2024.
+- **Ambiente de Execução:** [.NET 8.0 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) (x64) e [Microsoft Edge WebView2 Runtime](https://developer.microsoft.com/microsoft-edge/webview2/) (já incluso na maioria das versões do Windows 10/11).
+
+### Como Usar
+1. Baixe a versão mais recente em [Releases](https://github.com/GordelaG/Flight-Recorder/releases).
+2. Extraia o arquivo `.zip` em uma pasta de sua preferência.
+3. Inicie o Microsoft Flight Simulator e carregue seu voo na pista ou pátio.
+4. Execute `FlightRecorder.Client.exe`. O indicador do SimConnect ficará verde automaticamente assim que a conexão for estabelecida.
+5. Clique em **Record Flight** (ou utilize o atalho de teclado / barra flutuante HUD) para começar a gravar.
+6. Ao finalizar, clique em **Stop** e depois em **Replay** para assistir ou **Save to SavedFlights** para catalogar seu voo.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+- **C# / .NET 8.0:** Núcleo de alta performance e baixa latência.
+- **SimConnect SDK:** Comunicação nativa com o motor do Microsoft Flight Simulator.
+- **WPF + Microsoft WebView2:** Renderização da interface com tecnologia web moderna aliada ao controle do Windows.
+- **Design System:** [Flux UI](https://fluxui.dev) com arquitetura responsiva e tokens Tailwind Zinc.
+
+---
+
+## 🤝 Contribuições & Suporte
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma [Issue](https://github.com/GordelaG/Flight-Recorder/issues) para relatar problemas ou sugerir novos recursos, bem como enviar um [Pull Request](https://github.com/GordelaG/Flight-Recorder/pulls).
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença **MIT**. Consulte o arquivo [LICENSE](LICENSE) para obter mais informações.
