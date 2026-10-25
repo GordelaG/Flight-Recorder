@@ -231,6 +231,7 @@ public partial class MainWindow : BaseWindow
                 case "save":
                     if (await stateMachine.TransitAsync(StateMachine.Event.Save))
                     {
+                        SendRecordsToWeb();
                         PostWebMessage(new
                         {
                             type = "toast",
@@ -610,7 +611,10 @@ public partial class MainWindow : BaseWindow
         PostWebMessage(new
         {
             type = "recordsUpdate",
-            payload = recordsList
+            payload = new
+            {
+                records = recordsList
+            }
         });
     }
 

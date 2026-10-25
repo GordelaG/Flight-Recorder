@@ -807,7 +807,7 @@
         break;
 
       case 'recordsUpdate':
-        state.records = msg.payload?.records || [];
+        state.records = Array.isArray(msg.payload) ? msg.payload : (msg.payload?.records || []);
         if (chart) chart.setData(state.records);
         updateTimelineUI();
         break;
@@ -818,6 +818,11 @@
         break;
 
       case 'flightLoaded':
+        if (msg.payload?.frameCount !== undefined) {
+          state.frameCount = msg.payload.frameCount;
+          state.currentFrame = 0;
+          updateTimelineUI();
+        }
         showToast(`Voo "${msg.payload?.aircraftTitle || msg.payload?.fileName}" carregado com sucesso!`);
         switchTab('record');
         break;

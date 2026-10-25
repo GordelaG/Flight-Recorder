@@ -236,6 +236,11 @@ public class StateMachine : StateMachineCore
         Register(Transition.From(State.DisconnectedSaved).By(Event.Save).Via(Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
         Register(Transition.From(State.IdleUnsaved).By(Event.Save).Via(Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
         Register(Transition.From(State.IdleSaved).By(Event.Save).Via(Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
+        Register(Transition.From(State.Recording).By(Event.Save).Via(Event.Stop, Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
+        Register(Transition.From(State.ReplayingUnsaved).By(Event.Save).Via(Event.Stop, Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
+        Register(Transition.From(State.PausingUnsaved).By(Event.Save).Via(Event.Stop, Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
+        Register(Transition.From(State.ReplayingSaved).By(Event.Save).Via(Event.Stop, Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
+        Register(Transition.From(State.PausingSaved).By(Event.Save).Via(Event.Stop, Event.RequestSaving, Event.Save).RevertOnError(SaveErrorMessage));
 
         Register(Transition.From(State.Recording).By(Event.Disconnect).Via(Event.Stop, Event.Disconnect));
         Register(Transition.From(State.ReplayingSaved).By(Event.Disconnect).Via(Event.RequestStopping, Event.Stop, Event.Disconnect).WaitFor(Event.Stop));

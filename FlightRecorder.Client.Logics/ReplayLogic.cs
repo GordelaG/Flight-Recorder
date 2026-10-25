@@ -144,8 +144,16 @@ public class ReplayLogic : IReplayLogic, IDisposable
         }
         else
         {
-            connector.Init(0, Records.First().position);
+            // Freeze user aircraft immediately to prevent physics stall/drop
+            connector.Freeze(0);
         }
+
+        var initFrame = (currentFrame >= 0 && currentFrame < Records.Count) ? currentFrame : 0;
+        currentFrame = initFrame;
+        var (recMs, recPos) = Records[initFrame];
+        var initCustom = initFrame < CustomRecords.Count ? CustomRecords[initFrame] : null;
+
+        MoveAircraft(recMs - startMilliseconds!.Value, recPos, null, null, recMs - startMilliseconds!.Value, initCustom, null);
 
         _ = Task.Run(async () =>
         {
@@ -157,7 +165,8 @@ public class ReplayLogic : IReplayLogic, IDisposable
         });
 
         stopwatch.Restart();
-        replayMilliseconds = 0;
+        var initialElapsed = (long)((recMs - startMilliseconds.Value) / rate);
+        replayMilliseconds = stopwatch.ElapsedMilliseconds - initialElapsed;
         RunReplay();
 
         return true;
@@ -219,34 +228,28 @@ public class ReplayLogic : IReplayLogic, IDisposable
     {
         logger.LogInformation("Seek to frame {value}", value);
 
-        var wasPausing = IsPausing;
+        if (value < 0 || value >= Records.Count) return;
 
-        if (!wasPausing)
-        {
-            PauseReplay();
-        }
+        currentFrame = value;
+        pausedFrame = currentFrame;
 
-        if (value >= 0 && value < Records.Count)
-        {
-            (var recordedElapsed, var position) = Records[value];
-            MoveAircraft(recordedElapsed - startMilliseconds!.Value, position, null, null, recordedElapsed - startMilliseconds!.Value,
-                value < CustomRecords.Count ? CustomRecords[value] : null, null);
-            currentFrame = value;
-            pausedFrame = currentFrame;
-            CurrentFrameChanged?.Invoke(this, new(currentFrame));
-        }
+        var (recordedMilliseconds, position) = Records[value];
+        var recordedElapsed = recordedMilliseconds - startMilliseconds!.Value;
+
+        var custom = (value < CustomRecords.Count) ? CustomRecords[value] : null;
+
+        // Position aircraft in MSFS directly at target frame coordinates and altitude
+        MoveAircraft(recordedElapsed, position, null, null, recordedElapsed, custom, null);
+        CurrentFrameChanged?.Invoke(this, new(currentFrame));
 
         if (replayMilliseconds.HasValue)
         {
-            (var recordedElapsed, _) = Records[value];
-            var newElapsed = (long)((recordedElapsed - startMilliseconds!.Value) / rate);
+            var newElapsed = (long)(recordedElapsed / rate);
             replayMilliseconds = stopwatch.ElapsedMilliseconds - newElapsed;
-            pausedMilliseconds = stopwatch.ElapsedMilliseconds;
-        }
-
-        if (!wasPausing)
-        {
-            ResumeReplay();
+            if (pausedMilliseconds.HasValue)
+            {
+                pausedMilliseconds = stopwatch.ElapsedMilliseconds;
+            }
         }
     }
 
@@ -409,16 +412,6 @@ public class ReplayLogic : IReplayLogic, IDisposable
             connector.Freeze(0);
         }
 
-        var enumerator = Records.GetEnumerator();
-        currentFrame = -1;
-        long? recordedElapsed = null;
-        AircraftPositionStruct? position = null;
-        CustomAircraftVariablesStruct? custom = null;
-
-        long? lastElapsed = 0;
-        AircraftPositionStruct? lastPosition = null;
-        CustomAircraftVariablesStruct? lastCustom = null;
-
         while (true)
         {
             tcs = new TaskCompletionSource<bool>();
@@ -447,58 +440,53 @@ public class ReplayLogic : IReplayLogic, IDisposable
                 continue;
             }
 
-            if (forceReset || (pausedFrame != null && pausedFrame != currentFrame))
+            if (Records.Count == 0)
             {
-                logger.LogDebug("Reset interaction. Pause frame {frame}.", pausedFrame);
-
-                forceReset = false;
-
-                enumerator = Records.GetEnumerator();
-                currentFrame = -1;
-                recordedElapsed = null;
-                position = null;
-                custom = null;
-
-                pausedFrame = null;
+                FinishReplay(false);
+                return;
             }
 
             var currentElapsed = (long)((stopwatch.ElapsedMilliseconds - replayStartTime.Value) * rate);
 
-            try
-            {
-                while (!recordedElapsed.HasValue || currentElapsed > recordedElapsed)
-                {
-                    logger.LogTrace("Move next {currentElapsed}", currentElapsed);
-                    var canMove = enumerator.MoveNext();
+            if (currentFrame < 0) currentFrame = 0;
 
-                    if (canMove)
-                    {
-                        currentFrame++;
-                        (var recordedMilliseconds, var recordedPosition) = enumerator.Current;
-                        lastElapsed = recordedElapsed;
-                        lastPosition = position;
-                        lastCustom = custom;
-                        recordedElapsed = recordedMilliseconds - startMilliseconds;
-                        position = recordedPosition;
-                        custom = (currentFrame >= 0 && currentFrame < CustomRecords.Count) ? CustomRecords[currentFrame] : null;
-                    }
-                    else
-                    {
-                        FinishReplay(true);
-                        return;
-                    }
-                }
-            }
-            finally
+            // Sync currentFrame to currentElapsed: smoothly move forward or backward as needed
+            while (currentFrame < Records.Count - 1 && currentElapsed > (Records[currentFrame].milliseconds - startMilliseconds!.Value))
             {
-                logger.LogTrace("Current Frame {currentFrame} {ellapsed}", currentFrame, currentElapsed);
-                CurrentFrameChanged?.Invoke(this, new(currentFrame));
+                currentFrame++;
+            }
+            while (currentFrame > 0 && currentElapsed < (Records[currentFrame - 1].milliseconds - startMilliseconds!.Value))
+            {
+                currentFrame--;
             }
 
-            if (position.HasValue && recordedElapsed.HasValue)
+            // Check if replay reached the end
+            if (currentFrame >= Records.Count - 1 && currentElapsed >= (Records[Records.Count - 1].milliseconds - startMilliseconds!.Value))
             {
-                MoveAircraft(recordedElapsed.Value, position.Value, lastElapsed, lastPosition, currentElapsed, custom, lastCustom);
+                FinishReplay(true);
+                return;
             }
+
+            var (recordedMilliseconds, recordedPosition) = Records[currentFrame];
+            var recordedElapsed = recordedMilliseconds - startMilliseconds!.Value;
+
+            long? lastElapsed = null;
+            AircraftPositionStruct? lastPosition = null;
+            CustomAircraftVariablesStruct? lastCustom = null;
+
+            if (currentFrame > 0)
+            {
+                var (lastMs, lastPos) = Records[currentFrame - 1];
+                lastElapsed = lastMs - startMilliseconds!.Value;
+                lastPosition = lastPos;
+                lastCustom = (currentFrame - 1 < CustomRecords.Count) ? CustomRecords[currentFrame - 1] : null;
+            }
+
+            var custom = (currentFrame < CustomRecords.Count) ? CustomRecords[currentFrame] : null;
+
+            MoveAircraft(recordedElapsed, recordedPosition, lastElapsed, lastPosition, currentElapsed, custom, lastCustom);
+
+            CurrentFrameChanged?.Invoke(this, new(currentFrame));
         }
     }
 
@@ -551,6 +539,7 @@ public class ReplayLogic : IReplayLogic, IDisposable
         if (lastPosition.HasValue && lastElapsed.HasValue && nextElapsed > lastElapsed.Value)
         {
             interpolation = (double)(currentElapsed - lastElapsed.Value) / (nextElapsed - lastElapsed.Value);
+            interpolation = Math.Clamp(interpolation, 0.0, 1.0);
             if (interpolation == 0.5)
             {
                 interpolation = 0.501;

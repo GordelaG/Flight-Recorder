@@ -1,4 +1,4 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
@@ -19,11 +19,11 @@ public class StorageLogic : IStorageLogic
     /// <param name="filePath">This must not be null or empty</param>
     public async Task SaveAsync(string filePath, SavedData data)
     {
-        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
         {
             using var outStream = new ZipOutputStream(fileStream);
 
-            outStream.SetLevel(9);
+            outStream.SetLevel(6);
 
             var entry = new ZipEntry("data.json")
             {
@@ -32,7 +32,10 @@ public class StorageLogic : IStorageLogic
             outStream.PutNextEntry(entry);
 
             await JsonSerializer.SerializeAsync(outStream, data);
+            await outStream.FlushAsync();
+            outStream.CloseEntry();
             outStream.Finish();
+            await fileStream.FlushAsync();
 
             logger.LogDebug("Saved file into {fileName}", filePath);
         }
