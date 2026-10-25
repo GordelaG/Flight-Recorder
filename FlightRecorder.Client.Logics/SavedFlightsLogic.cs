@@ -6,19 +6,40 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+using System.Text.Json.Serialization;
+
 namespace FlightRecorder.Client.Logics;
 
 public class SavedFlightItem
 {
+    [JsonPropertyName("filePath")]
     public string FilePath { get; set; } = string.Empty;
+
+    [JsonPropertyName("fileName")]
     public string FileName { get; set; } = string.Empty;
+
+    [JsonPropertyName("aircraftTitle")]
     public string AircraftTitle { get; set; } = string.Empty;
+
+    [JsonPropertyName("startTime")]
     public long StartTime { get; set; }
+
+    [JsonPropertyName("endTime")]
     public long EndTime { get; set; }
+
+    [JsonPropertyName("durationSeconds")]
     public double DurationSeconds { get; set; }
+
+    [JsonPropertyName("frameCount")]
     public int FrameCount { get; set; }
+
+    [JsonPropertyName("profileId")]
     public string? ProfileId { get; set; }
+
+    [JsonPropertyName("fileSizeBytes")]
     public long FileSizeBytes { get; set; }
+
+    [JsonPropertyName("createdAt")]
     public DateTime CreatedAt { get; set; }
 }
 
@@ -116,7 +137,7 @@ public static class SavedFlightsLogic
                 if (File.Exists(metaPath))
                 {
                     var metaJson = File.ReadAllText(metaPath);
-                    var item = JsonSerializer.Deserialize<SavedFlightItem>(metaJson);
+                    var item = JsonSerializer.Deserialize<SavedFlightItem>(metaJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                     if (item != null)
                     {
                         item.FilePath = file;

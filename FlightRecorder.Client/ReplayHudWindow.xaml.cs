@@ -423,6 +423,12 @@ public partial class ReplayHudWindow : Window
         });
     }
 
+    private static readonly JsonSerializerOptions jsonOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        PropertyNameCaseInsensitive = true
+    };
+
     public void PostWebMessage(object message)
     {
         if (!isLoaded) return;
@@ -433,7 +439,7 @@ public partial class ReplayHudWindow : Window
             {
                 if (hudWebView?.CoreWebView2 != null)
                 {
-                    var json = JsonSerializer.Serialize(message);
+                    var json = JsonSerializer.Serialize(message, jsonOptions);
                     hudWebView.CoreWebView2.PostWebMessageAsJson(json);
                 }
             }

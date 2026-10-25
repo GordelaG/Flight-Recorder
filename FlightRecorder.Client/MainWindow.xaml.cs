@@ -550,6 +550,12 @@ public partial class MainWindow : BaseWindow
         }
     }
 
+    private static readonly JsonSerializerOptions jsonOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        PropertyNameCaseInsensitive = true
+    };
+
     private void PostWebMessage(object data)
     {
         if (replayHudWindow != null)
@@ -568,7 +574,7 @@ public partial class MainWindow : BaseWindow
             try
             {
                 if (webView?.CoreWebView2 == null) return;
-                var json = JsonSerializer.Serialize(data);
+                var json = JsonSerializer.Serialize(data, jsonOptions);
                 webView.CoreWebView2.PostWebMessageAsJson(json);
             }
             catch (Exception ex)

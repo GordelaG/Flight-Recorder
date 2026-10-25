@@ -493,8 +493,8 @@
     const query = (el.inputSearchRecords?.value || '').trim().toLowerCase();
     const filtered = state.savedFlights.filter((flight) => {
       if (!query) return true;
-      const title = (flight.aircraftTitle || '').toLowerCase();
-      const name = (flight.fileName || '').toLowerCase();
+      const title = (flight.aircraftTitle || flight.AircraftTitle || '').toLowerCase();
+      const name = (flight.fileName || flight.FileName || '').toLowerCase();
       return title.includes(query) || name.includes(query);
     });
 
@@ -502,7 +502,7 @@
     if (el.statTotalFlights) el.statTotalFlights.textContent = state.savedFlights.length;
     if (el.savedFlightsCountBadge) el.savedFlightsCountBadge.textContent = state.savedFlights.length;
 
-    const totalSeconds = state.savedFlights.reduce((acc, f) => acc + (f.durationSeconds || 0), 0);
+    const totalSeconds = state.savedFlights.reduce((acc, f) => acc + (f.durationSeconds ?? f.DurationSeconds ?? 0), 0);
     const totalMinutes = Math.round(totalSeconds / 60);
     if (el.statTotalTime) el.statTotalTime.textContent = `${totalMinutes} min`;
 
@@ -524,15 +524,24 @@
       const card = document.createElement('div');
       card.className = 'flight-card';
 
-      const durText = formatDuration(flight.durationSeconds);
-      const sizeText = formatBytes(flight.fileSizeBytes);
-      const dateText = formatDate(flight.createdAt);
-      const frameText = `${(flight.frameCount || 0).toLocaleString()} frames`;
+      const filePath = flight.filePath || flight.FilePath || '';
+      const fileName = flight.fileName || flight.FileName || '';
+      const aircraftTitle = flight.aircraftTitle || flight.AircraftTitle || 'Flight';
+      const durationSeconds = flight.durationSeconds ?? flight.DurationSeconds ?? 0;
+      const fileSizeBytes = flight.fileSizeBytes ?? flight.FileSizeBytes ?? 0;
+      const createdAt = flight.createdAt || flight.CreatedAt;
+      const frameCount = flight.frameCount ?? flight.FrameCount ?? 0;
+      const profileId = flight.profileId || flight.ProfileId;
+
+      const durText = formatDuration(durationSeconds);
+      const sizeText = formatBytes(fileSizeBytes);
+      const dateText = formatDate(createdAt);
+      const frameText = `${frameCount.toLocaleString()} frames`;
 
       card.innerHTML = `
         <div class="flight-card-header">
           <div class="flight-card-title-group">
-            <span class="flight-card-plane" title="${flight.aircraftTitle || 'Flight'}">${flight.aircraftTitle || 'Flight'}</span>
+            <span class="flight-card-plane" title="${aircraftTitle}">${aircraftTitle}</span>
             <span class="flight-card-date">${dateText}</span>
           </div>
         </div>
@@ -540,10 +549,10 @@
           <span class="flight-badge duration">⏱ ${durText}</span>
           <span class="flight-badge">🎞 ${frameText}</span>
           <span class="flight-badge">💾 ${sizeText}</span>
-          ${flight.profileId ? `<span class="flight-badge" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">⚡ ${flight.profileId}</span>` : ''}
+          ${profileId ? `<span class="flight-badge" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">⚡ ${profileId}</span>` : ''}
         </div>
         <div class="flight-card-footer">
-          <span class="flight-filename" title="${flight.fileName}">${flight.fileName}</span>
+          <span class="flight-filename" title="${fileName}">${fileName}</span>
           <div class="flight-card-actions">
             <button class="btn btn-accent btn-sm btn-load-flight" title="Carregar este voo para Replay">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
@@ -563,13 +572,13 @@
 
       // Load click
       card.querySelector('.btn-load-flight').addEventListener('click', () => {
-        sendToHost('loadSavedFlight', { path: flight.filePath });
+        sendToHost('loadSavedFlight', { path: filePath });
       });
 
       // Delete click
       card.querySelector('.btn-delete-flight').addEventListener('click', () => {
-        if (confirm(`Deseja realmente excluir o voo "${flight.aircraftTitle || flight.fileName}"?`)) {
-          sendToHost('deleteSavedFlight', { path: flight.filePath });
+        if (confirm(`Deseja realmente excluir o voo "${aircraftTitle || fileName}"?`)) {
+          sendToHost('deleteSavedFlight', { path: filePath });
         }
       });
 
