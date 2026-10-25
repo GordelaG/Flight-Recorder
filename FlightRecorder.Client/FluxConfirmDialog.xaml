@@ -1,0 +1,269 @@
+<Window x:Class="FlightRecorder.Client.FluxConfirmDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Flight Recorder"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+
+    <Window.Resources>
+        <!-- Flux UI Cancel Button Style (Zinc Secondary) -->
+        <Style x:Key="FluxCancelButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#27272a" />
+            <Setter Property="Foreground" Value="#e4e4e7" />
+            <Setter Property="BorderBrush" Value="#3f3f46" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="FontFamily" Value="Segoe UI, Inter" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#3f3f46" />
+                                <Setter Property="Foreground" Value="#ffffff" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="#52525b" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#18181b" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Flux UI Warning Button Style (Amber Accent) -->
+        <Style x:Key="FluxWarningButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#d97706" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="18,8" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontFamily" Value="Segoe UI, Inter" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#b45309" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#92400e" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Flux UI Danger Button Style (Rose/Red Accent) -->
+        <Style x:Key="FluxDangerButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#dc2626" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="18,8" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontFamily" Value="Segoe UI, Inter" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#b91c1c" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#991b1b" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Flux UI Primary Button Style (Blue Accent) -->
+        <Style x:Key="FluxPrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2563eb" />
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="18,8" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontFamily" Value="Segoe UI, Inter" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1d4ed8" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#1e40af" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Outer container with padding to allow the drop shadow to render without clipping -->
+    <Grid Margin="24">
+        <Border Width="450"
+                Background="#18181b"
+                BorderBrush="#27272a"
+                BorderThickness="1"
+                CornerRadius="14"
+                SnapsToDevicePixels="True">
+            <Border.Effect>
+                <DropShadowEffect Color="#000000"
+                                  BlurRadius="32"
+                                  ShadowDepth="10"
+                                  Direction="270"
+                                  Opacity="0.75" />
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Modal Body: Icon, Title, Message -->
+                <Grid Grid.Row="0"
+                      Background="Transparent"
+                      MouseLeftButtonDown="Header_MouseLeftButtonDown"
+                      Margin="22,22,22,20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Icon Wrapper Badge -->
+                    <Border x:Name="IconWrapper"
+                            Grid.Column="0"
+                            Width="44"
+                            Height="44"
+                            CornerRadius="10"
+                            Background="#2d2212"
+                            BorderBrush="#78350f"
+                            BorderThickness="1"
+                            VerticalAlignment="Top">
+                        <Path x:Name="IconPath"
+                              Width="20"
+                              Height="20"
+                              Stretch="Uniform"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Fill="#f59e0b"
+                              Data="M12,2L1,21H23L12,2M12,6L19.53,19H4.47L12,6M11,10V14H13V10H11M11,16V18H13V16H11Z" />
+                    </Border>
+
+                    <!-- Texts -->
+                    <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                        <TextBlock x:Name="TitleText"
+                                   Text="Gravação Não Salva"
+                                   FontFamily="Segoe UI, Inter"
+                                   FontSize="15"
+                                   FontWeight="Bold"
+                                   Foreground="#fafafa"
+                                   Margin="0,2,0,8" />
+                        <TextBlock x:Name="MessageText"
+                                   Text="Você possui um voo gravado que ainda não foi salvo. Iniciar uma nova gravação substituirá o voo atual. Deseja prosseguir?"
+                                   FontFamily="Segoe UI, Inter"
+                                   FontSize="13"
+                                   Foreground="#a1a1aa"
+                                   TextWrapping="Wrap"
+                                   LineHeight="19" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Modal Footer: Action Buttons -->
+                <Border Grid.Row="1"
+                        Background="#121214"
+                        BorderBrush="#27272a"
+                        BorderThickness="0,1,0,0"
+                        CornerRadius="0,0,13,13"
+                        Padding="16,14">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button x:Name="BtnCancel"
+                                Content="Cancelar"
+                                IsCancel="True"
+                                Style="{StaticResource FluxCancelButtonStyle}"
+                                Margin="0,0,10,0"
+                                Click="BtnCancel_Click" />
+                        <Button x:Name="BtnConfirm"
+                                Content="Descartar e Gravar"
+                                IsDefault="True"
+                                Style="{StaticResource FluxWarningButtonStyle}"
+                                Click="BtnConfirm_Click" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

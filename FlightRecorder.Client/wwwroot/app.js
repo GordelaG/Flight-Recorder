@@ -583,8 +583,15 @@
       });
 
       // Delete click
-      card.querySelector('.btn-delete-flight').addEventListener('click', () => {
-        if (confirm(`Deseja realmente excluir o voo "${aircraftTitle || fileName}"?`)) {
+      card.querySelector('.btn-delete-flight').addEventListener('click', async () => {
+        const confirmed = await showConfirmDialog({
+          title: 'Excluir Voo Gravado',
+          message: `Deseja realmente excluir permanentemente o voo "${aircraftTitle || fileName}"? Esta ação não pode ser desfeita.`,
+          confirmText: 'Excluir Voo',
+          cancelText: 'Cancelar',
+          variant: 'danger'
+        });
+        if (confirmed) {
           sendToHost('deleteSavedFlight', { path: filePath });
         }
       });
