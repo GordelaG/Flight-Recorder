@@ -217,6 +217,11 @@
     toggleStayOnTopSettings: document.getElementById('toggleStayOnTopSettings'),
     toggleAutoRecordAltitude: document.getElementById('toggleAutoRecordAltitude'),
     autoRecordStatusBadge: document.getElementById('autoRecordStatusBadge'),
+    autoRecordToggleText: document.getElementById('autoRecordToggleText'),
+    autoRecordThresholdContainer: document.getElementById('autoRecordThresholdContainer'),
+    autoRecordAltitudeDisplay: document.getElementById('autoRecordAltitudeDisplay'),
+    inputAutoRecordAltitude: document.getElementById('inputAutoRecordAltitude'),
+    autoRecordSliderValue: document.getElementById('autoRecordSliderValue'),
     toggleHudAutoHideSettings: document.getElementById('toggleHudAutoHideSettings'),
     hudStyleSegmentedGroup: document.getElementById('hudStyleSegmentedGroup'),
 
@@ -632,13 +637,36 @@
       el.toggleStayOnTopSettings.checked = !!state.settings.stayOnTop;
     }
     const isAutoRecord = state.settings.autoRecordBelowAltitude !== false;
+    const threshold = Math.max(1000, Math.min(15000, state.settings.autoRecordAltitudeThreshold || 6000));
+    const formattedAlt = threshold.toLocaleString('pt-BR') + ' ft';
+
     if (el.toggleAutoRecordAltitude) {
       el.toggleAutoRecordAltitude.checked = isAutoRecord;
     }
+    if (el.autoRecordToggleText) {
+      el.autoRecordToggleText.textContent = isAutoRecord ? 'Ativado' : 'Desativado';
+      el.autoRecordToggleText.classList.toggle('active', isAutoRecord);
+    }
     if (el.autoRecordStatusBadge) {
-      el.autoRecordStatusBadge.textContent = isAutoRecord ? 'Ativado (< 6.000 ft)' : 'Desativado';
+      el.autoRecordStatusBadge.textContent = isAutoRecord ? `Ativado (< ${formattedAlt})` : 'Desativado';
       el.autoRecordStatusBadge.className = `status-pill ${isAutoRecord ? 'status-pill-green' : 'status-pill-amber'}`;
     }
+    if (el.autoRecordThresholdContainer) {
+      el.autoRecordThresholdContainer.classList.toggle('auto-record-disabled', !isAutoRecord);
+    }
+    if (el.inputAutoRecordAltitude) {
+      el.inputAutoRecordAltitude.value = threshold;
+    }
+    if (el.autoRecordAltitudeDisplay) {
+      el.autoRecordAltitudeDisplay.textContent = formattedAlt;
+    }
+    if (el.autoRecordSliderValue) {
+      el.autoRecordSliderValue.textContent = formattedAlt;
+    }
+    document.querySelectorAll('.btn-preset').forEach(btn => {
+      const presetAlt = parseInt(btn.dataset.alt, 10);
+      btn.classList.toggle('active', presetAlt === threshold);
+    });
     if (el.toggleHudAutoHideSettings) {
       el.toggleHudAutoHideSettings.checked = !!state.settings.hudAutoHide;
     }
@@ -1300,11 +1328,52 @@
       const isEnabled = e.target.checked;
       state.settings.autoRecordBelowAltitude = isEnabled;
       renderSettings();
+      const thresh = state.settings.autoRecordAltitudeThreshold || 6000;
       sendToHost('saveAutoRecordAltitudeSettings', {
         enabled: isEnabled,
-        threshold: state.settings.autoRecordAltitudeThreshold || 6000
+        threshold: thresh
       });
-      showToast(isEnabled ? 'Gravação automática abaixo de 6.000 ft ATIVADA' : 'Gravação automática por altitude DESATIVADA');
+      showToast(isEnabled ? `Gravação automática abaixo de ${thresh.toLocaleString('pt-BR')} ft ATIVADA` : 'Gravação automática por altitude DESATIVADA');
+    });
+
+    const updateAltitudeThreshold = (newAlt, save = true) => {
+      const clamped = Math.max(1000, Math.min(15000, newAlt));
+      state.settings.autoRecordAltitudeThreshold = clamped;
+      const formatted = clamped.toLocaleString('pt-BR') + ' ft';
+      if (el.inputAutoRecordAltitude) el.inputAutoRecordAltitude.value = clamped;
+      if (el.autoRecordAltitudeDisplay) el.autoRecordAltitudeDisplay.textContent = formatted;
+      if (el.autoRecordSliderValue) el.autoRecordSliderValue.textContent = formatted;
+      if (el.autoRecordStatusBadge && state.settings.autoRecordBelowAltitude !== false) {
+        el.autoRecordStatusBadge.textContent = `Ativado (< ${formatted})`;
+      }
+      document.querySelectorAll('.btn-preset').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.alt, 10) === clamped);
+      });
+
+      if (save) {
+        sendToHost('saveAutoRecordAltitudeSettings', {
+          enabled: state.settings.autoRecordBelowAltitude !== false,
+          threshold: clamped
+        });
+        showToast(`Altitude de gravação automática definida para ${formatted}`);
+      }
+    };
+
+    el.inputAutoRecordAltitude?.addEventListener('input', (e) => {
+      updateAltitudeThreshold(parseInt(e.target.value, 10), false);
+    });
+
+    el.inputAutoRecordAltitude?.addEventListener('change', (e) => {
+      updateAltitudeThreshold(parseInt(e.target.value, 10), true);
+    });
+
+    document.querySelectorAll('.btn-preset').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const alt = parseInt(btn.dataset.alt, 10);
+        if (!isNaN(alt)) {
+          updateAltitudeThreshold(alt, true);
+        }
+      });
     });
     el.btnOpenSettingsFolder?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
 

@@ -89,12 +89,13 @@ public class FileSettingsLogic : ISettingsLogic
     public async Task<int> GetAutoRecordAltitudeThresholdAsync()
     {
         var settings = await LoadAsync();
-        return settings.AutoRecordAltitudeThreshold;
+        return settings.AutoRecordAltitudeThreshold <= 0 ? 6000 : Math.Clamp(settings.AutoRecordAltitudeThreshold, 1000, 15000);
     }
 
     public Task SetAutoRecordAltitudeThresholdAsync(int value)
     {
-        return SaveAsync(settings => settings.AutoRecordAltitudeThreshold = value);
+        var clamped = Math.Clamp(value, 1000, 15000);
+        return SaveAsync(settings => settings.AutoRecordAltitudeThreshold = clamped);
     }
 
     private static SemaphoreSlim sm = new SemaphoreSlim(1);

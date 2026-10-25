@@ -534,7 +534,7 @@ public partial class MainWindow : BaseWindow
                     }
                     if (root.TryGetProperty("threshold", out var threshProp))
                     {
-                        autoRecordAltitudeThreshold = threshProp.GetInt32();
+                        autoRecordAltitudeThreshold = Math.Clamp(threshProp.GetInt32(), 1000, 15000);
                         await settingsLogic.SetAutoRecordAltitudeThresholdAsync(autoRecordAltitudeThreshold);
                     }
                     await SendSettingsToWebAsync();

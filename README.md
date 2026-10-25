@@ -38,9 +38,10 @@
 - Alternância rápida via atalho global do teclado configurável.
 
 ### 🛩️ Gravação Automática por Altitude (Auto-Record)
-- Inicia a gravação automaticamente quando a aeronave estiver voando abaixo de uma altitude definida (padrão: **6.000 pés**).
-- Sistema inteligente com **histerese de segurança** para prevenir disparos repetidos ou falsos durante nivelamentos e oscilações.
-- Ativado por padrão para você nunca esquecer de registrar suas decolagens, aproximações e pousos.
+- **Totalmente Configurável:** Ajuste a altitude limite de disparo entre **1.000 e 15.000 pés** diretamente na aba de configurações (padrão de fábrica: **6.000 pés**), com slider visual e botões de atalho rápido (**3.000 ft**, **6.000 ft**, **10.000 ft**).
+- **Disparo em Descida:** Inicia a gravação automaticamente assim que o aplicativo estiver aberto e a aeronave cruzar a altitude configurada (ideal para registrar aproximações e pousos sem intervenção manual).
+- **Proteção por Histerese:** Algoritmo com margem de segurança para prevenir disparos repetidos ou falsos durante nivelamentos e turbulências.
+- Ativado por padrão com chave seletora (*toggle switch*) para ligar/desligar com 1 clique.
 
 ### 📁 Gerenciador de Voos Salvos (SavedFlights)
 - Salve gravações diretamente no armazenamento local com um clique no botão **Save to SavedFlights**.

@@ -602,19 +602,45 @@
         </div>
 
         <!-- Auto-Record Below Altitude Card -->
-        <div class="settings-card">
+        <div class="settings-card" id="cardAutoRecordAltitude">
           <div class="settings-card-header">
             <div>
               <div class="settings-card-title-row">
                 <h3 class="settings-card-title">Gravação Automática por Altitude</h3>
                 <span id="autoRecordStatusBadge" class="status-pill status-pill-green">Ativado (&lt; 6.000 ft)</span>
               </div>
-              <p class="settings-card-desc">Inicia a gravação automaticamente assim que o aplicativo estiver aberto e a aeronave estiver voando abaixo de 6.000 pés de altitude (ideal para pousos e aproximações).</p>
+              <p class="settings-card-desc">Inicia a gravação automaticamente assim que o aplicativo estiver aberto e a aeronave estiver voando abaixo da altitude limite (ideal para registrar aproximações e pousos).</p>
             </div>
-            <label class="toggle-switch" title="Iniciar gravação automaticamente abaixo de 6.000 pés">
-              <input type="checkbox" id="toggleAutoRecordAltitude" checked>
-              <span class="toggle-slider"></span>
-            </label>
+            <div class="hotkeys-toggle-wrapper">
+              <span id="autoRecordToggleText" class="hotkeys-toggle-label active">Ativado</span>
+              <label class="toggle-switch" title="Habilitar ou desabilitar gravação automática por altitude">
+                <input type="checkbox" id="toggleAutoRecordAltitude" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-card-inner-options" id="autoRecordThresholdContainer">
+            <div class="settings-sub-row">
+              <div class="settings-sub-info">
+                <div class="hotkeys-summary-line">
+                  <span class="settings-sub-label">Altitude de Disparo</span>
+                  <span id="autoRecordAltitudeDisplay" class="badge-count">6.000 ft</span>
+                </div>
+                <span class="settings-sub-desc">Configurável entre 1.000 e 15.000 pés (padrão: 6.000 ft). A gravação iniciará assim que cruzar esta altitude em descida.</span>
+              </div>
+              <div class="altitude-slider-wrapper">
+                <div class="altitude-slider-row">
+                  <input type="range" id="inputAutoRecordAltitude" class="flux-slider altitude-slider" min="1000" max="15000" step="500" value="6000" title="Ajuste a altitude de disparo automático">
+                  <span id="autoRecordSliderValue" class="altitude-slider-value">6.000 ft</span>
+                </div>
+                <div class="altitude-presets">
+                  <button type="button" class="btn-preset" data-alt="3000">3.000 ft</button>
+                  <button type="button" class="btn-preset active" data-alt="6000">6.000 ft (Padrão)</button>
+                  <button type="button" class="btn-preset" data-alt="10000">10.000 ft</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

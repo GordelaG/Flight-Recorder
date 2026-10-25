@@ -1441,6 +1441,83 @@ body {
   color: var(--text-sub);
 }
 
+/* Altitude Auto-Record Controls */
+.altitude-slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  min-width: 280px;
+}
+
+.altitude-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.altitude-slider {
+  flex: 1;
+  min-width: 160px;
+}
+
+.altitude-slider-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  padding: 3px 8px;
+  border-radius: 6px;
+  min-width: 68px;
+  text-align: center;
+}
+
+:root.light .altitude-slider-value {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+}
+
+.altitude-presets {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-preset {
+  background: var(--bg-element);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-preset:hover {
+  background: var(--bg-element-hover);
+  color: var(--text-heading);
+  border-color: var(--border-hover);
+}
+
+.btn-preset.active {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.auto-record-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  filter: grayscale(0.6);
+  transition: opacity 0.2s ease;
+}
+
 /* Segmented Theme Switcher (Flux UI Style) */
 .theme-segmented-group {
   display: inline-flex;
