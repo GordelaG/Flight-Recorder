@@ -537,51 +537,51 @@
           </div>
         </div>
 
-        <!-- Hotkeys Card (Enhanced Clarity on Enabled/Disabled States) -->
+        <!-- Hotkeys Card (Separated Options inside One Card) -->
         <div class="settings-card" id="cardGlobalHotkeys">
           <div class="settings-card-header">
             <div>
               <div class="settings-card-title-row">
                 <h3 class="settings-card-title">Atalhos Globais do Teclado (Global Hotkeys)</h3>
-                <span id="hotkeysStatusBadge" class="status-pill status-pill-green">Ativo no MSFS</span>
+                <span id="hotkeysStatusBadge" class="status-pill status-pill-green">Ativado</span>
               </div>
               <p class="settings-card-desc">Controle o gravador e o replay diretamente de dentro do simulador (MSFS) sem precisar alternar de janela.</p>
             </div>
-            <div class="hotkeys-toggle-wrapper">
-              <span id="hotkeysToggleText" class="hotkeys-toggle-label active">Ativado</span>
-              <label class="toggle-switch" title="Ativar ou desativar atalhos globais no simulador">
-                <input type="checkbox" id="toggleHotkeysEnabled" checked>
-                <span class="toggle-slider"></span>
-              </label>
-            </div>
           </div>
 
-          <!-- Dynamic Status Notice for Crystal-Clear User Feedback -->
-          <div id="hotkeysNotice" class="hotkeys-notice hotkeys-notice-enabled">
-            <svg class="notice-icon-enabled" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-            <svg class="notice-icon-disabled hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-            <span id="hotkeysNoticeText"><strong>Atalhos Ativos:</strong> As teclas configuradas funcionarão diretamente dentro do MSFS 2020 / 2024 mesmo em tela cheia.</span>
-          </div>
-
-          <div class="hotkeys-compact-content" id="hotkeysBottomRow">
-            <div class="hotkeys-compact-info">
-              <span id="hotkeysSummaryBadge" class="badge-count">8 atalhos ativos</span>
-              <span class="hotkeys-compact-sub">Gravar, Parar, Replay, Pausa, Retomar e Salvar Voo</span>
+          <div class="settings-card-inner-options">
+            <!-- Option 1: Habilitar / Desabilitar -->
+            <div class="settings-sub-row" id="hotkeysToggleRow">
+              <div class="settings-sub-info">
+                <span class="settings-sub-label">Habilitar Atalhos Globais</span>
+                <span id="hotkeysSubDesc" class="settings-sub-desc">As teclas configuradas funcionarão diretamente no MSFS 2020 / 2024 mesmo em tela cheia.</span>
+              </div>
+              <div class="hotkeys-toggle-wrapper">
+                <span id="hotkeysToggleText" class="hotkeys-toggle-label active">Ativado</span>
+                <label class="toggle-switch" title="Habilitar ou desabilitar atalhos globais no simulador">
+                  <input type="checkbox" id="toggleHotkeysEnabled" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
             </div>
-            <button id="btnOpenHotkeysModal" class="btn btn-secondary btn-sm" type="button">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10" />
-              </svg>
-              <span>Configurar Atalhos...</span>
-            </button>
+
+            <!-- Option 2: Configurar Teclas -->
+            <div class="settings-sub-row" id="hotkeysConfigRow">
+              <div class="settings-sub-info">
+                <div class="hotkeys-summary-line">
+                  <span class="settings-sub-label">Combinações de Teclas</span>
+                  <span id="hotkeysSummaryBadge" class="badge-count">8 atalhos ativos</span>
+                </div>
+                <span id="hotkeysConfigDesc" class="settings-sub-desc">Gravar, Parar, Replay, Pausa, Retomar e Salvar Voo</span>
+              </div>
+              <button id="btnOpenHotkeysModal" class="btn btn-secondary btn-sm" type="button" title="Personalizar atalhos do teclado">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10" />
+                </svg>
+                <span>Configurar Atalhos</span>
+              </button>
+            </div>
           </div>
         </div>
 

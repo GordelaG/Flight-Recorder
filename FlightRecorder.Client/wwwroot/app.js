@@ -208,10 +208,9 @@
     toggleHotkeysEnabled: document.getElementById('toggleHotkeysEnabled'),
     hotkeysToggleText: document.getElementById('hotkeysToggleText'),
     hotkeysStatusBadge: document.getElementById('hotkeysStatusBadge'),
-    hotkeysNotice: document.getElementById('hotkeysNotice'),
-    hotkeysNoticeText: document.getElementById('hotkeysNoticeText'),
+    hotkeysSubDesc: document.getElementById('hotkeysSubDesc'),
+    hotkeysConfigRow: document.getElementById('hotkeysConfigRow'),
     hotkeysSummaryBadge: document.getElementById('hotkeysSummaryBadge'),
-    hotkeysBottomRow: document.getElementById('hotkeysBottomRow'),
     btnOpenHotkeysModal: document.getElementById('btnOpenHotkeysModal'),
     textSavedFolderPath: document.getElementById('textSavedFolderPath'),
     btnOpenSettingsFolder: document.getElementById('btnOpenSettingsFolder'),
@@ -605,28 +604,22 @@
       el.hotkeysToggleText.className = `hotkeys-toggle-label ${isEnabled ? 'active' : 'inactive'}`;
     }
     if (el.hotkeysStatusBadge) {
-      el.hotkeysStatusBadge.textContent = isEnabled ? 'Ativo no MSFS' : 'Desativado';
+      el.hotkeysStatusBadge.textContent = isEnabled ? 'Ativado' : 'Desativado';
       el.hotkeysStatusBadge.className = `status-pill ${isEnabled ? 'status-pill-green' : 'status-pill-amber'}`;
     }
-    if (el.hotkeysNotice && el.hotkeysNoticeText) {
-      el.hotkeysNotice.className = `hotkeys-notice ${isEnabled ? 'hotkeys-notice-enabled' : 'hotkeys-notice-disabled'}`;
-      const iconEnabled = el.hotkeysNotice.querySelector('.notice-icon-enabled');
-      const iconDisabled = el.hotkeysNotice.querySelector('.notice-icon-disabled');
-      if (iconEnabled) iconEnabled.classList.toggle('hidden', !isEnabled);
-      if (iconDisabled) iconDisabled.classList.toggle('hidden', isEnabled);
-
-      el.hotkeysNoticeText.innerHTML = isEnabled
-        ? '<strong>Atalhos Ativos:</strong> As teclas configuradas funcionarão diretamente dentro do MSFS 2020 / 2024 mesmo em tela cheia.'
-        : '<strong>Atalhos Desativados:</strong> O simulador não responderá às teclas de atalho enquanto esta opção estiver desligada. Ative o botão acima para habilitar o controle pelo teclado.';
+    if (el.hotkeysSubDesc) {
+      el.hotkeysSubDesc.textContent = isEnabled
+        ? 'As teclas configuradas funcionarão diretamente no MSFS 2020 / 2024 mesmo em tela cheia.'
+        : 'Atalhos desativados: o simulador não responderá às teclas enquanto esta opção estiver desligada.';
     }
-    if (el.hotkeysBottomRow) {
-      el.hotkeysBottomRow.classList.toggle('is-disabled', !isEnabled);
+    if (el.hotkeysConfigRow) {
+      el.hotkeysConfigRow.classList.toggle('is-disabled', !isEnabled);
     }
     if (el.hotkeysSummaryBadge) {
       const activeCount = (state.settings.shortcuts || []).filter(s => s && s.key).length;
       el.hotkeysSummaryBadge.textContent = isEnabled
         ? `${activeCount} atalhos ativos`
-        : `${activeCount} atalhos configurados (inativos)`;
+        : `${activeCount} atalhos (inativos)`;
     }
     if (el.toggleStayOnTopSettings) {
       el.toggleStayOnTopSettings.checked = !!state.settings.stayOnTop;
