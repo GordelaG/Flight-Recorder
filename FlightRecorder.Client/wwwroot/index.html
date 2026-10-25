@@ -537,28 +537,42 @@
           </div>
         </div>
 
-        <!-- Hotkeys Card (Compact & Clean with Modal Button) -->
-        <div class="settings-card">
+        <!-- Hotkeys Card (Enhanced Clarity on Enabled/Disabled States) -->
+        <div class="settings-card" id="cardGlobalHotkeys">
           <div class="settings-card-header">
             <div>
               <div class="settings-card-title-row">
                 <h3 class="settings-card-title">Atalhos Globais do Teclado (Global Hotkeys)</h3>
-                <span id="hotkeysStatusBadge" class="status-pill status-pill-amber">Desativado</span>
+                <span id="hotkeysStatusBadge" class="status-pill status-pill-green">Ativo no MSFS</span>
               </div>
               <p class="settings-card-desc">Controle o gravador e o replay diretamente de dentro do simulador (MSFS) sem precisar alternar de janela.</p>
             </div>
             <div class="hotkeys-toggle-wrapper">
-              <span class="toggle-desc-label">Ativar Atalhos:</span>
-              <label class="toggle-switch" title="Ativar ou desativar atalhos globais">
-                <input type="checkbox" id="toggleHotkeysEnabled">
+              <span id="hotkeysToggleText" class="hotkeys-toggle-label active">Ativado</span>
+              <label class="toggle-switch" title="Ativar ou desativar atalhos globais no simulador">
+                <input type="checkbox" id="toggleHotkeysEnabled" checked>
                 <span class="toggle-slider"></span>
               </label>
             </div>
           </div>
 
-          <div class="hotkeys-compact-content">
+          <!-- Dynamic Status Notice for Crystal-Clear User Feedback -->
+          <div id="hotkeysNotice" class="hotkeys-notice hotkeys-notice-enabled">
+            <svg class="notice-icon-enabled" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <svg class="notice-icon-disabled hidden" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="hotkeysNoticeText"><strong>Atalhos Ativos:</strong> As teclas configuradas funcionarão diretamente dentro do MSFS 2020 / 2024 mesmo em tela cheia.</span>
+          </div>
+
+          <div class="hotkeys-compact-content" id="hotkeysBottomRow">
             <div class="hotkeys-compact-info">
-              <span id="hotkeysSummaryBadge" class="badge-count">7 atalhos configurados</span>
+              <span id="hotkeysSummaryBadge" class="badge-count">8 atalhos ativos</span>
               <span class="hotkeys-compact-sub">Gravar, Parar, Replay, Pausa, Retomar e Salvar Voo</span>
             </div>
             <button id="btnOpenHotkeysModal" class="btn btn-secondary btn-sm" type="button">
@@ -593,12 +607,12 @@
             <div>
               <div class="settings-card-title-row">
                 <h3 class="settings-card-title">Gravação Automática por Altitude</h3>
-                <span id="autoRecordStatusBadge" class="status-pill status-pill-amber">Desativado</span>
+                <span id="autoRecordStatusBadge" class="status-pill status-pill-green">Ativado (&lt; 6.000 ft)</span>
               </div>
               <p class="settings-card-desc">Inicia a gravação automaticamente assim que o aplicativo estiver aberto e a aeronave estiver voando abaixo de 6.000 pés de altitude (ideal para pousos e aproximações).</p>
             </div>
             <label class="toggle-switch" title="Iniciar gravação automaticamente abaixo de 6.000 pés">
-              <input type="checkbox" id="toggleAutoRecordAltitude">
+              <input type="checkbox" id="toggleAutoRecordAltitude" checked>
               <span class="toggle-slider"></span>
             </label>
           </div>

@@ -111,11 +111,11 @@
     simState: {},
     savedFlights: [],
     settings: {
-      shortcutKeysEnabled: false,
+      shortcutKeysEnabled: true,
       shortcuts: JSON.parse(JSON.stringify(DEFAULT_SHORTCUTS)),
       savedFlightsFolder: 'C:\\Program Files\\Flight Recorder\\SavedFlights',
       stayOnTop: false,
-      autoRecordBelowAltitude: false,
+      autoRecordBelowAltitude: true,
       autoRecordAltitudeThreshold: 6000
     },
     recordingHotkeyIndex: null
@@ -206,8 +206,12 @@
 
     // View 3: Settings
     toggleHotkeysEnabled: document.getElementById('toggleHotkeysEnabled'),
+    hotkeysToggleText: document.getElementById('hotkeysToggleText'),
     hotkeysStatusBadge: document.getElementById('hotkeysStatusBadge'),
+    hotkeysNotice: document.getElementById('hotkeysNotice'),
+    hotkeysNoticeText: document.getElementById('hotkeysNoticeText'),
     hotkeysSummaryBadge: document.getElementById('hotkeysSummaryBadge'),
+    hotkeysBottomRow: document.getElementById('hotkeysBottomRow'),
     btnOpenHotkeysModal: document.getElementById('btnOpenHotkeysModal'),
     textSavedFolderPath: document.getElementById('textSavedFolderPath'),
     btnOpenSettingsFolder: document.getElementById('btnOpenSettingsFolder'),
@@ -592,22 +596,42 @@
 
   // Render Settings View (Compact)
   function renderSettings() {
-    const isEnabled = !!state.settings.shortcutKeysEnabled;
+    const isEnabled = state.settings.shortcutKeysEnabled !== false;
     if (el.toggleHotkeysEnabled) {
       el.toggleHotkeysEnabled.checked = isEnabled;
     }
+    if (el.hotkeysToggleText) {
+      el.hotkeysToggleText.textContent = isEnabled ? 'Ativado' : 'Desativado';
+      el.hotkeysToggleText.className = `hotkeys-toggle-label ${isEnabled ? 'active' : 'inactive'}`;
+    }
     if (el.hotkeysStatusBadge) {
-      el.hotkeysStatusBadge.textContent = isEnabled ? 'Ativado' : 'Desativado';
+      el.hotkeysStatusBadge.textContent = isEnabled ? 'Ativo no MSFS' : 'Desativado';
       el.hotkeysStatusBadge.className = `status-pill ${isEnabled ? 'status-pill-green' : 'status-pill-amber'}`;
+    }
+    if (el.hotkeysNotice && el.hotkeysNoticeText) {
+      el.hotkeysNotice.className = `hotkeys-notice ${isEnabled ? 'hotkeys-notice-enabled' : 'hotkeys-notice-disabled'}`;
+      const iconEnabled = el.hotkeysNotice.querySelector('.notice-icon-enabled');
+      const iconDisabled = el.hotkeysNotice.querySelector('.notice-icon-disabled');
+      if (iconEnabled) iconEnabled.classList.toggle('hidden', !isEnabled);
+      if (iconDisabled) iconDisabled.classList.toggle('hidden', isEnabled);
+
+      el.hotkeysNoticeText.innerHTML = isEnabled
+        ? '<strong>Atalhos Ativos:</strong> As teclas configuradas funcionarão diretamente dentro do MSFS 2020 / 2024 mesmo em tela cheia.'
+        : '<strong>Atalhos Desativados:</strong> O simulador não responderá às teclas de atalho enquanto esta opção estiver desligada. Ative o botão acima para habilitar o controle pelo teclado.';
+    }
+    if (el.hotkeysBottomRow) {
+      el.hotkeysBottomRow.classList.toggle('is-disabled', !isEnabled);
     }
     if (el.hotkeysSummaryBadge) {
       const activeCount = (state.settings.shortcuts || []).filter(s => s && s.key).length;
-      el.hotkeysSummaryBadge.textContent = `${activeCount} atalhos configurados`;
+      el.hotkeysSummaryBadge.textContent = isEnabled
+        ? `${activeCount} atalhos ativos`
+        : `${activeCount} atalhos configurados (inativos)`;
     }
     if (el.toggleStayOnTopSettings) {
       el.toggleStayOnTopSettings.checked = !!state.settings.stayOnTop;
     }
-    const isAutoRecord = !!state.settings.autoRecordBelowAltitude;
+    const isAutoRecord = state.settings.autoRecordBelowAltitude !== false;
     if (el.toggleAutoRecordAltitude) {
       el.toggleAutoRecordAltitude.checked = isAutoRecord;
     }
@@ -851,7 +875,7 @@
       case 'settingsData':
         if (msg.payload) {
           state.settings = {
-            shortcutKeysEnabled: !!msg.payload.shortcutKeysEnabled,
+            shortcutKeysEnabled: msg.payload.shortcutKeysEnabled !== false,
             shortcuts: (msg.payload.shortcuts && msg.payload.shortcuts.length > 0)
               ? msg.payload.shortcuts.map(s => ({
                   ...s,
@@ -862,7 +886,7 @@
             stayOnTop: !!msg.payload.stayOnTop,
             hudAutoHide: !!msg.payload.hudAutoHide,
             hudTranslucent: !!msg.payload.hudTranslucent,
-            autoRecordBelowAltitude: !!msg.payload.autoRecordBelowAltitude,
+            autoRecordBelowAltitude: msg.payload.autoRecordBelowAltitude !== false,
             autoRecordAltitudeThreshold: msg.payload.autoRecordAltitudeThreshold ?? 6000
           };
           renderSettings();
@@ -1263,7 +1287,7 @@
         enabled: state.settings.shortcutKeysEnabled,
         shortcuts: state.settings.shortcuts
       });
-      showToast(e.target.checked ? 'Atalhos globais ativados!' : 'Atalhos globais desativados.');
+      showToast(e.target.checked ? 'Atalhos globais ativados no MSFS!' : 'Atalhos globais desativados.');
     });
 
     el.toggleStayOnTopSettings?.addEventListener('change', (e) => {

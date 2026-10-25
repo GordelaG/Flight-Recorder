@@ -1520,7 +1520,7 @@ body {
   border: 1px solid rgba(245, 158, 11, 0.35);
 }
 
-/* Hotkeys Card (Compact in Settings) */
+/* Hotkeys Card (Enhanced in Settings) */
 .settings-card-title-row {
   display: flex;
   align-items: center;
@@ -1531,21 +1531,65 @@ body {
 .hotkeys-toggle-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.toggle-desc-label {
+.hotkeys-toggle-label {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.hotkeys-toggle-label.active {
+  color: #10b981;
+}
+
+.hotkeys-toggle-label.inactive {
+  color: #f59e0b;
+}
+
+.hotkeys-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
   font-size: 12px;
-  font-weight: 500;
-  color: var(--text-muted);
+  line-height: 1.45;
+  transition: all 0.2s ease;
+}
+
+.hotkeys-notice svg {
+  flex-shrink: 0;
+}
+
+.hotkeys-notice-disabled {
+  background: rgba(245, 158, 11, 0.10);
+  border: 1px solid rgba(245, 158, 11, 0.32);
+  color: #fbbf24;
+}
+
+.hotkeys-notice-enabled {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  color: #34d399;
 }
 
 .hotkeys-compact-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
   gap: 16px;
+  transition: opacity 0.2s ease;
+}
+
+.hotkeys-compact-content.is-disabled {
+  opacity: 0.75;
 }
 
 .hotkeys-compact-info {

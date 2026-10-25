@@ -46,7 +46,7 @@ public partial class MainWindow : BaseWindow
     private bool isWebViewReady = false;
     private CoreWebView2Environment? webViewEnvironment;
     private ReplayHudWindow? replayHudWindow;
-    private bool autoRecordBelowAltitude = false;
+    private bool autoRecordBelowAltitude = true;
     private int autoRecordAltitudeThreshold = 6000;
     private bool isArmedForAutoRecord = true;
 

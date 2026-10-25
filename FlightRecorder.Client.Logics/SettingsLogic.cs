@@ -154,11 +154,11 @@ public class FileSettingsLogic : ISettingsLogic
 
 public class Settings
 {
-    public bool ShortcutKeysEnabled { get; set; } = false;
+    public bool ShortcutKeysEnabled { get; set; } = true;
     public Dictionary<Shortcuts, ShortcutKey>? ShortcutKeys { get; set; } = null;
     public string? DefaultSaveFolder { get; set; } = null;
     public bool HudAutoHide { get; set; } = false;
     public bool HudTranslucent { get; set; } = false;
-    public bool AutoRecordBelowAltitude { get; set; } = false;
+    public bool AutoRecordBelowAltitude { get; set; } = true;
     public int AutoRecordAltitudeThreshold { get; set; } = 6000;
 }
