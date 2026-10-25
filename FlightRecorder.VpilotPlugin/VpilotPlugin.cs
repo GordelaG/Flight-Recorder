@@ -246,22 +246,21 @@ namespace FlightRecorder.VpilotPlugin
                             var rtbList = new List<object>();
                             CollectRichTextBoxes(form, rtbList);
 
-                            // Retrieve error color from form field 'u' (used in cb) or fallback to Color.Red
-                            object? errColor = null;
-                            var uField = formType.GetField("u", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-                            if (uField != null)
+                            // Brand orange-red color (#EE4203)
+                            object? msgColor = null;
+                            var colorType = Type.GetType("System.Drawing.Color, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")
+                                            ?? Assembly.Load("System.Drawing")?.GetType("System.Drawing.Color");
+                            var fromArgb = colorType?.GetMethod("FromArgb", new[] { typeof(int), typeof(int), typeof(int) });
+                            if (fromArgb != null)
                             {
-                                errColor = uField.GetValue(form);
+                                msgColor = fromArgb.Invoke(null, new object[] { 238, 66, 3 });
                             }
-                            if (errColor == null)
+                            if (msgColor == null)
                             {
-                                var colorType = Type.GetType("System.Drawing.Color, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")
-                                                ?? Assembly.Load("System.Drawing")?.GetType("System.Drawing.Color");
-                                errColor = colorType?.GetProperty("Red", BindingFlags.Public | BindingFlags.Static)?.GetValue(null, null);
+                                msgColor = colorType?.GetProperty("OrangeRed", BindingFlags.Public | BindingFlags.Static)?.GetValue(null, null);
                             }
 
-                            const string targetText = "Disconnected from network.";
-                            const string replacementText = "Forcibly disconnected from network.";
+                            const string replacementText = "[Flight Recorder] Replay iniciado - Desconectado da rede.";
 
                             foreach (var rtb in rtbList)
                             {
@@ -269,21 +268,37 @@ namespace FlightRecorder.VpilotPlugin
                                 string? text = rtbType.GetProperty("Text")?.GetValue(rtb, null) as string;
                                 if (text == null || text.Length == 0) continue;
 
-                                int idx = text.LastIndexOf(targetText, StringComparison.Ordinal);
-                                if (idx >= 0 && idx >= text.Length - 100)
+                                // If already replaced or appended recently, do not duplicate
+                                if (text.Contains(replacementText) && text.LastIndexOf(replacementText, StringComparison.Ordinal) >= text.Length - 250)
+                                {
+                                    anyReplaced = true;
+                                    continue;
+                                }
+
+                                int idx = text.LastIndexOf("Disconnected from network.", StringComparison.Ordinal);
+                                int targetLen = "Disconnected from network.".Length;
+                                if (idx < 0)
+                                {
+                                    idx = text.LastIndexOf("Forcibly disconnected from network.", StringComparison.Ordinal);
+                                    targetLen = "Forcibly disconnected from network.".Length;
+                                }
+
+                                if (idx >= 0 && idx >= text.Length - 250)
                                 {
                                     // Select target text
                                     rtbType.GetMethod("Select", new[] { typeof(int), typeof(int) })?
-                                           .Invoke(rtb, new object[] { idx, targetText.Length });
-
-                                    // Set color to Error color (Red)
-                                    if (errColor != null)
-                                    {
-                                        rtbType.GetProperty("SelectionColor")?.SetValue(rtb, errColor, null);
-                                    }
+                                           .Invoke(rtb, new object[] { idx, targetLen });
 
                                     // Replace text
                                     rtbType.GetProperty("SelectedText")?.SetValue(rtb, replacementText, null);
+
+                                    // Select newly inserted text and apply custom color
+                                    rtbType.GetMethod("Select", new[] { typeof(int), typeof(int) })?
+                                           .Invoke(rtb, new object[] { idx, replacementText.Length });
+                                    if (msgColor != null)
+                                    {
+                                        rtbType.GetProperty("SelectionColor")?.SetValue(rtb, msgColor, null);
+                                    }
 
                                     // Move caret to end
                                     int newLength = (int)(rtbType.GetProperty("TextLength")?.GetValue(rtb, null) ?? 0);
@@ -291,7 +306,31 @@ namespace FlightRecorder.VpilotPlugin
                                     rtbType.GetMethod("ScrollToCaret", Type.EmptyTypes)?.Invoke(rtb, null);
 
                                     anyReplaced = true;
-                                    Log("Successfully replaced 'Disconnected from network.' with 'Forcibly disconnected from network.' in RichTextBox.");
+                                    Log("Successfully replaced disconnect message with '" + replacementText + "' in RichTextBox.");
+                                }
+                                else
+                                {
+                                    // If disconnect message wasn't found in text, append it directly as a new line
+                                    int curLength = (int)(rtbType.GetProperty("TextLength")?.GetValue(rtb, null) ?? 0);
+                                    rtbType.GetProperty("SelectionStart")?.SetValue(rtb, curLength, null);
+
+                                    string timeStamp = DateTime.UtcNow.ToString("HH:mm:ss");
+                                    string fullLine = $"[{timeStamp}] {replacementText}{Environment.NewLine}";
+
+                                    rtbType.GetProperty("SelectedText")?.SetValue(rtb, fullLine, null);
+                                    rtbType.GetMethod("Select", new[] { typeof(int), typeof(int) })?
+                                           .Invoke(rtb, new object[] { curLength, fullLine.Length });
+                                    if (msgColor != null)
+                                    {
+                                        rtbType.GetProperty("SelectionColor")?.SetValue(rtb, msgColor, null);
+                                    }
+
+                                    int finalLength = (int)(rtbType.GetProperty("TextLength")?.GetValue(rtb, null) ?? 0);
+                                    rtbType.GetProperty("SelectionStart")?.SetValue(rtb, finalLength, null);
+                                    rtbType.GetMethod("ScrollToCaret", Type.EmptyTypes)?.Invoke(rtb, null);
+
+                                    anyReplaced = true;
+                                    Log("Successfully appended '" + replacementText + "' to RichTextBox.");
                                 }
                             }
                         }
