@@ -46,6 +46,9 @@ public partial class MainWindow : BaseWindow
     private bool isWebViewReady = false;
     private CoreWebView2Environment? webViewEnvironment;
     private ReplayHudWindow? replayHudWindow;
+    private bool autoRecordBelowAltitude = false;
+    private int autoRecordAltitudeThreshold = 6000;
+    private bool isArmedForAutoRecord = true;
 
     public MainWindow(
         ILogger<MainWindow> logger,
@@ -112,6 +115,9 @@ public partial class MainWindow : BaseWindow
 
         InitializeConnector();
         await shortcutKeyLogic.RegisterAsync(Handle);
+
+        autoRecordBelowAltitude = await settingsLogic.GetAutoRecordBelowAltitudeAsync();
+        autoRecordAltitudeThreshold = await settingsLogic.GetAutoRecordAltitudeThresholdAsync();
 
         _ = Task.Run(() => VpilotService.EnsurePluginInstalled(logger));
     }
@@ -516,6 +522,24 @@ public partial class MainWindow : BaseWindow
                     await SendSettingsToWebAsync();
                     break;
 
+                case "saveAutoRecordAltitudeSettings":
+                    if (root.TryGetProperty("enabled", out var autoRecProp))
+                    {
+                        autoRecordBelowAltitude = autoRecProp.GetBoolean();
+                        await settingsLogic.SetAutoRecordBelowAltitudeAsync(autoRecordBelowAltitude);
+                        if (autoRecordBelowAltitude)
+                        {
+                            isArmedForAutoRecord = true;
+                        }
+                    }
+                    if (root.TryGetProperty("threshold", out var threshProp))
+                    {
+                        autoRecordAltitudeThreshold = threshProp.GetInt32();
+                        await settingsLogic.SetAutoRecordAltitudeThresholdAsync(autoRecordAltitudeThreshold);
+                    }
+                    await SendSettingsToWebAsync();
+                    break;
+
                 case "themeChanged":
                     if (root.TryGetProperty("effectiveTheme", out var effThemeProp))
                     {
@@ -691,6 +715,10 @@ public partial class MainWindow : BaseWindow
 
     private void StateMachine_StateChanged(object? sender, StateChangedEventArgs e)
     {
+        if (e.To == StateMachine.State.Recording)
+        {
+            isArmedForAutoRecord = false;
+        }
         SendFullStateToWeb();
         if (e.By == StateMachine.Event.Stop || e.By == StateMachine.Event.Load || e.By == StateMachine.Event.TrimStart || e.By == StateMachine.Event.TrimEnd)
         {
@@ -707,6 +735,43 @@ public partial class MainWindow : BaseWindow
         {
             viewModel.AircraftPosition = AircraftPosition.FromStruct(e.Position);
         });
+
+        if (autoRecordBelowAltitude)
+        {
+            var alt = e.Position.Altitude;
+            if (alt >= autoRecordAltitudeThreshold + 500)
+            {
+                // Aircraft climbed above threshold + 500ft hysteresis -> re-arm auto-record
+                isArmedForAutoRecord = true;
+            }
+            else if (isArmedForAutoRecord && alt < autoRecordAltitudeThreshold && !double.IsNaN(alt))
+            {
+                if (stateMachine.CurrentState == StateMachine.State.IdleEmpty ||
+                    stateMachine.CurrentState == StateMachine.State.IdleSaved)
+                {
+                    isArmedForAutoRecord = false;
+                    _ = Dispatcher.InvokeAsync(async () =>
+                    {
+                        try
+                        {
+                            logger.LogInformation("Auto-record triggered: aircraft altitude is {Altitude:F0} ft (threshold: {Threshold} ft)", alt, autoRecordAltitudeThreshold);
+                            if (await stateMachine.TransitAsync(StateMachine.Event.Record))
+                            {
+                                PostWebMessage(new
+                                {
+                                    type = "toast",
+                                    payload = $"Gravação iniciada automaticamente (Altitude: {Math.Round(alt):N0} ft)"
+                                });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            logger.LogError(ex, "Error while starting auto-record.");
+                        }
+                    });
+                }
+            }
+        }
 
         // Throttle telemetry messages sent to Web (~30 FPS)
         if (telemetryStopwatch.ElapsedMilliseconds - lastTelemetrySendTime > 33)
@@ -964,6 +1029,8 @@ public partial class MainWindow : BaseWindow
             var stayOnTop = Dispatcher.Invoke(() => Topmost);
             var hudAutoHide = await settingsLogic.GetHudAutoHideAsync();
             var hudTranslucent = await settingsLogic.GetHudTranslucentAsync();
+            autoRecordBelowAltitude = await settingsLogic.GetAutoRecordBelowAltitudeAsync();
+            autoRecordAltitudeThreshold = await settingsLogic.GetAutoRecordAltitudeThresholdAsync();
 
             PostWebMessage(new
             {
@@ -975,7 +1042,9 @@ public partial class MainWindow : BaseWindow
                     savedFlightsFolder = SavedFlightsLogic.GetSavedFlightsDirectory(),
                     stayOnTop = stayOnTop,
                     hudAutoHide = hudAutoHide,
-                    hudTranslucent = hudTranslucent
+                    hudTranslucent = hudTranslucent,
+                    autoRecordBelowAltitude = autoRecordBelowAltitude,
+                    autoRecordAltitudeThreshold = autoRecordAltitudeThreshold
                 }
             });
         }

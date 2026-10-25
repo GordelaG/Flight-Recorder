@@ -114,7 +114,9 @@
       shortcutKeysEnabled: false,
       shortcuts: JSON.parse(JSON.stringify(DEFAULT_SHORTCUTS)),
       savedFlightsFolder: 'C:\\Program Files\\Flight Recorder\\SavedFlights',
-      stayOnTop: false
+      stayOnTop: false,
+      autoRecordBelowAltitude: false,
+      autoRecordAltitudeThreshold: 6000
     },
     recordingHotkeyIndex: null
   };
@@ -210,6 +212,8 @@
     textSavedFolderPath: document.getElementById('textSavedFolderPath'),
     btnOpenSettingsFolder: document.getElementById('btnOpenSettingsFolder'),
     toggleStayOnTopSettings: document.getElementById('toggleStayOnTopSettings'),
+    toggleAutoRecordAltitude: document.getElementById('toggleAutoRecordAltitude'),
+    autoRecordStatusBadge: document.getElementById('autoRecordStatusBadge'),
     toggleHudAutoHideSettings: document.getElementById('toggleHudAutoHideSettings'),
     hudStyleSegmentedGroup: document.getElementById('hudStyleSegmentedGroup'),
 
@@ -603,6 +607,14 @@
     if (el.toggleStayOnTopSettings) {
       el.toggleStayOnTopSettings.checked = !!state.settings.stayOnTop;
     }
+    const isAutoRecord = !!state.settings.autoRecordBelowAltitude;
+    if (el.toggleAutoRecordAltitude) {
+      el.toggleAutoRecordAltitude.checked = isAutoRecord;
+    }
+    if (el.autoRecordStatusBadge) {
+      el.autoRecordStatusBadge.textContent = isAutoRecord ? 'Ativado (< 6.000 ft)' : 'Desativado';
+      el.autoRecordStatusBadge.className = `status-pill ${isAutoRecord ? 'status-pill-green' : 'status-pill-amber'}`;
+    }
     if (el.toggleHudAutoHideSettings) {
       el.toggleHudAutoHideSettings.checked = !!state.settings.hudAutoHide;
     }
@@ -849,7 +861,9 @@
             savedFlightsFolder: msg.payload.savedFlightsFolder || 'C:\\Program Files\\Flight Recorder\\SavedFlights',
             stayOnTop: !!msg.payload.stayOnTop,
             hudAutoHide: !!msg.payload.hudAutoHide,
-            hudTranslucent: !!msg.payload.hudTranslucent
+            hudTranslucent: !!msg.payload.hudTranslucent,
+            autoRecordBelowAltitude: !!msg.payload.autoRecordBelowAltitude,
+            autoRecordAltitudeThreshold: msg.payload.autoRecordAltitudeThreshold ?? 6000
           };
           renderSettings();
         }
@@ -1256,6 +1270,17 @@
       state.settings.stayOnTop = e.target.checked;
       sendToHost('setTopmost', { topmost: e.target.checked });
       showToast(e.target.checked ? 'Stay on Top: Ativado' : 'Stay on Top: Desativado');
+    });
+
+    el.toggleAutoRecordAltitude?.addEventListener('change', (e) => {
+      const isEnabled = e.target.checked;
+      state.settings.autoRecordBelowAltitude = isEnabled;
+      renderSettings();
+      sendToHost('saveAutoRecordAltitudeSettings', {
+        enabled: isEnabled,
+        threshold: state.settings.autoRecordAltitudeThreshold || 6000
+      });
+      showToast(isEnabled ? 'Gravação automática abaixo de 6.000 ft ATIVADA' : 'Gravação automática por altitude DESATIVADA');
     });
     el.btnOpenSettingsFolder?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
 

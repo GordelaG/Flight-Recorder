@@ -75,6 +75,28 @@ public class FileSettingsLogic : ISettingsLogic
         return SaveAsync(settings => settings.HudTranslucent = value);
     }
 
+    public async Task<bool> GetAutoRecordBelowAltitudeAsync()
+    {
+        var settings = await LoadAsync();
+        return settings.AutoRecordBelowAltitude;
+    }
+
+    public Task SetAutoRecordBelowAltitudeAsync(bool value)
+    {
+        return SaveAsync(settings => settings.AutoRecordBelowAltitude = value);
+    }
+
+    public async Task<int> GetAutoRecordAltitudeThresholdAsync()
+    {
+        var settings = await LoadAsync();
+        return settings.AutoRecordAltitudeThreshold;
+    }
+
+    public Task SetAutoRecordAltitudeThresholdAsync(int value)
+    {
+        return SaveAsync(settings => settings.AutoRecordAltitudeThreshold = value);
+    }
+
     private static SemaphoreSlim sm = new SemaphoreSlim(1);
 
     private Settings? settings = null;
@@ -137,4 +159,6 @@ public class Settings
     public string? DefaultSaveFolder { get; set; } = null;
     public bool HudAutoHide { get; set; } = false;
     public bool HudTranslucent { get; set; } = false;
+    public bool AutoRecordBelowAltitude { get; set; } = false;
+    public int AutoRecordAltitudeThreshold { get; set; } = 6000;
 }

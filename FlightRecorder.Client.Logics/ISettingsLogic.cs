@@ -16,4 +16,8 @@ public interface ISettingsLogic
     Task SetHudAutoHideAsync(bool value);
     Task<bool> GetHudTranslucentAsync();
     Task SetHudTranslucentAsync(bool value);
+    Task<bool> GetAutoRecordBelowAltitudeAsync();
+    Task SetAutoRecordBelowAltitudeAsync(bool value);
+    Task<int> GetAutoRecordAltitudeThresholdAsync();
+    Task SetAutoRecordAltitudeThresholdAsync(int value);
 }
