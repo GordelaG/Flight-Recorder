@@ -205,7 +205,11 @@
     btnOpenFolderRecords: document.getElementById('btnOpenFolderRecords'),
 
     // View 4: Settings
-    languageSegmentedGroup: document.getElementById('languageSegmentedGroup'),
+    languageDropdownWrapper: document.getElementById('languageDropdownWrapper'),
+    btnLanguageDropdown: document.getElementById('btnLanguageDropdown'),
+    languageDropdownMenu: document.getElementById('languageDropdownMenu'),
+    dropdownCurrentFlag: document.getElementById('dropdownCurrentFlag'),
+    dropdownCurrentText: document.getElementById('dropdownCurrentText'),
     currentLanguageBadge: document.getElementById('currentLanguageBadge'),
     toggleHotkeysEnabled: document.getElementById('toggleHotkeysEnabled'),
     hotkeysToggleText: document.getElementById('hotkeysToggleText'),
@@ -621,13 +625,32 @@
   // Render Settings View (Compact)
   function renderSettings() {
     const curLang = window.i18n ? i18n.getLanguage() : 'en';
-    if (el.languageSegmentedGroup) {
-      el.languageSegmentedGroup.querySelectorAll('.theme-seg-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-lang') === curLang);
-      });
-    }
-    if (el.currentLanguageBadge) {
-      el.currentLanguageBadge.textContent = curLang === 'pt-BR' ? 'Português (BR)' : 'English';
+    const available = (window.i18n && typeof i18n.getAvailableLocales === 'function' && i18n.getAvailableLocales().length > 0)
+      ? i18n.getAvailableLocales()
+      : [
+          { lang: 'en', name: 'English', flag: '🇺🇸', sub: 'Default (US)' },
+          { lang: 'pt-BR', name: 'Português', flag: '🇧🇷', sub: 'Brasil' }
+        ];
+
+    const currentMeta = available.find(l => l.lang === curLang) || available[0] || { flag: '🌐', name: curLang, sub: '' };
+
+    if (el.dropdownCurrentFlag) el.dropdownCurrentFlag.textContent = currentMeta.flag;
+    if (el.dropdownCurrentText) el.dropdownCurrentText.textContent = currentMeta.name;
+    if (el.currentLanguageBadge) el.currentLanguageBadge.textContent = curLang === 'pt-BR' ? 'Português (BR)' : currentMeta.name;
+
+    if (el.languageDropdownMenu) {
+      el.languageDropdownMenu.innerHTML = available.map(l => `
+        <button type="button" class="dropdown-item language-dropdown-item ${l.lang === curLang ? 'active' : ''}" data-lang="${l.lang}">
+          <span class="dropdown-item-flag">${l.flag}</span>
+          <div class="dropdown-item-info">
+            <span class="dropdown-item-title">${l.name}</span>
+            <span class="dropdown-item-sub">${l.sub}</span>
+          </div>
+          <svg class="dropdown-item-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </button>
+      `).join('');
     }
 
     const isEnabled = state.settings.shortcutKeysEnabled !== false;
@@ -1446,11 +1469,24 @@
     });
     el.btnOpenSettingsFolder?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
 
-    // Language Switcher Buttons (Settings tab segmented control)
-    el.languageSegmentedGroup?.addEventListener('click', (e) => {
-      const btn = e.target.closest('.theme-seg-btn');
-      if (!btn) return;
-      const lang = btn.getAttribute('data-lang');
+    // Language Dropdown Trigger
+    el.btnLanguageDropdown?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = el.languageDropdownMenu?.classList.contains('show');
+      closeAllMenus();
+      if (!isOpen) {
+        el.languageDropdownMenu?.classList.add('show');
+        el.languageDropdownWrapper?.classList.add('open');
+        el.btnLanguageDropdown?.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Language Selection Item Click
+    el.languageDropdownMenu?.addEventListener('click', (e) => {
+      const item = e.target.closest('.language-dropdown-item');
+      if (!item) return;
+      const lang = item.getAttribute('data-lang');
+      closeAllMenus();
       if (!lang || lang === (window.i18n ? i18n.getLanguage() : 'en')) return;
       if (window.i18n) {
         i18n.setLanguage(lang);
@@ -1517,6 +1553,9 @@
     function closeAllMenus() {
       el.speedMenu?.classList.remove('show');
       el.trimMenu?.classList.remove('show');
+      el.languageDropdownMenu?.classList.remove('show');
+      el.languageDropdownWrapper?.classList.remove('open');
+      el.btnLanguageDropdown?.setAttribute('aria-expanded', 'false');
     }
   }
 

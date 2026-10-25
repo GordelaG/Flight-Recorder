@@ -59,11 +59,11 @@ public partial class FluxConfirmDialog : Window
                 break;
 
             case DialogVariant.Info:
-                IconWrapper.Background = (Brush)brushConverter.ConvertFrom("#172554")!;
-                IconWrapper.BorderBrush = (Brush)brushConverter.ConvertFrom("#1e40af")!;
+                IconWrapper.Background = (Brush)brushConverter.ConvertFrom("#3a190b")!;
+                IconWrapper.BorderBrush = (Brush)brushConverter.ConvertFrom("#8c2800")!;
                 // Info circle
                 IconPath.Data = Geometry.Parse("M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z");
-                IconPath.Fill = (Brush)brushConverter.ConvertFrom("#3b82f6")!;
+                IconPath.Fill = (Brush)brushConverter.ConvertFrom("#EE4203")!;
                 BtnConfirm.Style = (Style)FindResource("FluxPrimaryButtonStyle");
                 break;
 

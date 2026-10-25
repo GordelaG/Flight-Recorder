@@ -72,6 +72,10 @@ namespace FlightRecorder.Client.Logics
                     logger?.LogInformation("[vPilot] Plugin automatically installed/updated at {TargetPath}.", targetPath);
                 }
             }
+            catch (IOException ioEx)
+            {
+                logger?.LogWarning("[vPilot] Plugin DLL is currently locked by a running vPilot process. Restart vPilot to load updated plugin. ({Message})", ioEx.Message);
+            }
             catch (Exception ex)
             {
                 logger?.LogWarning(ex, "[vPilot] Failed to automatically copy plugin to vPilot directory.");
@@ -86,20 +90,21 @@ namespace FlightRecorder.Client.Logics
         {
             try
             {
-                using var pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
+                using var pipeClient = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut, PipeOptions.None);
                 
-                using var ctsConnect = new CancellationTokenSource(TimeSpan.FromMilliseconds(400));
+                using var ctsConnect = new CancellationTokenSource(TimeSpan.FromMilliseconds(800));
                 await pipeClient.ConnectAsync(ctsConnect.Token).ConfigureAwait(false);
 
-                using var reader = new StreamReader(pipeClient, Encoding.UTF8, false, 1024, leaveOpen: true);
-                using var writer = new StreamWriter(pipeClient, Encoding.UTF8, 1024, leaveOpen: true) { AutoFlush = true };
+                var enc = new UTF8Encoding(false);
+                using var reader = new StreamReader(pipeClient, enc, false, 1024, leaveOpen: true);
+                using var writer = new StreamWriter(pipeClient, enc, 1024, leaveOpen: true) { AutoFlush = true };
 
                 await writer.WriteLineAsync("DISCONNECT").ConfigureAwait(false);
 
-                using var ctsRead = new CancellationTokenSource(TimeSpan.FromMilliseconds(1000));
+                using var ctsRead = new CancellationTokenSource(TimeSpan.FromMilliseconds(2000));
                 
                 var readTask = reader.ReadLineAsync();
-                var completedTask = await Task.WhenAny(readTask, Task.Delay(1000, ctsRead.Token)).ConfigureAwait(false);
+                var completedTask = await Task.WhenAny(readTask, Task.Delay(2000, ctsRead.Token)).ConfigureAwait(false);
 
                 if (completedTask == readTask)
                 {

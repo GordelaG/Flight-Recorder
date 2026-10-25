@@ -217,9 +217,13 @@ public partial class MainWindow : BaseWindow
                         PostWebMessage(new
                         {
                             type = "toast",
-                            payload = currentLanguage == "pt-BR"
-                                ? "vPilot desconectado da rede VATSIM para iniciar o replay."
-                                : "vPilot disconnected from VATSIM network to start replay."
+                            payload = (currentLanguage?.ToLowerInvariant() ?? "") switch
+                            {
+                                var l when l.StartsWith("pt") => "vPilot desconectado da rede VATSIM para iniciar o replay.",
+                                var l when l.StartsWith("es") => "vPilot desconectado de la red VATSIM para iniciar la repetición.",
+                                var l when l.StartsWith("fr") => "vPilot déconnecté du réseau VATSIM pour démarrer la relecture.",
+                                _ => "vPilot disconnected from VATSIM network to start replay."
+                            }
                         });
                     }
                     await stateMachine.TransitAsync(StateMachine.Event.Replay);
@@ -230,6 +234,20 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "resume":
+                    if (await VpilotService.DisconnectIfConnectedAsync(logger))
+                    {
+                        PostWebMessage(new
+                        {
+                            type = "toast",
+                            payload = (currentLanguage?.ToLowerInvariant() ?? "") switch
+                            {
+                                var l when l.StartsWith("pt") => "vPilot desconectado da rede VATSIM para iniciar o replay.",
+                                var l when l.StartsWith("es") => "vPilot desconectado de la red VATSIM para iniciar la repetición.",
+                                var l when l.StartsWith("fr") => "vPilot déconnecté du réseau VATSIM para démarrer la relecture.",
+                                _ => "vPilot disconnected from VATSIM network to start replay."
+                            }
+                        });
+                    }
                     await stateMachine.TransitAsync(StateMachine.Event.Resume);
                     break;
 
@@ -1126,34 +1144,124 @@ public partial class MainWindow : BaseWindow
 
     private string GetShortcutDisplayName(Shortcuts shortcut)
     {
-        bool isPt = currentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || currentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
+        string lang = currentLanguage?.ToLowerInvariant() ?? "en";
+        if (lang.StartsWith("pt"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Gravar Voo (Record)",
+                Shortcuts.StopRecording => "Parar Gravação (Stop)",
+                Shortcuts.Replay => "Replay do Voo (Play)",
+                Shortcuts.Pause => "Pausar Replay (Pause)",
+                Shortcuts.Resume => "Continuar Replay (Resume)",
+                Shortcuts.StopReplay => "Parar Replay (Stop Replay)",
+                Shortcuts.SaveToDisk => "Salvar Voo Rápido (Quick Save)",
+                Shortcuts.ToggleReplayHud => "Barra de Replay (HUD)",
+                _ => shortcut.ToString()
+            };
+        }
+        if (lang.StartsWith("es"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Grabar Vuelo (Record)",
+                Shortcuts.StopRecording => "Detener Grabación (Stop)",
+                Shortcuts.Replay => "Reproducir Vuelo (Play)",
+                Shortcuts.Pause => "Pausar Repetición (Pause)",
+                Shortcuts.Resume => "Reanudar Repetición (Resume)",
+                Shortcuts.StopReplay => "Detener Repetición (Stop)",
+                Shortcuts.SaveToDisk => "Guardado Rápido (Quick Save)",
+                Shortcuts.ToggleReplayHud => "Barra de Repetición (HUD)",
+                _ => shortcut.ToString()
+            };
+        }
+        if (lang.StartsWith("fr"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Enregistrer le Vol (Record)",
+                Shortcuts.StopRecording => "Arrêter l'Enregistrement (Stop)",
+                Shortcuts.Replay => "Lecture du Vol (Play)",
+                Shortcuts.Pause => "Mettre en Pause (Pause)",
+                Shortcuts.Resume => "Reprendre la Lecture (Resume)",
+                Shortcuts.StopReplay => "Arrêter la Relecture (Stop)",
+                Shortcuts.SaveToDisk => "Sauvegarde Rapide (Quick Save)",
+                Shortcuts.ToggleReplayHud => "Barre de Relecture (HUD)",
+                _ => shortcut.ToString()
+            };
+        }
         return shortcut switch
         {
-            Shortcuts.Record => isPt ? "Gravar Voo (Record)" : "Record Flight (Record)",
-            Shortcuts.StopRecording => isPt ? "Parar Gravação (Stop)" : "Stop Recording (Stop)",
-            Shortcuts.Replay => isPt ? "Replay do Voo (Play)" : "Replay Flight (Play)",
-            Shortcuts.Pause => isPt ? "Pausar Replay (Pause)" : "Pause Replay (Pause)",
-            Shortcuts.Resume => isPt ? "Continuar Replay (Resume)" : "Resume Replay (Resume)",
-            Shortcuts.StopReplay => isPt ? "Parar Replay (Stop Replay)" : "Stop Replay (Stop Replay)",
-            Shortcuts.SaveToDisk => isPt ? "Salvar Voo Rápido (Quick Save)" : "Quick Save Flight (Save)",
-            Shortcuts.ToggleReplayHud => isPt ? "Barra de Replay (HUD)" : "Replay Bar (HUD)",
+            Shortcuts.Record => "Record Flight (Record)",
+            Shortcuts.StopRecording => "Stop Recording (Stop)",
+            Shortcuts.Replay => "Replay Flight (Play)",
+            Shortcuts.Pause => "Pause Replay (Pause)",
+            Shortcuts.Resume => "Resume Replay (Resume)",
+            Shortcuts.StopReplay => "Stop Replay (Stop Replay)",
+            Shortcuts.SaveToDisk => "Quick Save Flight (Save)",
+            Shortcuts.ToggleReplayHud => "Replay Bar (HUD)",
             _ => shortcut.ToString()
         };
     }
 
     private string GetShortcutDescription(Shortcuts shortcut)
     {
-        bool isPt = currentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || currentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
+        string lang = currentLanguage?.ToLowerInvariant() ?? "en";
+        if (lang.StartsWith("pt"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Inicia a gravação das posições do voo",
+                Shortcuts.StopRecording => "Interrompe a gravação atual",
+                Shortcuts.Replay => "Inicia a reprodução do voo gravado",
+                Shortcuts.Pause => "Congela a reprodução do voo no simulador",
+                Shortcuts.Resume => "Retoma a reprodução pausada",
+                Shortcuts.StopReplay => "Encerra o replay e devolve os controles do simulador",
+                Shortcuts.SaveToDisk => "Salva o voo gravado diretamente na pasta SavedFlights",
+                Shortcuts.ToggleReplayHud => "Abre ou fecha o popup flutuante da barra de controle de replay",
+                _ => ""
+            };
+        }
+        if (lang.StartsWith("es"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Inicia la grabación de las posiciones de vuelo",
+                Shortcuts.StopRecording => "Detiene la grabación activa",
+                Shortcuts.Replay => "Inicia la reproducción del vuelo grabado",
+                Shortcuts.Pause => "Congela la reproducción del vuelo en el simulador",
+                Shortcuts.Resume => "Reanuda la reproducción pausada",
+                Shortcuts.StopReplay => "Finaliza la repetición y devuelve los controles del simulador",
+                Shortcuts.SaveToDisk => "Guarda la grabación directamente en la carpeta SavedFlights",
+                Shortcuts.ToggleReplayHud => "Muestra u oculta el mini-reproductor flotante de repetición",
+                _ => ""
+            };
+        }
+        if (lang.StartsWith("fr"))
+        {
+            return shortcut switch
+            {
+                Shortcuts.Record => "Démarre l'enregistrement des positions de vol",
+                Shortcuts.StopRecording => "Arrête l'enregistrement actif",
+                Shortcuts.Replay => "Démarre la lecture du vol enregistré",
+                Shortcuts.Pause => "Fige la lecture du vol dans le simulateur",
+                Shortcuts.Resume => "Reprend la lecture en pause",
+                Shortcuts.StopReplay => "Met fin à la relecture et restaure les commandes du simulateur",
+                Shortcuts.SaveToDisk => "Enregistre le vol directement dans le dossier SavedFlights",
+                Shortcuts.ToggleReplayHud => "Affiche ou masque le mini-lecteur flottant de relecture",
+                _ => ""
+            };
+        }
         return shortcut switch
         {
-            Shortcuts.Record => isPt ? "Inicia a gravação das posições do voo" : "Starts recording aircraft flight positions",
-            Shortcuts.StopRecording => isPt ? "Interrompe a gravação atual" : "Stops the active recording",
-            Shortcuts.Replay => isPt ? "Inicia a reprodução do voo gravado" : "Starts playback of the recorded flight",
-            Shortcuts.Pause => isPt ? "Congela a reprodução do voo no simulador" : "Freezes simulator replay playback",
-            Shortcuts.Resume => isPt ? "Retoma a reprodução pausada" : "Resumes paused playback",
-            Shortcuts.StopReplay => isPt ? "Encerra o replay e devolve os controles do simulador" : "Ends replay and restores simulator controls",
-            Shortcuts.SaveToDisk => isPt ? "Salva o voo gravado diretamente na pasta SavedFlights" : "Saves recording directly to SavedFlights folder",
-            Shortcuts.ToggleReplayHud => isPt ? "Abre ou fecha o popup flutuante da barra de controle de replay" : "Shows or hides the floating replay mini-player",
+            Shortcuts.Record => "Starts recording aircraft flight positions",
+            Shortcuts.StopRecording => "Stops the active recording",
+            Shortcuts.Replay => "Starts playback of the recorded flight",
+            Shortcuts.Pause => "Freezes simulator replay playback",
+            Shortcuts.Resume => "Resumes paused playback",
+            Shortcuts.StopReplay => "Ends replay and restores simulator controls",
+            Shortcuts.SaveToDisk => "Saves recording directly to SavedFlights folder",
+            Shortcuts.ToggleReplayHud => "Shows or hides the floating replay mini-player",
             _ => ""
         };
     }

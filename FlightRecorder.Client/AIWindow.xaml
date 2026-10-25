@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightRecorder.Client"
         mc:Ignorable="d"
-        Title="AI Replay" Height="195" d:Height="195" Width="450" MinWidth="450" Closing="Window_Closing" Icon="Logo.ico">
+        Title="AI Replay" Height="195" d:Height="195" Width="450" MinWidth="450" Closing="Window_Closing">
 
     <Grid Margin="5">
         <StackPanel>

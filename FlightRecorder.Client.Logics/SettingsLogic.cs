@@ -106,7 +106,7 @@ public class FileSettingsLogic : ISettingsLogic
 
     public Task SetLanguageAsync(string value)
     {
-        var normalized = (value == "pt-BR" || value == "pt") ? "pt-BR" : "en";
+        var normalized = string.IsNullOrWhiteSpace(value) ? "en" : value.Trim();
         return SaveAsync(settings => settings.Language = normalized);
     }
 

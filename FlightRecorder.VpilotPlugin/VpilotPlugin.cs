@@ -3,7 +3,6 @@ using System.IO;
 using System.IO.Pipes;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using RossCarlson.Vatsim.Vpilot.Plugins;
 using RossCarlson.Vatsim.Vpilot.Plugins.Exceptions;
 
@@ -14,40 +13,55 @@ namespace FlightRecorder.VpilotPlugin
         public const string PipeName = "FlightRecorder_vPilot";
         private IBroker? _broker;
         private volatile bool _isConnected;
-        private CancellationTokenSource? _cts;
-        private Task? _pipeServerTask;
+        private volatile bool _isRunning;
+        private Thread? _serverThread;
+        private NamedPipeServerStream? _currentServer;
 
         public string Name => "Flight Recorder vPilot Bridge";
 
         public void Initialize(IBroker broker)
         {
             _broker = broker ?? throw new ArgumentNullException(nameof(broker));
+            Log("Initialize called.");
 
             _broker.NetworkConnected += (s, e) =>
             {
                 _isConnected = true;
-                _broker?.PostDebugMessage("[Flight Recorder] Network connected event received.");
+                _broker?.PostDebugMessage("[Flight Recorder] Network connected: " + e?.Callsign);
+                Log("[Event] NetworkConnected (Callsign: " + e?.Callsign + ")");
             };
 
             _broker.NetworkDisconnected += (s, e) =>
             {
                 _isConnected = false;
-                _broker?.PostDebugMessage("[Flight Recorder] Network disconnected event received.");
+                _broker?.PostDebugMessage("[Flight Recorder] Network disconnected.");
+                Log("[Event] NetworkDisconnected");
             };
 
             _broker.SessionEnded += (s, e) =>
             {
+                Log("[Event] SessionEnded");
                 Stop();
             };
 
-            _cts = new CancellationTokenSource();
-            _pipeServerTask = Task.Run(() => RunPipeServerAsync(_cts.Token));
+            _isRunning = true;
+            _serverThread = new Thread(RunPipeServer)
+            {
+                IsBackground = true,
+                Name = "FlightRecorder_vPilot_Bridge"
+            };
+            _serverThread.Start();
+
             _broker.PostDebugMessage("[Flight Recorder] Plugin initialized and pipe server started.");
+            Log("Plugin initialized and background pipe thread started.");
         }
 
-        private async Task RunPipeServerAsync(CancellationToken ct)
+        private void RunPipeServer()
         {
-            while (!ct.IsCancellationRequested)
+            Log("RunPipeServer started.");
+            var enc = new UTF8Encoding(false);
+
+            while (_isRunning)
             {
                 NamedPipeServerStream? server = null;
                 try
@@ -57,78 +71,81 @@ namespace FlightRecorder.VpilotPlugin
                         PipeDirection.InOut,
                         1,
                         PipeTransmissionMode.Byte,
-                        PipeOptions.Asynchronous);
+                        PipeOptions.None,
+                        4096,
+                        4096);
 
-#if NETSTANDARD2_0
-                    await server.WaitForConnectionAsync().ConfigureAwait(false);
-#else
-                    await server.WaitForConnectionAsync(ct).ConfigureAwait(false);
-#endif
+                    _currentServer = server;
+                    server.WaitForConnection();
 
-                    using var reader = new StreamReader(server, Encoding.UTF8, false, 1024, leaveOpen: true);
-                    using var writer = new StreamWriter(server, Encoding.UTF8, 1024, leaveOpen: true) { AutoFlush = true };
-
-                    var command = await reader.ReadLineAsync().ConfigureAwait(false);
-                    if (!string.IsNullOrWhiteSpace(command))
+                    if (!_isRunning)
                     {
-                        var cmd = command.Trim().ToUpperInvariant();
-                        switch (cmd)
+                        break;
+                    }
+
+                    using (var reader = new StreamReader(server, enc, false, 1024, leaveOpen: true))
+                    using (var writer = new StreamWriter(server, enc, 1024, leaveOpen: true) { AutoFlush = true })
+                    {
+                        var command = reader.ReadLine();
+                        if (!string.IsNullOrWhiteSpace(command))
                         {
-                            case "PING":
-                                await writer.WriteLineAsync("PONG").ConfigureAwait(false);
-                                break;
+                            var cmd = command.Trim().ToUpperInvariant();
+                            Log($"Received command: '{cmd}'");
+                            switch (cmd)
+                            {
+                                case "PING":
+                                    writer.WriteLine("PONG");
+                                    break;
 
-                            case "STATUS":
-                                await writer.WriteLineAsync(_isConnected ? "CONNECTED" : "DISCONNECTED").ConfigureAwait(false);
-                                break;
+                                case "STATUS":
+                                    writer.WriteLine(_isConnected ? "CONNECTED" : "DISCONNECTED");
+                                    break;
 
-                            case "DISCONNECT":
-                                try
-                                {
-                                    if (_broker != null)
+                                case "DISCONNECT":
+                                    try
                                     {
-                                        _broker.PostDebugMessage("[Flight Recorder] Disconnect requested from Flight Recorder.");
-                                        _broker.RequestDisconnect();
+                                        if (_broker != null)
+                                        {
+                                            Log("Calling _broker.RequestDisconnect()...");
+                                            _broker.PostDebugMessage("[Flight Recorder] Disconnect requested from Flight Recorder.");
+                                            _broker.RequestDisconnect();
+                                            _isConnected = false;
+                                            writer.WriteLine("DISCONNECTED_OK");
+                                            Log("RequestDisconnect succeeded, sent DISCONNECTED_OK.");
+                                        }
+                                        else
+                                        {
+                                            writer.WriteLine("NO_BROKER");
+                                            Log("No broker available.");
+                                        }
+                                    }
+                                    catch (NotConnectedException)
+                                    {
                                         _isConnected = false;
-                                        await writer.WriteLineAsync("DISCONNECTED_OK").ConfigureAwait(false);
+                                        writer.WriteLine("ALREADY_DISCONNECTED");
+                                        Log("Caught NotConnectedException, sent ALREADY_DISCONNECTED.");
                                     }
-                                    else
+                                    catch (Exception ex)
                                     {
-                                        await writer.WriteLineAsync("NO_BROKER").ConfigureAwait(false);
+                                        Log($"Error disconnecting: {ex.Message}");
+                                        _broker?.PostDebugMessage($"[Flight Recorder] Error disconnecting: {ex.Message}");
+                                        writer.WriteLine($"ERROR: {ex.Message}");
                                     }
-                                }
-                                catch (NotConnectedException)
-                                {
-                                    _isConnected = false;
-                                    await writer.WriteLineAsync("ALREADY_DISCONNECTED").ConfigureAwait(false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    _broker?.PostDebugMessage($"[Flight Recorder] Error disconnecting: {ex.Message}");
-                                    await writer.WriteLineAsync($"ERROR: {ex.Message}").ConfigureAwait(false);
-                                }
-                                break;
+                                    break;
 
-                            default:
-                                await writer.WriteLineAsync("UNKNOWN_COMMAND").ConfigureAwait(false);
-                                break;
+                                default:
+                                    writer.WriteLine("UNKNOWN_COMMAND");
+                                    break;
+                            }
                         }
                     }
                 }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
                 catch (Exception ex)
                 {
-                    _broker?.PostDebugMessage($"[Flight Recorder] Pipe server error: {ex.Message}");
-                    try
+                    if (_isRunning)
                     {
-                        await Task.Delay(500, ct).ConfigureAwait(false);
-                    }
-                    catch
-                    {
-                        break;
+                        Log($"Pipe loop exception: {ex.Message}");
+                        Thread.Sleep(200);
                     }
                 }
                 finally
@@ -145,15 +162,29 @@ namespace FlightRecorder.VpilotPlugin
                         }
                     }
                     catch { }
+                    _currentServer = null;
                 }
             }
+            Log("RunPipeServer exited.");
         }
 
         private void Stop()
         {
+            _isRunning = false;
             try
             {
-                _cts?.Cancel();
+                _currentServer?.Close();
+            }
+            catch { }
+        }
+
+        private static void Log(string message)
+        {
+            try
+            {
+                var localAppData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                var logPath = Path.Combine(localAppData, "vPilot", "flightrecorder_plugin.log");
+                File.AppendAllText(logPath, $"[{DateTime.UtcNow:yyyy-MM-dd HH:mm:ss.fff}] {message}{Environment.NewLine}");
             }
             catch { }
         }

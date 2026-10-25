@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Flight Recorder"
-        Icon="Logo.ico"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -133,9 +132,9 @@
             </Setter>
         </Style>
 
-        <!-- Flux UI Primary Button Style (Blue Accent) -->
+        <!-- Flux UI Primary Button Style (EE4203 Accent) -->
         <Style x:Key="FluxPrimaryButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="#2563eb" />
+            <Setter Property="Background" Value="#EE4203" />
             <Setter Property="Foreground" Value="#ffffff" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Padding" Value="18,8" />
@@ -157,10 +156,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#1d4ed8" />
+                                <Setter TargetName="border" Property="Background" Value="#d93b02" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#1e40af" />
+                                <Setter TargetName="border" Property="Background" Value="#bf3402" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.5" />

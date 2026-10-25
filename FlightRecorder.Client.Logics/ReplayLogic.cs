@@ -199,6 +199,15 @@ public class ReplayLogic : IReplayLogic, IDisposable
 
         logger.LogInformation("Resume replay from frame {currentFrame}.", pausedFrame);
 
+        _ = Task.Run(async () =>
+        {
+            try
+            {
+                await VpilotService.DisconnectIfConnectedAsync(logger);
+            }
+            catch { }
+        });
+
         if (pausedMilliseconds.HasValue && replayMilliseconds.HasValue)
         {
             replayMilliseconds = stopwatch.ElapsedMilliseconds - (long)((pausedMilliseconds.Value - replayMilliseconds.Value) * (pausedRate ?? 1) / rate);
