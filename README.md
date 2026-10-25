@@ -84,7 +84,19 @@
 - Em caso de queda de energia ou fechamento involuntário, o aplicativo identifica os dados na inicialização e oferece restauração com 1 clique.
 
 ### 🌐 Integração vPilot / VATSIM
-- Desconexão preventiva ou alerta do vPilot durante a reprodução para evitar conflitos com controladores e usuários na rede VATSIM/IVAO.
+- **Desconexão Automática Preventiva:** Ao iniciar um Replay ou acionar o Resume, o Flight Recorder comunica-se via Named Pipe diretamente com o plugin integrado do vPilot para desconectar sua aeronave da rede VATSIM de forma limpa e automática, evitando conflitos de física, "teletransportes" ou advertências de controladores de tráfego aéreo.
+- **Notificação no Chat do vPilot:** Exibe uma notificação personalizada no painel *Messages* com a cor oficial do aplicativo (`#EE4203`) e carimbo de data/hora UTC nativo:
+  ```
+  [HH:mm:ss] [Flight Recorder] Replay iniciado - Desconectado da rede.
+  ```
+- **100% Local e Privado:** A notificação é renderizada exclusivamente na janela do seu vPilot local, sem qualquer transmissão de pacotes ou mensagens pela frequência de rádio da rede.
+
+![Notificação vPilot](Assets/vPilot-Chat.png)
+
+### 🌍 Suporte Multilíngue (i18n)
+- Disponível nativamente em **Português (pt-BR)**, **Inglês (en)**, **Espanhol (es)** e **Francês (fr)**.
+- Seletor rápido de idiomas no cabeçalho com persistência automática da preferência do usuário.
+- Arquitetura modular e extensível (`locales/*.js`) para fácil adição de novas traduções.
 
 ### 📈 Exportação Avançada
 - **Exportar para CSV:** Ideal para análise pós-voo em softwares como Excel ou Google Sheets.
