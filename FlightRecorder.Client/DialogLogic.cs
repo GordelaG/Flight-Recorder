@@ -17,6 +17,8 @@ namespace FlightRecorder.Client
 
         private readonly ILogger<DialogLogic> logger;
 
+        public string CurrentLanguage { get; set; } = "en";
+
         public DialogLogic(ILogger<DialogLogic> logger)
         {
             this.logger = logger;
@@ -44,11 +46,12 @@ namespace FlightRecorder.Client
                 return;
             }
 
+            bool isPt = CurrentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || CurrentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
             var options = new ConfirmDialogOptions
             {
-                Title = "Atenção",
+                Title = isPt ? "Atenção" : "Attention",
                 Message = error,
-                ConfirmText = "Entendi",
+                ConfirmText = isPt ? "Entendi" : "OK",
                 CancelText = null,
                 Variant = DialogVariant.Danger
             };
@@ -88,14 +91,18 @@ namespace FlightRecorder.Client
 
         private ConfirmDialogOptions ParseConfirmOptions(string message)
         {
+            bool isPt = CurrentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || CurrentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
+
             if (message.Contains("Starting a new recording will remove current one", StringComparison.OrdinalIgnoreCase))
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Gravação Não Salva",
-                    Message = "Você possui um voo gravado que ainda não foi salvo.\nIniciar uma nova gravação substituirá o voo atual.\n\nDeseja continuar?",
-                    ConfirmText = "Descartar e Gravar",
-                    CancelText = "Cancelar",
+                    Title = isPt ? "Gravação Não Salva" : "Unsaved Recording",
+                    Message = isPt
+                        ? "Você possui um voo gravado que ainda não foi salvo.\nIniciar uma nova gravação substituirá o voo atual.\n\nDeseja continuar?"
+                        : "You have an unsaved recorded flight.\nStarting a new recording will replace the current one.\n\nDo you want to proceed?",
+                    ConfirmText = isPt ? "Descartar e Gravar" : "Discard and Record",
+                    CancelText = isPt ? "Cancelar" : "Cancel",
                     Variant = DialogVariant.Warning
                 };
             }
@@ -104,10 +111,12 @@ namespace FlightRecorder.Client
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Gravação Não Salva",
-                    Message = "Você possui um voo gravado que ainda não foi salvo.\nCarregar outra gravação substituirá o voo atual.\n\nDeseja continuar?",
-                    ConfirmText = "Descartar e Carregar",
-                    CancelText = "Cancelar",
+                    Title = isPt ? "Gravação Não Salva" : "Unsaved Recording",
+                    Message = isPt
+                        ? "Você possui um voo gravado que ainda não foi salvo.\nCarregar outra gravação substituirá o voo atual.\n\nDeseja continuar?"
+                        : "You have an unsaved recorded flight.\nLoading another flight will replace the current one.\n\nDo you want to proceed?",
+                    ConfirmText = isPt ? "Descartar e Carregar" : "Discard and Load",
+                    CancelText = isPt ? "Cancelar" : "Cancel",
                     Variant = DialogVariant.Warning
                 };
             }
@@ -116,10 +125,12 @@ namespace FlightRecorder.Client
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Cortar Início do Voo",
-                    Message = "Você possui um voo gravado não salvo.\nO corte removerá permanentemente todos os quadros anteriores ao ponto atual.\n\nDeseja continuar?",
-                    ConfirmText = "Confirmar Corte",
-                    CancelText = "Cancelar",
+                    Title = isPt ? "Cortar Início do Voo" : "Trim Flight Start",
+                    Message = isPt
+                        ? "Você possui um voo gravado não salvo.\nO corte removerá permanentemente todos os quadros anteriores ao ponto atual.\n\nDeseja continuar?"
+                        : "You have an unsaved flight.\nTrimming will permanently remove all frames before the current point.\n\nDo you want to proceed?",
+                    ConfirmText = isPt ? "Confirmar Corte" : "Confirm Trim",
+                    CancelText = isPt ? "Cancelar" : "Cancel",
                     Variant = DialogVariant.Warning
                 };
             }
@@ -128,10 +139,12 @@ namespace FlightRecorder.Client
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Cortar Fim do Voo",
-                    Message = "Você possui um voo gravado não salvo.\nO corte removerá permanentemente todos os quadros posteriores ao ponto atual.\n\nDeseja continuar?",
-                    ConfirmText = "Confirmar Corte",
-                    CancelText = "Cancelar",
+                    Title = isPt ? "Cortar Fim do Voo" : "Trim Flight End",
+                    Message = isPt
+                        ? "Você possui um voo gravado não salvo.\nO corte removerá permanentemente todos os quadros posteriores ao ponto atual.\n\nDeseja continuar?"
+                        : "You have an unsaved flight.\nTrimming will permanently remove all frames after the current point.\n\nDo you want to proceed?",
+                    ConfirmText = isPt ? "Confirmar Corte" : "Confirm Trim",
+                    CancelText = isPt ? "Cancelar" : "Cancel",
                     Variant = DialogVariant.Warning
                 };
             }
@@ -140,10 +153,12 @@ namespace FlightRecorder.Client
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Sair sem Salvar",
-                    Message = "Você possui um voo gravado que ainda não foi salvo.\n\nDeseja realmente fechar o Flight Recorder sem salvar a gravação?",
-                    ConfirmText = "Sair sem Salvar",
-                    CancelText = "Voltar",
+                    Title = isPt ? "Sair sem Salvar" : "Exit Without Saving",
+                    Message = isPt
+                        ? "Você possui um voo gravado que ainda não foi salvo.\n\nDeseja realmente fechar o Flight Recorder sem salvar a gravação?"
+                        : "You have an unsaved recorded flight.\n\nDo you really want to close Flight Recorder without saving?",
+                    ConfirmText = isPt ? "Sair sem Salvar" : "Exit Without Saving",
+                    CancelText = isPt ? "Voltar" : "Back",
                     Variant = DialogVariant.Danger
                 };
             }
@@ -152,20 +167,22 @@ namespace FlightRecorder.Client
             {
                 return new ConfirmDialogOptions
                 {
-                    Title = "Recuperar Gravação de Voo",
-                    Message = "Foi encontrado um salvamento automático recuperado de um fechamento anterior do Flight Recorder.\n\nDeseja restaurar esta gravação?",
-                    ConfirmText = "Restaurar Voo",
-                    CancelText = "Descartar",
+                    Title = isPt ? "Recuperar Gravação de Voo" : "Recover Flight Recording",
+                    Message = isPt
+                        ? "Foi encontrado um salvamento automático recuperado de um fechamento anterior do Flight Recorder.\n\nDeseja restaurar esta gravação?"
+                        : "An auto-save from a previous unexpected close of Flight Recorder was found.\n\nDo you want to restore this recording?",
+                    ConfirmText = isPt ? "Restaurar Voo" : "Restore Flight",
+                    CancelText = isPt ? "Descartar" : "Discard",
                     Variant = DialogVariant.Info
                 };
             }
 
             return new ConfirmDialogOptions
             {
-                Title = "Confirmação",
+                Title = isPt ? "Confirmação" : "Confirmation",
                 Message = message,
-                ConfirmText = "Sim",
-                CancelText = "Não",
+                ConfirmText = isPt ? "Sim" : "Yes",
+                CancelText = isPt ? "Não" : "No",
                 Variant = DialogVariant.Warning
             };
         }

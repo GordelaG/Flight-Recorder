@@ -98,6 +98,18 @@ public class FileSettingsLogic : ISettingsLogic
         return SaveAsync(settings => settings.AutoRecordAltitudeThreshold = clamped);
     }
 
+    public async Task<string> GetLanguageAsync()
+    {
+        var settings = await LoadAsync();
+        return string.IsNullOrWhiteSpace(settings.Language) ? "en" : settings.Language;
+    }
+
+    public Task SetLanguageAsync(string value)
+    {
+        var normalized = (value == "pt-BR" || value == "pt") ? "pt-BR" : "en";
+        return SaveAsync(settings => settings.Language = normalized);
+    }
+
     private static SemaphoreSlim sm = new SemaphoreSlim(1);
 
     private Settings? settings = null;
@@ -162,4 +174,5 @@ public class Settings
     public bool HudTranslucent { get; set; } = false;
     public bool AutoRecordBelowAltitude { get; set; } = true;
     public int AutoRecordAltitudeThreshold { get; set; } = 6000;
+    public string Language { get; set; } = "en";
 }

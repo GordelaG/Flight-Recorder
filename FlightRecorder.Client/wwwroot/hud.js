@@ -78,17 +78,17 @@
       const canStop = isPlaybackActive || (state.currentFrame > 0);
       el.btnStopReplay.disabled = !canStop;
       el.btnStopReplay.classList.toggle('disabled', !canStop);
-      el.btnStopReplay.title = isPlaybackActive ? 'Parar Replay (Stop)' : 'Reiniciar para o início (Stop)';
+      el.btnStopReplay.title = window.i18n ? i18n.t('hud.stopReplay') : (isPlaybackActive ? 'Stop Replay (Stop)' : 'Reset to start (Stop)');
     }
 
     const isRecording = state.machineState === 'Recording';
     if (el.btnHudRecord) {
       if (isRecording) {
         el.btnHudRecord.classList.add('is-recording');
-        el.btnHudRecord.title = 'Parar Gravação (Stop)';
+        el.btnHudRecord.title = window.i18n ? i18n.t('hud.recordStopTitle') : 'Stop Recording (Stop)';
       } else {
         el.btnHudRecord.classList.remove('is-recording');
-        el.btnHudRecord.title = 'Gravar Voo (Record)';
+        el.btnHudRecord.title = window.i18n ? i18n.t('hud.recordStartTitle') : 'Start Recording (Record)';
       }
     }
     if (el.iconRecStart && el.iconRecStop) {
@@ -203,12 +203,28 @@
         if (msg.payload.translucent !== undefined) {
           document.body.classList.toggle('translucent', !!msg.payload.translucent);
         }
+      } else if (msg.type === 'languageChanged' && msg.payload) {
+        if (window.i18n) {
+          i18n.setLanguage(msg.payload, true);
+        }
+      } else if (msg.type === 'settingsData' && msg.payload && msg.payload.language) {
+        if (window.i18n) {
+          i18n.setLanguage(msg.payload.language, false);
+        }
       } else if (msg.type === 'hudVisibilityUpdate' && msg.payload) {
         if (msg.payload.visible !== undefined) {
           document.body.classList.toggle('hud-hidden', !msg.payload.visible);
         }
       }
     });
+  }
+
+  // Language change listener
+  if (window.i18n) {
+    i18n.onLanguageChange(() => {
+      updateUI();
+    });
+    i18n.applyDOM();
   }
 
   // Signal C# that HUD window webView is ready

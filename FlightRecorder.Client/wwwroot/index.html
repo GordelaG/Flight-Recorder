@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,39 +28,39 @@
       <!-- Main Navigation Tabs -->
       <nav class="sidebar-nav">
         <!-- 1. Record Tab -->
-        <button class="nav-item active" data-tab="record" id="navTabRecord" title="Gravador e Painel de Replay">
+        <button class="nav-item active" data-tab="record" id="navTabRecord" title="Flight Recorder & Replay Panel" data-i18n-title="nav.recordTitle">
           <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <circle cx="12" cy="12" r="10"/>
             <circle cx="12" cy="12" r="3" fill="currentColor"/>
           </svg>
-          <span class="nav-label">Record</span>
+          <span class="nav-label" data-i18n="nav.record">Record</span>
         </button>
 
         <!-- 2. Records Tab (Saved Flights List) -->
-        <button class="nav-item" data-tab="records" id="navTabRecords" title="Lista de Voos Salvos">
+        <button class="nav-item" data-tab="records" id="navTabRecords" title="Saved Flights List" data-i18n-title="nav.recordsTitle">
           <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
             <path d="M9 13h6"/>
           </svg>
-          <span class="nav-label">Records</span>
+          <span class="nav-label" data-i18n="nav.records">Records</span>
           <span id="savedFlightsCountBadge" class="nav-badge">0</span>
         </button>
 
         <!-- 3. Telemetry Tab (Live Flight Instruments & Telemetry) -->
-        <button class="nav-item" data-tab="telemetry" id="navTabTelemetry" title="Live Telemetry e Instrumentos de Voo">
+        <button class="nav-item" data-tab="telemetry" id="navTabTelemetry" title="Live Telemetry & Flight Instruments" data-i18n-title="nav.telemetryTitle">
           <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
           </svg>
-          <span class="nav-label">Telemetry</span>
+          <span class="nav-label" data-i18n="nav.telemetry">Telemetry</span>
         </button>
 
         <!-- 4. Settings Tab -->
-        <button class="nav-item" data-tab="settings" id="navTabSettings" title="Configurações e Atalhos de Teclado">
+        <button class="nav-item" data-tab="settings" id="navTabSettings" title="Settings & Keyboard Shortcuts" data-i18n-title="nav.settingsTitle">
           <svg class="nav-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
             <circle cx="12" cy="12" r="3"/>
           </svg>
-          <span class="nav-label">Settings</span>
+          <span class="nav-label" data-i18n="nav.settings">Settings</span>
         </button>
       </nav>
     </aside>
@@ -72,7 +72,7 @@
       <div id="updateBanner" class="update-banner hidden">
         <div class="update-banner-content">
           <span class="update-spinner">🔄</span>
-          <span id="updateBannerText" class="update-text">Atualização encontrada. Baixando...</span>
+          <span id="updateBannerText" class="update-text" data-i18n="update.downloading">Update found. Downloading...</span>
         </div>
         <div class="update-progress-track">
           <div id="updateProgressFill" class="update-progress-fill" style="width: 0%;"></div>
@@ -88,7 +88,7 @@
         <div id="statusBanner" class="status-banner disconnected">
           <div class="status-indicator">
             <span id="statusDot" class="status-dot"></span>
-            <span id="statusText">Connecting to Microsoft Flight Simulator...</span>
+            <span id="statusText" data-i18n="status.connecting">Connecting to Microsoft Flight Simulator...</span>
           </div>
         </div>
 
@@ -96,20 +96,20 @@
         <div class="aircraft-card">
           <div class="aircraft-details">
             <div class="aircraft-title-row">
-              <span class="aircraft-label">AIRCRAFT</span>
-              <span id="aircraftTitle" class="aircraft-name">No aircraft detected</span>
+              <span class="aircraft-label" data-i18n="aircraft.label">AIRCRAFT</span>
+              <span id="aircraftTitle" class="aircraft-name" data-i18n="aircraft.none">No aircraft detected</span>
             </div>
             <div class="aircraft-subtitle-row">
-              <span id="aircraftFile" class="aircraft-file">No active recording</span>
+              <span id="aircraftFile" class="aircraft-file" data-i18n="aircraft.noRecording">No active recording</span>
               <div class="profile-container">
-                <span id="profileBadge" class="profile-badge standard" title="Sistema de gravação/replay de variáveis personalizadas (SimConnect Nativo - Zero WASM)">
+                <span id="profileBadge" class="profile-badge standard" title="Custom variables recording/replay system (Native SimConnect - Zero WASM)" data-i18n-title="aircraft.profileTooltip">
                   <span class="profile-dot"></span>
-                  <span id="profileText">Perfil Standard</span>
+                  <span id="profileText" data-i18n="aircraft.profileStd">Standard Profile</span>
                 </span>
               </div>
             </div>
           </div>
-          <span id="saveBadge" class="save-badge saved" style="display: none;">✓ Saved</span>
+          <span id="saveBadge" class="save-badge saved" style="display: none;" data-i18n="aircraft.savedBadge">✓ Saved</span>
         </div>
 
         <!-- Primary Control Buttons (Flux UI Group) -->
@@ -119,14 +119,14 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <circle cx="12" cy="12" r="10"/>
             </svg>
-            Record Flight
+            <span data-i18n="controls.recordFlight">Record Flight</span>
           </button>
 
           <button id="btnStopRecord" class="btn btn-secondary" style="display: none;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <rect x="4" y="4" width="16" height="16" rx="2"/>
             </svg>
-            Stop Recording
+            <span data-i18n="controls.stopRecording">Stop Recording</span>
           </button>
 
           <!-- Replay with Split Button for AI Replay -->
@@ -135,9 +135,9 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"/>
               </svg>
-              Replay
+              <span data-i18n="controls.replay">Replay</span>
             </button>
-            <button id="btnReplayAI" class="btn btn-accent" title="Replay options (AI formation plane)">
+            <button id="btnReplayAI" class="btn btn-accent" title="Replay options (AI formation plane)" data-i18n-title="controls.replayAiTitle">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
@@ -152,21 +152,21 @@
               <rect x="6" y="4" width="4" height="16"/>
               <rect x="14" y="4" width="4" height="16"/>
             </svg>
-            Pause
+            <span data-i18n="controls.pause">Pause</span>
           </button>
 
           <button id="btnResumeReplay" class="btn btn-secondary">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <polygon points="5 3 19 12 5 21 5 3"/>
             </svg>
-            Resume
+            <span data-i18n="controls.resume">Resume</span>
           </button>
 
           <button id="btnStopReplay" class="btn btn-secondary">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
               <rect x="4" y="4" width="16" height="16" rx="2"/>
             </svg>
-            Stop
+            <span data-i18n="controls.stop">Stop</span>
           </button>
         </div>
 
@@ -174,7 +174,7 @@
         <div class="timeline-card">
           <div class="timeline-meta">
             <div class="time-readout">
-              <span>Frame</span>
+              <span data-i18n="controls.frame">Frame</span>
               <span id="currentFrameText" class="current-frame">0</span>
               <span>/</span>
               <span id="totalFramesText">0</span>
@@ -182,14 +182,14 @@
 
             <!-- Speed & Repeat Tools -->
             <div class="tool-cluster">
-              <button id="btnRepeat" class="btn btn-secondary btn-sm btn-toggle" title="Loop Replay">
+              <button id="btnRepeat" class="btn btn-secondary btn-sm btn-toggle" title="Loop" data-i18n-title="controls.loop">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="m17 2 4 4-4 4"/>
                   <path d="M3 11v-1a4 4 0 0 1 4-4h14"/>
                   <path d="m7 22-4-4 4-4"/>
                   <path d="M21 13v1a4 4 0 0 1-4 4H3"/>
                 </svg>
-                Loop
+                <span data-i18n="controls.loop">Loop</span>
               </button>
 
               <!-- Speed Dropdown -->
@@ -217,7 +217,7 @@
 
               <!-- Trim Dropdown -->
               <div style="position: relative;">
-                <button id="btnTrim" class="btn btn-secondary btn-sm" title="Trim Recording">
+                <button id="btnTrim" class="btn btn-secondary btn-sm" title="Trim" data-i18n-title="controls.trim">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="6" cy="6" r="3"/>
                     <circle cx="6" cy="18" r="3"/>
@@ -225,14 +225,14 @@
                     <line x1="14.47" y1="14.48" x2="20" y2="20"/>
                     <line x1="8.12" y1="8.12" x2="12" y2="12"/>
                   </svg>
-                  Trim
+                  <span data-i18n="controls.trim">Trim</span>
                 </button>
                 <div id="trimMenu" class="dropdown-menu">
                   <button id="btnTrimStart" class="dropdown-item">
-                    <span>Trim Start Here</span>
+                    <span data-i18n="controls.trimStart">Trim Start Here</span>
                   </button>
                   <button id="btnTrimEnd" class="dropdown-item">
-                    <span>Trim End Here</span>
+                    <span data-i18n="controls.trimEnd">Trim End Here</span>
                   </button>
                 </div>
               </div>
@@ -242,7 +242,7 @@
           <!-- Canvas Chart Container -->
           <div class="chart-wrapper">
             <canvas id="flightChart"></canvas>
-            <div id="chartOverlay" class="chart-overlay">No flight recorded or loaded</div>
+            <div id="chartOverlay" class="chart-overlay" data-i18n="controls.noFlight">No flight recorded or loaded</div>
           </div>
 
           <!-- Scrub Track -->
@@ -253,33 +253,33 @@
 
         <!-- Data Persistence Row (Save directly to SavedFlights, Load switches to Records tab) -->
         <div class="action-row" style="grid-template-columns: 1fr 1fr;">
-          <button id="btnSave" class="btn btn-secondary btn-save-action" title="Salvar voo diretamente na pasta SavedFlights">
+          <button id="btnSave" class="btn btn-secondary btn-save-action" title="Save to SavedFlights" data-i18n-title="controls.save">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
               <polyline points="17 21 17 13 7 13 7 21"/>
               <polyline points="7 3 7 8 15 8"/>
             </svg>
-            Save to SavedFlights
+            <span data-i18n="controls.save">Save to SavedFlights</span>
           </button>
 
-          <button id="btnLoad" class="btn btn-secondary" title="Carregar voo salvo">
+          <button id="btnLoad" class="btn btn-secondary" title="Load from Records" data-i18n-title="controls.load">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/>
             </svg>
-            Load from Records
+            <span data-i18n="controls.load">Load from Records</span>
           </button>
         </div>
 
         <!-- Floating Replay Mini-Player (HUD) Launcher Button -->
         <div class="hud-launcher-row">
-          <button id="btnOpenReplayHud" class="btn btn-secondary btn-hud-launcher" type="button" title="Abrir controle de replay flutuante no topo da tela">
+          <button id="btnOpenReplayHud" class="btn btn-secondary btn-hud-launcher" type="button" title="Floating Replay Control Bar (HUD)" data-i18n-title="controls.hudLauncher">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="4" width="20" height="12" rx="2" />
               <polygon points="10 7 15 10 10 13 10 7" fill="currentColor" />
               <line x1="6" y1="20" x2="18" y2="20" />
             </svg>
-            <span>Barra de Controle de Replay Flutuante (HUD)</span>
-            <span class="hud-launcher-pill">Topmost</span>
+            <span data-i18n="controls.hudLauncher">Floating Replay Control Bar (HUD)</span>
+            <span class="hud-launcher-pill" data-i18n="controls.topmostBadge">Topmost</span>
           </button>
         </div>
       </section>
@@ -291,29 +291,29 @@
         <!-- Records Top Bar -->
         <div class="view-header">
           <div class="view-header-title">
-            <h2 class="view-title">Saved Flight Records</h2>
-            <p class="view-subtitle">Gerencie suas gravações salvas e carregue instantaneamente para replay</p>
+            <h2 class="view-title" data-i18n="records.title">Saved Flights</h2>
+            <p class="view-subtitle" data-i18n="records.desc">Recorded flights history and management</p>
           </div>
           <div class="view-header-actions">
-            <button id="btnRefreshSaved" class="btn btn-secondary btn-sm" title="Recarregar lista de voos">
+            <button id="btnRefreshSaved" class="btn btn-secondary btn-sm" title="Refresh" data-i18n-title="records.refresh">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
               </svg>
-              Atualizar
+              <span data-i18n="records.refresh">Refresh</span>
             </button>
-            <button id="btnImportFlight" class="btn btn-secondary btn-sm" title="Importar arquivo .fltrec externo">
+            <button id="btnImportFlight" class="btn btn-secondary btn-sm" title="Import" data-i18n-title="records.import">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                 <polyline points="7 10 12 15 17 10"/>
                 <line x1="12" y1="15" x2="12" y2="3"/>
               </svg>
-              Importar Voo
+              <span data-i18n="records.import">Import</span>
             </button>
-            <button id="btnOpenFolderRecords" class="btn btn-secondary btn-sm" title="Abrir pasta no Windows Explorer">
+            <button id="btnOpenFolderRecords" class="btn btn-secondary btn-sm" title="Open Folder" data-i18n-title="records.openFolder">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
               </svg>
-              Abrir Pasta
+              <span data-i18n="records.openFolder">Open Folder</span>
             </button>
           </div>
         </div>
@@ -325,11 +325,11 @@
               <circle cx="11" cy="11" r="8"/>
               <line x1="21" y1="21" x2="16.65" y2="16.65"/>
             </svg>
-            <input type="text" id="inputSearchRecords" placeholder="Filtrar por aeronave, data...">
+            <input type="text" id="inputSearchRecords" placeholder="Search by aircraft or filename..." data-i18n-placeholder="records.searchPlaceholder">
           </div>
           <div class="records-stats-wrap">
-            <span class="stat-badge"><strong id="statTotalFlights">0</strong> voos salvos</span>
-            <span class="stat-badge"><strong id="statTotalTime">0m</strong> gravados</span>
+            <span class="stat-badge"><strong id="statTotalFlights">0</strong> <span data-i18n="records.statTotal">flights saved</span></span>
+            <span class="stat-badge"><strong id="statTotalTime">0 min</strong> <span data-i18n="records.statTime">recorded</span></span>
           </div>
         </div>
 
@@ -345,16 +345,16 @@
       <section id="viewTelemetry" class="tab-view">
         <div class="view-header">
           <div class="view-header-title">
-            <h2 class="view-title">Live Telemetry & Instruments</h2>
-            <p class="view-subtitle">Instrumentos de voo e telemetria em tempo real transmitidos pelo MSFS</p>
+            <h2 class="view-title" data-i18n="telemetry.title">Live Flight Telemetry</h2>
+            <p class="view-subtitle" data-i18n="telemetry.desc">Real-time parameters via SimConnect</p>
           </div>
           <div class="view-header-actions">
-            <button id="btnCopyCoords" class="btn btn-secondary btn-sm" title="Copiar coordenadas atuais (Latitude, Longitude)">
+            <button id="btnCopyCoords" class="btn btn-secondary btn-sm" title="Copy Coords" data-i18n-title="telemetry.copyCoords">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
               </svg>
-              Copiar Coordenadas
+              <span data-i18n="telemetry.copyCoords">Copy Coords</span>
             </button>
             <div id="telemetryConnPill" class="conn-pill disconnected">
               <span class="conn-dot"></span>
@@ -368,23 +368,23 @@
           <!-- Aircraft & Profile Info Card -->
           <div class="telemetry-info-card">
             <div class="telemetry-info-header">
-              <span class="telemetry-card-tag">AERONAVE CONECTADA</span>
+              <span class="telemetry-card-tag" data-i18n="telemetry.connectedAircraft">CONNECTED AIRCRAFT</span>
               <span id="telemProfileBadge" class="profile-badge">
                 <span class="profile-dot"></span>
                 <span id="telemProfileText">Standard SimConnect</span>
               </span>
             </div>
             <div id="telemAircraftTitle" class="telemetry-aircraft-title">No aircraft detected</div>
-            <div class="telemetry-aircraft-sub" id="telemAircraftSub">Inicie o MSFS para receber telemetria contínua</div>
+            <div class="telemetry-aircraft-sub" id="telemAircraftSub">Start MSFS to receive continuous telemetry</div>
           </div>
 
           <!-- Flight Status Card (Airborne vs Ground) -->
           <div class="telemetry-status-card">
-            <span class="telemetry-card-tag">STATUS DE CONTATO</span>
+            <span class="telemetry-card-tag" data-i18n="telemetry.contactStatus">CONTACT STATUS</span>
             <div class="telemetry-flight-phase">
               <span id="telemContactBadge" class="flight-phase-pill phase-air">AIR</span>
               <div class="telemetry-rate-group">
-                <span class="metric-label">Landing Rate</span>
+                <span class="metric-label" data-i18n="telemetry.landingRate">Landing Rate</span>
                 <span id="valLandingRate" class="telemetry-big-stat">--</span>
               </div>
             </div>
@@ -400,25 +400,25 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
               </svg>
-              Altitude & Bússola
+              <span data-i18n="telemetry.altitude">Altitude</span> & <span data-i18n="telemetry.heading">Heading</span>
             </div>
             <div class="instrument-metrics-row">
               <div class="telemetry-stat-box highlight">
-                <span class="metric-label">Altitude Barométrica</span>
+                <span class="metric-label" data-i18n="telemetry.altitude">Altitude</span>
                 <span id="valAlt" class="telemetry-value-lg">--</span>
               </div>
               <div class="telemetry-stat-box">
-                <span class="metric-label">Proa (Heading)</span>
+                <span class="metric-label" data-i18n="telemetry.heading">Heading</span>
                 <span id="valHeading" class="telemetry-value-lg">--</span>
               </div>
             </div>
             <div class="instrument-metrics-row">
               <div class="telemetry-stat-box">
-                <span class="metric-label">Pitch (Arfagem)</span>
+                <span class="metric-label" data-i18n="telemetry.pitch">Pitch</span>
                 <span id="valPitch" class="telemetry-value-md">--</span>
               </div>
               <div class="telemetry-stat-box">
-                <span class="metric-label">Bank (Inclinação)</span>
+                <span class="metric-label" data-i18n="telemetry.bank">Bank</span>
                 <span id="valBank" class="telemetry-value-md">--</span>
               </div>
             </div>
@@ -431,25 +431,25 @@
                 <circle cx="12" cy="12" r="10"/>
                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
               </svg>
-              Posição Geográfica & GPS
+              <span data-i18n="telemetry.latitude">Latitude</span> & <span data-i18n="telemetry.longitude">Longitude</span>
             </div>
             <div class="instrument-metrics-row">
-              <div class="telemetry-stat-box copyable" title="Clique para copiar Latitude">
-                <span class="metric-label">Latitude</span>
+              <div class="telemetry-stat-box copyable" title="Click to copy Latitude">
+                <span class="metric-label" data-i18n="telemetry.latitude">Latitude</span>
                 <span id="valLat" class="telemetry-value-md font-mono">--</span>
               </div>
-              <div class="telemetry-stat-box copyable" title="Clique para copiar Longitude">
-                <span class="metric-label">Longitude</span>
+              <div class="telemetry-stat-box copyable" title="Click to copy Longitude">
+                <span class="metric-label" data-i18n="telemetry.longitude">Longitude</span>
                 <span id="valLon" class="telemetry-value-md font-mono">--</span>
               </div>
             </div>
             <div class="instrument-metrics-row">
               <div class="telemetry-stat-box">
-                <span class="metric-label">Perfil de Variáveis L-Vars</span>
+                <span class="metric-label" data-i18n="aircraft.profileTooltip">Profile</span>
                 <span id="valProfileDetail" class="telemetry-value-sm" style="color: #38bdf8;">Standard SimConnect</span>
               </div>
               <div class="telemetry-stat-box">
-                <span class="metric-label">Trem de Pouso (Gear)</span>
+                <span class="metric-label" data-i18n="telemetry.gear">Landing Gear</span>
                 <span id="valGear" class="telemetry-value-sm gear-badge gear-down">--</span>
               </div>
             </div>
@@ -461,14 +461,14 @@
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 20V10M18 20V4M6 20v-4"/>
               </svg>
-              Controles & Configuração da Aeronave
+              <span data-i18n="telemetry.throttle">Throttle</span> & <span data-i18n="telemetry.flaps">Flaps</span>
             </div>
             <div class="controls-gauges-grid">
               
               <!-- Throttle Lever -->
               <div class="gauge-box">
                 <div class="gauge-header">
-                  <span class="metric-label">Manete de Potência (Throttle)</span>
+                  <span class="metric-label" data-i18n="telemetry.throttle">Throttle</span>
                   <span id="valThrottle" class="gauge-value">--</span>
                 </div>
                 <div class="gauge-bar-track">
@@ -479,7 +479,7 @@
               <!-- Flaps Position -->
               <div class="gauge-box">
                 <div class="gauge-header">
-                  <span class="metric-label">Flaps (Posição / Índice)</span>
+                  <span class="metric-label" data-i18n="telemetry.flaps">Flaps</span>
                   <span id="valFlaps" class="gauge-value">--</span>
                 </div>
                 <div class="gauge-bar-track">
@@ -499,8 +499,29 @@
       <section id="viewSettings" class="tab-view">
         <div class="view-header">
           <div class="view-header-title">
-            <h2 class="view-title">Configurações</h2>
-            <p class="view-subtitle">Personalize a aparência, atalhos do teclado e preferências do Flight Recorder</p>
+            <h2 class="view-title" data-i18n="settings.title">Settings</h2>
+            <p class="view-subtitle" data-i18n="settings.subtitle">Customize display language, appearance, keyboard shortcuts and Flight Recorder preferences</p>
+          </div>
+        </div>
+
+        <!-- Language Selection Card -->
+        <div class="settings-card" id="cardLanguage">
+          <div class="settings-card-header">
+            <div>
+              <div class="settings-card-title-row">
+                <h3 class="settings-card-title" data-i18n="settings.languageTitle">Language / Idioma</h3>
+                <span id="currentLanguageBadge" class="status-pill status-pill-blue">English</span>
+              </div>
+              <p class="settings-card-desc" data-i18n="settings.languageDesc">Choose the display language for Flight Recorder.</p>
+            </div>
+            <div class="theme-segmented-group" id="languageSegmentedGroup">
+              <button type="button" class="theme-seg-btn active" data-lang="en" title="English (Default)">
+                <span>🇺🇸 English</span>
+              </button>
+              <button type="button" class="theme-seg-btn" data-lang="pt-BR" title="Português (Brasil)">
+                <span>🇧🇷 Português</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -508,30 +529,30 @@
         <div class="settings-card">
           <div class="settings-card-header">
             <div>
-              <h3 class="settings-card-title">Aparência & Tema</h3>
-              <p class="settings-card-desc">Alterne entre o tema escuro do Flux UI, tema claro moderno ou sincronizado com o Windows.</p>
+              <h3 class="settings-card-title" data-i18n="settings.themeTitle">Appearance & Theme</h3>
+              <p class="settings-card-desc" data-i18n="settings.themeDesc">Switch between Flux UI Dark theme, modern Light theme, or Windows sync.</p>
             </div>
             <div class="theme-segmented-group" id="themeSegmentedGroup">
-              <button type="button" class="theme-seg-btn active" data-theme="dark" title="Modo Escuro (Flux UI Dark)">
+              <button type="button" class="theme-seg-btn active" data-theme="dark" title="Dark Mode (Flux UI)" data-i18n-title="settings.themeDark">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                 </svg>
-                <span>Escuro</span>
+                <span data-i18n="settings.themeDark">Dark</span>
               </button>
-              <button type="button" class="theme-seg-btn" data-theme="light" title="Modo Claro (Flux UI Light)">
+              <button type="button" class="theme-seg-btn" data-theme="light" title="Light Mode (Modern)" data-i18n-title="settings.themeLight">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <circle cx="12" cy="12" r="4"/>
                   <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
                 </svg>
-                <span>Claro</span>
+                <span data-i18n="settings.themeLight">Light</span>
               </button>
-              <button type="button" class="theme-seg-btn" data-theme="system" title="Seguir o tema do Windows">
+              <button type="button" class="theme-seg-btn" data-theme="system" title="Windows Sync" data-i18n-title="settings.themeSystem">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect width="20" height="14" x="2" y="3" rx="2"/>
                   <line x1="8" x2="16" y1="21" y2="21"/>
                   <line x1="12" x2="12" y1="17" y2="21"/>
                 </svg>
-                <span>Sistema</span>
+                <span data-i18n="settings.themeSystem">System</span>
               </button>
             </div>
           </div>
@@ -542,10 +563,10 @@
           <div class="settings-card-header">
             <div>
               <div class="settings-card-title-row">
-                <h3 class="settings-card-title">Atalhos Globais do Teclado (Global Hotkeys)</h3>
-                <span id="hotkeysStatusBadge" class="status-pill status-pill-green">Ativado</span>
+                <h3 class="settings-card-title" data-i18n="settings.hotkeysTitle">Global Keyboard Shortcuts</h3>
+                <span id="hotkeysStatusBadge" class="status-pill status-pill-green" data-i18n="settings.hotkeysActive">Enabled</span>
               </div>
-              <p class="settings-card-desc">Controle o gravador e o replay diretamente de dentro do simulador (MSFS) sem precisar alternar de janela.</p>
+              <p class="settings-card-desc" data-i18n="settings.hotkeysDesc">Control recording and replay directly from MSFS using keyboard shortcuts.</p>
             </div>
           </div>
 
@@ -553,12 +574,12 @@
             <!-- Option 1: Habilitar / Desabilitar -->
             <div class="settings-sub-row" id="hotkeysToggleRow">
               <div class="settings-sub-info">
-                <span class="settings-sub-label">Habilitar Atalhos Globais</span>
-                <span id="hotkeysSubDesc" class="settings-sub-desc">As teclas configuradas funcionarão diretamente no MSFS 2020 / 2024 mesmo em tela cheia.</span>
+                <span class="settings-sub-label" data-i18n="settings.hotkeysEnable">Enable Global Shortcuts</span>
+                <span id="hotkeysSubDesc" class="settings-sub-desc" data-i18n="settings.hotkeysEnableDesc">Configured hotkeys will work directly inside MSFS 2020 / 2024 even in full screen.</span>
               </div>
               <div class="hotkeys-toggle-wrapper">
-                <span id="hotkeysToggleText" class="hotkeys-toggle-label active">Ativado</span>
-                <label class="toggle-switch" title="Habilitar ou desabilitar atalhos globais no simulador">
+                <span id="hotkeysToggleText" class="hotkeys-toggle-label active" data-i18n="settings.hotkeysActive">Enabled</span>
+                <label class="toggle-switch" title="Toggle Global Hotkeys">
                   <input type="checkbox" id="toggleHotkeysEnabled" checked>
                   <span class="toggle-slider"></span>
                 </label>
@@ -569,17 +590,17 @@
             <div class="settings-sub-row" id="hotkeysConfigRow">
               <div class="settings-sub-info">
                 <div class="hotkeys-summary-line">
-                  <span class="settings-sub-label">Combinações de Teclas</span>
-                  <span id="hotkeysSummaryBadge" class="badge-count">8 atalhos ativos</span>
+                  <span class="settings-sub-label" data-i18n="settings.hotkeysCombos">Key Combinations</span>
+                  <span id="hotkeysSummaryBadge" class="badge-count">8 active shortcuts</span>
                 </div>
-                <span id="hotkeysConfigDesc" class="settings-sub-desc">Gravar, Parar, Replay, Pausa, Retomar e Salvar Voo</span>
+                <span id="hotkeysConfigDesc" class="settings-sub-desc">Record, Stop, Replay, Pause, Resume and Quick Save</span>
               </div>
-              <button id="btnOpenHotkeysModal" class="btn btn-secondary btn-sm" type="button" title="Personalizar atalhos do teclado">
+              <button id="btnOpenHotkeysModal" class="btn btn-secondary btn-sm" type="button" title="Configure Shortcuts" data-i18n-title="settings.hotkeysConfigureBtn">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10" />
                 </svg>
-                <span>Configurar Atalhos</span>
+                <span data-i18n="settings.hotkeysConfigureBtn">Configure Shortcuts</span>
               </button>
             </div>
           </div>
@@ -589,11 +610,11 @@
         <div class="settings-card">
           <div class="settings-card-header">
             <div>
-              <h3 class="settings-card-title">Diretório de Gravações (SavedFlights)</h3>
-              <p class="settings-card-desc">Pasta onde os voos são gravados automaticamente ao clicar em Salvar.</p>
+              <h3 class="settings-card-title" data-i18n="settings.folderTitle">Recordings Directory (SavedFlights)</h3>
+              <p class="settings-card-desc" data-i18n="settings.folderDesc">Folder where flights are automatically stored when clicking Save.</p>
             </div>
             <button id="btnOpenSettingsFolder" class="btn btn-secondary btn-sm">
-              Abrir no Explorer
+              <span data-i18n="settings.folderOpenBtn">Open in Explorer</span>
             </button>
           </div>
           <div class="folder-path-display">
@@ -606,14 +627,14 @@
           <div class="settings-card-header">
             <div>
               <div class="settings-card-title-row">
-                <h3 class="settings-card-title">Gravação Automática por Altitude</h3>
-                <span id="autoRecordStatusBadge" class="status-pill status-pill-green">Ativado (&lt; 6.000 ft)</span>
+                <h3 class="settings-card-title" data-i18n="settings.autoRecordTitle">Auto-Record Below Altitude</h3>
+                <span id="autoRecordStatusBadge" class="status-pill status-pill-green">Enabled (&lt; 6,000 ft)</span>
               </div>
-              <p class="settings-card-desc">Inicia a gravação automaticamente assim que o aplicativo estiver aberto e a aeronave estiver voando abaixo da altitude limite (ideal para registrar aproximações e pousos).</p>
+              <p class="settings-card-desc" data-i18n="settings.autoRecordDesc">Automatically starts recording when the app is open and the aircraft flies below the altitude threshold (ideal for landings and approaches).</p>
             </div>
             <div class="hotkeys-toggle-wrapper">
-              <span id="autoRecordToggleText" class="hotkeys-toggle-label active">Ativado</span>
-              <label class="toggle-switch" title="Habilitar ou desabilitar gravação automática por altitude">
+              <span id="autoRecordToggleText" class="hotkeys-toggle-label active" data-i18n="settings.hotkeysActive">Enabled</span>
+              <label class="toggle-switch" title="Toggle Auto-Record by altitude">
                 <input type="checkbox" id="toggleAutoRecordAltitude" checked>
                 <span class="toggle-slider"></span>
               </label>
@@ -624,20 +645,20 @@
             <div class="settings-sub-row">
               <div class="settings-sub-info">
                 <div class="hotkeys-summary-line">
-                  <span class="settings-sub-label">Altitude de Disparo</span>
-                  <span id="autoRecordAltitudeDisplay" class="badge-count">6.000 ft</span>
+                  <span class="settings-sub-label" data-i18n="settings.autoRecordTriggerAlt">Trigger Altitude</span>
+                  <span id="autoRecordAltitudeDisplay" class="badge-count">6,000 ft</span>
                 </div>
-                <span class="settings-sub-desc">Configurável entre 1.000 e 15.000 pés (padrão: 6.000 ft). A gravação iniciará assim que cruzar esta altitude em descida.</span>
+                <span class="settings-sub-desc" data-i18n="settings.autoRecordRangeDesc">Configurable between 1,000 and 15,000 ft (default: 6,000 ft). Recording starts when descending below this limit.</span>
               </div>
               <div class="altitude-slider-wrapper">
                 <div class="altitude-slider-row">
-                  <input type="range" id="inputAutoRecordAltitude" class="flux-slider altitude-slider" min="1000" max="15000" step="500" value="6000" title="Ajuste a altitude de disparo automático">
-                  <span id="autoRecordSliderValue" class="altitude-slider-value">6.000 ft</span>
+                  <input type="range" id="inputAutoRecordAltitude" class="flux-slider altitude-slider" min="1000" max="15000" step="500" value="6000" title="Adjust trigger altitude">
+                  <span id="autoRecordSliderValue" class="altitude-slider-value">6,000 ft</span>
                 </div>
                 <div class="altitude-presets">
-                  <button type="button" class="btn-preset" data-alt="3000">3.000 ft</button>
-                  <button type="button" class="btn-preset active" data-alt="6000">6.000 ft (Padrão)</button>
-                  <button type="button" class="btn-preset" data-alt="10000">10.000 ft</button>
+                  <button type="button" class="btn-preset" data-alt="3000">3,000 ft</button>
+                  <button type="button" class="btn-preset active" data-alt="6000">6,000 ft (Default)</button>
+                  <button type="button" class="btn-preset" data-alt="10000">10,000 ft</button>
                 </div>
               </div>
             </div>
@@ -648,8 +669,8 @@
         <div class="settings-card">
           <div class="settings-card-header">
             <div>
-              <h3 class="settings-card-title">Sempre Visível (Stay on Top)</h3>
-              <p class="settings-card-desc">Mantém o Flight Recorder fixado por cima de outras janelas e do simulador.</p>
+              <h3 class="settings-card-title" data-i18n="settings.stayOnTopTitle">Stay on Top</h3>
+              <p class="settings-card-desc" data-i18n="settings.stayOnTopDesc">Keep Flight Recorder pinned above other windows and the simulator.</p>
             </div>
             <label class="toggle-switch">
               <input type="checkbox" id="toggleStayOnTopSettings">
@@ -662,8 +683,8 @@
         <div class="settings-card">
           <div class="settings-card-header">
             <div>
-              <h3 class="settings-card-title">Barra de Replay Flutuante (Mini Player)</h3>
-              <p class="settings-card-desc">Personalize o comportamento e a aparência do controle de replay flutuante no topo da tela.</p>
+              <h3 class="settings-card-title" data-i18n="settings.hudTitle">Floating Replay Mini-Player (HUD)</h3>
+              <p class="settings-card-desc" data-i18n="settings.hudDesc">Display and behavior options for the in-sim floating controller.</p>
             </div>
           </div>
 
@@ -671,10 +692,10 @@
             <!-- 1. Auto-Hide Option -->
             <div class="settings-sub-row">
               <div class="settings-sub-info">
-                <span class="settings-sub-label">Auto-ocultar ao afastar o cursor</span>
-                <span class="settings-sub-desc">O mini player some por inteiro quando o mouse é afastado e reaparece ao passar o mouse por cima.</span>
+                <span class="settings-sub-label" data-i18n="settings.hudAutoHide">Auto-hide when paused</span>
+                <span class="settings-sub-desc" data-i18n="settings.hudAutoHideDesc">Automatically fades out the mini player when replay is paused or stopped.</span>
               </div>
-              <label class="toggle-switch" title="Auto-ocultar ao tirar o mouse de cima">
+              <label class="toggle-switch" title="Auto-hide when cursor leaves">
                 <input type="checkbox" id="toggleHudAutoHideSettings">
                 <span class="toggle-slider"></span>
               </label>
@@ -683,15 +704,15 @@
             <!-- 2. Visual Style Option (Solid vs Translucent) -->
             <div class="settings-sub-row">
               <div class="settings-sub-info">
-                <span class="settings-sub-label">Aparência do Mini Player</span>
-                <span class="settings-sub-desc">Escolha entre fundo sólido (padrão) ou meio transparente (translúcido/glass).</span>
+                <span class="settings-sub-label" data-i18n="settings.hudStyle">HUD Visual Style</span>
+                <span class="settings-sub-desc" data-i18n="settings.hudStyleDesc">Choose between solid dark or glassmorphism translucent style.</span>
               </div>
               <div class="theme-segmented-group" id="hudStyleSegmentedGroup">
-                <button type="button" class="theme-seg-btn active" data-hud-style="solid" title="Fundo Sólido (Padrão LuxUI)">
-                  <span>Sólido</span>
+                <button type="button" class="theme-seg-btn active" data-hud-style="solid" title="Solid Dark">
+                  <span data-i18n="settings.hudStyleSolid">Solid Dark</span>
                 </button>
-                <button type="button" class="theme-seg-btn" data-hud-style="translucent" title="Translúcido (Meio transparente)">
-                  <span>Translúcido</span>
+                <button type="button" class="theme-seg-btn" data-hud-style="translucent" title="Translucent (Glass)">
+                  <span data-i18n="settings.hudStyleTranslucent">Translucent (Glass)</span>
                 </button>
               </div>
             </div>
@@ -712,11 +733,11 @@
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10" />
             </svg>
-            <h3 class="modal-title">Configurar Atalhos de Teclado</h3>
+            <h3 class="modal-title" data-i18n="hotkeys.modalTitle">Configure Global Shortcuts</h3>
           </div>
-          <p class="modal-subtitle">Estilo MSFS 2024: Clique no campo e pressione a tecla ou combinação desejada (ex: Ctrl + Alt + R, Home, F10).</p>
+          <p class="modal-subtitle" data-i18n="hotkeys.modalSubtitle">Click Record to capture the key combination on your keyboard.</p>
         </div>
-        <button id="btnCloseHotkeysModal" class="modal-close-btn" type="button" title="Fechar">&times;</button>
+        <button id="btnCloseHotkeysModal" class="modal-close-btn" type="button" title="Close">&times;</button>
       </div>
 
       <div class="modal-body">
@@ -727,14 +748,14 @@
 
       <div class="modal-footer">
         <button id="btnRestoreDefaultsModal" class="btn btn-secondary btn-sm" type="button">
-          Restaurar Padrões
+          <span data-i18n="hotkeys.btnRestore">Restore Defaults</span>
         </button>
         <div class="modal-footer-right">
           <button id="btnCancelHotkeysModal" class="btn btn-secondary btn-sm" type="button">
-            Cancelar
+            <span data-i18n="hotkeys.btnCancel">Cancel</span>
           </button>
           <button id="btnSaveHotkeysModal" class="btn btn-record btn-sm" type="button">
-            ✓ Salvar Alterações
+            <span data-i18n="hotkeys.btnSave">Save Shortcuts</span>
           </button>
         </div>
       </div>
@@ -755,13 +776,13 @@
           </svg>
         </div>
         <div class="confirm-modal-texts">
-          <h4 id="confirmModalTitle" class="confirm-modal-title">Restaurar Atalhos Padrão</h4>
-          <p id="confirmModalMessage" class="confirm-modal-message">Deseja restaurar todos os atalhos para os valores padrão de fábrica?</p>
+          <h4 id="confirmModalTitle" class="confirm-modal-title" data-i18n="dialog.attention">Attention</h4>
+          <p id="confirmModalMessage" class="confirm-modal-message" data-i18n="dialog.confirm">Are you sure?</p>
         </div>
       </div>
       <div class="confirm-modal-footer">
-        <button id="btnConfirmCancel" class="btn btn-secondary btn-sm" type="button">Cancelar</button>
-        <button id="btnConfirmOk" class="btn btn-warning btn-sm" type="button">Restaurar Padrões</button>
+        <button id="btnConfirmCancel" class="btn btn-secondary btn-sm" type="button" data-i18n="dialog.cancel">Cancel</button>
+        <button id="btnConfirmOk" class="btn btn-warning btn-sm" type="button" data-i18n="dialog.confirm">Confirm</button>
       </div>
     </div>
   </div>
@@ -769,7 +790,7 @@
   <!-- Toast Notification Popover -->
   <div id="toast" class="toast">Notification</div>
 
-
+  <script src="i18n.js"></script>
   <script src="chart.js"></script>
   <script src="app.js"></script>
 </body>

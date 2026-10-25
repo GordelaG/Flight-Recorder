@@ -204,7 +204,9 @@
     btnImportFlight: document.getElementById('btnImportFlight'),
     btnOpenFolderRecords: document.getElementById('btnOpenFolderRecords'),
 
-    // View 3: Settings
+    // View 4: Settings
+    languageSegmentedGroup: document.getElementById('languageSegmentedGroup'),
+    currentLanguageBadge: document.getElementById('currentLanguageBadge'),
     toggleHotkeysEnabled: document.getElementById('toggleHotkeysEnabled'),
     hotkeysToggleText: document.getElementById('hotkeysToggleText'),
     hotkeysStatusBadge: document.getElementById('hotkeysStatusBadge'),
@@ -516,22 +518,31 @@
 
     const totalSeconds = state.savedFlights.reduce((acc, f) => acc + (f.durationSeconds ?? f.DurationSeconds ?? 0), 0);
     const totalMinutes = Math.round(totalSeconds / 60);
-    if (el.statTotalTime) el.statTotalTime.textContent = `${totalMinutes} min`;
+    const unitMin = window.i18n ? i18n.t('records.minutesUnit') : 'min';
+    if (el.statTotalTime) el.statTotalTime.textContent = `${totalMinutes} ${unitMin}`;
 
     if (filtered.length === 0) {
+      const emptyTitle = window.i18n ? i18n.t('records.emptyTitle') : 'No saved flights found';
+      const emptyDesc = query
+        ? (window.i18n ? i18n.t('records.emptyFilterDesc') : 'No results match your search.')
+        : (window.i18n ? i18n.t('records.emptyDesc') : 'Record a flight in the simulator and click Save to store it here.');
+
       el.recordsListContainer.innerHTML = `
         <div class="empty-state">
           <div class="empty-state-icon">✈️</div>
-          <div class="empty-state-title">Nenhum voo salvo encontrado</div>
-          <div class="empty-state-desc">
-            ${query ? 'Nenhum resultado corresponde à sua pesquisa.' : 'Grave um voo no simulador e clique no botão Save para salvá-lo aqui.'}
-          </div>
+          <div class="empty-state-title">${emptyTitle}</div>
+          <div class="empty-state-desc">${emptyDesc}</div>
         </div>
       `;
       return;
     }
 
     el.recordsListContainer.innerHTML = '';
+    const frameSuffix = window.i18n ? i18n.t('records.framesSuffix') : 'frames';
+    const loadText = window.i18n ? i18n.t('records.load') : 'Load';
+    const loadTitle = window.i18n ? i18n.t('records.loadTitle') : 'Load this flight for Replay';
+    const deleteTitle = window.i18n ? i18n.t('records.deleteTitle') : 'Delete recording';
+
     filtered.forEach((flight) => {
       const card = document.createElement('div');
       card.className = 'flight-card';
@@ -548,7 +559,7 @@
       const durText = formatDuration(durationSeconds);
       const sizeText = formatBytes(fileSizeBytes);
       const dateText = formatDate(createdAt);
-      const frameText = `${frameCount.toLocaleString()} frames`;
+      const frameText = `${frameCount.toLocaleString()} ${frameSuffix}`;
 
       card.innerHTML = `
         <div class="flight-card-header">
@@ -566,13 +577,13 @@
         <div class="flight-card-footer">
           <span class="flight-filename" title="${fileName}">${fileName}</span>
           <div class="flight-card-actions">
-            <button class="btn btn-accent btn-sm btn-load-flight" title="Carregar este voo para Replay">
+            <button class="btn btn-accent btn-sm btn-load-flight" title="${loadTitle}">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"/>
               </svg>
-              Carregar
+              <span>${loadText}</span>
             </button>
-            <button class="btn btn-danger btn-sm btn-delete-flight" title="Excluir gravação">
+            <button class="btn btn-danger btn-sm btn-delete-flight" title="${deleteTitle}">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="3 6 5 6 21 6"/>
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
@@ -590,10 +601,12 @@
       // Delete click
       card.querySelector('.btn-delete-flight').addEventListener('click', async () => {
         const confirmed = await showConfirmDialog({
-          title: 'Excluir Voo Gravado',
-          message: `Deseja realmente excluir permanentemente o voo "${aircraftTitle || fileName}"? Esta ação não pode ser desfeita.`,
-          confirmText: 'Excluir Voo',
-          cancelText: 'Cancelar',
+          title: window.i18n ? i18n.t('records.confirmDeleteTitle') : 'Delete Saved Flight',
+          message: window.i18n
+            ? i18n.t('records.confirmDeleteMsg', { name: aircraftTitle || fileName })
+            : `Are you sure you want to permanently delete the flight "${aircraftTitle || fileName}"?`,
+          confirmText: window.i18n ? i18n.t('records.confirmDeleteBtn') : 'Delete Flight',
+          cancelText: window.i18n ? i18n.t('dialog.cancel') : 'Cancel',
           variant: 'danger'
         });
         if (confirmed) {
@@ -607,22 +620,35 @@
 
   // Render Settings View (Compact)
   function renderSettings() {
+    const curLang = window.i18n ? i18n.getLanguage() : 'en';
+    if (el.languageSegmentedGroup) {
+      el.languageSegmentedGroup.querySelectorAll('.theme-seg-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === curLang);
+      });
+    }
+    if (el.currentLanguageBadge) {
+      el.currentLanguageBadge.textContent = curLang === 'pt-BR' ? 'Português (BR)' : 'English';
+    }
+
     const isEnabled = state.settings.shortcutKeysEnabled !== false;
+    const activeLabel = window.i18n ? i18n.t('settings.hotkeysActive') : 'Enabled';
+    const inactiveLabel = window.i18n ? i18n.t('settings.hotkeysInactive') : 'Disabled';
+
     if (el.toggleHotkeysEnabled) {
       el.toggleHotkeysEnabled.checked = isEnabled;
     }
     if (el.hotkeysToggleText) {
-      el.hotkeysToggleText.textContent = isEnabled ? 'Ativado' : 'Desativado';
+      el.hotkeysToggleText.textContent = isEnabled ? activeLabel : inactiveLabel;
       el.hotkeysToggleText.className = `hotkeys-toggle-label ${isEnabled ? 'active' : 'inactive'}`;
     }
     if (el.hotkeysStatusBadge) {
-      el.hotkeysStatusBadge.textContent = isEnabled ? 'Ativado' : 'Desativado';
+      el.hotkeysStatusBadge.textContent = isEnabled ? activeLabel : inactiveLabel;
       el.hotkeysStatusBadge.className = `status-pill ${isEnabled ? 'status-pill-green' : 'status-pill-amber'}`;
     }
     if (el.hotkeysSubDesc) {
       el.hotkeysSubDesc.textContent = isEnabled
-        ? 'As teclas configuradas funcionarão diretamente no MSFS 2020 / 2024 mesmo em tela cheia.'
-        : 'Atalhos desativados: o simulador não responderá às teclas enquanto esta opção estiver desligada.';
+        ? (window.i18n ? i18n.t('settings.hotkeysEnableDesc') : 'Configured hotkeys will work directly inside MSFS 2020 / 2024 even in full screen.')
+        : (window.i18n ? i18n.t('settings.hotkeysDisabledDesc') : 'Shortcuts disabled.');
     }
     if (el.hotkeysConfigRow) {
       el.hotkeysConfigRow.classList.toggle('is-disabled', !isEnabled);
@@ -630,25 +656,27 @@
     if (el.hotkeysSummaryBadge) {
       const activeCount = (state.settings.shortcuts || []).filter(s => s && s.key).length;
       el.hotkeysSummaryBadge.textContent = isEnabled
-        ? `${activeCount} atalhos ativos`
-        : `${activeCount} atalhos (inativos)`;
+        ? (window.i18n ? i18n.t('settings.hotkeysActiveCount', { count: activeCount }) : `${activeCount} active shortcuts`)
+        : (window.i18n ? i18n.t('settings.hotkeysInactiveCount', { count: activeCount }) : `${activeCount} shortcuts (disabled)`);
     }
     if (el.toggleStayOnTopSettings) {
       el.toggleStayOnTopSettings.checked = !!state.settings.stayOnTop;
     }
     const isAutoRecord = state.settings.autoRecordBelowAltitude !== false;
     const threshold = Math.max(1000, Math.min(15000, state.settings.autoRecordAltitudeThreshold || 6000));
-    const formattedAlt = threshold.toLocaleString('pt-BR') + ' ft';
+    const formattedAlt = threshold.toLocaleString(curLang === 'pt-BR' ? 'pt-BR' : 'en-US') + ' ft';
 
     if (el.toggleAutoRecordAltitude) {
       el.toggleAutoRecordAltitude.checked = isAutoRecord;
     }
     if (el.autoRecordToggleText) {
-      el.autoRecordToggleText.textContent = isAutoRecord ? 'Ativado' : 'Desativado';
+      el.autoRecordToggleText.textContent = isAutoRecord ? activeLabel : inactiveLabel;
       el.autoRecordToggleText.classList.toggle('active', isAutoRecord);
     }
     if (el.autoRecordStatusBadge) {
-      el.autoRecordStatusBadge.textContent = isAutoRecord ? `Ativado (< ${formattedAlt})` : 'Desativado';
+      el.autoRecordStatusBadge.textContent = isAutoRecord
+        ? (window.i18n ? i18n.t('settings.autoRecordStatusActive', { alt: formattedAlt }) : `Enabled (< ${formattedAlt})`)
+        : inactiveLabel;
       el.autoRecordStatusBadge.className = `status-pill ${isAutoRecord ? 'status-pill-green' : 'status-pill-amber'}`;
     }
     if (el.autoRecordThresholdContainer) {
@@ -665,6 +693,11 @@
     }
     document.querySelectorAll('.btn-preset').forEach(btn => {
       const presetAlt = parseInt(btn.dataset.alt, 10);
+      const isDefault = presetAlt === 6000;
+      const defaultSuffix = window.i18n ? ` (${i18n.t('settings.autoRecordDefault')})` : ' (Default)';
+      btn.textContent = isDefault
+        ? `${presetAlt.toLocaleString(curLang === 'pt-BR' ? 'pt-BR' : 'en-US')} ft${defaultSuffix}`
+        : `${presetAlt.toLocaleString(curLang === 'pt-BR' ? 'pt-BR' : 'en-US')} ft`;
       btn.classList.toggle('active', presetAlt === threshold);
     });
     if (el.toggleHudAutoHideSettings) {
@@ -693,7 +726,8 @@
       row.dataset.index = index;
 
       const isRecording = state.recordingHotkeyIndex === index;
-      const desc = item.desc || getShortcutDefaultDesc(item.id);
+      const name = (window.i18n ? i18n.t(`hotkeys.${item.id}.name`) : null) || item.name || item.id;
+      const desc = (window.i18n ? i18n.t(`hotkeys.${item.id}.desc`) : null) || item.desc || getShortcutDefaultDesc(item.id);
 
       let keybindHtml = '';
       if (isRecording) {
@@ -703,10 +737,10 @@
           if (liveModifiers.ctrl) parts.push('<kbd>Ctrl</kbd>');
           if (liveModifiers.alt) parts.push('<kbd>Alt</kbd>');
           if (liveModifiers.shift) parts.push('<kbd>Shift</kbd>');
-          parts.push('<span class="recording-pulse-dot">●</span> <span class="keybind-waiting">tecla...</span>');
+          parts.push(`<span class="recording-pulse-dot">●</span> <span class="keybind-waiting">${window.i18n ? i18n.t('hotkeys.recordKey') : 'key...'}</span>`);
           keybindHtml = `<div class="keybind-caps">${parts.join('<span class="keybind-plus">+</span>')}</div>`;
         } else {
-          keybindHtml = `<span class="keybind-recording-text"><span class="recording-pulse-dot">●</span> Pressione a tecla ou combinação...</span>`;
+          keybindHtml = `<span class="keybind-recording-text"><span class="recording-pulse-dot">●</span> ${window.i18n ? i18n.t('hotkeys.recording') : 'Press keys...'}</span>`;
         }
       } else {
         keybindHtml = renderKeyCaps(item);
@@ -714,14 +748,14 @@
 
       row.innerHTML = `
         <div class="modal-hotkey-info">
-          <span class="modal-hotkey-name">${item.name || item.id}</span>
+          <span class="modal-hotkey-name">${name}</span>
           <span class="modal-hotkey-desc">${desc}</span>
         </div>
         <div class="modal-hotkey-bind-wrapper">
-          <button type="button" class="keybind-box ${isRecording ? 'recording' : ''}" data-index="${index}" title="Clique para redefinir tecla">
+          <button type="button" class="keybind-box ${isRecording ? 'recording' : ''}" data-index="${index}" title="Click to assign shortcut">
             ${keybindHtml}
           </button>
-          <button type="button" class="keybind-clear-btn" data-index="${index}" title="Limpar atalho">✕</button>
+          <button type="button" class="keybind-clear-btn" data-index="${index}" title="Clear shortcut">✕</button>
         </div>
       `;
 
@@ -749,7 +783,8 @@
         item.virtualKey = 0;
         if (state.recordingHotkeyIndex === index) state.recordingHotkeyIndex = null;
         renderModalHotkeys();
-        showToast(`Atalho removido para "${item.name}".`);
+        const removedToast = window.i18n ? i18n.t('hotkeys.shortcutRemovedToast', { name }) : `Shortcut removed for "${name}".`;
+        showToast(removedToast);
       });
 
       el.modalHotkeysList.appendChild(row);
@@ -758,7 +793,8 @@
 
   function renderKeyCaps(item) {
     if (!item || !item.key) {
-      return '<span class="keybind-empty">Nenhum atalho (clique para definir)</span>';
+      const emptyText = window.i18n ? i18n.t('hotkeys.recordKey') : 'No shortcut (click to assign)';
+      return `<span class="keybind-empty">${emptyText}</span>`;
     }
     const parts = [];
     if (item.ctrl) parts.push('<kbd>Ctrl</kbd>');
@@ -769,12 +805,16 @@
   }
 
   function getShortcutDefaultDesc(id) {
+    if (window.i18n) {
+      const trans = i18n.t(`hotkeys.${id}.desc`);
+      if (trans && trans !== `hotkeys.${id}.desc`) return trans;
+    }
     const found = DEFAULT_SHORTCUTS.find(s => s.id === id);
     return found ? found.desc : '';
   }
 
   function formatShortcutPreview(item) {
-    if (!item || !item.key) return 'Nenhum';
+    if (!item || !item.key) return 'None';
     const parts = [];
     if (item.ctrl) parts.push('Ctrl');
     if (item.alt) parts.push('Alt');
@@ -794,13 +834,14 @@
       state.recordingHotkeyIndex = null;
       liveModifiers = { ctrl: false, alt: false, shift: false };
       renderModalHotkeys();
-      showToast('Configuração cancelada.');
+      showToast(window.i18n ? i18n.t('hotkeys.cancelledToast') : 'Configuration cancelled.');
       return;
     }
 
     // Clear on Backspace or Delete
     if (e.key === 'Backspace' || e.key === 'Delete') {
       const item = tempShortcuts[state.recordingHotkeyIndex];
+      const itemName = item ? ((window.i18n ? i18n.t(`hotkeys.${item.id}.name`) : null) || item.name || item.id) : '';
       if (item) {
         item.ctrl = false;
         item.alt = false;
@@ -811,7 +852,7 @@
       state.recordingHotkeyIndex = null;
       liveModifiers = { ctrl: false, alt: false, shift: false };
       renderModalHotkeys();
-      showToast('Atalho removido.');
+      showToast(window.i18n ? i18n.t('hotkeys.shortcutRemovedToast', { name: itemName }) : 'Shortcut removed.');
       return;
     }
 
@@ -849,7 +890,7 @@
       state.recordingHotkeyIndex = null;
       liveModifiers = { ctrl: false, alt: false, shift: false };
       renderModalHotkeys();
-      showToast(`Atalho configurado: ${formatShortcutPreview(item)}`);
+      showToast(window.i18n ? i18n.t('hotkeys.shortcutSetToast', { combo: formatShortcutPreview(item) }) : `Shortcut configured: ${formatShortcutPreview(item)}`);
     }
   });
 
@@ -896,12 +937,22 @@
           state.currentFrame = 0;
           updateTimelineUI();
         }
-        showToast(`Voo "${msg.payload?.aircraftTitle || msg.payload?.fileName}" carregado com sucesso!`);
+        const flightName = msg.payload?.aircraftTitle || msg.payload?.fileName || 'Flight';
+        showToast(window.i18n ? i18n.t('records.flightLoadedToast', { name: flightName }) : `Flight "${flightName}" loaded successfully!`);
         switchTab('record');
+        break;
+
+      case 'languageChanged':
+        if (msg.payload && window.i18n) {
+          i18n.setLanguage(msg.payload, true);
+        }
         break;
 
       case 'settingsData':
         if (msg.payload) {
+          if (msg.payload.language && window.i18n && i18n.getLanguage() !== msg.payload.language) {
+            i18n.setLanguage(msg.payload.language, false);
+          }
           state.settings = {
             shortcutKeysEnabled: msg.payload.shortcutKeysEnabled !== false,
             shortcuts: (msg.payload.shortcuts && msg.payload.shortcuts.length > 0)
@@ -966,29 +1017,33 @@
     }
     if (el.statusText) {
       el.statusText.textContent = isConn
-        ? 'Connected to Microsoft Flight Simulator'
-        : 'SimConnect Disconnected — Please start MSFS';
+        ? (window.i18n ? i18n.t('status.connected') : 'Connected to Microsoft Flight Simulator')
+        : (window.i18n ? i18n.t('status.disconnected') : 'SimConnect Disconnected — Please start MSFS');
     }
 
     // Aircraft Card
     if (el.aircraftTitle) {
-      el.aircraftTitle.textContent = state.aircraftTitle || 'No aircraft detected';
+      el.aircraftTitle.textContent = state.aircraftTitle || (window.i18n ? i18n.t('aircraft.none') : 'No aircraft detected');
     }
     if (el.aircraftFile) {
-      el.aircraftFile.textContent = state.fileName ? state.fileName : (state.frameCount > 0 ? `${state.frameCount} frames gravados` : 'No active recording');
+      const frameSuffix = window.i18n ? i18n.t('records.framesSuffix') : 'frames';
+      const noRec = window.i18n ? i18n.t('aircraft.noRecording') : 'No active recording';
+      el.aircraftFile.textContent = state.fileName ? state.fileName : (state.frameCount > 0 ? `${state.frameCount.toLocaleString()} ${frameSuffix}` : noRec);
     }
 
     // HubHop Profile badge
     if (el.profileBadge && el.profileText) {
+      const customPrefix = window.i18n ? i18n.t('aircraft.profileCustom') : 'Custom Profile';
+      const stdText = window.i18n ? i18n.t('aircraft.profileStd') : 'Standard Profile';
       if (state.activeProfileName) {
         el.profileBadge.className = 'profile-badge active';
-        el.profileText.textContent = `Perfil ${state.activeProfileName}`;
+        el.profileText.textContent = `${customPrefix} (${state.activeProfileName})`;
         if (el.valProfileDetail) {
           el.valProfileDetail.textContent = `${state.activeProfileName} (${state.activeProfileVarCount} L-Vars)`;
         }
       } else {
         el.profileBadge.className = 'profile-badge standard';
-        el.profileText.textContent = 'Perfil Standard';
+        el.profileText.textContent = stdText;
         if (el.valProfileDetail) {
           el.valProfileDetail.textContent = 'Standard SimConnect';
         }
@@ -997,21 +1052,25 @@
 
     // Update Telemetry View Overview
     if (el.telemAircraftTitle) {
-      el.telemAircraftTitle.textContent = state.aircraftTitle || 'No aircraft detected';
+      el.telemAircraftTitle.textContent = state.aircraftTitle || (window.i18n ? i18n.t('aircraft.none') : 'No aircraft detected');
     }
     if (el.telemAircraftSub) {
-      el.telemAircraftSub.textContent = isConn ? 'Transmissão ativa via SimConnect' : 'Inicie o MSFS para receber telemetria contínua';
+      el.telemAircraftSub.textContent = isConn
+        ? (window.i18n ? i18n.t('telemetry.desc') : 'Real-time parameters via SimConnect')
+        : (window.i18n ? i18n.t('status.connecting') : 'Connecting to Microsoft Flight Simulator...');
     }
     if (el.telemProfileText) {
       el.telemProfileText.textContent = state.activeProfileName
         ? `${state.activeProfileName} (${state.activeProfileVarCount} vars)`
-        : 'Standard SimConnect';
+        : (window.i18n ? i18n.t('aircraft.profileStd') : 'Standard SimConnect');
     }
     if (el.telemetryConnPill) {
       el.telemetryConnPill.className = `conn-pill ${isConn ? 'connected' : 'disconnected'}`;
     }
     if (el.telemetryConnText) {
-      el.telemetryConnText.textContent = isConn ? 'MSFS Connected' : 'Disconnected';
+      el.telemetryConnText.textContent = isConn
+        ? (window.i18n ? i18n.t('status.connected') : 'MSFS Connected')
+        : (window.i18n ? i18n.t('status.disconnected') : 'Disconnected');
     }
 
     // State machine button states
@@ -1085,6 +1144,7 @@
 
     if (el.chartOverlay) {
       el.chartOverlay.style.display = (state.frameCount > 0) ? 'none' : 'flex';
+      el.chartOverlay.textContent = window.i18n ? i18n.t('controls.noFlight') : 'No flight recorded or loaded';
     }
 
     if (chart) {
@@ -1111,15 +1171,15 @@
     }
     if (el.valGear) {
       const isDown = !!pos.gearHandlePosition;
-      el.valGear.textContent = isDown ? 'DOWN' : 'UP';
+      el.valGear.textContent = isDown ? (window.i18n ? i18n.t('telemetry.gearDown') : 'DOWN') : (window.i18n ? i18n.t('telemetry.gearUp') : 'UP');
       el.valGear.className = isDown ? 'telemetry-value-sm gear-badge gear-down' : 'telemetry-value-sm gear-badge gear-up';
     }
     if (el.telemContactBadge) {
       if (pos.isOnGround) {
-        el.telemContactBadge.textContent = 'GROUND (GND)';
+        el.telemContactBadge.textContent = window.i18n ? i18n.t('telemetry.gnd') : 'GROUND (GND)';
         el.telemContactBadge.className = 'flight-phase-pill phase-gnd';
       } else {
-        el.telemContactBadge.textContent = 'AIRBORNE (AIR)';
+        el.telemContactBadge.textContent = window.i18n ? i18n.t('telemetry.air') : 'AIRBORNE (AIR)';
         el.telemContactBadge.className = 'flight-phase-pill phase-air';
       }
     }
@@ -1160,9 +1220,9 @@
       if (lat && lon && lat !== '--' && lon !== '--') {
         const coords = `${lat}, ${lon}`;
         navigator.clipboard.writeText(coords);
-        showToast(`Coordenadas copiadas: ${coords}`);
+        showToast(window.i18n ? i18n.t('telemetry.coordsCopiedToast', { coords }) : `Coordinates copied: ${coords}`);
       } else {
-        showToast('Nenhuma coordenada disponível no momento');
+        showToast(window.i18n ? i18n.t('telemetry.noCoordsToast') : 'No coordinates available right now');
       }
     });
 
@@ -1189,7 +1249,9 @@
       state.repeat = !state.repeat;
       el.btnRepeat.classList.toggle('active', state.repeat);
       sendToHost('setRepeat', { repeat: state.repeat });
-      showToast(state.repeat ? 'Loop ativado' : 'Loop desativado');
+      showToast(state.repeat
+        ? (window.i18n ? i18n.t('controls.loopActiveToast') : 'Loop replay enabled')
+        : (window.i18n ? i18n.t('controls.loopInactiveToast') : 'Loop replay disabled'));
     });
 
     // Speed Menu
@@ -1206,7 +1268,7 @@
         if (el.speedLabel) el.speedLabel.textContent = `x${val}`;
         sendToHost('setSpeed', { rate: val });
         el.speedMenu?.classList.remove('show');
-        showToast(`Velocidade de Replay: x${val}`);
+        showToast(window.i18n ? i18n.t('controls.speedToast', { rate: val }) : `Replay speed: x${val}`);
       });
     });
 
@@ -1220,13 +1282,13 @@
     document.getElementById('btnTrimStart')?.addEventListener('click', () => {
       sendToHost('trimStart');
       el.trimMenu?.classList.remove('show');
-      showToast('Início do voo cortado até este frame');
+      showToast(window.i18n ? i18n.t('controls.trimStartToast') : 'Flight start trimmed to current frame');
     });
 
     document.getElementById('btnTrimEnd')?.addEventListener('click', () => {
       sendToHost('trimEnd');
       el.trimMenu?.classList.remove('show');
-      showToast('Fim do voo cortado até este frame');
+      showToast(window.i18n ? i18n.t('controls.trimEndToast') : 'Flight end trimmed to current frame');
     });
 
     // Copyable metrics
@@ -1235,7 +1297,7 @@
         const val = cell.querySelector('.telemetry-value-md, .telemetry-value-lg, .metric-value')?.textContent;
         if (val && val !== '--') {
           navigator.clipboard.writeText(val);
-          showToast(`Copiado: ${val}`);
+          showToast(window.i18n ? i18n.t('telemetry.valCopiedToast', { val }) : `Copied: ${val}`);
         }
       });
     });
@@ -1244,7 +1306,7 @@
     el.inputSearchRecords?.addEventListener('input', () => renderSavedFlights());
     el.btnRefreshSaved?.addEventListener('click', () => {
       sendToHost('getSavedFlights');
-      showToast('Lista de voos atualizada');
+      showToast(window.i18n ? i18n.t('records.refreshToast') : 'Flight list refreshed');
     });
     el.btnImportFlight?.addEventListener('click', () => sendToHost('importSavedFlight'));
     el.btnOpenFolderRecords?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
@@ -1287,23 +1349,23 @@
       });
       closeHotkeysModal();
       renderSettings();
-      showToast('✓ Atalhos salvos com sucesso!');
+      showToast(window.i18n ? i18n.t('hotkeys.btnSaveToast') : '✓ Shortcuts saved successfully!');
     });
 
     // Restore defaults inside modal
     el.btnRestoreDefaultsModal?.addEventListener('click', async () => {
       const confirmed = await showConfirmDialog({
-        title: 'Restaurar Atalhos Padrão',
-        message: 'Deseja restaurar todos os atalhos para os valores padrão de fábrica? As alterações não salvas serão substituídas.',
-        confirmText: 'Restaurar Padrões',
-        cancelText: 'Cancelar',
+        title: window.i18n ? i18n.t('hotkeys.confirmRestoreTitle') : 'Restore Default Shortcuts',
+        message: window.i18n ? i18n.t('hotkeys.confirmRestoreMsg') : 'Do you want to restore all shortcuts to factory defaults? Unsaved changes will be overwritten.',
+        confirmText: window.i18n ? i18n.t('hotkeys.confirmRestoreBtn') : 'Restore Defaults',
+        cancelText: window.i18n ? i18n.t('dialog.cancel') : 'Cancel',
         variant: 'warning'
       });
 
       if (confirmed) {
         tempShortcuts = JSON.parse(JSON.stringify(DEFAULT_SHORTCUTS));
         renderModalHotkeys();
-        showToast('Atalhos redefinidos para o padrão. Clique em Salvar para aplicar.');
+        showToast(window.i18n ? i18n.t('hotkeys.savedToast') : 'Shortcuts reset to defaults. Click Save to apply.');
       }
     });
 
@@ -1315,13 +1377,17 @@
         enabled: state.settings.shortcutKeysEnabled,
         shortcuts: state.settings.shortcuts
       });
-      showToast(e.target.checked ? 'Atalhos globais ativados no MSFS!' : 'Atalhos globais desativados.');
+      showToast(e.target.checked
+        ? (window.i18n ? i18n.t('settings.hotkeysEnabledToast') : 'Global shortcuts enabled in MSFS!')
+        : (window.i18n ? i18n.t('settings.hotkeysDisabledToast') : 'Global shortcuts disabled.'));
     });
 
     el.toggleStayOnTopSettings?.addEventListener('change', (e) => {
       state.settings.stayOnTop = e.target.checked;
       sendToHost('setTopmost', { topmost: e.target.checked });
-      showToast(e.target.checked ? 'Stay on Top: Ativado' : 'Stay on Top: Desativado');
+      showToast(e.target.checked
+        ? (window.i18n ? i18n.t('settings.stayOnTopActiveToast') : 'Stay on Top: Enabled')
+        : (window.i18n ? i18n.t('settings.stayOnTopInactiveToast') : 'Stay on Top: Disabled'));
     });
 
     el.toggleAutoRecordAltitude?.addEventListener('change', (e) => {
@@ -1333,18 +1399,21 @@
         enabled: isEnabled,
         threshold: thresh
       });
-      showToast(isEnabled ? `Gravação automática abaixo de ${thresh.toLocaleString('pt-BR')} ft ATIVADA` : 'Gravação automática por altitude DESATIVADA');
+      const formatted = thresh.toLocaleString(window.i18n && i18n.getLanguage() === 'pt-BR' ? 'pt-BR' : 'en-US') + ' ft';
+      showToast(isEnabled
+        ? (window.i18n ? i18n.t('settings.autoRecordEnabledToast', { alt: formatted }) : `Auto-recording below ${formatted} ENABLED`)
+        : (window.i18n ? i18n.t('settings.autoRecordDisabledToast') : 'Auto-recording by altitude DISABLED'));
     });
 
     const updateAltitudeThreshold = (newAlt, save = true) => {
       const clamped = Math.max(1000, Math.min(15000, newAlt));
       state.settings.autoRecordAltitudeThreshold = clamped;
-      const formatted = clamped.toLocaleString('pt-BR') + ' ft';
+      const formatted = clamped.toLocaleString(window.i18n && i18n.getLanguage() === 'pt-BR' ? 'pt-BR' : 'en-US') + ' ft';
       if (el.inputAutoRecordAltitude) el.inputAutoRecordAltitude.value = clamped;
       if (el.autoRecordAltitudeDisplay) el.autoRecordAltitudeDisplay.textContent = formatted;
       if (el.autoRecordSliderValue) el.autoRecordSliderValue.textContent = formatted;
       if (el.autoRecordStatusBadge && state.settings.autoRecordBelowAltitude !== false) {
-        el.autoRecordStatusBadge.textContent = `Ativado (< ${formatted})`;
+        el.autoRecordStatusBadge.textContent = window.i18n ? i18n.t('settings.autoRecordStatusActive', { alt: formatted }) : `Enabled (< ${formatted})`;
       }
       document.querySelectorAll('.btn-preset').forEach(btn => {
         btn.classList.toggle('active', parseInt(btn.dataset.alt, 10) === clamped);
@@ -1355,7 +1424,7 @@
           enabled: state.settings.autoRecordBelowAltitude !== false,
           threshold: clamped
         });
-        showToast(`Altitude de gravação automática definida para ${formatted}`);
+        showToast(window.i18n ? i18n.t('settings.autoRecordSetToast', { alt: formatted }) : `Auto-record trigger altitude set to ${formatted}`);
       }
     };
 
@@ -1377,18 +1446,31 @@
     });
     el.btnOpenSettingsFolder?.addEventListener('click', () => sendToHost('openSavedFlightsFolder'));
 
+    // Language Switcher Buttons (Settings tab segmented control)
+    el.languageSegmentedGroup?.addEventListener('click', (e) => {
+      const btn = e.target.closest('.theme-seg-btn');
+      if (!btn) return;
+      const lang = btn.getAttribute('data-lang');
+      if (!lang || lang === (window.i18n ? i18n.getLanguage() : 'en')) return;
+      if (window.i18n) {
+        i18n.setLanguage(lang);
+      }
+      sendToHost('setLanguage', { language: lang });
+      showToast(window.i18n ? i18n.t('settings.languageToast') : `Language set to ${lang}`);
+    });
+
     // Theme Switcher Buttons (Settings tab segmented control)
     document.querySelectorAll('#themeSegmentedGroup .theme-seg-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const selected = btn.dataset.theme;
         if (!selected) return;
         applyTheme(selected, true);
-        const labels = {
-          dark: 'Modo Escuro (Flux UI) ativado',
-          light: 'Modo Claro (White Mode) ativado',
-          system: 'Tema sincronizado com o Windows'
-        };
-        showToast(labels[selected] || 'Tema alterado');
+        const toastMsg = selected === 'dark'
+          ? (window.i18n ? i18n.t('settings.themeDarkToast') : 'Dark Mode (Flux UI) activated')
+          : selected === 'light'
+            ? (window.i18n ? i18n.t('settings.themeLightToast') : 'Light Mode activated')
+            : (window.i18n ? i18n.t('settings.themeSystemToast') : 'Theme synchronized with Windows');
+        showToast(toastMsg);
       });
     });
 
@@ -1397,7 +1479,7 @@
       const autoHide = e.target.checked;
       state.settings.hudAutoHide = autoHide;
       sendToHost('saveHudSettings', { autoHide });
-      showToast(autoHide ? 'Auto-ocultar ativado para o Mini Player.' : 'Auto-ocultar desativado para o Mini Player.');
+      showToast(autoHide ? 'Auto-hide enabled for Mini Player.' : 'Auto-hide disabled for Mini Player.');
     });
 
     el.hudStyleSegmentedGroup?.addEventListener('click', (e) => {
@@ -1411,7 +1493,7 @@
         b.classList.toggle('active', b === btn);
       });
       sendToHost('saveHudSettings', { translucent: isTranslucent });
-      showToast(isTranslucent ? 'Mini Player: Translúcido (Meio transparente)' : 'Mini Player: Sólido');
+      showToast(isTranslucent ? 'Mini Player: Translucent' : 'Mini Player: Solid');
     });
 
     // ==============================================
@@ -1419,7 +1501,7 @@
     // ==============================================
     el.btnOpenReplayHud?.addEventListener('click', () => {
       sendToHost('openReplayHud');
-      showToast('Barra de controle de replay aberta no topo da tela.');
+      showToast(window.i18n ? i18n.t('controls.hudLauncher') : 'Floating Replay Mini-Player opened.');
     });
 
     // Global click closes dropdowns and cancels hotkey scanning if clicking outside keybind box
@@ -1447,6 +1529,18 @@
 
   // Initial startup
   initTheme();
+  if (window.i18n) {
+    i18n.onLanguageChange(() => {
+      render();
+      renderSettings();
+      renderSavedFlights();
+      updateTimelineUI();
+      if (el.hotkeysModal && !el.hotkeysModal.classList.contains('hidden')) {
+        renderModalHotkeys();
+      }
+    });
+    i18n.applyDOM();
+  }
   initListeners();
   render();
   renderSettings();

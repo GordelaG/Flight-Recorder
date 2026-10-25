@@ -20,4 +20,6 @@ public interface ISettingsLogic
     Task SetAutoRecordBelowAltitudeAsync(bool value);
     Task<int> GetAutoRecordAltitudeThresholdAsync();
     Task SetAutoRecordAltitudeThresholdAsync(int value);
+    Task<string> GetLanguageAsync();
+    Task SetLanguageAsync(string value);
 }

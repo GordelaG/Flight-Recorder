@@ -38,6 +38,7 @@ public partial class MainWindow : BaseWindow
     private readonly AutoUpdateService autoUpdateService;
     private readonly IStorageLogic storageLogic;
     private readonly ISettingsLogic settingsLogic;
+    private readonly IDialogLogic dialogLogic;
     private readonly string currentVersion;
 
     private IntPtr Handle;
@@ -49,6 +50,7 @@ public partial class MainWindow : BaseWindow
     private bool autoRecordBelowAltitude = true;
     private int autoRecordAltitudeThreshold = 6000;
     private bool isArmedForAutoRecord = true;
+    private string currentLanguage = "en";
 
     public MainWindow(
         ILogger<MainWindow> logger,
@@ -65,7 +67,8 @@ public partial class MainWindow : BaseWindow
         HubHopSyncService hubHopSyncService,
         AutoUpdateService autoUpdateService,
         IStorageLogic storageLogic,
-        ISettingsLogic settingsLogic
+        ISettingsLogic settingsLogic,
+        IDialogLogic dialogLogic
     ) : base(orchestrator.ThreadLogic, orchestrator.StateMachine, orchestrator.ViewModel, orchestrator.ReplayLogic)
     {
         InitializeComponent();
@@ -84,6 +87,7 @@ public partial class MainWindow : BaseWindow
         this.autoUpdateService = autoUpdateService;
         this.storageLogic = storageLogic;
         this.settingsLogic = settingsLogic;
+        this.dialogLogic = dialogLogic;
 
         stateMachine.StateChanged += StateMachine_StateChanged;
         connector.AircraftPositionUpdated += Connector_AircraftPositionUpdated;
@@ -118,6 +122,11 @@ public partial class MainWindow : BaseWindow
 
         autoRecordBelowAltitude = await settingsLogic.GetAutoRecordBelowAltitudeAsync();
         autoRecordAltitudeThreshold = await settingsLogic.GetAutoRecordAltitudeThresholdAsync();
+        currentLanguage = await settingsLogic.GetLanguageAsync();
+        if (dialogLogic is DialogLogic dl)
+        {
+            dl.CurrentLanguage = currentLanguage;
+        }
 
         _ = Task.Run(() => VpilotService.EnsurePluginInstalled(logger));
     }
@@ -208,7 +217,9 @@ public partial class MainWindow : BaseWindow
                         PostWebMessage(new
                         {
                             type = "toast",
-                            payload = "vPilot desconectado da rede VATSIM para iniciar o replay."
+                            payload = currentLanguage == "pt-BR"
+                                ? "vPilot desconectado da rede VATSIM para iniciar o replay."
+                                : "vPilot disconnected from VATSIM network to start replay."
                         });
                     }
                     await stateMachine.TransitAsync(StateMachine.Event.Replay);
@@ -538,6 +549,25 @@ public partial class MainWindow : BaseWindow
                         await settingsLogic.SetAutoRecordAltitudeThresholdAsync(autoRecordAltitudeThreshold);
                     }
                     await SendSettingsToWebAsync();
+                    break;
+
+                case "setLanguage":
+                    if (root.TryGetProperty("language", out var langProp))
+                    {
+                        var lang = langProp.GetString() ?? "en";
+                        currentLanguage = lang;
+                        if (dialogLogic is DialogLogic dl)
+                        {
+                            dl.CurrentLanguage = lang;
+                        }
+                        await settingsLogic.SetLanguageAsync(lang);
+                        PostWebMessage(new
+                        {
+                            type = "languageChanged",
+                            payload = lang
+                        });
+                        await SendSettingsToWebAsync();
+                    }
                     break;
 
                 case "themeChanged":
@@ -1031,6 +1061,11 @@ public partial class MainWindow : BaseWindow
             var hudTranslucent = await settingsLogic.GetHudTranslucentAsync();
             autoRecordBelowAltitude = await settingsLogic.GetAutoRecordBelowAltitudeAsync();
             autoRecordAltitudeThreshold = await settingsLogic.GetAutoRecordAltitudeThresholdAsync();
+            currentLanguage = await settingsLogic.GetLanguageAsync();
+            if (dialogLogic is DialogLogic dl)
+            {
+                dl.CurrentLanguage = currentLanguage;
+            }
 
             PostWebMessage(new
             {
@@ -1044,7 +1079,8 @@ public partial class MainWindow : BaseWindow
                     hudAutoHide = hudAutoHide,
                     hudTranslucent = hudTranslucent,
                     autoRecordBelowAltitude = autoRecordBelowAltitude,
-                    autoRecordAltitudeThreshold = autoRecordAltitudeThreshold
+                    autoRecordAltitudeThreshold = autoRecordAltitudeThreshold,
+                    language = currentLanguage
                 }
             });
         }
@@ -1088,30 +1124,38 @@ public partial class MainWindow : BaseWindow
         }
     }
 
-    private static string GetShortcutDisplayName(Shortcuts shortcut) => shortcut switch
+    private string GetShortcutDisplayName(Shortcuts shortcut)
     {
-        Shortcuts.Record => "Gravar Voo (Record)",
-        Shortcuts.StopRecording => "Parar Gravação (Stop)",
-        Shortcuts.Replay => "Replay do Voo (Play)",
-        Shortcuts.Pause => "Pausar Replay (Pause)",
-        Shortcuts.Resume => "Continuar Replay (Resume)",
-        Shortcuts.StopReplay => "Parar Replay (Stop Replay)",
-        Shortcuts.SaveToDisk => "Salvar Voo Rápido (Quick Save)",
-        Shortcuts.ToggleReplayHud => "Barra de Replay (Mini Player)",
-        _ => shortcut.ToString()
-    };
+        bool isPt = currentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || currentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
+        return shortcut switch
+        {
+            Shortcuts.Record => isPt ? "Gravar Voo (Record)" : "Record Flight (Record)",
+            Shortcuts.StopRecording => isPt ? "Parar Gravação (Stop)" : "Stop Recording (Stop)",
+            Shortcuts.Replay => isPt ? "Replay do Voo (Play)" : "Replay Flight (Play)",
+            Shortcuts.Pause => isPt ? "Pausar Replay (Pause)" : "Pause Replay (Pause)",
+            Shortcuts.Resume => isPt ? "Continuar Replay (Resume)" : "Resume Replay (Resume)",
+            Shortcuts.StopReplay => isPt ? "Parar Replay (Stop Replay)" : "Stop Replay (Stop Replay)",
+            Shortcuts.SaveToDisk => isPt ? "Salvar Voo Rápido (Quick Save)" : "Quick Save Flight (Save)",
+            Shortcuts.ToggleReplayHud => isPt ? "Barra de Replay (HUD)" : "Replay Bar (HUD)",
+            _ => shortcut.ToString()
+        };
+    }
 
-    private static string GetShortcutDescription(Shortcuts shortcut) => shortcut switch
+    private string GetShortcutDescription(Shortcuts shortcut)
     {
-        Shortcuts.Record => "Inicia a gravação das posições do voo",
-        Shortcuts.StopRecording => "Interrompe a gravação atual",
-        Shortcuts.Replay => "Inicia a reprodução do voo gravado",
-        Shortcuts.Pause => "Congela a reprodução do voo no simulador",
-        Shortcuts.Resume => "Retoma a reprodução pausada",
-        Shortcuts.StopReplay => "Encerra o replay e devolve os controles do simulador",
-        Shortcuts.SaveToDisk => "Salva o voo gravado diretamente na pasta SavedFlights",
-        Shortcuts.ToggleReplayHud => "Abre ou fecha o popup flutuante da barra de controle de replay",
-        _ => ""
-    };
+        bool isPt = currentLanguage.Equals("pt-BR", StringComparison.OrdinalIgnoreCase) || currentLanguage.Equals("pt", StringComparison.OrdinalIgnoreCase);
+        return shortcut switch
+        {
+            Shortcuts.Record => isPt ? "Inicia a gravação das posições do voo" : "Starts recording aircraft flight positions",
+            Shortcuts.StopRecording => isPt ? "Interrompe a gravação atual" : "Stops the active recording",
+            Shortcuts.Replay => isPt ? "Inicia a reprodução do voo gravado" : "Starts playback of the recorded flight",
+            Shortcuts.Pause => isPt ? "Congela a reprodução do voo no simulador" : "Freezes simulator replay playback",
+            Shortcuts.Resume => isPt ? "Retoma a reprodução pausada" : "Resumes paused playback",
+            Shortcuts.StopReplay => isPt ? "Encerra o replay e devolve os controles do simulador" : "Ends replay and restores simulator controls",
+            Shortcuts.SaveToDisk => isPt ? "Salva o voo gravado diretamente na pasta SavedFlights" : "Saves recording directly to SavedFlights folder",
+            Shortcuts.ToggleReplayHud => isPt ? "Abre ou fecha o popup flutuante da barra de controle de replay" : "Shows or hides the floating replay mini-player",
+            _ => ""
+        };
+    }
 }
 
