@@ -23,6 +23,7 @@
     btnPlayPause: document.getElementById('btnPlayPause'),
     iconPlay: document.getElementById('iconPlay'),
     iconPause: document.getElementById('iconPause'),
+    btnStopReplay: document.getElementById('btnStopReplay'),
     btnStepFwd1: document.getElementById('btnStepFwd1'),
     btnStepFwd10: document.getElementById('btnStepFwd10'),
     btnFastFwd: document.getElementById('btnFastFwd'),
@@ -60,6 +61,9 @@
     }
 
     const isReplaying = (state.machineState || '').startsWith('Replaying');
+    const isPausing = (state.machineState || '').startsWith('Pausing');
+    const isPlaybackActive = isReplaying || isPausing;
+
     if (el.iconPlay && el.iconPause) {
       if (isReplaying) {
         el.iconPlay.classList.add('hidden');
@@ -68,6 +72,13 @@
         el.iconPlay.classList.remove('hidden');
         el.iconPause.classList.add('hidden');
       }
+    }
+
+    if (el.btnStopReplay) {
+      const canStop = isPlaybackActive || (state.currentFrame > 0);
+      el.btnStopReplay.disabled = !canStop;
+      el.btnStopReplay.classList.toggle('disabled', !canStop);
+      el.btnStopReplay.title = isPlaybackActive ? 'Parar Replay (Stop)' : 'Reiniciar para o início (Stop)';
     }
 
     const isRecording = state.machineState === 'Recording';
@@ -138,6 +149,11 @@
     } else {
       sendAction('play');
     }
+  });
+
+  // Stop Replay
+  el.btnStopReplay?.addEventListener('click', () => {
+    sendAction('stop');
   });
 
   // Steps & Jumps

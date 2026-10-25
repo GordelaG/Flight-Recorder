@@ -342,7 +342,18 @@ public partial class ReplayHudWindow : Window
                     break;
 
                 case "stop":
-                    await stateMachine.TransitAsync(StateMachine.Event.RequestStopping);
+                case "stopReplay":
+                    if (viewModel.State == StateMachine.State.ReplayingSaved
+                        || viewModel.State == StateMachine.State.ReplayingUnsaved
+                        || viewModel.State == StateMachine.State.PausingSaved
+                        || viewModel.State == StateMachine.State.PausingUnsaved)
+                    {
+                        await stateMachine.TransitAsync(StateMachine.Event.RequestStopping);
+                    }
+                    else
+                    {
+                        replayLogic.Seek(0);
+                    }
                     break;
 
                 case "seek":

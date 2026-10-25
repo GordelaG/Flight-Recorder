@@ -220,6 +220,45 @@
       transform: scale(1.12);
     }
 
+    .hud-stop-btn {
+      color: var(--text-main);
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      margin-left: 1px;
+    }
+
+    .hud-stop-btn:hover {
+      background: rgba(239, 68, 68, 0.22);
+      color: #ef4444;
+      border-color: rgba(239, 68, 68, 0.45);
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.35);
+      transform: scale(1.1);
+    }
+
+    .hud-stop-btn.disabled,
+    .hud-stop-btn:disabled {
+      opacity: 0.32;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      border-color: transparent !important;
+      color: var(--text-muted) !important;
+    }
+
+    :root.light .hud-stop-btn {
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    :root.light .hud-stop-btn:hover {
+      background: rgba(239, 68, 68, 0.16);
+      color: #dc2626;
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
     .hud-window-right {
       display: flex;
       align-items: center;
@@ -351,6 +390,13 @@
             <svg id="iconPause" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <rect x="6" y="4" width="4" height="16" rx="1"/>
               <rect x="14" y="4" width="4" height="16" rx="1"/>
+            </svg>
+          </button>
+
+          <!-- Stop Replay Button -->
+          <button id="btnStopReplay" class="hud-action-btn hud-stop-btn" type="button" title="Parar Replay (Stop)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="5" y="5" width="14" height="14" rx="2.5"/>
             </svg>
           </button>
 
