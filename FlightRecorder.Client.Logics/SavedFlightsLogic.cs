@@ -18,6 +18,9 @@ public class SavedFlightItem
     [JsonPropertyName("fileName")]
     public string FileName { get; set; } = string.Empty;
 
+    [JsonPropertyName("title")]
+    public string? Title { get; set; }
+
     [JsonPropertyName("aircraftTitle")]
     public string AircraftTitle { get; set; } = string.Empty;
 
@@ -83,7 +86,7 @@ public static class SavedFlightsLogic
         return string.IsNullOrWhiteSpace(result) ? "Flight" : result;
     }
 
-    public static async Task SaveMetadataAsync(string flightFilePath, SavedData data)
+    public static async Task SaveMetadataAsync(string flightFilePath, SavedData data, string? customTitle = null)
     {
         try
         {
@@ -97,6 +100,7 @@ public static class SavedFlightsLogic
             {
                 FilePath = flightFilePath,
                 FileName = Path.GetFileName(flightFilePath),
+                Title = string.IsNullOrWhiteSpace(customTitle) ? null : customTitle.Trim(),
                 AircraftTitle = data.StartState?.AircraftTitle ?? "Flight",
                 StartTime = data.StartTime,
                 EndTime = data.EndTime,

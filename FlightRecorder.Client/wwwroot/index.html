@@ -806,6 +806,62 @@
   </div>
 
   <!-- ============================================== -->
+  <!-- MODAL: SALVAR VOO COM TÍTULO PERSONALIZADO     -->
+  <!-- ============================================== -->
+  <div id="saveFlightModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="saveFlightModalTitle">
+    <div class="modal-dialog modal-save-flight">
+      <div class="modal-header">
+        <div class="modal-header-info">
+          <div class="modal-header-title-row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="modal-title-icon">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+              <polyline points="17 21 17 13 7 13 7 21"/>
+              <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            <h3 class="modal-title" id="saveFlightModalTitle" data-i18n="dialog.saveModalTitle">Save Flight Recording</h3>
+          </div>
+          <p class="modal-subtitle" data-i18n="dialog.saveModalSubtitle">Enter a custom title or description to organize your clip in Saved Flights.</p>
+        </div>
+        <button id="btnCloseSaveFlightModal" class="modal-close-btn" type="button" title="Close">&times;</button>
+      </div>
+
+      <div class="modal-body save-flight-modal-body">
+        <div class="save-flight-input-group">
+          <label for="inputSaveFlightTitle" class="save-flight-label" data-i18n="dialog.saveInputLabel">Clip Title / Name</label>
+          <div class="save-flight-input-wrapper">
+            <input type="text" id="inputSaveFlightTitle" class="flux-input save-flight-input" maxlength="80" placeholder="Ex: Crosswind Landing at Congonhas RWY 17R" data-i18n-placeholder="dialog.saveInputPlaceholder" autofocus autocomplete="off">
+          </div>
+          <span class="save-flight-hint" data-i18n="dialog.saveInputHint">Tip: This title will appear prominently on your saved flight card.</span>
+        </div>
+
+        <div class="save-flight-preview-card">
+          <div class="save-flight-preview-header">
+            <span class="preview-badge" data-i18n="dialog.savePreviewBadge">Preview</span>
+            <span id="saveFlightPreviewAircraft" class="preview-aircraft">Flight</span>
+          </div>
+          <div id="saveFlightPreviewTitle" class="preview-title">Flight</div>
+          <div class="preview-meta-row">
+            <span id="saveFlightPreviewStats" class="preview-stats">⏱ 00:00 • 0 frames</span>
+            <span id="saveFlightPreviewFileName" class="preview-filename">Flight_2026-10-26.fltrec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btnCancelSaveFlightModal" class="btn btn-secondary btn-sm" type="button" data-i18n="dialog.cancel">Cancel</button>
+        <button id="btnConfirmSaveFlightModal" class="btn btn-accent btn-sm" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+            <polyline points="17 21 17 13 7 13 7 21"/>
+            <polyline points="7 3 7 8 15 8"/>
+          </svg>
+          <span data-i18n="dialog.saveConfirmBtn">Save Flight</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
   <!-- MODAL: CONFIRMAÇÃO CUSTOMIZADA (LUX UI)        -->
   <!-- ============================================== -->
   <div id="confirmModal" class="confirm-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle">

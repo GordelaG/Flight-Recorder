@@ -245,7 +245,15 @@
         crashTitle: 'Recuperar Gravação de Voo',
         crashMsg: 'Foi encontrado um salvamento automático recuperado de um fechamento anterior do Flight Recorder.\n\nDeseja restaurar esta gravação?',
         crashRestoreBtn: 'Restaurar Voo',
-        crashDiscardBtn: 'Descartar'
+        crashDiscardBtn: 'Descartar',
+        saveModalTitle: 'Salvar Gravação de Voo',
+        saveModalSubtitle: 'Defina um título ou descrição para organizar seu clipe na lista de voos salvos.',
+        saveInputLabel: 'Título do Clipe / Voo',
+        saveInputPlaceholder: 'Ex: Pouso Congonhas RWY 17R com vento cruzado',
+        saveInputHint: 'Dica: Este título será exibido com destaque no card do voo salvo.',
+        savePreviewBadge: 'Prévia do Clipe',
+        saveConfirmBtn: 'Salvar Voo',
+        savingToast: 'Salvando voo em SavedFlights...'
       },
       hud: {
         closeTitle: 'Fechar Mini Player',

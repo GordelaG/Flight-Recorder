@@ -279,6 +279,8 @@ public class StateMachine : StateMachineCore
     private async Task<bool> SaveRecordingAsync(ActionContext actionContext)
     {
         var data = replayLogic.ToData(currentVersion);
+        var customTitle = PendingSaveTitle;
+        PendingSaveTitle = null;
 
         async Task<string> GetSavePath()
         {
@@ -289,14 +291,17 @@ public class StateMachine : StateMachineCore
             }
 
             var aircraft = viewModel.AircraftTitle ?? data.StartState?.AircraftTitle;
-            var cleanAircraft = SavedFlightsLogic.SanitizeFileName(aircraft ?? "Flight");
-            return Path.Combine(folder, $"{cleanAircraft}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.fltrec");
+            var baseName = !string.IsNullOrWhiteSpace(customTitle)
+                ? customTitle
+                : (aircraft ?? "Flight");
+            var cleanName = SavedFlightsLogic.SanitizeFileName(baseName);
+            return Path.Combine(folder, $"{cleanName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.fltrec");
         }
 
         var filePath = await GetSavePath();
 
         await storageLogic.SaveAsync(filePath, data);
-        await SavedFlightsLogic.SaveMetadataAsync(filePath, data);
+        await SavedFlightsLogic.SaveMetadataAsync(filePath, data, customTitle);
         replayLogic.FromData(Path.GetFileName(filePath), data);
         return true;
     }

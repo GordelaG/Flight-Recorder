@@ -245,7 +245,15 @@
         crashTitle: 'Récupérer l\'Enregistrement du Vol',
         crashMsg: 'Une sauvegarde automatique d\'une fermeture inattendue précédente de Flight Recorder a été trouvée.\n\nVoulez-vous restaurer cet enregistrement ?',
         crashRestoreBtn: 'Restaurer le Vol',
-        crashDiscardBtn: 'Ignorer'
+        crashDiscardBtn: 'Ignorer',
+        saveModalTitle: 'Enregistrer le Vol',
+        saveModalSubtitle: 'Entrez un titre ou une description pour organiser votre clip dans les vols enregistrés.',
+        saveInputLabel: 'Titre du Clip / Nom du Vol',
+        saveInputPlaceholder: 'Ex : Atterrissage vent de travers RWY 17R',
+        saveInputHint: 'Astuce : Ce titre apparaîtra en évidence sur la carte du vol enregistré.',
+        savePreviewBadge: 'Aperçu du Clip',
+        saveConfirmBtn: 'Enregistrer le Vol',
+        savingToast: 'Enregistrement du vol dans SavedFlights...'
       },
       hud: {
         closeTitle: 'Fermer le Mini-Lecteur',

@@ -245,7 +245,15 @@
         crashTitle: 'Recover Flight Recording',
         crashMsg: 'An auto-save from a previous unexpected close of Flight Recorder was found.\n\nDo you want to restore this recording?',
         crashRestoreBtn: 'Restore Flight',
-        crashDiscardBtn: 'Discard'
+        crashDiscardBtn: 'Discard',
+        saveModalTitle: 'Save Flight Recording',
+        saveModalSubtitle: 'Enter a custom title or description to organize your clip in Saved Flights.',
+        saveInputLabel: 'Clip Title / Flight Name',
+        saveInputPlaceholder: 'E.g.: Crosswind Landing at Congonhas RWY 17R',
+        saveInputHint: 'Tip: This title will appear prominently on your saved flight card.',
+        savePreviewBadge: 'Clip Preview',
+        saveConfirmBtn: 'Save Flight',
+        savingToast: 'Saving flight to SavedFlights...'
       },
       hud: {
         closeTitle: 'Close Mini Player',

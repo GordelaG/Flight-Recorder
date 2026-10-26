@@ -1,4 +1,4 @@
-﻿using FlightRecorder.Client.Logics;
+using FlightRecorder.Client.Logics;
 using FlightRecorder.Client.ViewModels.States;
 using Microsoft.Extensions.Logging;
 using System;
@@ -32,6 +32,7 @@ public abstract class StateMachineCore(
     private readonly List<State> endStates = new();
 
     public State CurrentState { get; private set; } = State.Start;
+    public string? PendingSaveTitle { get; set; }
 
     public Task<bool> TransitFromShortcutAsync(Event e) => TransitAsync(e, true);
 

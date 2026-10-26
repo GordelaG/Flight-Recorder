@@ -267,6 +267,12 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "save":
+                    string? customTitle = null;
+                    if (root.TryGetProperty("title", out var titleProp))
+                    {
+                        customTitle = titleProp.GetString();
+                    }
+                    stateMachine.PendingSaveTitle = customTitle;
                     if (await stateMachine.TransitAsync(StateMachine.Event.Save))
                     {
                         SendRecordsToWeb();
@@ -377,20 +383,38 @@ public partial class MainWindow : BaseWindow
                                 replayLogic.FromData(Path.GetFileName(filePath), data);
                                 await stateMachine.TransitAsync(StateMachine.Event.LoadDirect);
                                 SendRecordsToWeb();
+
+                                string? savedTitle = null;
+                                try
+                                {
+                                    var metaPath = filePath + ".meta.json";
+                                    if (File.Exists(metaPath))
+                                    {
+                                        var metaJson = await File.ReadAllTextAsync(metaPath);
+                                        var meta = JsonSerializer.Deserialize<SavedFlightItem>(metaJson, jsonOptions);
+                                        savedTitle = meta?.Title;
+                                    }
+                                }
+                                catch { }
+
+                                var planeName = data.StartState?.AircraftTitle ?? viewModel.AircraftTitle ?? "Flight";
+                                var displayName = !string.IsNullOrWhiteSpace(savedTitle) ? savedTitle : planeName;
+
                                 PostWebMessage(new
                                 {
                                     type = "flightLoaded",
                                     payload = new
                                     {
                                         fileName = Path.GetFileName(filePath),
-                                        aircraftTitle = data.StartState?.AircraftTitle ?? viewModel.AircraftTitle ?? "Flight",
+                                        title = savedTitle,
+                                        aircraftTitle = planeName,
                                         frameCount = data.Records.Count
                                     }
                                 });
                                 PostWebMessage(new
                                 {
                                     type = "toast",
-                                    payload = $"Voo {data.StartState?.AircraftTitle ?? Path.GetFileName(filePath)} carregado com sucesso!"
+                                    payload = $"Voo {displayName} carregado com sucesso!"
                                 });
                             }
                             else

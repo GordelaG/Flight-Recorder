@@ -245,7 +245,15 @@
         crashTitle: 'Recuperar Grabación de Vuelo',
         crashMsg: 'Se encontró un guardado automático recuperado de un cierre inesperado anterior de Flight Recorder.\n\n¿Desea restaurar esta grabación?',
         crashRestoreBtn: 'Restaurar Vuelo',
-        crashDiscardBtn: 'Descartar'
+        crashDiscardBtn: 'Descartar',
+        saveModalTitle: 'Guardar Grabación de Vuelo',
+        saveModalSubtitle: 'Ingrese un título o descripción para organizar su clip en Vuelos Guardados.',
+        saveInputLabel: 'Título del Clip / Nombre del Vuelo',
+        saveInputPlaceholder: 'Ej: Aterrizaje con viento cruzado RWY 17R',
+        saveInputHint: 'Consejo: Este título se mostrará de manera destacada en la tarjeta del vuelo guardado.',
+        savePreviewBadge: 'Vista Previa del Clip',
+        saveConfirmBtn: 'Guardar Vuelo',
+        savingToast: 'Guardando vuelo en SavedFlights...'
       },
       hud: {
         closeTitle: 'Cerrar Mini-Reproductor',

@@ -54,10 +54,16 @@ public class SavedFlightsLogicTests
                 profileId: "pmdg-737"
             );
 
-            await SavedFlightsLogic.SaveMetadataAsync(flightFile, savedData);
+            await SavedFlightsLogic.SaveMetadataAsync(flightFile, savedData, "Pouso Congonhas 17R");
 
             var metaFile = flightFile + ".meta.json";
             Assert.IsTrue(File.Exists(metaFile));
+
+            var metaJson = await File.ReadAllTextAsync(metaFile);
+            var item = System.Text.Json.JsonSerializer.Deserialize<SavedFlightItem>(metaJson, new System.Text.Json.JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            Assert.IsNotNull(item);
+            Assert.AreEqual("Pouso Congonhas 17R", item.Title);
+            Assert.AreEqual("Flight", item.AircraftTitle);
         }
         finally
         {

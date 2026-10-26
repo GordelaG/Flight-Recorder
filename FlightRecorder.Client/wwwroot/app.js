@@ -239,6 +239,17 @@
     btnSaveHotkeysModal: document.getElementById('btnSaveHotkeysModal'),
     btnRestoreDefaultsModal: document.getElementById('btnRestoreDefaultsModal'),
 
+    // Save Flight Modal
+    saveFlightModal: document.getElementById('saveFlightModal'),
+    btnCloseSaveFlightModal: document.getElementById('btnCloseSaveFlightModal'),
+    btnCancelSaveFlightModal: document.getElementById('btnCancelSaveFlightModal'),
+    btnConfirmSaveFlightModal: document.getElementById('btnConfirmSaveFlightModal'),
+    inputSaveFlightTitle: document.getElementById('inputSaveFlightTitle'),
+    saveFlightPreviewAircraft: document.getElementById('saveFlightPreviewAircraft'),
+    saveFlightPreviewTitle: document.getElementById('saveFlightPreviewTitle'),
+    saveFlightPreviewStats: document.getElementById('saveFlightPreviewStats'),
+    saveFlightPreviewFileName: document.getElementById('saveFlightPreviewFileName'),
+
     // Toasts & Updates
     toast: document.getElementById('toast'),
     updateBanner: document.getElementById('updateBanner'),
@@ -511,9 +522,10 @@
     const query = (el.inputSearchRecords?.value || '').trim().toLowerCase();
     const filtered = state.savedFlights.filter((flight) => {
       if (!query) return true;
+      const customTitle = (flight.title || flight.Title || '').toLowerCase();
       const title = (flight.aircraftTitle || flight.AircraftTitle || '').toLowerCase();
       const name = (flight.fileName || flight.FileName || '').toLowerCase();
-      return title.includes(query) || name.includes(query);
+      return customTitle.includes(query) || title.includes(query) || name.includes(query);
     });
 
     // Update stats
@@ -553,7 +565,9 @@
 
       const filePath = flight.filePath || flight.FilePath || '';
       const fileName = flight.fileName || flight.FileName || '';
+      const customTitle = flight.title || flight.Title || '';
       const aircraftTitle = flight.aircraftTitle || flight.AircraftTitle || 'Flight';
+      const displayTitle = customTitle || aircraftTitle;
       const durationSeconds = flight.durationSeconds ?? flight.DurationSeconds ?? 0;
       const fileSizeBytes = flight.fileSizeBytes ?? flight.FileSizeBytes ?? 0;
       const createdAt = flight.createdAt || flight.CreatedAt;
@@ -568,7 +582,8 @@
       card.innerHTML = `
         <div class="flight-card-header">
           <div class="flight-card-title-group">
-            <span class="flight-card-plane" title="${aircraftTitle}">${aircraftTitle}</span>
+            <span class="flight-card-plane" title="${displayTitle}">${displayTitle}</span>
+            ${customTitle && customTitle !== aircraftTitle ? `<span class="flight-card-aircraft-sub" title="${aircraftTitle}">✈️ ${aircraftTitle}</span>` : ''}
             <span class="flight-card-date">${dateText}</span>
           </div>
         </div>
@@ -1241,8 +1256,101 @@
     }
   }
 
+  // Save Flight Title Modal
+  function openSaveFlightModal() {
+    if (!el.saveFlightModal) {
+      sendToHost('save');
+      return;
+    }
+
+    const defaultTitle = state.aircraftTitle || 'Flight';
+    const totalDuration = (state.records && state.records.length > 1)
+      ? (state.records[state.records.length - 1].time - state.records[0].time) / 1000
+      : 0;
+    const durText = formatDuration(totalDuration);
+    const frameSuffix = window.i18n ? i18n.t('records.framesSuffix') : 'frames';
+    const statsText = `⏱ ${durText} • ${(state.frameCount || 0).toLocaleString()} ${frameSuffix}`;
+
+    if (el.saveFlightPreviewAircraft) {
+      el.saveFlightPreviewAircraft.textContent = defaultTitle;
+    }
+    if (el.saveFlightPreviewStats) {
+      el.saveFlightPreviewStats.textContent = statsText;
+    }
+
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const dateStamp = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}_${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
+
+    const updatePreview = () => {
+      const entered = (el.inputSaveFlightTitle?.value || '').trim();
+      const currentTitle = entered || defaultTitle;
+      if (el.saveFlightPreviewTitle) {
+        el.saveFlightPreviewTitle.textContent = currentTitle;
+      }
+      if (el.saveFlightPreviewFileName) {
+        const clean = currentTitle.replace(/[/\\?%*:|"<>]/g, '_').trim() || 'Flight';
+        el.saveFlightPreviewFileName.textContent = `${clean}_${dateStamp}.fltrec`;
+      }
+    };
+
+    if (el.inputSaveFlightTitle) {
+      el.inputSaveFlightTitle.value = defaultTitle;
+      updatePreview();
+    }
+
+    el.saveFlightModal.classList.remove('hidden');
+
+    setTimeout(() => {
+      if (el.inputSaveFlightTitle) {
+        el.inputSaveFlightTitle.focus();
+        el.inputSaveFlightTitle.select();
+      }
+    }, 50);
+
+    const onInput = () => updatePreview();
+    el.inputSaveFlightTitle?.addEventListener('input', onInput);
+
+    const closeModal = () => {
+      el.saveFlightModal.classList.add('hidden');
+      el.inputSaveFlightTitle?.removeEventListener('input', onInput);
+      el.btnConfirmSaveFlightModal?.removeEventListener('click', onConfirm);
+      el.btnCancelSaveFlightModal?.removeEventListener('click', closeModal);
+      el.btnCloseSaveFlightModal?.removeEventListener('click', closeModal);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+
+    const onConfirm = () => {
+      const entered = (el.inputSaveFlightTitle?.value || '').trim();
+      closeModal();
+      showToast(window.i18n ? i18n.t('dialog.savingToast') : 'Saving flight to SavedFlights...');
+      sendToHost('save', { title: entered });
+    };
+
+    const onKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        onConfirm();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    };
+
+    el.btnConfirmSaveFlightModal?.addEventListener('click', onConfirm, { once: true });
+    el.btnCancelSaveFlightModal?.addEventListener('click', closeModal, { once: true });
+    el.btnCloseSaveFlightModal?.addEventListener('click', closeModal, { once: true });
+    document.addEventListener('keydown', onKeyDown);
+  }
+
   // Event Listeners Initialization
   function initListeners() {
+    // Click outside save flight modal closes it
+    el.saveFlightModal?.addEventListener('click', (e) => {
+      if (e.target === el.saveFlightModal) {
+        el.saveFlightModal.classList.add('hidden');
+      }
+    });
     // Navigation tabs
     el.navTabRecord?.addEventListener('click', () => switchTab('record'));
     el.navTabRecords?.addEventListener('click', () => switchTab('records'));
@@ -1272,7 +1380,7 @@
     el.btnReplayAI?.addEventListener('click', () => sendToHost('replayAI'));
 
     // Persistence: Save directly, Load switches to Records view
-    el.btnSave?.addEventListener('click', () => sendToHost('save'));
+    el.btnSave?.addEventListener('click', () => openSaveFlightModal());
     el.btnLoad?.addEventListener('click', () => switchTab('records'));
 
     // Timeline Slider
