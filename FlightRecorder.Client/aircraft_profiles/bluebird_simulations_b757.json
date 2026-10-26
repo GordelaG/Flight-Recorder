@@ -1,0 +1,95 @@
+{
+  "Id": "bluebird_simulations_b757",
+  "Name": "BlueBird Simulations B757",
+  "Vendor": "BlueBird Simulations",
+  "MatchTitles": [
+    "BlueBird Simulations B757",
+    "B757"
+  ],
+  "Variables": [
+    {
+      "Name": "L:B757_MCP_THR_BUTTON",
+      "Unit": "number",
+      "Description": "MCP THR Button Indicator Light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:B757_MCP_APP_BUTTON",
+      "Unit": "number",
+      "Description": "MCP APP Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_CMD_1_BUTTON",
+      "Unit": "number",
+      "Description": "MCP AP CMD L Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_CMD_2_BUTTON",
+      "Unit": "number",
+      "Description": "MCP CMD C Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_CMD_3_BUTTON",
+      "Unit": "number",
+      "Description": "MCP AP CMD R Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_LNAV_BUTTON",
+      "Unit": "number",
+      "Description": "MCP LNAV Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_SPD_BUTTON",
+      "Unit": "number",
+      "Description": "MCP SPD Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_VNAV_BUTTON",
+      "Unit": "number",
+      "Description": "MCP VNAV Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_PASS_OXY_UNARMED_DECAL",
+      "Unit": "number",
+      "Description": "OVHD EMER LIGHTS UNARMED Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BBS_AP_TARGET_ALTITUDE",
+      "Unit": "number",
+      "Description": "MCP Altitude Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BBS_AP_TARGET_HEADING",
+      "Unit": "number",
+      "Description": "MCP Heading Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BBS_AP_TARGET_VS",
+      "Unit": "number",
+      "Description": "MCP VERT SPD Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BBS_VS_BLANKED",
+      "Unit": "number",
+      "Description": "MCP VERT SPD Blanked",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:BBS757_ORANGE_AIRSPEED_BUGS",
+      "Unit": "number",
+      "Description": "MCP Speed Display",
+      "Interpolate": false
+    }
+  ]
+}
