@@ -22,4 +22,8 @@ public interface ISettingsLogic
     Task SetAutoRecordAltitudeThresholdAsync(int value);
     Task<string> GetLanguageAsync();
     Task SetLanguageAsync(string value);
+    Task<bool> GetStayOnTopAsync();
+    Task SetStayOnTopAsync(bool value);
+    Task<string> GetThemeAsync();
+    Task SetThemeAsync(string value);
 }

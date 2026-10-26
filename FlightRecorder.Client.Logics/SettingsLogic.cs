@@ -11,109 +11,171 @@ namespace FlightRecorder.Client.Logics;
 
 public class FileSettingsLogic : ISettingsLogic
 {
-    private const string FileName = "settings.json";
-    
-    private readonly ILogger<FileSettingsLogic> logger;
+    private static readonly JsonSerializerOptions jsonOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        WriteIndented = true
+    };
 
-    public FileSettingsLogic(ILogger<FileSettingsLogic> logger)
+    private readonly string filePath;
+    private readonly ILogger<FileSettingsLogic> logger;
+    private static readonly SemaphoreSlim sm = new(1);
+    private Settings? settings = null;
+
+    public FileSettingsLogic(ILogger<FileSettingsLogic> logger) : this(logger, null)
+    {
+    }
+
+    public FileSettingsLogic(ILogger<FileSettingsLogic> logger, string? customFilePath)
     {
         this.logger = logger;
+        this.filePath = customFilePath ?? ResolveSettingsFilePath();
     }
-    
+
+    public static string ResolveSettingsFilePath()
+    {
+        var localAppDataDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FlightRecorder");
+        var appDataFile = Path.Combine(localAppDataDir, "settings.json");
+
+        // Migration check: If appDataFile does not exist yet, check if there's an existing settings.json
+        if (!File.Exists(appDataFile))
+        {
+            try
+            {
+                var baseDirFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
+                if (File.Exists(baseDirFile))
+                {
+                    Directory.CreateDirectory(localAppDataDir);
+                    File.Copy(baseDirFile, appDataFile, true);
+                }
+                else if (File.Exists("settings.json"))
+                {
+                    Directory.CreateDirectory(localAppDataDir);
+                    File.Copy("settings.json", appDataFile, true);
+                }
+            }
+            catch
+            {
+                // Silently ignore migration exceptions and proceed to use appDataFile
+            }
+        }
+
+        return appDataFile;
+    }
+
     public async Task<bool> IsShortcutKeysEnabledAsync()
     {
-        var settings = await LoadAsync();
-        return settings.ShortcutKeysEnabled;
+        var s = await LoadAsync();
+        return s.ShortcutKeysEnabled;
     }
 
     public Task SetShortcutKeysEnabledAsync(bool value)
     {
-        return SaveAsync(settings => settings.ShortcutKeysEnabled = value);
+        return SaveAsync(s => s.ShortcutKeysEnabled = value);
     }
 
     public async Task<Dictionary<Shortcuts, ShortcutKey>?> GetShortcutKeysAsync()
     {
-        var settings = await LoadAsync();
-        return settings.ShortcutKeys;
+        var s = await LoadAsync();
+        return s.ShortcutKeys;
     }
 
     public Task SetShortcutKeysAsync(Dictionary<Shortcuts, ShortcutKey> shortcutKeys)
     {
-        return SaveAsync(settings => settings.ShortcutKeys = shortcutKeys);
+        return SaveAsync(s => s.ShortcutKeys = shortcutKeys);
     }
 
     public async Task<string?> GetDefaultSaveFolderAsync()
     {
-        var settings = await LoadAsync();
-        return settings.DefaultSaveFolder;
+        var s = await LoadAsync();
+        return s.DefaultSaveFolder;
     }
 
     public Task SetDefaultSaveFolderAsync(string? folderPath)
     {
-        return SaveAsync(settings => settings.DefaultSaveFolder = folderPath);
+        return SaveAsync(s => s.DefaultSaveFolder = folderPath);
     }
 
     public async Task<bool> GetHudAutoHideAsync()
     {
-        var settings = await LoadAsync();
-        return settings.HudAutoHide;
+        var s = await LoadAsync();
+        return s.HudAutoHide;
     }
 
     public Task SetHudAutoHideAsync(bool value)
     {
-        return SaveAsync(settings => settings.HudAutoHide = value);
+        return SaveAsync(s => s.HudAutoHide = value);
     }
 
     public async Task<bool> GetHudTranslucentAsync()
     {
-        var settings = await LoadAsync();
-        return settings.HudTranslucent;
+        var s = await LoadAsync();
+        return s.HudTranslucent;
     }
 
     public Task SetHudTranslucentAsync(bool value)
     {
-        return SaveAsync(settings => settings.HudTranslucent = value);
+        return SaveAsync(s => s.HudTranslucent = value);
     }
 
     public async Task<bool> GetAutoRecordBelowAltitudeAsync()
     {
-        var settings = await LoadAsync();
-        return settings.AutoRecordBelowAltitude;
+        var s = await LoadAsync();
+        return s.AutoRecordBelowAltitude;
     }
 
     public Task SetAutoRecordBelowAltitudeAsync(bool value)
     {
-        return SaveAsync(settings => settings.AutoRecordBelowAltitude = value);
+        return SaveAsync(s => s.AutoRecordBelowAltitude = value);
     }
 
     public async Task<int> GetAutoRecordAltitudeThresholdAsync()
     {
-        var settings = await LoadAsync();
-        return settings.AutoRecordAltitudeThreshold <= 0 ? 6000 : Math.Clamp(settings.AutoRecordAltitudeThreshold, 1000, 15000);
+        var s = await LoadAsync();
+        return s.AutoRecordAltitudeThreshold <= 0 ? 6000 : Math.Clamp(s.AutoRecordAltitudeThreshold, 1000, 15000);
     }
 
     public Task SetAutoRecordAltitudeThresholdAsync(int value)
     {
         var clamped = Math.Clamp(value, 1000, 15000);
-        return SaveAsync(settings => settings.AutoRecordAltitudeThreshold = clamped);
+        return SaveAsync(s => s.AutoRecordAltitudeThreshold = clamped);
     }
 
     public async Task<string> GetLanguageAsync()
     {
-        var settings = await LoadAsync();
-        return string.IsNullOrWhiteSpace(settings.Language) ? "en" : settings.Language;
+        var s = await LoadAsync();
+        return string.IsNullOrWhiteSpace(s.Language) ? "en" : s.Language;
     }
 
     public Task SetLanguageAsync(string value)
     {
         var normalized = string.IsNullOrWhiteSpace(value) ? "en" : value.Trim();
-        return SaveAsync(settings => settings.Language = normalized);
+        return SaveAsync(s => s.Language = normalized);
     }
 
-    private static SemaphoreSlim sm = new SemaphoreSlim(1);
+    public async Task<bool> GetStayOnTopAsync()
+    {
+        var s = await LoadAsync();
+        return s.StayOnTop;
+    }
 
-    private Settings? settings = null;
-    
+    public Task SetStayOnTopAsync(bool value)
+    {
+        return SaveAsync(s => s.StayOnTop = value);
+    }
+
+    public async Task<string> GetThemeAsync()
+    {
+        var s = await LoadAsync();
+        return string.IsNullOrWhiteSpace(s.Theme) ? "dark" : s.Theme;
+    }
+
+    public Task SetThemeAsync(string value)
+    {
+        var normalized = string.IsNullOrWhiteSpace(value) ? "dark" : value.Trim();
+        return SaveAsync(s => s.Theme = normalized);
+    }
+
     private async Task<Settings> LoadAsync()
     {
         await sm.WaitAsync();
@@ -123,7 +185,7 @@ public class FileSettingsLogic : ISettingsLogic
         }
         catch (Exception ex)
         {
-            logger.LogWarning(ex, "Cannot read setting");
+            logger.LogWarning(ex, "Cannot read setting from {Path}", filePath);
             return settings ??= new Settings();
         }
         finally
@@ -137,16 +199,22 @@ public class FileSettingsLogic : ISettingsLogic
         await sm.WaitAsync();
         try
         {
-            var settings = await LoadNoLockAsync();
-            update(settings);
-            this.settings = settings;
+            var current = await LoadNoLockAsync();
+            update(current);
+            this.settings = current;
 
-            using var stream = File.Open(FileName, FileMode.Create);
-            await JsonSerializer.SerializeAsync(stream, settings);
+            var dir = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(dir) && !Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            using var stream = File.Open(filePath, FileMode.Create, FileAccess.Write, FileShare.None);
+            await JsonSerializer.SerializeAsync(stream, current, jsonOptions);
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "Cannot write setting");
+            logger.LogError(ex, "Cannot write setting to {Path}", filePath);
         }
         finally
         {
@@ -156,12 +224,27 @@ public class FileSettingsLogic : ISettingsLogic
 
     private async Task<Settings> LoadNoLockAsync()
     {
-        if (!File.Exists(FileName))
+        if (settings != null)
         {
-            return settings ??= new Settings();
+            return settings;
         }
-        using var stream = File.OpenRead(FileName);
-        return settings ??= await JsonSerializer.DeserializeAsync<Settings>(stream) ?? new Settings();
+
+        if (!File.Exists(filePath))
+        {
+            return settings = new Settings();
+        }
+
+        try
+        {
+            using var stream = File.OpenRead(filePath);
+            var deserialized = await JsonSerializer.DeserializeAsync<Settings>(stream, jsonOptions);
+            return settings = deserialized ?? new Settings();
+        }
+        catch (Exception ex)
+        {
+            logger.LogWarning(ex, "Failed to read or parse {Path}, fallback to defaults", filePath);
+            return settings = new Settings();
+        }
     }
 }
 
@@ -175,4 +258,6 @@ public class Settings
     public bool AutoRecordBelowAltitude { get; set; } = true;
     public int AutoRecordAltitudeThreshold { get; set; } = 6000;
     public string Language { get; set; } = "en";
+    public bool StayOnTop { get; set; } = false;
+    public string Theme { get; set; } = "dark";
 }

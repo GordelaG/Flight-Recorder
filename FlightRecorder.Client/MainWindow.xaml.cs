@@ -128,6 +128,9 @@ public partial class MainWindow : BaseWindow
             dl.CurrentLanguage = currentLanguage;
         }
 
+        var stayOnTop = await settingsLogic.GetStayOnTopAsync();
+        Dispatcher.Invoke(() => Topmost = stayOnTop);
+
         _ = Task.Run(() => VpilotService.EnsurePluginInstalled(logger));
     }
 
@@ -335,7 +338,9 @@ public partial class MainWindow : BaseWindow
                 case "setTopmost":
                     if (root.TryGetProperty("topmost", out var topmostProp))
                     {
-                        Topmost = topmostProp.GetBoolean();
+                        var topmost = topmostProp.GetBoolean();
+                        Topmost = topmost;
+                        await settingsLogic.SetStayOnTopAsync(topmost);
                     }
                     break;
 
@@ -589,6 +594,11 @@ public partial class MainWindow : BaseWindow
                     break;
 
                 case "themeChanged":
+                    if (root.TryGetProperty("theme", out var themeProp))
+                    {
+                        var theme = themeProp.GetString() ?? "dark";
+                        await settingsLogic.SetThemeAsync(theme);
+                    }
                     if (root.TryGetProperty("effectiveTheme", out var effThemeProp))
                     {
                         var eff = effThemeProp.GetString();
@@ -1074,12 +1084,13 @@ public partial class MainWindow : BaseWindow
                 virtualKey = kv.Value.VirtualKey
             }).ToList();
 
-            var stayOnTop = Dispatcher.Invoke(() => Topmost);
+            var stayOnTop = await settingsLogic.GetStayOnTopAsync();
             var hudAutoHide = await settingsLogic.GetHudAutoHideAsync();
             var hudTranslucent = await settingsLogic.GetHudTranslucentAsync();
             autoRecordBelowAltitude = await settingsLogic.GetAutoRecordBelowAltitudeAsync();
             autoRecordAltitudeThreshold = await settingsLogic.GetAutoRecordAltitudeThresholdAsync();
             currentLanguage = await settingsLogic.GetLanguageAsync();
+            var theme = await settingsLogic.GetThemeAsync();
             if (dialogLogic is DialogLogic dl)
             {
                 dl.CurrentLanguage = currentLanguage;
@@ -1098,7 +1109,8 @@ public partial class MainWindow : BaseWindow
                     hudTranslucent = hudTranslucent,
                     autoRecordBelowAltitude = autoRecordBelowAltitude,
                     autoRecordAltitudeThreshold = autoRecordAltitudeThreshold,
-                    language = currentLanguage
+                    language = currentLanguage,
+                    theme = theme
                 }
             });
         }

@@ -301,7 +301,7 @@
     }
 
     // Update segmented theme buttons in Settings
-    document.querySelectorAll('.theme-seg-btn').forEach((btn) => {
+    document.querySelectorAll('#themeSegmentedGroup .theme-seg-btn').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.theme === theme);
     });
 
@@ -629,7 +629,9 @@
       ? i18n.getAvailableLocales()
       : [
           { lang: 'en', name: 'English', flag: '🇺🇸', sub: 'Default (US)' },
-          { lang: 'pt-BR', name: 'Português', flag: '🇧🇷', sub: 'Brasil' }
+          { lang: 'pt-BR', name: 'Português', flag: '🇧🇷', sub: 'Brasil' },
+          { lang: 'es', name: 'Español', flag: '🇪🇸', sub: 'España / Latam' },
+          { lang: 'fr', name: 'Français', flag: '🇫🇷', sub: 'France' }
         ];
 
     const currentMeta = available.find(l => l.lang === curLang) || available[0] || { flag: '🌐', name: curLang, sub: '' };
@@ -733,6 +735,10 @@
         btn.classList.toggle('active', isTranslucent ? isTrBtn : !isTrBtn);
       });
     }
+    const curTheme = localStorage.getItem('flightrecorder.theme') || state.settings?.theme || 'dark';
+    document.querySelectorAll('#themeSegmentedGroup .theme-seg-btn').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.theme === curTheme);
+    });
     if (el.textSavedFolderPath && state.settings.savedFlightsFolder) {
       el.textSavedFolderPath.textContent = state.settings.savedFlightsFolder;
     }
@@ -976,6 +982,12 @@
           if (msg.payload.language && window.i18n && i18n.getLanguage() !== msg.payload.language) {
             i18n.setLanguage(msg.payload.language, false);
           }
+          if (msg.payload.theme && typeof applyTheme === 'function') {
+            const currentSavedTheme = localStorage.getItem('flightrecorder.theme');
+            if (currentSavedTheme !== msg.payload.theme) {
+              applyTheme(msg.payload.theme, true);
+            }
+          }
           state.settings = {
             shortcutKeysEnabled: msg.payload.shortcutKeysEnabled !== false,
             shortcuts: (msg.payload.shortcuts && msg.payload.shortcuts.length > 0)
@@ -989,7 +1001,8 @@
             hudAutoHide: !!msg.payload.hudAutoHide,
             hudTranslucent: !!msg.payload.hudTranslucent,
             autoRecordBelowAltitude: msg.payload.autoRecordBelowAltitude !== false,
-            autoRecordAltitudeThreshold: msg.payload.autoRecordAltitudeThreshold ?? 6000
+            autoRecordAltitudeThreshold: msg.payload.autoRecordAltitudeThreshold ?? 6000,
+            theme: msg.payload.theme || 'dark'
           };
           renderSettings();
         }
