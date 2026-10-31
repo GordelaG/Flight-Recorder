@@ -140,6 +140,12 @@
       "Interpolate": false
     },
     {
+      "Name": "L:FSS_EXX_FGC_BTN_SPD_UNIT",
+      "Unit": "number",
+      "Description": "Selected Speed Unit",
+      "Interpolate": false
+    },
+    {
       "Name": "L:FSS_EXX_FGC_LT_AP",
       "Unit": "number",
       "Description": "Cpt Yoke AP Disc Button",
@@ -191,12 +197,6 @@
       "Name": "L:FSS_EXX_FGC_ROT_VAL_HDG",
       "Unit": "number",
       "Description": "Selected HDG Value",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:FSS_EXX_FGC_ROT_VAL_SPD",
-      "Unit": "number",
-      "Description": "Selected Speed Value",
       "Interpolate": false
     }
   ]

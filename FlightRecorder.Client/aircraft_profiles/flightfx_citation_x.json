@@ -8,9 +8,21 @@
   ],
   "Variables": [
     {
+      "Name": "L:ATS_is_FMS",
+      "Unit": "bool",
+      "Description": "ATS MAN SPD INC (Alternative)",
+      "Interpolate": true
+    },
+    {
       "Name": "L:ATS_IS_ON",
       "Unit": "number",
       "Description": "Auto Throttle System ON",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:KNOB_ATS_FMS_MAN",
+      "Unit": "number",
+      "Description": "ATS SPEED FMS MAN Toggle",
       "Interpolate": true
     },
     {
