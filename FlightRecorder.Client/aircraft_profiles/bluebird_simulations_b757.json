@@ -26,6 +26,12 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_MCP_BCRS_1_BUTTON",
+      "Unit": "number",
+      "Description": "MCP backcourse button light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_MCP_CMD_1_BUTTON",
       "Unit": "number",
       "Description": "MCP AP CMD L Indicator Light",
@@ -44,9 +50,33 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_MCP_FLCH_BUTTON",
+      "Unit": "number",
+      "Description": "MCP FL CH light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_HOLD_1_BUTTON",
+      "Unit": "number",
+      "Description": "MCP Hdg hold button light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_HOLD_2_BUTTON",
+      "Unit": "number",
+      "Description": "MCP Alt hold button light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_MCP_LNAV_BUTTON",
       "Unit": "number",
       "Description": "MCP LNAV Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_LOC_BUTTON",
+      "Unit": "number",
+      "Description": "MCP Localizer button light",
       "Interpolate": false
     },
     {
@@ -59,6 +89,12 @@
       "Name": "L:B757_MCP_VNAV_BUTTON",
       "Unit": "number",
       "Description": "MCP VNAV Button Indicator Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MCP_VS_BUTTON",
+      "Unit": "number",
+      "Description": "MCP VS button light",
       "Interpolate": false
     },
     {
@@ -161,42 +197,6 @@
       "Name": "L:B757_OVHD_R_PUMPS_AFT_PRESS_DECAL",
       "Unit": "number",
       "Description": "Fuel pumps R AFT PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_R_PUMPS_FWD_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps R FWD ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_R_PUMPS_FWD_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps R FWD PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_STROBE",
-      "Unit": "number",
-      "Description": "White strobe indicator",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_WING_LIGHTS",
-      "Unit": "number",
-      "Description": "Wing lights indicator",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_XFEED_PUMPS_AFT_BUTTON",
-      "Unit": "number",
-      "Description": "XFeed AFT light selected",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_XFEED_PUMPS_FWD_BUTTON",
-      "Unit": "number",
-      "Description": "XFeed FWD light selected",
       "Interpolate": false
     }
   ]

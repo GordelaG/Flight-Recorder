@@ -1,0 +1,17 @@
+{
+  "Id": "blackbird_milviz_c130j_super_hercules",
+  "Name": "Blackbird/Milviz C130J Super Hercules",
+  "Vendor": "Blackbird/Milviz",
+  "MatchTitles": [
+    "Blackbird/Milviz C130J Super Hercules",
+    "C130J Super Hercules"
+  ],
+  "Variables": [
+    {
+      "Name": "L:1:PARKING_BRAKE",
+      "Unit": "number",
+      "Description": "Parking Brake On (Animation)",
+      "Interpolate": false
+    }
+  ]
+}

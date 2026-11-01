@@ -1,0 +1,17 @@
+{
+  "Id": "flightfx_piaggio_p180",
+  "Name": "FlightFX Piaggio P180",
+  "Vendor": "FlightFX",
+  "MatchTitles": [
+    "FlightFX Piaggio P180",
+    "Piaggio P180"
+  ],
+  "Variables": [
+    {
+      "Name": "L:XMLVAR_Baro1_ForcedToSTD",
+      "Unit": "number",
+      "Description": "Baro STD",
+      "Interpolate": false
+    }
+  ]
+}
