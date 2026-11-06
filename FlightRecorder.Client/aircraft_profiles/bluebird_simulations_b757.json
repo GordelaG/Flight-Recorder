@@ -140,6 +140,24 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_OVHD_FLT_DK_INOP_DECAL",
+      "Unit": "number",
+      "Description": "Flight deck inoperative indication",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_ISOLATION_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Isolation button on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_L_FWD_WINDOW_HEAT_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Left forward window heat button on light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_OVHD_L_PUMPS_AFT_BUTTON",
       "Unit": "number",
       "Description": "Fuel pumps L AFT ON light",
@@ -164,39 +182,21 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_OVHD_L_RECIRC_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Left recirculation button on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_L_SIDE_WINDOW_HEAT_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Left side window heat button on light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_OVHD_MID_PUMPS_AFT_FLOW_DECAL",
       "Unit": "number",
       "Description": "Fuel Xfeed AFT valve light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_MID_PUMPS_FWD_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel Xfeed FWD valve light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_NAV_LIGHTS",
-      "Unit": "number",
-      "Description": "NAV lights indicator",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_PASS_OXY_UNARMED_DECAL",
-      "Unit": "number",
-      "Description": "OVHD EMER LIGHTS UNARMED Indicator Light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_R_PUMPS_AFT_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps R AFT ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_R_PUMPS_AFT_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps R AFT PRESS light",
       "Interpolate": false
     }
   ]
