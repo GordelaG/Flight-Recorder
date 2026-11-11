@@ -98,6 +98,24 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_OVHD_ANTI_ICE_L_ENG_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Anti ice left engine button on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_ANTI_ICE_R_ENG_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Anti ice right engine button on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_ANTI_ICE_WING_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Anti ice wing button on light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_OVHD_APU_FAULT_DECAL",
       "Unit": "number",
       "Description": "APU Fault Indicator Light",
@@ -179,24 +197,6 @@
       "Name": "L:B757_OVHD_L_PUMPS_FWD_PRESS_DECAL",
       "Unit": "number",
       "Description": "Fuel pumps L FWD PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_RECIRC_BUTTON_ON",
-      "Unit": "number",
-      "Description": "Left recirculation button on light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_SIDE_WINDOW_HEAT_BUTTON_ON",
-      "Unit": "number",
-      "Description": "Left side window heat button on light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_MID_PUMPS_AFT_FLOW_DECAL",
-      "Unit": "number",
-      "Description": "Fuel Xfeed AFT valve light",
       "Interpolate": false
     }
   ]
