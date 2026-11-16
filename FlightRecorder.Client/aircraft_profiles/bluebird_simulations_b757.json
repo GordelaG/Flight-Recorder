@@ -8,9 +8,21 @@
   ],
   "Variables": [
     {
+      "Name": "L:B757_OVHD_WARNING_SPOILERS_DECAL",
+      "Unit": "number",
+      "Description": "Warning spoilers indication",
+      "Interpolate": true
+    },
+    {
       "Name": "L:B757_MCP_THR_BUTTON",
       "Unit": "number",
       "Description": "MCP THR Button Indicator Light",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:B757_OVHD_WARNING_RUDDER_RATIO_DECAL",
+      "Unit": "number",
+      "Description": "Warning rudder ratio indication",
       "Interpolate": true
     },
     {
@@ -122,15 +134,39 @@
       "Interpolate": false
     },
     {
+      "Name": "L:B757_OVHD_APU_GEN_BUTTON_ON",
+      "Unit": "number",
+      "Description": "APU gen button on light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_OVHD_APU_RUN_DECAL",
       "Unit": "number",
       "Description": "APU Run Indicator Light",
       "Interpolate": false
     },
     {
+      "Name": "L:B757_OVHD_BATTERY_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Battery button on light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:B757_OVHD_BEACON_LIGHT_ON",
       "Unit": "number",
       "Description": "Beacon light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_C_ENG1_HYD_PUMPS_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Center engine 1 hydraulic pumps button on light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_OVHD_C_ENG2_HYD_PUMPS_BUTTON_ON",
+      "Unit": "number",
+      "Description": "Center engine 2 hydraulic pumps button on light",
       "Interpolate": false
     },
     {
@@ -158,45 +194,9 @@
       "Interpolate": false
     },
     {
-      "Name": "L:B757_OVHD_FLT_DK_INOP_DECAL",
+      "Name": "L:B757_OVHD_EXT_PWR_BUTTON_ON",
       "Unit": "number",
-      "Description": "Flight deck inoperative indication",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_ISOLATION_BUTTON_ON",
-      "Unit": "number",
-      "Description": "Isolation button on light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_FWD_WINDOW_HEAT_BUTTON_ON",
-      "Unit": "number",
-      "Description": "Left forward window heat button on light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_PUMPS_AFT_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps L AFT ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_PUMPS_AFT_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps L AFT PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_PUMPS_FWD_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps L FWD ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_L_PUMPS_FWD_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps L FWD PRESS light",
+      "Description": "Ext power button on light",
       "Interpolate": false
     }
   ]
