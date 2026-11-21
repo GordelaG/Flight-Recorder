@@ -1,0 +1,191 @@
+{
+  "Id": "inibuilds_l_1011",
+  "Name": "IniBuilds L-1011",
+  "Vendor": "IniBuilds",
+  "MatchTitles": [
+    "IniBuilds L-1011",
+    "L-1011"
+  ],
+  "Variables": [
+    {
+      "Name": "L:SWITCH_AFCS_AT",
+      "Unit": "number",
+      "Description": "AT Switch Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:SWITCH_AFCS_TM",
+      "Unit": "number",
+      "Description": "TM Switch Toggle",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:CPT_HSI_NAV_1_COURSE",
+      "Unit": "number",
+      "Description": "Target CRS 1 Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:CPT_HSI_NAV_2_COURSE",
+      "Unit": "number",
+      "Description": "Target CRS 2 Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_VNAV",
+      "Unit": "number",
+      "Description": "VNAV Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_ANTICOL_LIGHT",
+      "Unit": "number",
+      "Description": "Anticolision Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_FLOOD_LIGHT",
+      "Unit": "number",
+      "Description": "Wing Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_POSITION_LIGHT",
+      "Unit": "number",
+      "Description": "Position Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_SEATBELT_LIGHT",
+      "Unit": "number",
+      "Description": "Fasten belt Signs ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_SMOKING_LIGHT",
+      "Unit": "number",
+      "Description": "No Smoking Lights ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_STROBE_LIGHT",
+      "Unit": "number",
+      "Description": "Strobe Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_LANDING_LEFT",
+      "Unit": "number",
+      "Description": "LND Light Left ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_LANDING_NOSE",
+      "Unit": "number",
+      "Description": "LND Light Nose ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_LANDING_RIGHT",
+      "Unit": "number",
+      "Description": "LND Light Right ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_LOGO_LIGHT",
+      "Unit": "number",
+      "Description": "Logo Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_RWY_TURNOFF",
+      "Unit": "number",
+      "Description": "RWY Turnoff Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:TOGGLE_TAXI_LIGHT",
+      "Unit": "number",
+      "Description": "Taxi Light ON",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:ALTITUDE_SETPOINT_0",
+      "Unit": "number",
+      "Description": "Target ALT Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_AT_TARGET",
+      "Unit": "number",
+      "Description": "Target IAS Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_HEADING_PID_SETPOINT",
+      "Unit": "number",
+      "Description": "Target HDG Display",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:INI_VS_PID_SETPOINT_2",
+      "Unit": "number",
+      "Description": "Target VS DN",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_ALT",
+      "Unit": "number",
+      "Description": "ALT Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_AP_A",
+      "Unit": "number",
+      "Description": "CPT AUTOPILOT CMD",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_HDG",
+      "Unit": "number",
+      "Description": "HDG Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_IAS",
+      "Unit": "number",
+      "Description": "IAS Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_ILS",
+      "Unit": "number",
+      "Description": "ILS Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_INS",
+      "Unit": "number",
+      "Description": "INS Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_VOR",
+      "Unit": "number",
+      "Description": "VOR Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:SWITCH_AFCS_VS",
+      "Unit": "number",
+      "Description": "VS Switch Toggle",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:YOKE_CPT_AP_DISCO",
+      "Unit": "number",
+      "Description": "CPT Yoke AP Disconnect ",
+      "Interpolate": false
+    }
+  ]
+}

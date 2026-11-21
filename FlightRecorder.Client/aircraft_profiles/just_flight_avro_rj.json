@@ -38,6 +38,18 @@
       "Interpolate": false
     },
     {
+      "Name": "L:L_COAMING_MWS_Amber_il",
+      "Unit": "number",
+      "Description": "Master Warning System - Amber Light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:L_COAMING_MWS_Red_il",
+      "Unit": "number",
+      "Description": "Master Warning System - Red Light",
+      "Interpolate": false
+    },
+    {
       "Name": "L:MCP_Mode_LNAV_iL",
       "Unit": "bool",
       "Description": "JF RJ AUTOPILOT LNAV INDICATOR",
@@ -47,6 +59,12 @@
       "Name": "L:MCP_Mode_NAV1_il1",
       "Unit": "bool",
       "Description": "JF RJ AUTOPILOT AP1 INDICATOR",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:MCP_Mode_NAV2_il1",
+      "Unit": "bool",
+      "Description": "JF RJ AUTOPILOT AP2 INDICATOR",
       "Interpolate": false
     },
     {
@@ -95,6 +113,12 @@
       "Name": "L:JF_RJ_AP_VS",
       "Unit": "number",
       "Description": "AP V/S Value",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:JF_RJ_APFD_Speed_Mode",
+      "Unit": "number",
+      "Description": "AP IAS/Mach Value",
       "Interpolate": false
     },
     {
@@ -173,30 +197,6 @@
       "Name": "L:MCP_Mode_VS_iL",
       "Unit": "bool",
       "Description": "JF RJ AUTOPILOT VS INDICATOR",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:MCP_Spd_sel_knob",
-      "Unit": "number",
-      "Description": "Speed Increase",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:MCP_Speed_sel_dec",
-      "Unit": "number",
-      "Description": "Speed Selector Decrease",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:MCP_Speed_sel_inc",
-      "Unit": "number",
-      "Description": "IAS/MACH SELECTOR - INCREASE",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:JF_RJ_FMS_L_power",
-      "Unit": "bool",
-      "Description": "JF RJ LEFT FMS EXEC ANNOUNCIATOR",
       "Interpolate": false
     }
   ]

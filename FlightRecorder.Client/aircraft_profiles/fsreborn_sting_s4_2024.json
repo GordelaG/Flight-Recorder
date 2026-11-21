@@ -1,0 +1,17 @@
+{
+  "Id": "fsreborn_sting_s4_2024",
+  "Name": "FSReborn Sting S4 (2024)",
+  "Vendor": "FSReborn",
+  "MatchTitles": [
+    "FSReborn Sting S4 (2024)",
+    "Sting S4 (2024)"
+  ],
+  "Variables": [
+    {
+      "Name": "L:FSR_S4_FUEL_Switch_Valve_1",
+      "Unit": "Bool",
+      "Description": "Fuel Shutoff Valve",
+      "Interpolate": false
+    }
+  ]
+}
