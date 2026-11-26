@@ -8,9 +8,21 @@
   ],
   "Variables": [
     {
+      "Name": "L:B757_MAIN_SPEEDBRAKES_1_DECAL",
+      "Unit": "number",
+      "Description": "B757_MAIN_SPEEDBRAKES_1_DECAL",
+      "Interpolate": true
+    },
+    {
       "Name": "L:B757_OVHD_WARNING_SPOILERS_DECAL",
       "Unit": "number",
       "Description": "Warning spoilers indication",
+      "Interpolate": true
+    },
+    {
+      "Name": "L:B757_MAIN_ATDISC_1_DECAL",
+      "Unit": "number",
+      "Description": "Autothrottle disconnect light",
       "Interpolate": true
     },
     {
@@ -29,6 +41,24 @@
       "Name": "L:B757_ADI_1_NAV_AID_BUTTON",
       "Unit": "bool",
       "Description": "LEFT ADI / EFIS NAVAID BUT",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MAIN_APDISC_1_DECAL",
+      "Unit": "number",
+      "Description": "Autopilot disconnect light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MAIN_CONFIG_1_DECAL",
+      "Unit": "number",
+      "Description": "Takeoff/landing configuration warning light",
+      "Interpolate": false
+    },
+    {
+      "Name": "L:B757_MAIN_FMC_1_DECAL",
+      "Unit": "number",
+      "Description": "FMC alert light",
       "Interpolate": false
     },
     {
@@ -167,36 +197,6 @@
       "Name": "L:B757_OVHD_C_ENG2_HYD_PUMPS_BUTTON_ON",
       "Unit": "number",
       "Description": "Center engine 2 hydraulic pumps button on light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_C_PUMPS_AFT_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps C right PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_C_PUMPS_FWD_PRESS_DECAL",
-      "Unit": "number",
-      "Description": "Fuel pumps C left PRESS light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_C_PUMPS_L_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps C left ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_C_PUMPS_R_BUTTON",
-      "Unit": "number",
-      "Description": "Fuel pumps C right ON light",
-      "Interpolate": false
-    },
-    {
-      "Name": "L:B757_OVHD_EXT_PWR_BUTTON_ON",
-      "Unit": "number",
-      "Description": "Ext power button on light",
       "Interpolate": false
     }
   ]

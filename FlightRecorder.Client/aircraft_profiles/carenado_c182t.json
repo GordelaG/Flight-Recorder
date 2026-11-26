@@ -1,0 +1,17 @@
+{
+  "Id": "carenado_c182t",
+  "Name": "Carenado C182T",
+  "Vendor": "Carenado",
+  "MatchTitles": [
+    "Carenado C182T",
+    "C182T"
+  ],
+  "Variables": [
+    {
+      "Name": "L:WTAP_VNAV_Required_VS",
+      "Unit": "feet per minute",
+      "Description": "VNV - VS to selected altitude at next waypoint",
+      "Interpolate": false
+    }
+  ]
+}

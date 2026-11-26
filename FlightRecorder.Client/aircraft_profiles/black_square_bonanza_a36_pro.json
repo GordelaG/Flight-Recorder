@@ -8,6 +8,12 @@
   ],
   "Variables": [
     {
+      "Name": "L:var_rnavDrivesHsi",
+      "Unit": "Bool",
+      "Description": "VNV - VS to selected altitude at next waypoint",
+      "Interpolate": false
+    },
+    {
       "Name": "L:var_GSA_AftDoor_readonly",
       "Unit": "number",
       "Description": "Annunciator Aft Door",
